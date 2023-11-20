@@ -1,3 +1,138 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@tailwind base; /* includes reset of styles, base styles like h1, h2, https://tailwindcss.com/docs/preflight*/
+@tailwind components; /* card, button, etc.*/
+@tailwind utilities; /* other classes*/
+
+:root, #root,
+#docs-root {
+    --28: clamp(1.75rem, calc(28 / 320 * 100vw), 2.25rem);
+    --34: clamp(2.125rem, calc(34 / 360 * 100vw), 5rem);
+    --38: clamp(2.25rem, calc(38 / 360 * 100vw), 5rem);
+    --40: clamp(2.5rem, calc(40 / 360 * 100vw), 3.5rem);
+    --48: clamp(3rem, calc(48 / 360 * 100vw), 4rem);
+    --64: clamp(4rem, calc(64 / 768 * 100vw), 5rem);
+    --80: clamp(5rem, calc(80 / 1024 * 100vw), 6rem);
+}
+
+@font-face {
+    font-family: "PolySans";
+    /*src: local("PolySans"), url(../public/fonts/PolySans-SlimMono.woff) format("woff");*/
+    /*src: local("PolySans"), url(../public/fonts/PolySans-SlimMono.woff2) format("woff2");*/
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+
+@font-face {
+    font-family: 'Theinhardt';
+    /*src: local("Theinhardt"), url(../public/fonts/Theinhardt-Regular.woff) format("woff");*/
+    /*src: local("Theinhardt"), url(../public/fonts/Theinhardt-Regular.woff2) format("woff2");*/
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+
+html,
+body {
+    font-family: "Theinhardt", sans-serif;
+    /*background: #010101;*/
+    scroll-behavior: smooth;
+    overscroll-behavior: none;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+}
+
+
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.no-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.no-scrollbar {
+    -ms-overflow-style: none;
+    /* IE and Edge */
+    scrollbar-width: none;
+    /* Firefox */
+}
+
+@layer components {
+
+    .container {
+        @apply xxl:mx-auto max-w-[1920px] w-full px-4 640:px-8 lg:px-10 xl:px-14 xxl:px-[6.5rem];
+    }
+
+    .widePaddingR {
+        @apply pr-[calc(100/360*100vw)] md:pr-[calc(272/768*100vw)] lg:pr-[calc(360/1024*100vw)]
+        xl:pr-[calc(728/1440*100vw)] xxl:pr-[968px]
+    }
+
+    .paddings {
+        @apply px-[clamp(1.25rem,calc(20/360*100vw),3.75rem)];
+    }
+
+    .paddings-left {
+        @apply pl-4 640:pl-8 lg:pl-10 xl:pl-14 xxl:pl-[6.5rem];
+    }
+
+    .paddings-right {
+        @apply pr-4 640:pr-8 lg:pr-10 xl:pr-14 xxl:pr-[6.5rem];
+    }
+
+    .center {
+        @apply flex justify-center items-center;
+    }
+
+    .center-absolute {
+        @apply top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2;
+    }
+
+    /* get rid of form default styles */
+    input, textarea {
+        @apply autofill:shadow-[inset_0_0_0px_2000px_rgb(255,255,255)] outline-none resize-none
+    }
+}
+
+/* letters animation */
+.line {
+    background-image: linear-gradient(white, white);
+    background-size: 0 100%;
+    background-repeat: no-repeat;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: rgba(255, 255, 255, 0.2) !important;
+}
+
+.swiper-pagination-bullets > .swiper-pagination-bullet-active {
+    background-color: white;
+
+}
+
+.swiper-pagination-bullets > .swiper-pagination-bullet {
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+
+/*//hide cookiebot*/
+#CybotCookiebotDialog {
+    display: none !important;
+}
+
+.stopScrolling {
+    height: 100vh;
+    overflow: hidden;
+}
+
+.blend {
+    mix-blend-mode: difference;
+}
+
+.isolate {
+    isolation: isolate;
+}
+
+/*dialog */
+::backdrop {
+    background-color: rgba(0, 0, 0);
+}
