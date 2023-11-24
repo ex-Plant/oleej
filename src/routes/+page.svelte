@@ -7,3 +7,10 @@
 </script>
 
 <Header />
+
+
+
+<div class='flex justify-center items-center h-[80vh]'>
+  <p>coming soon...</p>
+
+</div>
