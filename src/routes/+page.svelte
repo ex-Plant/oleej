@@ -1,16 +1,17 @@
 <script lang="ts">
-  /** @type {import('./$types').PageData} */
-  import Header from '../components/navigation/Header.svelte';
-  export let data;
+  /** @type {import("./$types").PageData} */
+  import sanitizeHtml from 'sanitize-html';
 
-  // console.log(data);
+  export let data;
+  // console.log("=>(+page.svelte:7) data", data.content.rendered);
+  //
+  // let content = sanitizeHtml(
+  //   data.content.rendered, {
+  // });
+
 </script>
 
-<Header />
+<div class='  '>
 
-
-
-<div class='flex justify-center items-center h-[80vh]'>
-  <p>coming soon...</p>
 
 </div>

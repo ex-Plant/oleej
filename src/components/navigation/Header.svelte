@@ -1,22 +1,26 @@
-
-<script>
-
-  import Logo from "../../assets/Logo.svelte";
-  import Dropdown from "./Dropdown.svelte";
-
-
-
+<script lang="ts">
+  import Logo from '../../assets/Logo.svelte';
+  // import Dropdown from './Dropdown.svelte';
+  // import { twMerge } from 'tailwind-merge';
+  // import { onMount } from 'svelte';
+  // let contentRef: HTMLElement;
+  // let height = 0;
+  let isOpen = false;
+  // onMount(() => (height = contentRef.offsetHeight));
 </script>
 
-<div class=' flex items-center py-8 border-black border-b h-[120px] justify-between text-[24px] '>
-  <div class='opacity-0'>
-    <Dropdown/>
+<div
+  class=" px-primary fixed left-0 top-0 flex h-[120px]  bg-white "
+>
+  <div class="flex w-full items-center justify-between border-b border-black">
+    <button
+      class="w-full text-left text-24 uppercase"
+      on:click="{() => (isOpen = !isOpen)}"
+    >
+      [ menu ]
+    </button>
+    <div class="flex w-full justify-center">
+      <Logo />
+    </div>
   </div>
-
-
-  <div class=' h-full min-w-[140px] '>
-    <Logo />
-  </div>
-
-
 </div>
