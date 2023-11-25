@@ -1,17 +1,29 @@
 <script lang="ts">
   /** @type {import("./$types").PageData} */
-  import sanitizeHtml from 'sanitize-html';
 
   export let data;
-  // console.log("=>(+page.svelte:7) data", data.content.rendered);
-  //
-  // let content = sanitizeHtml(
-  //   data.content.rendered, {
-  // });
+  let posts = data.posts;
+  let fotos = data.fotos;
 
 </script>
 
-<div class='  '>
+<!--todo - this is completely fucked up logic -> get proper data object with post-->
 
 
+
+
+
+
+<div class="  ">
+  {#each posts as post}
+    {#each fotos as foto}
+      {#if (post.acf.foto_id === foto.id)}
+        <div class=" grid">
+          <h2 class=" ">{post.acf.title}</h2>
+          <img src={foto.source_url} alt='' class="bg-red"/>
+          <p>{post.acf.post_description}</p>
+        </div>
+      {/if}
+    {/each}
+  {/each}
 </div>

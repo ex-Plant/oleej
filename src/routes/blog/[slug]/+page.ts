@@ -2,11 +2,11 @@
 
 const url = 'https://serwer2304048.home.pl/wordpress/wp-json/wp/v2/';
 
-export async function load() {
+export async function load({params}) {
   const postsRes = await fetch(`${url}posts`);
+
   const globalRes = await fetch(`${url}pages?slug=global-opotions`); // global
   const global = await globalRes.json();
-  console.log(global);
 
   // const categoriesRes = await fetch(`${url}categories`);
   // const allCategories = await categoriesRes.json();
@@ -18,11 +18,12 @@ export async function load() {
   const posts = await postsRes.json();
   const fotos = await allMedia.json(); // all media
 
-  const post = posts[1]; // change to slug
+  const post = posts.find((p) => p.acf.slug === params.slug);
   const { foto } = post.acf;
+
   const fotoData = fotos.find((fotoObject) => fotoObject.id === foto);
   const globalFoto = fotos.find((fotoObject) => fotoObject.id === global[0].acf.globalFoto_1);
-  console.log({globalFoto});
+
   let category: string;
 
   switch (post.categories[0]) {
@@ -30,7 +31,7 @@ export async function load() {
       category = 'historie';
       break;
     case 2:
-      category = 'na powaznie';
+      category = 'na poważnie';
       break;
     case 3:
       category = 'polecane';
