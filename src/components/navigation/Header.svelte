@@ -5,22 +5,22 @@
   // import { onMount } from 'svelte';
   // let contentRef: HTMLElement;
   // let height = 0;
-  let isOpen = false;
+  // let isOpen = false;
   // onMount(() => (height = contentRef.offsetHeight));
 </script>
 
 <div
-  class=" px-primary fixed left-0 top-0 flex h-[120px]  bg-white "
+  class=" px-primary fixed left-0 top-0 mx-auto flex h-[120px] w-full  bg-white"
 >
   <div class="flex w-full items-center justify-between border-b border-black">
     <button
       class="w-full text-left text-24 uppercase"
-      on:click="{() => (isOpen = !isOpen)}"
+      on:click="{() => alert('coming soon')}"
     >
       [ menu ]
     </button>
-    <div class="flex w-full justify-center">
+    <a href='/' class=" flex h-full">
       <Logo />
-    </div>
+    </a>
   </div>
 </div>
