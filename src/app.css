@@ -69,7 +69,7 @@ body {
         xl:pr-[calc(728/1440*100vw)] xxl:pr-[968px]
     }
 
-    .paddings {
+    .px-primary {
         @apply px-[clamp(1.25rem,calc(20/360*100vw),3.75rem)];
     }
 
@@ -87,6 +87,10 @@ body {
 
     .center-absolute {
         @apply top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2;
+    }
+    /* for development only */
+    .outline-test {
+        @apply outline outline-[0.5px] outline-black;
     }
 
     /* get rid of form default styles */

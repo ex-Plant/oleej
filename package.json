@@ -14,6 +14,7 @@
   "devDependencies": {
     "@sveltejs/adapter-auto": "2.1.0",
     "@sveltejs/kit": "1.22.1",
+    "@types/sanitize-html": "^2.9.5",
     "@typescript-eslint/eslint-plugin": "5.62.0",
     "@typescript-eslint/parser": "5.62.0",
     "autoprefixer": "10.4.14",
@@ -36,7 +37,9 @@
   "packageManager": "pnpm@8.10.5",
   "type": "module",
   "dependencies": {
+    "@sveltejs/adapter-vercel": "^3.1.0",
     "@tailwindcss/typography": "0.5.10",
+    "sanitize-html": "^2.11.0",
     "tailwind-merge": "^2.0.0"
   }
 }
