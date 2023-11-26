@@ -3,20 +3,37 @@
   import { spacesToDashes } from '../helpers/spacesToDashes';
   import { convertDateToNumericString } from '../helpers/convertDateToNumericString';
   import BigArrowUp from '../assets/BigArrowUp.svelte';
+  import AllCategoriesButton from '../assets/AllCategoriesButton.svelte';
 
   export let data;
-  let posts = data.posts;
+  $: posts = data.posts;
   let fotos = data.fotos;
+
+  function filterByCategory(category) {
+    if (category === '') {
+      posts = data.posts;
+    } else {
+      posts = data.posts.filter((post) => post.acf.category === category);
+    }
+  }
 </script>
 
 <!--todo - this is completely fucked up logic -> get proper data object with post-->
 
 <nav
-  class="fixed top-20 flex h-12 items-center space-x-6 overflow-x-scroll uppercase"
+  title='categories navigation'
+  class="fixed top-20 flex items-center space-x-6 overflow-x-scroll [&_button]:uppercase"
 >
-  <p class="whitespace-nowrap">na powaznie</p>
-  <p>historie</p>
-  <p>polecane</p>
+  <button aria-label='reset categories' on:click="{() => filterByCategory('')}">
+    <AllCategoriesButton />
+    <span class=" mt-1 block h-[2px] w-[18px] bg-black"></span>
+  </button>
+  <button
+    on:click="{() => filterByCategory('na poważnie')}"
+    class="whitespace-nowrap">na poważnie</button
+  >
+  <button on:click="{() => filterByCategory('na poważnie')}">historie</button>
+  <button on:click="{() => filterByCategory('polecane')}">polecane</button>
 </nav>
 
 <section title="lista artykulow" class="grid pb-12">
@@ -68,7 +85,9 @@
               class="  flex w-[calc(550/1440*100vw)] shrink-0 flex-col uppercase"
             >
               <h2 class="  text-[3rem] font-[700] leading-normal">
-                <span class='line-clamp-5'> {post.acf.title} <BigArrowUp /></span>
+                <span class="line-clamp-5">
+                  {post.acf.title} <BigArrowUp /></span
+                >
               </h2>
               <h4 class=" pt-1 text-24">{post.acf.category}</h4>
               <p class=" mt-auto pt-24 text-24">
@@ -83,7 +102,7 @@
                 class="  aspect-[269/323] object-cover"
               />
               <div>
-                <p class="line-clamp-[12] text-20">
+                <p class="line-clamp-[8] text-20">
                   {post.acf.post_description}
                 </p>
               </div>
