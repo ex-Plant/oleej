@@ -10,7 +10,7 @@
 </script>
 
 <div
-  class=" px-primary fixed left-0 top-0 mx-auto flex h-[120px] w-full  bg-white"
+  class=" px-primary fixed left-0 top-0 mx-auto flex h-[120px] w-full  bg-primary"
 >
   <div class="flex w-full items-center justify-between border-b border-black">
     <button

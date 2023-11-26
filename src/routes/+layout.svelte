@@ -1,8 +1,6 @@
 <script>
   import '../app.css';
   import Header from '../components/navigation/Header.svelte';
-
-  export let data;
 </script>
 
 <div class=" flex min-h-screen flex-col justify-between">

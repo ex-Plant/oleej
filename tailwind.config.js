@@ -38,6 +38,7 @@ export default {
     },
     extend: {
       colors: {
+        primary: '#F7F4F0',
         primaryBlack: 'rgba(18, 18, 18)',
         toxic: 'rgba(232, 255, 1)',
         background: 'rgba(236, 229, 209, 1)',

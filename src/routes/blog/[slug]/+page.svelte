@@ -13,8 +13,30 @@
   }
 
   const { title, post_description, category, post_content } = postBySlug.acf;
+  console.log(postBySlug);
 
   let caption = postFoto?.caption?.rendered;
+
+
+  function convertDateToNumericString(isoDateString) {
+    // Create a date object from the ISO string
+    const dateObj = new Date(isoDateString);
+
+    // Extract the day, month, and year from the date object
+    const day = String(dateObj.getDate()).padStart(2, '0');
+    const month = String(dateObj.getMonth() + 1).padStart(2, '0'); // January is 0!
+    const year = dateObj.getFullYear();
+
+    // Return the formatted date string
+    return `${day}.${month}.${year}`;
+  }
+
+  // Example usage:
+  const publishDate = convertDateToNumericString(postBySlug.date);
+
+
+
+
 </script>
 
 <section class="mx-auto flex max-w-[1440px] flex-col gap-y-6 pt-6">
@@ -40,7 +62,8 @@
 </section>
 
 <div class="py-6">
-  <p class="h-7 text-14">Data publikacji:</p>
+  <p class="h-7 text-14 "><span class='pr-1'>Data publikacji: </span><span class='font-[700]'>{publishDate}</span></p>
+
   <p class=" flex h-6 items-center space-x-2 text-14 font-bold uppercase">
     <span>UDOSTĘPNIJ</span>
     <SmallArowUp />
