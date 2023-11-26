@@ -13,30 +13,43 @@
     --80: clamp(5rem, calc(80 / 1024 * 100vw), 6rem);
 }
 
+
 @font-face {
-    font-family: "PolySans";
-    /*src: local("PolySans"), url(../public/fonts/PolySans-SlimMono.woff) format("woff");*/
-    /*src: local("PolySans"), url(../public/fonts/PolySans-SlimMono.woff2) format("woff2");*/
-    font-weight: 300;
+    font-family: 'Courier Prime';
+    src: local("Courier Prime"), url(../static/fonts/Courier_Prime/CourierPrime-Regular.ttf) format("ttf");
+    font-weight: 400;
     font-style: normal;
     font-display: swap;
 }
 
+@font-face {
+    font-family: 'Courier Prime';
+    src: local("Courier Prime"), url(../static/fonts/Courier_Prime/CourierPrime-Italic.ttf) format("ttf");
+    font-weight: 400;
+    font-style: italic;
+    font-display: swap;
+}
 
 @font-face {
-    font-family: 'Theinhardt';
-    /*src: local("Theinhardt"), url(../public/fonts/Theinhardt-Regular.woff) format("woff");*/
-    /*src: local("Theinhardt"), url(../public/fonts/Theinhardt-Regular.woff2) format("woff2");*/
-    font-weight: 400;
+    font-family: 'Courier Prime';
+    src: local("Courier Prime"), url(../static/fonts/Courier_Prime/CourierPrime-Bold.ttf) format("ttf");
+    font-weight: 700;
     font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Courier Prime';
+    src: local("Courier Prime"), url(../static/fonts/Courier_Prime/CourierPrime-BoldItalic.ttf) format("ttf");
+    font-weight: 700;
+    font-style: italic;
     font-display: swap;
 }
 
 
 html,
 body {
-    font-family: "Theinhardt", sans-serif;
-    /*background: #010101;*/
+    font-family: 'Courier', monospace;
+    background:  #F7F4F0;
     scroll-behavior: smooth;
     overscroll-behavior: none;
     -moz-osx-font-smoothing: grayscale;

@@ -5,8 +5,8 @@ import sanitizeHtml from "sanitize-html";
 // https://www.npmjs.com/package/sanitize-html
 
 // Allow only a super restricted set of tags and attributes
-export const f = (html: string) => {
-  sanitizeHtml(html, {
+export const customSanitization = (html: string) => {
+  return sanitizeHtml(html, {
     allowedTags: [
       "address", "article", "aside", "footer", "header", "h1", "h2", "h3", "h4",
       "h5", "h6", "hgroup", "main", "nav", "section", "blockquote", "dd", "div",
