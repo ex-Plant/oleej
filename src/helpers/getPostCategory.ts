@@ -1,5 +1,5 @@
-export function getPostCategory(categoryById: number) {
-  switch (categoryById) {
+export function getPostCategory(categoryByCount: number) {
+  switch (categoryByCount) {
     case 1:
       return 'historie';
     case 2:

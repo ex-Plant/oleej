@@ -2,7 +2,7 @@
 
 const url = 'https://serwer2304048.home.pl/wordpress/wp-json/wp/v2/';
 
-export async function load({params}) {
+export async function load() {
   const postsRes = await fetch(`${url}posts`);
   const globalRes = await fetch(`${url}pages?slug=global-opotions`); // global
   const allMedia = await fetch(`${url}media`);
