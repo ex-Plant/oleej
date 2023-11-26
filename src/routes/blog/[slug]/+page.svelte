@@ -1,42 +1,18 @@
 <script lang="ts">
   import type { PageData } from './$types';
   import { customSanitization } from '../../../helpers/customSanitization';
-  import { goto } from '$app/navigation';
   import SmallArowUp from '../../../assets/SmallArowUp.svelte';
   import BigArrowDown from '../../../assets/BigArrowDown.svelte';
+  import { convertDateToNumericString } from '../../../helpers/convertDateToNumericString';
   export let data: PageData;
   const { globalFoto, postFoto, postBySlug } = data;
   if (!postBySlug) {
-    // Assuming you have a custom 404 page at /404
-    goto('/404');
     throw new Error('Missing post data');
   }
 
   const { title, post_description, category, post_content } = postBySlug.acf;
-  console.log(postBySlug);
-
-  let caption = postFoto?.caption?.rendered;
-
-
-  function convertDateToNumericString(isoDateString) {
-    // Create a date object from the ISO string
-    const dateObj = new Date(isoDateString);
-
-    // Extract the day, month, and year from the date object
-    const day = String(dateObj.getDate()).padStart(2, '0');
-    const month = String(dateObj.getMonth() + 1).padStart(2, '0'); // January is 0!
-    const year = dateObj.getFullYear();
-
-    // Return the formatted date string
-    return `${day}.${month}.${year}`;
-  }
-
-  // Example usage:
+  const caption = postFoto?.caption?.rendered;
   const publishDate = convertDateToNumericString(postBySlug.date);
-
-
-
-
 </script>
 
 <section class="mx-auto flex max-w-[1440px] flex-col gap-y-6 pt-6">
@@ -51,18 +27,20 @@
       {@html customSanitization(caption)}
     </p>
   </div>
-
   <p class="border-b border-black pb-6">
     {post_description}
   </p>
-
-  <div class="  border-b border-black pb-6 [&_*]:py-6">
+  <div class=" postContent border-b border-black pb-6 [&_h1]:py-6 [&_h1]:py-6 [&_h1]:py-6               ">
     {@html customSanitization(post_content)}
   </div>
 </section>
 
 <div class="py-6">
-  <p class="h-7 text-14 "><span class='pr-1'>Data publikacji: </span><span class='font-[700]'>{publishDate}</span></p>
+  <p class="h-7 text-14">
+    <span class="pr-1">Data publikacji: </span><span class="font-[700]"
+      >{publishDate}</span
+    >
+  </p>
 
   <p class=" flex h-6 items-center space-x-2 text-14 font-bold uppercase">
     <span>UDOSTĘPNIJ</span>
