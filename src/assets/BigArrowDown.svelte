@@ -4,6 +4,7 @@
   height="33"
   viewBox="0 0 33 33"
   fill="none"
+  class='flex h-full w-full'
 >
   <g clip-path="url(#clip0_32_699)">
     <path

@@ -6,7 +6,7 @@
 <div class=" flex min-h-screen flex-col justify-between">
   <Header />
 
-  <div class="px-primary mt-[120px]">
+  <div class=" mt-[120px]">
     <slot />
   </div>
 
