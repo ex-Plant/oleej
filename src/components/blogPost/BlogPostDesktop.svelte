@@ -3,7 +3,7 @@
   import BigArrowDown from '../../assets/BigArrowDown.svelte';
   import { customSanitization } from '../../helpers/customSanitization';
   import SmallArowUp from '../../assets/SmallArowUp.svelte';
-  import FooterPostList from "./FooterPostList.svelte";
+  import FooterPostList from './FooterPostList.svelte';
   export let posts;
   export let fotos;
   export let postBySlug;
@@ -13,10 +13,11 @@
   const { title, post_description, category, post_content } = postBySlug.acf;
   const caption = postFoto?.caption?.rendered;
   const publishDate = convertDateToNumericString(postBySlug.date);
-
 </script>
 
-<main class="mx-auto grid max-w-[1440px] flex-col gap-y-6 xl:gap-y-12 pt-6 px-primary">
+<main
+  class="px-primary mx-auto grid max-w-[1440px] flex-col gap-y-6 pt-6 xl:gap-y-12"
+>
   <header
     class=" grid grid-cols-[clamp(115px,16vw,230px)_auto_clamp(115px,16vw,230px)]"
   >
@@ -52,10 +53,10 @@
   </div>
   <section
     title="treść posta"
-    class="grid grid-cols-[auto_clamp(115px,16vw,230px)] gap-y-6 xl:gap-y-12 pl-[clamp(115px,16vw,230px)]"
+    class="grid grid-cols-[auto_clamp(115px,16vw,230px)] gap-y-6 pl-[clamp(115px,16vw,230px)] xl:gap-y-12"
   >
     <div class="grid gap-y-6 xl:gap-y-12">
-      <p class="border-b border-black pb-6 xl:pb-12 text-desktop24">
+      <p class="border-b border-black pb-6 text-desktop24 xl:pb-12">
         {post_description}
       </p>
       <div
@@ -71,39 +72,41 @@
           >
         </p>
         <p
-          class=" flex h-6 items-center space-x-2 pl-12 text-desktop14 font-bold uppercase"
+          class=" text-desktop14 flex h-6 items-center space-x-2 pl-12 font-bold uppercase"
         >
-          <button on:click={() => alert('oh hi mark!')}>UDOSTĘPNIJ</button>
+          <button on:click="{() => alert('oh hi mark!')}">UDOSTĘPNIJ</button>
           <SmallArowUp />
         </p>
       </div>
     </div>
-    <aside class="pl-8 flex items-center ">
-      <img src={postSideFoto.source_url} alt={""} />
+    <aside class="flex items-center pl-8">
+      {#if postSideFoto}
+        <img src="{postSideFoto?.source_url}" alt="{''}" />
+      {/if}
     </aside>
   </section>
 
-
-
-<section title="skontaktuj się ze mną" class="flex mb-12 items-center h-[160px] gap-x-4">
-  <div class='w-[clamp(115px,16vw,230px)] pr-8'>
-    <div class=' w-full  flex-none flex'>
-      <img
-        class="object-cover aspect-[160/200] h-[160px] w-full"
-        src="{globalFoto.source_url}"
-        alt="alt"
-      />
+  <section
+    title="skontaktuj się ze mną"
+    class="mb-12 flex h-[160px] items-center gap-x-4"
+  >
+    <div class="w-[clamp(115px,16vw,230px)] pr-8">
+      <div class=" flex w-full flex-none">
+        <img
+          class="aspect-[160/200] h-[160px] w-full object-cover"
+          src="{globalFoto.source_url}"
+          alt="alt"
+        />
+      </div>
     </div>
-  </div>
 
-  <div class=" flex flex-col justify-center">
-    <p class="h-6 text-desktop16">Autor</p>
-    <p class="h-8 text-desktop24 font-bold">Piotr Olejnik</p>
-  </div>
-  <div class='h-12  mt-6'>
-    <BigArrowDown />
-  </div>
-</section>
-
+    <div class=" flex flex-col justify-center">
+      <p class="h-6 text-desktop16">Autor</p>
+      <p class="h-8 text-desktop24 font-bold">Piotr Olejnik</p>
+    </div>
+    <div class="mt-6 h-12">
+      <BigArrowDown />
+    </div>
+  </section>
 </main>
-<FooterPostList {posts} {fotos}/>
+<FooterPostList posts="{posts}" fotos="{fotos}" />

@@ -4,9 +4,9 @@
   import BlogPostDesktop from '../../../components/blogPost/BlogPostDesktop.svelte';;
   export let data: PageData;
   const { fotos, posts, globalFoto, postData } = data;
-  $: postBySlug = postData.postBySlug
-  $: postFoto = postData.postFoto
-  $: postSideFoto = postData.postSideFoto
+  $: postBySlug = postData?.postBySlug
+  $: postFoto = postData?.postFoto
+  $: postSideFoto = postData?.postSideFoto
 </script>
 
 <main class="px-[clamp(20px,8vw,40px)] md:hidden">
