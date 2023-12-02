@@ -19,5 +19,7 @@ export async function load({ params }) {
   const postFoto = fotos.find(
     (fotoObject) => fotoObject.id === postBySlug?.acf?.foto_id,
   );
-  return { postBySlug, postFoto };
+  const postSideFoto = fotos.find(
+    (fotoObject) => fotoObject.id === postBySlug?.acf?.blog_right_side_foto)
+  return { postBySlug, postFoto, postSideFoto  };
 }

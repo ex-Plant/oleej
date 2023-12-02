@@ -9,6 +9,7 @@
   $: posts = data.posts;
   let fotos = data.fotos;
 
+
   function filterByCategory(category) {
     if (category === '') {
       posts = data.posts;

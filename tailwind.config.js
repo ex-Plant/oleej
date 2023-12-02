@@ -20,7 +20,7 @@ export default {
       'mobile16': ['var(--mobile16)', 'normal'],
       'mobile18': ['var(--mobile18)', 'normal'],
       'desktop16': ['var(--desktop16)', 'normal'],
-      'desktop20': ['var(--desktop20)', 'normal'],
+      'desktop20': ['var(--desktop20)', '140%'],
       'desktop24': ['var(--desktop24)', '128%'],
       'desktop64': ['var(--desktop64)', 'normal'],
       28: ['var(--28)', 'var(--28)'],
