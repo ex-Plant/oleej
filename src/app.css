@@ -18,6 +18,7 @@
     --desktop16: clamp(0.5rem, calc(16 / 1440 * 100vw), 1rem);
     --desktop24: clamp(0.75rem, calc(24 / 1440 * 100vw), 1.5rem);
     --desktop20: clamp(0.625rem, calc(20 / 1440 * 100vw), 1.25rem);
+    --desktop30: clamp(1rem, calc(30 / 1440 * 100vw), 1.875rem);
     --desktop64: clamp(2rem, calc(64 / 1440 * 100vw), 4rem);
 }
 

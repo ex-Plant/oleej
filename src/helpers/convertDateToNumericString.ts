@@ -1,4 +1,4 @@
-export function convertDateToNumericString(isoDateString) {
+export function convertDateToNumericString(isoDateString: Date) {
   // Create a date object from the ISO string
   const dateObj: Date = new Date(isoDateString);
 

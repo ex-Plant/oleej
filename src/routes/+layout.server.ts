@@ -9,14 +9,6 @@ export async function load() {
   const posts = await postsRes.json();
   const fotos = await allMedia.json(); // all media
   const global = await globalRes.json();
-
   const globalFoto = fotos.find((fotoObject) => fotoObject.id === global[0].acf.globalFoto_1);
   return { globalFoto, posts, fotos, };
 }
-
-
-
-// const categoriesRes = await fetch(`${url}categories`);
-// const allCategories = await categoriesRes.json();
-// const tagsRes = await fetch(`${url}tags`,);
-// const tags = await tagsRes.json();

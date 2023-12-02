@@ -3,8 +3,10 @@
   import BigArrowDown from '../../assets/BigArrowDown.svelte';
   import { customSanitization } from '../../helpers/customSanitization';
   import SmallArowUp from '../../assets/SmallArowUp.svelte';
-  export let data: any;
-  const { globalFoto, postFoto, postBySlug } = data;
+
+  export let globalFoto;
+  export let postFoto;
+  export let postBySlug;
   const { title, post_description, category, post_content } = postBySlug.acf;
   const caption = postFoto?.caption?.rendered;
   const publishDate = convertDateToNumericString(postBySlug.date);
@@ -50,7 +52,7 @@
   <div class=" aspect-[200/160] max-h-[160px] grow-0 ">
     <img
       class="aspect-[200/160] h-full object-cover"
-      src="{globalFoto.source_url}"
+      src="{globalFoto?.source_url}"
       alt="alt"
     />
   </div>

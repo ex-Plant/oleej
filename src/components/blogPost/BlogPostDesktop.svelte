@@ -3,11 +3,17 @@
   import BigArrowDown from '../../assets/BigArrowDown.svelte';
   import { customSanitization } from '../../helpers/customSanitization';
   import SmallArowUp from '../../assets/SmallArowUp.svelte';
-  export let data: any;
-  const { globalFoto, postFoto, postBySlug, postSideFoto } = data;
+  import FooterPostList from "./FooterPostList.svelte";
+  export let posts;
+  export let fotos;
+  export let postBySlug;
+  export let postFoto;
+  export let globalFoto;
+  export let postSideFoto;
   const { title, post_description, category, post_content } = postBySlug.acf;
   const caption = postFoto?.caption?.rendered;
   const publishDate = convertDateToNumericString(postBySlug.date);
+
 </script>
 
 <main class="mx-auto grid max-w-[1440px] flex-col gap-y-6 xl:gap-y-12 pt-6 px-primary">
@@ -39,7 +45,7 @@
   </header>
 
   <div class="w-full">
-    <img class=" z-[-100]" src="{postFoto?.source_url}" alt="alt" />
+<!--    <img class=" z-[-100]" src="{postFoto?.source_url}" alt="alt" />-->
     <p class="text-xs w-full pt-3 text-12">
       {@html customSanitization(caption)}
     </p>
@@ -98,4 +104,6 @@
     <BigArrowDown />
   </div>
 </section>
+
 </main>
+<FooterPostList {posts} {fotos}/>

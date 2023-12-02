@@ -1,3 +1,3 @@
-export function spacesToDashes (string) {
+export function spacesToDashes (string: string) {
   return string.replace(/\s+/g, '-').toLowerCase();
 }
