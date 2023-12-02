@@ -1,8 +1,8 @@
 <script lang="ts">
-  import { convertDateToNumericString } from "../../helpers/convertDateToNumericString";
-  import BigArrowDown from "../../assets/BigArrowDown.svelte";
-  import { customSanitization } from "../../helpers/customSanitization";
-  import SmallArowUp from "../../assets/SmallArowUp.svelte";
+  import { convertDateToNumericString } from '../../helpers/convertDateToNumericString';
+  import BigArrowDown from '../../assets/BigArrowDown.svelte';
+  import { customSanitization } from '../../helpers/customSanitization';
+  import SmallArowUp from '../../assets/SmallArowUp.svelte';
   export let data: any;
   const { globalFoto, postFoto, postBySlug } = data;
   const { title, post_description, category, post_content } = postBySlug.acf;
@@ -10,50 +10,62 @@
   const publishDate = convertDateToNumericString(postBySlug.date);
 </script>
 
-<section class="mx-auto flex max-w-[1440px] flex-col gap-y-6 pt-6">
-
+<section class=" grid gap-y-6">
   {#if category}
-      <h3 class="w-full text-center text-14 md:text-24 uppercase">{category}</h3>
+    <h3 class="w-full text-center text-mobile14 uppercase ">{category}</h3>
   {/if}
-  <h1 class="w-full text-center text-18 font-bold ">{title}</h1>
+  <h1 class="w-full text-center text-mobile18 font-bold">{title}</h1>
 
   <div class="mx-auto">
+    <p class='text-mobile12 pb-3'> Czyta się ok 420 minut</p>
     <img class=" z-[-100]" src="{postFoto?.source_url}" alt="alt" />
-    <p class="text-xs w-full pt-3 text-12">
+    <p class="text-xs w-full pt-3 text-10">
       {@html customSanitization(caption)}
     </p>
   </div>
-  <p class="border-b border-black pb-6">
+  <p class="border-b border-black pb-6 text-mobile16">
     {post_description}
   </p>
-  <div class=" postContent border-b border-black pb-6 [&_h1]:py-6 [&_h1]:py-6 [&_h1]:py-6               ">
+  <div
+    class=" postContent text-mobile16 border-b border-black [&_h1]:py-6 [&_h2]:py-6 [&_h3]:py-6 [&_h4]:py-6 [&_h5]:py-6 [&_h6]:py-6 [&_p]:py-6"
+  >
     {@html customSanitization(post_content)}
   </div>
+  <div class='grid '>
+    <p class="h-7 text-mobile14">
+      <span class="pr-1">Data publikacji: </span><span class="font-[700]"
+    >{publishDate}</span
+    >
+    </p>
+
+    <p class=" flex h-6 items-center space-x-2 text-mobile14 font-bold uppercase">
+      <span>UDOSTĘPNIJ</span>
+      <SmallArowUp />
+    </p>
+  </div>
+
 </section>
 
-<div class="py-6">
-  <p class="h-7 text-14">
-    <span class="pr-1">Data publikacji: </span><span class="font-[700]"
-  >{publishDate}</span
-  >
-  </p>
+<section title="skontaktuj się ze mną " class="flex gap-x-6 py-6">
+  <div class=" aspect-[200/160] max-h-[160px] grow-0 ">
+    <img
+      class="aspect-[200/160] h-full object-cover"
+      src="{globalFoto.source_url}"
+      alt="alt"
+    />
+  </div>
 
-  <p class=" flex h-6 items-center space-x-2 text-14 font-bold uppercase">
-    <span>UDOSTĘPNIJ</span>
-    <SmallArowUp />
-  </p>
-</div>
-
-<div class="grid grid-cols-2 gap-x-6 pb-12">
-  <img class="" src="{globalFoto.source_url}" alt="alt" />
   <div class=" flex flex-col justify-center">
-    <p class="h-6 text-14">Autor</p>
-    <p class="h-8 text-18 font-bold">Piotr Olejnik</p>
+    <p class="h-6 text-mobile14">Autor</p>
+    <p class="h-8 text-mobile18 font-bold">Piotr Olejnik</p>
     <div class="flex gap-x-3">
-      <BigArrowDown />
+      <div>
+        <BigArrowDown />
+      </div>
+
       <p class="flex flex-col text-14 font-bold uppercase">
         <span>NAPISZ</span><span>DO MNIE</span>
       </p>
     </div>
   </div>
-</div>
+</section>

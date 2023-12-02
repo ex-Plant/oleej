@@ -9,7 +9,7 @@
   }
 </script>
 
-<main class='md:hidden'>
+<main class='md:hidden px-[clamp(20px,8vw,40px)]'>
   <BlogPostMobile {data} />
 </main>
 <main class='hidden md:block'>

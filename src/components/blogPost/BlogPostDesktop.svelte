@@ -10,7 +10,7 @@
   const publishDate = convertDateToNumericString(postBySlug.date);
 </script>
 
-<main class="mx-auto grid max-w-[1440px] flex-col gap-y-6 pt-6">
+<main class="mx-auto grid max-w-[1440px] flex-col gap-y-6 pt-6 px-primary">
   <header
     class=" grid grid-cols-[clamp(115px,16vw,230px)_auto_clamp(115px,16vw,230px)]"
   >
@@ -66,7 +66,7 @@
         <p
           class=" flex h-6 items-center space-x-2 pl-12 text-desktop16 font-bold uppercase"
         >
-          <span>UDOSTĘPNIJ</span>
+          <button on:click={() => alert('oh hi mark!')}>UDOSTĘPNIJ</button>
           <SmallArowUp />
         </p>
       </div>
