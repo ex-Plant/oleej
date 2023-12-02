@@ -45,7 +45,7 @@
   </header>
 
   <div class="w-full">
-<!--    <img class=" z-[-100]" src="{postFoto?.source_url}" alt="alt" />-->
+    <img class=" z-[-100]" src="{postFoto?.source_url}" alt="alt" />
     <p class="text-xs w-full pt-3 text-12">
       {@html customSanitization(caption)}
     </p>
