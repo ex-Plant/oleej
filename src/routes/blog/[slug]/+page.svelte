@@ -5,21 +5,22 @@
   export let data: PageData;
   const { fotos, posts, globalFoto, postData } = data;
   $: postBySlug = postData?.postBySlug
-  $: postFoto = postData?.postFoto
+  $: postFotoMobile = postData?.postFotoMobile
+  $: postFotoDesktop = postData?.postFotoDesktop
   $: postSideFoto = postData?.postSideFoto
 </script>
 
 <main class="px-[clamp(20px,8vw,40px)] md:hidden">
   <BlogPostMobile
     postBySlug="{postBySlug}"
-    postFoto="{postFoto}"
+    postFoto="{postFotoMobile}"
     globalFoto="{globalFoto}"
   />
 </main>
 <main class="hidden md:block">
   <BlogPostDesktop
     postBySlug="{postBySlug}"
-    postFoto="{postFoto}"
+    postFoto="{postFotoDesktop}"
     globalFoto="{globalFoto}"
     posts="{posts}"
     fotos="{fotos}"

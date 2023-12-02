@@ -19,7 +19,7 @@
   class="px-primary mx-auto grid max-w-[1440px] flex-col gap-y-6 pt-6 xl:gap-y-12"
 >
   <header
-    class=" grid grid-cols-[clamp(115px,16vw,230px)_auto_clamp(115px,16vw,230px)]"
+    class=" grid grid-cols-[clamp(115px,14vw,230px)_auto_clamp(115px,14vw,230px)]"
   >
     <div class="aspect-square w-[clamp(50px,calc(100/1440*100vw),100px)]">
       <BigArrowDown />
@@ -94,7 +94,7 @@
       <div class=" flex w-full flex-none">
         <img
           class="aspect-[160/200] h-[160px] w-full object-cover"
-          src="{globalFoto.source_url}"
+          src="{globalFoto?.source_url}"
           alt="alt"
         />
       </div>

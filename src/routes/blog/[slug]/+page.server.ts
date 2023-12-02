@@ -17,21 +17,25 @@ export async function load({ params }) {
     (fotoObject) => fotoObject.id === global[0].acf.globalFoto_1,
   );
   async function loadPostData(slug: string) {
-    let postBySlug, postFoto, postSideFoto;
+    let postBySlug, postFotoMobile, postSideFoto, postFotoDesktop;
     try {
       postBySlug = posts.find((p) => spacesToDashes(p?.acf?.slug) === slug);
       if (postBySlug === undefined) throw error(404, 'Not Found');
       if (!postBySlug) {
         throw new Error('Missing post data');
       }
-      postFoto = fotos.find(
+      postFotoMobile = fotos.find(
         (fotoObject) => fotoObject.id === postBySlug?.acf?.foto_id,
       );
       postSideFoto = fotos.find(
         (fotoObject) => fotoObject.id === postBySlug?.acf?.blog_right_side_foto,
       );
+      postFotoDesktop = fotos.find(
+        (fotoObject) => fotoObject.id === postBySlug?.acf?.hero_desktop_id,
+      );
       return {
-        postFoto: postFoto,
+        postFotoMobile: postFotoMobile,
+        postFotoDesktop: postFotoDesktop,
         postSideFoto: postSideFoto,
         postBySlug: postBySlug,
       };
