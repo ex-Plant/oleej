@@ -4,15 +4,19 @@
   import { customSanitization } from '../../helpers/customSanitization';
   import SmallArowUp from '../../assets/SmallArowUp.svelte';
   import FooterPostList from './FooterPostList.svelte';
-  export let posts;
-  export let fotos;
-  export let postBySlug;
-  export let postFoto;
-  export let globalFoto;
-  export let postSideFoto;
-  const { title, post_description, category, post_content } = postBySlug.acf;
-  const caption = postFoto?.caption?.rendered;
-  const publishDate = convertDateToNumericString(postBySlug.date);
+  import type { ImageType, PostType } from "../../types";
+  export let posts: PostType[];
+  export let fotos: ImageType[];
+  export let postBySlug: PostType;
+  export let postFoto: ImageType;
+  export let globalFoto: ImageType;
+  export let postSideFoto: ImageType;
+  $: post_description = postBySlug.acf.post_description
+  $: category = postBySlug.acf.category
+  $: title = postBySlug.acf.title
+  $: post_content = postBySlug.acf.post_content
+  $: caption = postFoto?.caption?.rendered;
+  $: publishDate = convertDateToNumericString(postBySlug.date);
 </script>
 
 <main

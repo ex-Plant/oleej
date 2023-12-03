@@ -1,11 +1,12 @@
 /** @type {import('./$types').PageLoad} */
 import { spacesToDashes } from '../../../helpers/spacesToDashes';
 import { error } from '@sveltejs/kit';
-import { page } from '$app/stores';
+import type { Load } from '@sveltejs/kit';
+import type { ImageType, PostType } from "../../../types";
 
 const url = 'https://serwer2304048.home.pl/wordpress/wp-json/wp/v2/';
 
-export async function load({ params }) {
+export const load: Load = async ({ params }) => {
   const postsRes = await fetch(`${url}posts`);
   const posts = await postsRes.json();
   const allMedia = await fetch(`${url}media`);
@@ -14,24 +15,24 @@ export async function load({ params }) {
   const global = await globalRes.json();
 
   const globalFoto = fotos.find(
-    (fotoObject) => fotoObject.id === global[0].acf.globalFoto_1,
+    (fotoObject: ImageType) => fotoObject.id === global[0].acf.globalFoto_1,
   );
   async function loadPostData(slug: string) {
-    let postBySlug, postFotoMobile, postSideFoto, postFotoDesktop;
+    let postBySlug: PostType, postFotoMobile, postSideFoto, postFotoDesktop;
     try {
-      postBySlug = posts.find((p) => spacesToDashes(p?.acf?.slug) === slug);
+      postBySlug = posts.find((p: PostType) => spacesToDashes(p?.acf?.slug) === slug);
       if (postBySlug === undefined) throw error(404, 'Not Found');
       if (!postBySlug) {
         throw new Error('Missing post data');
       }
       postFotoMobile = fotos.find(
-        (fotoObject) => fotoObject.id === postBySlug?.acf?.foto_id,
+        (fotoObject: ImageType) => fotoObject.id === postBySlug?.acf?.foto_id,
       );
       postSideFoto = fotos.find(
-        (fotoObject) => fotoObject.id === postBySlug?.acf?.blog_right_side_foto,
+        (fotoObject: ImageType) => fotoObject.id === postBySlug?.acf?.blog_right_side_foto,
       );
       postFotoDesktop = fotos.find(
-        (fotoObject) => fotoObject.id === postBySlug?.acf?.hero_desktop_id,
+        (fotoObject: ImageType) => fotoObject.id === postBySlug?.acf?.hero_desktop_id,
       );
       return {
         postFotoMobile: postFotoMobile,
@@ -43,12 +44,13 @@ export async function load({ params }) {
       console.error(e);
     }
   }
+  if (!params.slug) throw new Error('Missing params');
   const postData = await loadPostData(params.slug);
 
   return {
-    postData,
-    globalFoto,
-    fotos,
-    posts,
+      postData,
+      globalFoto,
+      fotos,
+      posts,
   };
 }

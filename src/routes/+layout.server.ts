@@ -1,5 +1,7 @@
 // /** @type {import('./$types').PageLoad} */
 
+import type { ImageType } from "../types";
+
 const url = 'https://serwer2304048.home.pl/wordpress/wp-json/wp/v2/';
 
 export async function load() {
@@ -9,6 +11,6 @@ export async function load() {
   const posts = await postsRes.json();
   const fotos = await allMedia.json(); // all media
   const global = await globalRes.json();
-  const globalFoto = fotos.find((fotoObject) => fotoObject.id === global[0].acf.globalFoto_1);
+  const globalFoto = fotos.find((fotoObject: ImageType) => fotoObject.id === global[0].acf.globalFoto_1);
   return { globalFoto, posts, fotos, };
 }

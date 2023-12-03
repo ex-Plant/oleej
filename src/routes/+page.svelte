@@ -4,7 +4,6 @@
   import { convertDateToNumericString } from '../helpers/convertDateToNumericString';
   import BigArrowUp from '../assets/BigArrowUp.svelte';
   import HomePageNavigation from '../components/HomePageNavigation.svelte';
-
   export let data;
   $: posts = data.posts;
   let fotos = data.fotos;
