@@ -28,24 +28,24 @@
             ' group-hover:left-0 group-hover:w-full'}"></span>
       </button>
 
-      <button on:click="{() => alert('21:37')}" class="group relative">
-        <a class="whitespace-nowrap" href="#">O mnie</a>
-        <span
-          class="{'absolute bottom-[-3px] left-[50%] h-[1px] w-0 rounded bg-black duration-300' +
-            ' group-hover:left-0 group-hover:w-full'}"></span>
-      </button>
-      <button on:click="{() => alert('21:37')}" class="group relative">
-        <a href="/">Kontakt</a>
-        <span
-          class="{'absolute bottom-[-3px] left-[50%] h-[1px] w-0 rounded bg-black duration-300' +
-            ' group-hover:left-0 group-hover:w-full'}"></span>
-      </button>
-      <button on:click="{() => alert('21:37')}" class="group relative">
-        <a href="#">Szukaj</a>
-        <span
-          class="{'absolute bottom-[-3px] left-[50%] h-[1px] w-0 rounded bg-black duration-300' +
-            ' group-hover:left-0 group-hover:w-full'}"></span>
-      </button>
+<!--      <button on:click="{() => alert('21:37')}" class="group relative">-->
+<!--        <a class="whitespace-nowrap" href="#">O mnie</a>-->
+<!--        <span-->
+<!--          class="{'absolute bottom-[-3px] left-[50%] h-[1px] w-0 rounded bg-black duration-300' +-->
+<!--            ' group-hover:left-0 group-hover:w-full'}"></span>-->
+<!--      </button>-->
+<!--      <button on:click="{() => alert('21:37')}" class="group relative">-->
+<!--        <a href="/">Kontakt</a>-->
+<!--        <span-->
+<!--          class="{'absolute bottom-[-3px] left-[50%] h-[1px] w-0 rounded bg-black duration-300' +-->
+<!--            ' group-hover:left-0 group-hover:w-full'}"></span>-->
+<!--      </button>-->
+<!--      <button on:click="{() => alert('21:37')}" class="group relative">-->
+<!--        <a href="#">Szukaj</a>-->
+<!--        <span-->
+<!--          class="{'absolute bottom-[-3px] left-[50%] h-[1px] w-0 rounded bg-black duration-300' +-->
+<!--            ' group-hover:left-0 group-hover:w-full'}"></span>-->
+<!--      </button>-->
     </div>
   </nav>
   <!--    <button-->

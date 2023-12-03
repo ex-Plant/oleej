@@ -3,13 +3,16 @@
   import BigArrowDown from '../../assets/BigArrowDown.svelte';
   import { customSanitization } from '../../helpers/customSanitization';
   import SmallArowUp from '../../assets/SmallArowUp.svelte';
-
-  export let globalFoto;
-  export let postFoto;
-  export let postBySlug;
-  const { title, post_description, category, post_content } = postBySlug.acf;
-  const caption = postFoto?.caption?.rendered;
-  const publishDate = convertDateToNumericString(postBySlug.date);
+  import type { ImageType, PostType } from "../../types";
+  export let globalFoto: ImageType;
+  export let postFoto: ImageType;
+  export let postBySlug: PostType;
+  $: post_description = postBySlug.acf.post_description
+  $: category = postBySlug.acf.category
+  $: title = postBySlug.acf.title
+  $: post_content = postBySlug.acf.post_content
+  $: caption = postFoto?.caption?.rendered;
+  $: publishDate = convertDateToNumericString(postBySlug.date);
 </script>
 
 <section class=" grid gap-y-6">

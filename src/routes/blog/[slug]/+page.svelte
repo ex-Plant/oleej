@@ -7,10 +7,12 @@
   $: globalFoto = data.globalFoto;
   $: postData = data.postData;
   $: fotos = data.fotos;
-  $: postBySlug = postData?.postBySlug
-  $: postFotoMobile = postData?.postFotoMobile
-  $: postFotoDesktop = postData?.postFotoDesktop
-  $: postSideFoto = postData?.postSideFoto
+  $: postBySlug = postData.postBySlug
+  $: postFotoMobile = postData.postFotoMobile
+  $: postFotoDesktop = postData.postFotoDesktop
+  $: postSideFoto = postData.postSideFoto
+  $: post_content = postBySlug.acf.post_content
+  $: console.log(post_content);
 </script>
 
 <main class="px-[clamp(20px,6vw,40px)] md:hidden">

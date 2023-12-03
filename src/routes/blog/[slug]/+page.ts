@@ -46,6 +46,9 @@ export const load: Load = async ({ params }) => {
   }
   if (!params.slug) throw new Error('Missing params');
   const postData = await loadPostData(params.slug);
+  if (!postData) {
+    throw new Error('Missing post data');
+  }
 
   return {
       postData,
