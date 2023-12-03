@@ -11,6 +11,7 @@
   export let postFoto: ImageType;
   export let globalFoto: ImageType;
   export let postSideFoto: ImageType;
+  export let readingTimeInMinutes: number;
   $: post_description = postBySlug.acf.post_description
   $: category = postBySlug.acf.category
   $: title = postBySlug.acf.title
@@ -35,7 +36,7 @@
             {category}
           </h3>
         {/if}
-        <span class="text-desktop20">czyta się 420 minut</span>
+        <span class="text-desktop20">czyta się {readingTimeInMinutes} minut</span>
       </div>
       <h1 class="w-full text-desktop64 font-bold">{title}</h1>
     </div>

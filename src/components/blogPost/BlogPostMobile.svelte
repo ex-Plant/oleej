@@ -7,6 +7,7 @@
   export let globalFoto: ImageType;
   export let postFoto: ImageType;
   export let postBySlug: PostType;
+  export let readingTimeInMinutes: number;
   $: post_description = postBySlug.acf.post_description
   $: category = postBySlug.acf.category
   $: title = postBySlug.acf.title
@@ -22,7 +23,7 @@
   <h1 class="w-full text-center text-mobile18 font-bold">{title}</h1>
 
   <div class="mx-auto">
-    <p class='text-mobile12 pb-3'> Czyta się ok 420 minut</p>
+    <p class='text-mobile12 pb-3'> Czyta się ok {readingTimeInMinutes} minut</p>
     <img class=" z-[-100]" src="{postFoto?.source_url}" alt="alt" />
     <p class="text-xs w-full pt-3 text-10">
       {@html customSanitization(caption)}

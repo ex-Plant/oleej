@@ -7,12 +7,18 @@
   $: globalFoto = data.globalFoto;
   $: postData = data.postData;
   $: fotos = data.fotos;
-  $: postBySlug = postData.postBySlug
-  $: postFotoMobile = postData.postFotoMobile
-  $: postFotoDesktop = postData.postFotoDesktop
-  $: postSideFoto = postData.postSideFoto
-  $: post_content = postBySlug.acf.post_content
+  $: postBySlug = postData.postBySlug;
+  $: postFotoMobile = postData.postFotoMobile;
+  $: postFotoDesktop = postData.postFotoDesktop;
+  $: postSideFoto = postData.postSideFoto;
+  $: post_content = postBySlug.acf.post_content;
   $: console.log(post_content);
+
+  function countWords(text: string) {
+    return text.split(/\s+/).length;
+  }
+  $: numberOfWords = countWords(post_content);
+  $: readingTimeInMinutes = numberOfWords / 200;   // 200 words per minute
 </script>
 
 <main class="px-[clamp(20px,6vw,40px)] md:hidden">
@@ -20,6 +26,7 @@
     postBySlug="{postBySlug}"
     postFoto="{postFotoMobile}"
     globalFoto="{globalFoto}"
+    readingTimeInMinutes="{readingTimeInMinutes}"
   />
 </main>
 <main class="hidden md:block">
@@ -30,5 +37,6 @@
     posts="{posts}"
     fotos="{fotos}"
     postSideFoto="{postSideFoto}"
+    readingTimeInMinutes="{readingTimeInMinutes}"
   />
 </main>
