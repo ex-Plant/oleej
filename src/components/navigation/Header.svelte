@@ -1,5 +1,7 @@
 <script lang="ts">
   import Logo from '../../assets/Logo.svelte';
+  import { page } from "$app/stores";
+  import { twMerge } from "tailwind-merge";
   // import Dropdown from './Dropdown.svelte';
   // import { twMerge } from 'tailwind-merge';
   // import { onMount } from 'svelte';
@@ -7,10 +9,11 @@
   // let height = 0;
   // let isOpen = false;
   // onMount(() => (height = contentRef.offsetHeight));
+  $: height = $page.route.id === "/" ? "h-[120px]" : "h-[80px]";
 </script>
 
 <div
-  class=" px-primary fixed left-0 top-0 mx-auto flex min-h-[120px] w-full bg-primary"
+  class={twMerge(' px-primary fixed left-0 top-0 mx-auto flex  w-full bg-primary', height )}
 >
   <nav
     class="no-scrollbar flex h-20 w-full items-center justify-between overflow-x-scroll border-b border-black"

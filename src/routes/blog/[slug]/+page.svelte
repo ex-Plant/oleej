@@ -18,7 +18,7 @@
     return text.split(/\s+/).length;
   }
   $: numberOfWords = countWords(post_content);
-  $: readingTimeInMinutes = numberOfWords / 200;   // 200 words per minute
+  $: readingTimeInMinutes = Math.floor(numberOfWords / 200);   // 200 words per minute
 </script>
 
 <main class="px-[clamp(20px,6vw,40px)] md:hidden">

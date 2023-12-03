@@ -15,8 +15,8 @@ export let fotos: ImageType[];
           class=" mt-[-1px] grid gap-y-6 border-t border-black py-6 md:hidden"
         >
           <div class="grid gap-y-6">
-            <h4 class="  text-14 uppercase">{post.acf.category}</h4>
-            <h2 class=" text-18 font-[700]">{post.acf.title}</h2>
+            <h4 class="  text-mobile14 uppercase">{post.acf.category}</h4>
+            <h2 class=" text-mobile18 font-[700]">{post.acf.title}</h2>
           </div>
           <div class="">
             <a class="" href="{`/blog/${spacesToDashes(post.acf.slug)}`}">
@@ -38,10 +38,10 @@ export let fotos: ImageType[];
               />
             </a>
             <div class="  pb-8 uppercase">
-              <h2 class=" text-24 font-[700] md:line-clamp-4">
+              <h2 class=" text-desktop24 font-[700] md:line-clamp-4">
                 {post.acf.title}
               </h2>
-              <h4 class=" pt-1 text-14">{post.acf.category}</h4>
+              <h4 class=" pt-1 text-desktop24">{post.acf.category}</h4>
               <p class="mt-6 md:line-clamp-6">{post.acf.post_description}</p>
             </div>
           </div>
@@ -59,8 +59,8 @@ export let fotos: ImageType[];
                     {post.acf.title} <BigArrowUp /></span
                   >
               </h2>
-              <h4 class=" pt-1 text-24">{post.acf.category}</h4>
-              <p class=" mt-auto pt-24 text-24">
+              <h4 class=" pt-1 text-desktop24">{post.acf.category}</h4>
+              <p class=" mt-auto pt-24 text-desktop24">
                 {convertDateToNumericString(post.date)}
               </p>
             </div>
@@ -72,7 +72,7 @@ export let fotos: ImageType[];
                 class="  aspect-[269/323] object-cover"
               />
               <div>
-                <p class="line-clamp-[8] text-20">
+                <p class="line-clamp-[8] text-desktop20">
                   {post.acf.post_description}
                 </p>
               </div>

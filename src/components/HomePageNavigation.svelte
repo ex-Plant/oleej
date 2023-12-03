@@ -1,7 +1,13 @@
 <script lang="ts">
   import AllCategoriesButton from '../assets/AllCategoriesButton.svelte';
   import type { PostType } from '../types';
+  type Category = {
+    name: string,
+    slug: string,
+  }
   export let posts: PostType[];
+  export let categories: Category[];
+  $: categoriesFiltered = categories.filter(category => category.name.toLowerCase() !== "bez kategorii")
   function filterByCategory(category: string) {
     if (category !== '') {
       posts = posts.filter((post) => post.acf.category === category);
@@ -23,29 +29,17 @@
       class="{'absolute bottom-0 left-[50%] h-[1px] w-0 rounded bg-black duration-200' +
         ' group-hover:left-0 group-hover:w-full'}"></span>
   </button>
+  {#each categoriesFiltered as category }
   <button
     class="group relative"
-    on:click="{() => filterByCategory('na poważnie')}"
+    on:click="{() => filterByCategory(category.name)}"
   >
-    <span class="whitespace-nowrap"> na poważnie</span>
+  >
+    <span class="whitespace-nowrap"> {category.name}</span>
 
     <span
       class="{'absolute bottom-0 left-[50%] h-[1px] w-0 rounded bg-black duration-300' +
         ' group-hover:left-0 group-hover:w-full'}"></span>
   </button>
-  <button
-    class="group relative"
-    on:click="{() => filterByCategory('historie')}"
-  >
-    <span>historie</span>
-    <span
-      class="{'absolute bottom-0 left-[50%] h-[1px] w-0 rounded bg-black duration-300' +
-        ' group-hover:left-0 group-hover:w-full'}"></span>
-  </button>
-  <button class="group relative" on:click="{() => filterByCategory('polecane')}"
-    ><span> polecane</span>
-    <span
-      class="{'absolute bottom-0 left-[50%] h-[1px] w-0 rounded bg-black duration-300' +
-        ' group-hover:left-0 group-hover:w-full'}"></span>
-  </button>
+    {/each}
 </nav>

@@ -4,7 +4,7 @@
 </script>
 
 <div class=" flex min-h-screen flex-col justify-between">
-  <Header />
+  <Header/>
 
   <div class=" mt-[120px]">
     <slot />
