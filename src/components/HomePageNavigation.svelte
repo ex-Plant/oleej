@@ -1,10 +1,6 @@
 <script lang="ts">
   import AllCategoriesButton from '../assets/AllCategoriesButton.svelte';
-  import type { PostType } from '../types';
-  type Category = {
-    name: string,
-    slug: string,
-  }
+  import type { Category, PostType } from "../types";
   export let posts: PostType[];
   export let categories: Category[];
   $: categoriesFiltered = categories.filter(category => category.name.toLowerCase() !== "bez kategorii")
