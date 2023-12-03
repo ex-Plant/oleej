@@ -16,7 +16,7 @@
   $: publishDate = convertDateToNumericString(postBySlug.date);
 </script>
 
-<section class=" grid gap-y-6">
+<section class=" grid gap-y-6 pt-6">
   {#if category}
     <h3 class="w-full text-center text-mobile14 uppercase ">{category}</h3>
   {/if}

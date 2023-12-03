@@ -21,7 +21,7 @@
 </script>
 
 <main
-  class="px-primary mx-auto grid max-w-[1440px] flex-col gap-y-6 pt-6 xl:gap-y-12"
+  class="px-primary mx-auto grid max-w-[1440px] flex-col gap-y-6 pt-6 xl:pt-12 xl:gap-y-12"
 >
   <header
     class=" grid grid-cols-[clamp(115px,14vw,230px)_auto_clamp(115px,14vw,230px)]"
