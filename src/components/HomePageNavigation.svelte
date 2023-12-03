@@ -30,7 +30,7 @@
     on:click="{() => filterByCategory(category)}"
   >
   >
-    <span class="whitespace-nowrap"> {category}</span>
+    <span class="whitespace-nowrap text-mobile14 md:text-desktop24"> {category}</span>
 
     <span
       class="{'absolute bottom-0 left-[50%] h-[1px] w-0 rounded bg-black duration-300' +
