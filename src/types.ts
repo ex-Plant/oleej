@@ -34,3 +34,14 @@ export type ImageType = {
   };
   source_url: string;
 };
+
+
+export type AboutMePageData = {
+  acf: {
+    main_text: string;
+    txt_under_pictures: string;
+    main_foto_id: number;
+    secondary_foto_id: number;
+    small_foto_id: number;
+  }
+}[];

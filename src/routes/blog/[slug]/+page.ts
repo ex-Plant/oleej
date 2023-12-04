@@ -21,10 +21,7 @@ export const load: Load = async ({ params }) => {
     let postBySlug: PostType, postFotoMobile, postSideFoto, postFotoDesktop;
     try {
       postBySlug = posts.find((p: PostType) => spacesToDashes(p?.acf?.slug) === slug);
-      if (postBySlug === undefined) throw error(404, 'Not Found');
-      if (!postBySlug) {
-        throw new Error('Missing post data');
-      }
+      if (!postBySlug) throw error(404, 'Not Found');
       postFotoMobile = fotos.find(
         (fotoObject: ImageType) => fotoObject.id === postBySlug?.acf?.foto_id,
       );

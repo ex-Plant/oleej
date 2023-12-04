@@ -2,6 +2,7 @@
   import Logo from '../../assets/Logo.svelte';
   import { page } from '$app/stores';
   import { twMerge } from 'tailwind-merge';
+  import MenuLinkItem from './MenuLinkItem.svelte';
   // import Dropdown from './Dropdown.svelte';
   // import { twMerge } from 'tailwind-merge';
   // import { onMount } from 'svelte';
@@ -22,17 +23,12 @@
     class="no-scrollbar flex h-20 w-full items-center justify-between overflow-x-scroll border-b border-black"
   >
     <a class="flex h-20 w-[130px] pr-4" href="/">
-        <Logo />
+      <Logo />
     </a>
-    <div
-      class="xl:space-x-z flex gap-4 md:gap-x-8 lg:gap-x-12 xl:gap-x-16 [&_button]:uppercase"
-    >
-      <a class="group relative text-mobile14 md:text-desktop24" href="/">Blog</a>
-      <span
-        class="{'absolute bottom-[-3px] left-[50%] h-[1px] w-0 rounded bg-black duration-300' +
-          ' group-hover:left-0 group-hover:w-full'}"
-      >
-      </span>
+    <div class=" flex [&_button]:uppercase">
+      <MenuLinkItem name="O MNIE" link="/o-mnie" />
+      <MenuLinkItem name="KONTAKT" link="/kontakt" />
+      <MenuLinkItem name="BLOG" link="/" />
     </div>
   </nav>
   <!--    <button-->
