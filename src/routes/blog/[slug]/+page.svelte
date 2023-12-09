@@ -28,10 +28,12 @@
   } else if (readingTimeInMinutes === 1) {
     timeString = "minutę";
   } else if (readingTimeInMinutes >= 2 && readingTimeInMinutes <= 4) {
-    timeString = "minuty";
+    timeString = ` ${readingTimeInMinutes} minuty`;
   } else {
-    timeString = "minut";
+    timeString = `${readingTimeInMinutes} minut`;
   }
+
+ $: console.log(readingTimeInMinutes);
 
 
   function setPostSlugMap(posts: PostType[]) {
