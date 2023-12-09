@@ -12,7 +12,6 @@
   $: postFotoDesktop = postData.postFotoDesktop;
   $: postSideFoto = postData.postSideFoto;
   $: post_content = postBySlug.acf.post_content;
-  $: console.log(post_content);
 
   function countWords(text: string) {
     return text.split(/\s+/).length;

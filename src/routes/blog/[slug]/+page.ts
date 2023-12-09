@@ -10,13 +10,14 @@ export const load: Load = async ({ params }) => {
   const postsRes = await fetch(`${url}posts`);
   const posts = await postsRes.json();
   const allMedia = await fetch(`${url}media`);
-  const globalRes = await fetch(`${url}pages?slug=global-opotions`);
+  const globalRes = await fetch(`${url}pages?slug=global`);
   const fotos = await allMedia.json(); // all media
   const global = await globalRes.json();
 
   const globalFoto = fotos.find(
-    (fotoObject: ImageType) => fotoObject.id === global[0].acf.globalFoto_1,
+    (fotoObject: ImageType) => fotoObject.id === global[0].acf.mainfoto
   );
+
   async function loadPostData(slug: string) {
     let postBySlug: PostType, postFotoMobile, postSideFoto, postFotoDesktop;
     try {
