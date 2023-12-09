@@ -12,7 +12,7 @@
 
 <nav
   title="categories navigation"
-  class="px-primary no-scrollbar fixed left-0 right-0 top-20 flex items-center space-x-12 overflow-x-scroll [&_button]:h-10 [&_button]:uppercase"
+  class="px-primary no-scrollbar fixed left-0 right-0 top-[90px] flex items-center space-x-12 overflow-x-scroll [&_button]:h-10 [&_button]:uppercase"
 >
   <button
     class="group relative"

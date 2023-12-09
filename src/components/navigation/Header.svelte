@@ -10,17 +10,21 @@
   // let height = 0;
   // let isOpen = false;
   // onMount(() => (height = contentRef.offsetHeight));
-  $: height = $page.route.id === '/' ? 'h-[120px]' : 'h-[80px]';
+
+  $: homePage = $page.route.id === '/';
 </script>
 
 <div
   class="{twMerge(
     ' px-primary fixed left-0 top-0 mx-auto flex  w-full bg-primary',
-    height,
+    homePage ? 'h-[140px] ' : 'h-[80px]',
   )}"
 >
   <nav
-    class="no-scrollbar flex h-20 w-full items-center justify-between overflow-x-scroll border-b border-black"
+    class="{twMerge(
+      'no-scrollbar flex  w-full items-center justify-between overflow-x-scroll border-b border-black',
+      homePage ? 'h-[140px] pb-[60px] ' : 'h-[80px]',
+    )}"
   >
     <a class="flex h-20 w-[130px] pr-4" href="/">
       <Logo />

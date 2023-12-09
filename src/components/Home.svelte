@@ -7,7 +7,7 @@
   export let fotos: ImageType[];
 </script>
 
-<section title="lista artykulow" class="grid">
+<section title="lista artykulow" class="grid md:mt-20">
   {#each posts as post}
     {#each fotos as foto}
       {#if post.acf.foto_id === foto.id}
@@ -28,7 +28,7 @@
         </article>
         <!--MD-->
         <article
-          class=" mt-[-1px] hidden border-t border-black py-8 pt-8 md:grid 1280:hidden"
+          class=" mt-[-1px] hidden  py-8 pt-8 md:grid 1280:hidden"
         >
           <div class=" md:grid md:grid-cols-2 md:gap-x-12">
             <a class="" href="{`/blog/${spacesToDashes(post.acf.slug)}`}">
@@ -50,7 +50,7 @@
         <!--1280-->
         <a class="" href="{`/blog/${spacesToDashes(post.acf.slug)}`}">
           <article
-            class=" mt-[-1px] hidden gap-x-24 border-t border-black py-12 pt-12 1280:flex"
+            class=" mt-[-1px] hidden gap-x-24  py-12 pt-12 1280:flex"
           >
             <div
               class="  flex w-[calc(550/1440*100vw)] shrink-0 flex-col uppercase"
