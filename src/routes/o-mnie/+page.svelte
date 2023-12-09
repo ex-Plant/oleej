@@ -20,7 +20,7 @@
   </p>
   <div class="flex items-center justify-center md:justify-end md:gap-x-12 lg:gap-x-16">
 
-    <div class='hidden md:flex flex-col items-end gap-y-6 xl:gap-y-12 '>§
+    <div class=' flex-col items-end gap-y-6 xl:gap-y-12 '>§
       {#if small_foto?.source_url}
         <div class=' aspect-video w-[256px] h-[128px]'>
           <img

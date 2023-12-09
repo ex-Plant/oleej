@@ -6,7 +6,6 @@ import BigArrowDown from "../../../assets/BigArrowDown.svelte";
   class="xl:mx-auto grid max-w-[1440px] gap-y-6 px-[clamp(20px,6vw,60px)] py-6 md:gap-y-12 md:pb-12 md:hidden"
 >
   <a
-    on:click="{() => alert('To jeszcze nie działa')}"
     class="{'pr-4 font-bold text-mobile58 md:text-desktop196'}"
     href="mailto:piotrolej@gmail.com"
   >
