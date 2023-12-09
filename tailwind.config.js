@@ -28,7 +28,7 @@ export default {
       'desktop30': ['var(--desktop30)', '128%'],
       'desktop40': ['var(--desktop40)', '128%'],
       'desktop64': ['var(--desktop64)', 'normal'],
-      'desktop196': ['var(--desktop196)', 'normal'],
+      'desktop196': ['var(--desktop196)', '100%'],
       28: ['var(--28)', 'var(--28)'],
       34: ['var(--34)', 'var(--34)'],
       38: ['var(--38)', 'var(--38)'],

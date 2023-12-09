@@ -3,7 +3,7 @@
 </script>
 
 <div
-  class="hidden max-w-[1440px] gap-y-6 px-[clamp(20px,6vw,60px)] pt-[156px] md:grid xl:mx-auto"
+  class="hidden max-w-[1440px] px-[clamp(20px,6vw,60px)] pt-12 md:grid xl:mx-auto"
 >
   <a
     class="{'pr-4 text-desktop196 font-bold '}"
@@ -14,7 +14,7 @@
     <div class=" inline-block aspect-square w-[clamp(53px,7vw,106px)]">
       <BigArrowDown />
     </div>
-    <p class="h-10 pt-4 text-[clamp(32px,3vw,44px)] font-bold">
+    <p class="h-10 text-[clamp(32px,3vw,44px)] font-bold">
       piotrolej@gmail.com
     </p>
   </a>
