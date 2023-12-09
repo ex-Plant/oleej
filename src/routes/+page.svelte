@@ -7,6 +7,9 @@
   let fotos:ImageType[] = data.fotos;
   let categories: string[] = posts.map(posts => posts.acf.category);
   categories = [...new Set(categories)];
+
+
+
 </script>
 
 <main class='px-primary'>

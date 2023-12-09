@@ -4,24 +4,45 @@
   import { customSanitization } from '../../helpers/customSanitization';
   import SmallArowUp from '../../assets/SmallArowUp.svelte';
   import FooterPostList from './FooterPostList.svelte';
-  import type { ImageType, PostType } from "../../types";
+  import type { ImageType, PostType } from '../../types';
+  import { postsSlugMap } from "../../store/BlogPostsStore";
+  import { spacesToDashes } from "../../helpers/spacesToDashes";
   export let posts: PostType[];
   export let fotos: ImageType[];
   export let postBySlug: PostType;
   export let postFoto: ImageType;
   export let globalFoto: ImageType;
   export let postSideFoto: ImageType;
-  export let readingTimeInMinutes: number;
-  $: post_description = postBySlug.acf.post_description
-  $: category = postBySlug.acf.category
-  $: title = postBySlug.acf.title
-  $: post_content = postBySlug.acf.post_content
+  export let timeString: string;
+
+  let nextPostSlug: string;
+  let nextBlogPostLink: string;
+
+  $: post_description = postBySlug.acf.post_description;
+  $: category = postBySlug.acf.category;
+  $: title = postBySlug.acf.title;
+  $: post_content = postBySlug.acf.post_content;
   $: caption = postFoto?.caption?.rendered;
   $: publishDate = convertDateToNumericString(postBySlug.date);
+
+
+  $: postMap = $postsSlugMap[postBySlug.acf.slug];
+  $: currentId = postMap ? posts.findIndex(post => post.acf.slug === postMap.slug) : -1;
+  $: if (currentId >= 0 && currentId < posts.length - 1) {
+    nextPostSlug = posts[currentId + 1].acf.slug;
+  } else {
+    nextPostSlug = posts[0].acf.slug;
+  }
+
+  $: if (nextPostSlug) {
+    nextBlogPostLink = `/blog/${spacesToDashes(nextPostSlug)}`;
+  }
+
+
 </script>
 
 <main
-  class="px-primary mx-auto grid max-w-[1440px] flex-col gap-y-6 pt-6 xl:pt-12 xl:gap-y-12"
+  class="px-primary mx-auto grid max-w-[1440px] flex-col gap-y-6 pt-6 xl:gap-y-12 xl:pt-12"
 >
   <header
     class=" grid grid-cols-[clamp(115px,14vw,230px)_auto_clamp(115px,14vw,230px)]"
@@ -36,22 +57,34 @@
             {category}
           </h3>
         {/if}
-        <span class="text-desktop20">czyta się {readingTimeInMinutes} minut</span>
+        <span class="text-desktop20"
+          >czyta się {timeString}
+        </span
+        >
       </div>
       <h1 class="w-full text-desktop64 font-bold">{title}</h1>
     </div>
     <div>
-      <button
-        class="whitespace-nowrap text-desktop20 hover:underline"
-        on:click="{() => alert('jp2')}"
+      <a
+        href="{nextBlogPostLink}"
+        class="group relative whitespace-nowrap pb-1 text-desktop20 "
       >
-        KOLEJNY ARTYKUL
-      </button>
+        <span> KOLEJNY ARTYKUL </span>
+        <span
+          class="{'absolute bottom-[-3px] left-[50%] h-[1px] w-0 rounded bg-black duration-300' +
+            ' group-hover:left-0 group-hover:w-full'}"
+        >
+        </span>
+      </a>
     </div>
   </header>
 
   <div class="w-full">
-    <img class=" z-[-100] h-[330px] w-full object-cover" src="{postFoto?.source_url}" alt="alt" />
+    <img
+      class=" z-[-100] h-[330px] w-full object-cover"
+      src="{postFoto?.source_url}"
+      alt="alt"
+    />
     <p class="text-xs w-full pt-3 text-12">
       {@html customSanitization(caption)}
     </p>

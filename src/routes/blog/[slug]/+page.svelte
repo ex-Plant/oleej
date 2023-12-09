@@ -2,6 +2,8 @@
   import type { PageData } from './$types';
   import BlogPostMobile from '../../../components/blogPost/BlogPostMobile.svelte';
   import BlogPostDesktop from '../../../components/blogPost/BlogPostDesktop.svelte';
+  import type { postSlugMapType, PostType } from '../../../types';
+  import { postsSlugMap } from '../../../store/BlogPostsStore';
   export let data: PageData;
   $: posts = data.posts;
   $: globalFoto = data.globalFoto;
@@ -16,8 +18,36 @@
   function countWords(text: string) {
     return text.split(/\s+/).length;
   }
+
   $: numberOfWords = countWords(post_content);
-  $: readingTimeInMinutes = Math.floor(numberOfWords / 200);   // 200 words per minute
+  $: readingTimeInMinutes = Math.floor(numberOfWords / 200); // 200 words per minute
+
+  let timeString: string;
+  $: if (readingTimeInMinutes < 1) {
+    timeString = "mniej niż minutę";
+  } else if (readingTimeInMinutes === 1) {
+    timeString = "minutę";
+  } else if (readingTimeInMinutes >= 2 && readingTimeInMinutes <= 4) {
+    timeString = "minuty";
+  } else {
+    timeString = "minut";
+  }
+
+
+  function setPostSlugMap(posts: PostType[]) {
+    const newMap: postSlugMapType = {};
+
+    posts.forEach((post, index) => {
+      newMap[post.acf.slug] = {
+        slug: post.acf.slug,
+        index: index
+      };
+    });
+    return newMap;
+  }
+
+  $: postsSlugMap.set(setPostSlugMap(posts));
+
 </script>
 
 <main class="px-[clamp(20px,6vw,40px)] md:hidden">
@@ -25,7 +55,7 @@
     postBySlug="{postBySlug}"
     postFoto="{postFotoMobile}"
     globalFoto="{globalFoto}"
-    readingTimeInMinutes="{readingTimeInMinutes}"
+    timeString='{timeString}'
   />
 </main>
 <main class="hidden md:block">
@@ -36,6 +66,6 @@
     posts="{posts}"
     fotos="{fotos}"
     postSideFoto="{postSideFoto}"
-    readingTimeInMinutes="{readingTimeInMinutes}"
+    timeString='{timeString}'
   />
 </main>

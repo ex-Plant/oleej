@@ -54,3 +54,7 @@ export type AboutMePageProps = {
   txt_under_pictures: string,
 
 };
+
+export type postSlugMapType = {
+  [key: string]: { slug: string; index: number };
+};
