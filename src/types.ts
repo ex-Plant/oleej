@@ -45,3 +45,12 @@ export type AboutMePageData = {
     small_foto_id: number;
   }
 }[];
+
+export type AboutMePageProps = {
+  mainFoto: ImageType;
+  secondary_foto: ImageType;
+  small_foto: ImageType;
+  main_text: string;
+  txt_under_pictures: string,
+
+};
