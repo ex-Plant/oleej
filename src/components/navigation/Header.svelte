@@ -16,14 +16,13 @@
 
 <div
   class="{twMerge(
-    ' px-primary fixed left-0 top-0 mx-auto flex  w-full bg-primary',
-    homePage ? 'h-[140px] ' : 'h-[80px]',
+    ' px-primary fixed left-0 top-0 mx-auto flex  w-full bg-primary h-20',
   )}"
 >
   <nav
     class="{twMerge(
-      'no-scrollbar flex  w-full items-center justify-between overflow-x-scroll border-b border-black',
-      homePage ? 'h-[140px] pb-[60px] ' : 'h-[80px]',
+      'no-scrollbar flex  w-full items-center justify-between overflow-x-scroll h-20 ',
+      !homePage && ' border-b border-black',
     )}"
   >
     <a class="flex h-20 w-[130px] pr-4" href="/">

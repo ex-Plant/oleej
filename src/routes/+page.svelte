@@ -1,18 +1,34 @@
 <script lang="ts">
   import HomePageNavigation from '../components/HomePageNavigation.svelte';
-  import Home from "../components/Home.svelte";
-  import type { ImageType, PostType } from "../types";
+  import Home from '../components/Home.svelte';
+  import type { ImageType, PostType } from '../types';
+  import { onMount } from 'svelte';
   export let data;
   let posts: PostType[] = data.posts;
-  let fotos:ImageType[] = data.fotos;
-  let categories: string[] = posts.map(posts => posts.acf.category);
+  let fotos: ImageType[] = data.fotos;
+  let categories: string[] = posts.map((posts) => posts.acf.category);
   categories = [...new Set(categories)];
 
+  let mainRef: HTMLElement;
 
+  let top = false;
+  function checkElementPosition() {
+    const rect = mainRef.getBoundingClientRect();
+    top = rect.top < 120;
 
+  }
+
+  onMount(() => {
+    window.addEventListener('scroll', checkElementPosition);
+
+    return () => {
+      window.removeEventListener('scroll', checkElementPosition);
+    };
+  });
 </script>
 
-<main class='px-primary'>
-  <HomePageNavigation posts={posts} {categories}/>
-  <Home {posts} {fotos}/>
+<HomePageNavigation posts="{posts}" categories="{categories}" {top}/>
+
+<main bind:this={mainRef} >
+  <Home posts="{posts}" fotos="{fotos}" />
 </main>

@@ -1,8 +1,10 @@
 <script lang="ts">
   import AllCategoriesButton from '../assets/AllCategoriesButton.svelte';
   import type {  PostType } from "../types";
+  import { twMerge } from "tailwind-merge";
   export let posts: PostType[];
   export let categories: string[];
+  export let top: boolean;
   function filterByCategory(category: string) {
     if (category !== '') {
       posts = posts.filter((post) => post.acf.category === category);
@@ -10,10 +12,19 @@
   }
 </script>
 
-<nav
+
+
+
+
+<div
   title="categories navigation"
-  class="px-primary no-scrollbar fixed left-0 right-0 top-[90px] flex items-center space-x-12 overflow-x-scroll [&_button]:h-10 [&_button]:uppercase"
+     class={twMerge("px-primary no-scrollbar fixed left-0 right-0 top-[80px]  duration-100 overflow-hidden   ",
+     top ? "h-[1px]" : "h-12 "
+     )}
 >
+  <div
+    class='flex items-center space-x-12 overflow-x-scroll [&_button]:h-10 [&_button]:uppercase overflow-hidden border-b border-black h-full'>
+
   <button
     class="group relative"
     aria-label="reset categories"
@@ -36,4 +47,5 @@
         ' group-hover:left-0 group-hover:w-full'}"></span>
   </button>
     {/each}
-</nav>
+  </div>
+</div>

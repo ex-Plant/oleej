@@ -5,15 +5,20 @@
   import type { ImageType, PostType } from '../types';
   export let posts: PostType[];
   export let fotos: ImageType[];
+
+
+
+
+
 </script>
 
-<section title="lista artykulow" class="grid md:mt-20">
+<section title="lista artykulow" class="grid mt-16 px-primary">
   {#each posts as post}
     {#each fotos as foto}
       {#if post.acf.foto_id === foto.id}
         <!--MOBILE-->
         <article
-          class=" mt-[-1px] grid gap-y-6 border-t border-black py-6 pt-6 md:hidden"
+          class=" mt-[-1px] grid gap-y-6  py-6 pt-6 md:hidden"
         >
           <div class="grid gap-y-6">
             <h4 class="  text-mobile14 uppercase">{post.acf.category}</h4>
