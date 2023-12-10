@@ -14,7 +14,7 @@
 
 </script>
 
-<main class="grid gap-y-6 px-[clamp(20px,6vw,60px)] py-6 md:gap-y-12 md:pb-12 max-w-[1440px] mx-auto">
+<main class="grid gap-y-6 px-[clamp(20px,6vw,60px)] py-6 pb-12 md:gap-y-12 max-w-[1440px] mx-auto">
 <p class="text-xs w-full text-mobile16 md:text-desktop40">
     {@html customSanitization(main_text)}
   </p>

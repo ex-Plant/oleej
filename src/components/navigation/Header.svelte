@@ -3,20 +3,12 @@
   import { page } from '$app/stores';
   import { twMerge } from 'tailwind-merge';
   import MenuLinkItem from './MenuLinkItem.svelte';
-  // import Dropdown from './Dropdown.svelte';
-  // import { twMerge } from 'tailwind-merge';
-  // import { onMount } from 'svelte';
-  // let contentRef: HTMLElement;
-  // let height = 0;
-  // let isOpen = false;
-  // onMount(() => (height = contentRef.offsetHeight));
-
   $: homePage = $page.route.id === '/';
 </script>
 
 <div
   class="{twMerge(
-    ' px-primary fixed left-0 top-0 mx-auto flex  w-full bg-primary h-20',
+    ' px-primary fixed left-0 top-0 mx-auto flex  w-full bg-primary h-20 ',
   )}"
 >
   <nav
@@ -34,10 +26,5 @@
       <MenuLinkItem name="BLOG" link="/" />
     </div>
   </nav>
-  <!--    <button-->
-  <!--      class="w-full text-left text-24 uppercase"-->
-  <!--      on:click="{() => alert('coming soon')}"-->
-  <!--    >-->
-  <!--      [ menu ]-->
-  <!--    </button>-->
+
 </div>

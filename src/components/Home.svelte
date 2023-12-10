@@ -3,23 +3,26 @@
   import { convertDateToNumericString } from '../helpers/convertDateToNumericString.js';
   import BigArrowUp from '../assets/BigArrowUp.svelte';
   import type { ImageType, PostType } from '../types';
+  import { currentCategory } from '../store/HomeStore';
   export let posts: PostType[];
   export let fotos: ImageType[];
+  let postsFilteredByCategory: PostType[];
 
-
-
-
-
+  $: if ($currentCategory === '') {
+    postsFilteredByCategory = posts;
+  } else {
+    postsFilteredByCategory = posts.filter(
+      (post) => post.acf.category === $currentCategory,
+    );
+  }
 </script>
 
-<section title="lista artykulow" class="grid my-16 px-primary">
-  {#each posts as post}
+<section title="lista artykulow" class="px-primary my-16 grid">
+  {#each postsFilteredByCategory as post}
     {#each fotos as foto}
       {#if post.acf.foto_id === foto.id}
         <!--MOBILE-->
-        <article
-          class=" mt-[-1px] grid gap-y-6  py-6 pt-6 md:hidden"
-        >
+        <article class=" mt-[-1px] grid gap-y-6 py-6 pt-6 md:hidden">
           <div class="grid gap-y-6">
             <h4 class="  text-mobile14 uppercase">{post.acf.category}</h4>
             <h2 class=" text-mobile18 font-[700]">{post.acf.title}</h2>
@@ -32,9 +35,7 @@
           </div>
         </article>
         <!--MD-->
-        <article
-          class=" mt-[-1px] hidden  py-8 pt-8 md:grid 1280:hidden"
-        >
+        <article class=" mt-[-1px] hidden py-8 pt-8 md:grid 1280:hidden">
           <div class=" md:grid md:grid-cols-2 md:gap-x-12">
             <a class="" href="{`/blog/${spacesToDashes(post.acf.slug)}`}">
               <img
@@ -54,13 +55,11 @@
         </article>
         <!--1280-->
         <a class="" href="{`/blog/${spacesToDashes(post.acf.slug)}`}">
-          <article
-            class=" mt-[-1px] hidden gap-x-24  py-12 pt-12 1280:flex"
-          >
+          <article class=" mt-[-1px] hidden gap-x-24 py-12 pt-12 1280:flex">
             <div
               class="  flex w-[calc(550/1440*100vw)] shrink-0 flex-col uppercase"
             >
-              <h2 class="  text-[3rem] font-[700] leading-normal">
+              <h2 class="  text-[3rem] font-[700] leading-tight">
                 <span class="line-clamp-5">
                   {post.acf.title} <BigArrowUp /></span
                 >
