@@ -19,10 +19,9 @@
     </p>
   </a>
   <div class="flex space-x-[150px] pt-[144px]">
-    <p class=" text-[clamp(24px,2vw,30px)] font-bold">SOCIALE</p>
+    <p class=" text-[clamp(24px,2vw,30px)] font-bold">IG</p>
     <div class="gapy-8 grid">
       <a class=" text-[clamp(24px,2vw,30px)]" href="#">olejtopisze</a>
-      <a class=" text-[clamp(24px,2vw,30px)]" href="#">kotlet_devolaj</a>
     </div>
   </div>
 </div>
