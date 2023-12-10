@@ -75,7 +75,7 @@
   <div
     class="flex items-center justify-center space-x-6 border-t border-black px-[clamp(20px,6vw,60px)] py-8"
   >
-    <span class="whitespace-nowrap text-mobile34"> NAPISZ DO MNIE </span>
+    <span class="whitespace-nowrap text-mobile28 sm:text-mobile34 "> NAPISZ DO MNIE </span>
     <div>
       <BigArrowUp />
     </div>
