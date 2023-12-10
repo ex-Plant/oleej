@@ -12,10 +12,6 @@
   }
 </script>
 
-
-
-
-
 <div
   title="categories navigation"
      class={twMerge("px-primary no-scrollbar fixed left-0 right-0 top-[80px]  duration-100 overflow-hidden   ",
@@ -23,7 +19,7 @@
      )}
 >
   <div
-    class='flex items-center space-x-12 overflow-x-scroll [&_button]:h-10 [&_button]:uppercase overflow-hidden border-b border-black h-full'>
+    class='flex items-center space-x-6 lg:space-x-12 overflow-x-scroll [&_button]:h-10 [&_button]:uppercase overflow-hidden border-b border-black h-full'>
 
   <button
     class="group relative"
