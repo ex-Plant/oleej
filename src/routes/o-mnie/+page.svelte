@@ -18,9 +18,9 @@
 <p class="text-xs w-full text-mobile16 md:text-desktop40">
     {@html customSanitization(main_text)}
   </p>
-  <div class="flex items-center justify-center md:justify-end md:gap-x-12 lg:gap-x-16">
+  <div class="flex items-center justify-center lg:justify-end md:gap-x-12 lg:gap-x-16">
 
-    <div class=' flex-col items-end gap-y-6 xl:gap-y-12 '>§
+    <div class=' hidden lg:flex flex-col items-end gap-y-6 xl:gap-y-12  '>
       {#if small_foto?.source_url}
         <div class=' aspect-video w-[256px] h-[128px]'>
           <img
@@ -32,7 +32,7 @@
 
       {/if}
       {#if secondary_foto?.source_url}
-        <div class='mr-20 w-[350px] h-[210px] '>
+        <div class='hidden lg:block mr-10 xl:mr-20  w-[280px] xl:w-[350px] aspect-[350/210]  '>
           <img
             class=" h-full object-cover"
             src="{secondary_foto?.source_url}"
