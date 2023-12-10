@@ -101,7 +101,7 @@
         {post_description}
       </p>
       <div
-        class=" postContent text-desktop20 [&_b]:text-desktop24 leading-[150%]  [&:p]:py-2 [&_h1]:py-2 [&_h2]:py-2 [&_h3]:py-2 [&_h4]:py-2 [&_h5]:py-2 [&_*]:p-2 [&_*]:block [&_b]:px-0 [&_*]px-0 [&_strong]:px-0
+        class=" postContent text-desktop20 leading-[150%]  [&:p]:py-2  [&_h1]:text-24 [&_h2]:py-4  [&_h3]:py-2 [&_h4]:py-2 [&_h5]:py-2  [&_*]:block [&_b]:px-0 [&_*]px-0 [&_strong]:px-0
         [&_h6]:py-2"
       >
         {@html customSanitization(post_content)}
