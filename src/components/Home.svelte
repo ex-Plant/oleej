@@ -63,9 +63,7 @@
                 src={foto?.source_url}
                 alt={foto?.alt_text}
                 height="320"
-                crop="scale"
                 layout="fullWidth"
-                quality="100"
               />
             </a>
             <div class="  pb-8 uppercase">
