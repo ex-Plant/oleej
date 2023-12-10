@@ -15,6 +15,9 @@
   export let postSideFoto: ImageType;
   export let timeString: string;
 
+  console.log(posts
+  );
+
   let nextPostSlug: string;
   let nextBlogPostLink: string;
 
@@ -98,8 +101,8 @@
         {post_description}
       </p>
       <div
-        class=" postContent text-desktop20 [&:p]:py-6 [&_h1]:py-6 [&_h2]:py-6 [&_h3]:py-6 [&_h4]:py-6 [&_h5]:py-6
-        [&_h6]:py-6"
+        class=" postContent text-desktop20 [&_b]:text-desktop24 leading-[150%]  [&:p]:py-2 [&_h1]:py-2 [&_h2]:py-2 [&_h3]:py-2 [&_h4]:py-2 [&_h5]:py-2 [&_*]:p-2 [&_*]:block [&_b]:px-0 [&_*]px-0 [&_strong]:px-0
+        [&_h6]:py-2"
       >
         {@html customSanitization(post_content)}
       </div>
