@@ -13,7 +13,7 @@
 <div
   title="categories navigation"
   class="{twMerge(
-    'px-primary no-scrollbar fixed left-0 right-0 top-20  overflow-hidden duration-100 ',
+    'px-primary no-scrollbar fixed left-0 right-0 top-16 overflow-hidden  bg-[#F7F4F0;] duration-100  md:top-20 ',
     top ? 'h-[1px] ' : 'h-12 ',
   )}"
 >
@@ -38,7 +38,6 @@
         <span class="whitespace-nowrap text-mobile14 md:text-desktop24">
           {category}</span
         >
-
         <span
           class="{'absolute bottom-0 left-[50%] h-[1px] w-0 rounded bg-black duration-300 group-hover:left-0 group-hover:w-full'}"
         ></span>

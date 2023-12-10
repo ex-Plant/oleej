@@ -23,14 +23,17 @@
 
   $: numberOfWords = countWords(post_content);
   $: readingTimeInMinutes = Math.floor(numberOfWords / 200); // 200 words per minute
-
   let timeString: string;
+
   $: if (readingTimeInMinutes < 1) {
     timeString = "mniej niż minutę";
+
   } else if (readingTimeInMinutes === 1) {
     timeString = "minutę";
+
   } else if (readingTimeInMinutes >= 2 && readingTimeInMinutes <= 4) {
     timeString = ` ${readingTimeInMinutes} minuty`;
+
   } else {
     timeString = `${readingTimeInMinutes} minut`;
   }

@@ -11,6 +11,7 @@ export const load: Load = async () => {
   let mainFoto;
   let secondary_foto;
   let small_foto;
+
   fotos.forEach((foto: ImageType) => {
     if (foto.id === pageData[0].acf.main_foto_id) {
       mainFoto = foto;
@@ -23,7 +24,6 @@ export const load: Load = async () => {
 
      if (!pageData[0]?.acf) throw error(404, 'Not Found');
   const {main_text, txt_under_pictures} = pageData[0].acf
-
 
   return {mainFoto, secondary_foto, small_foto, main_text, txt_under_pictures };
 };

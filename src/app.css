@@ -12,7 +12,7 @@
     --mobile34: clamp(2.125rem, calc(34 / 475 * 100vw), 8.375rem);
     --mobile58: clamp(3.625rem, calc(58 / 475 * 100vw), 8.375rem);
     --desktop16: clamp(0.5rem, calc(16 / 1440 * 100vw), 1rem);
-    --desktop24: clamp(0.75rem, calc(24 / 1440 * 100vw), 1.5rem);
+    --desktop24: clamp(1.25rem, calc(24 / 1440 * 100vw), 1.5rem);
     --desktop20: clamp(0.625rem, calc(20 / 1440 * 100vw), 1.25rem);
     --desktop30: clamp(1rem, calc(30 / 1440 * 100vw), 1.875rem);
     --desktop40: clamp(2rem, calc(40 / 1440 * 100vw), 2.5rem);

@@ -13,7 +13,7 @@
 >
   <nav
     class="{twMerge(
-      'no-scrollbar flex  w-full items-center justify-between overflow-x-scroll h-20 ',
+      'no-scrollbar flex  w-full items-center justify-between overflow-x-scroll h-20  ',
       !homePage && ' border-b border-black',
     )}"
   >

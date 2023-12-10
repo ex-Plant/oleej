@@ -5,7 +5,6 @@ export default {
   },
   content: [
     './src/**/*.{html,js,svelte,ts}',
-    './node_modules/flowbite-svelte/**/*.{html,js,svelte,ts}',
   ],
   theme: {
     fontSize: {
@@ -63,5 +62,5 @@ export default {
       },
     },
   },
-  plugins: [require('@tailwindcss/typography'), require('flowbite/plugin')],
+  plugins: [require('@tailwindcss/typography'),],
 };
