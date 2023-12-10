@@ -20,7 +20,7 @@
   {#if category}
     <h3 class="w-full text-center text-mobile14 uppercase ">{category}</h3>
   {/if}
-  <h1 class="w-full text-center text-mobile18 font-bold">{title}</h1>
+  <h1 class="w-full text-center text-mobile28 font-bold">{title}</h1>
 
   <div class="mx-auto">
     <p class='text-mobile12 pb-3'> Czyta się ok {timeString} minut</p>
@@ -33,7 +33,7 @@
     {post_description}
   </p>
   <div
-    class=" postContent text-mobile18 [&_*]leading-[200%] border-b border-black [&_p]:py-6 0  [&:p]:py-2 [&_h1]:py-2 [&_h2]:py-2 [&_h3]:py-2 [&_h4]:py-2 [&_h5]:py-2 [&_*]:p-2 [&_*]:block [&_b]:px-0 [&_*]px-0 [&_strong]:px-0
+    class=" postContent text-mobile18 [&:h1]:text-[24px] [&_*]:leading-[200%] border-b border-black [&_p]:py-6 0  [&:p]:py-2 [&_h1]:py-2 [&_h2]:py-2 [&_h3]:py-2 [&_h4]:py-2 [&_h5]:py-2 [&_*]:p-2 [&_*]:block [&_b]:px-0 [&_*]px-0 [&_strong]:px-0
     [&_h6]:py-2"
   >
     {@html customSanitization(post_content)}
