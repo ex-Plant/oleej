@@ -14,8 +14,7 @@
   let top = false;
   function checkElementPosition() {
     const rect = mainRef.getBoundingClientRect();
-    console.log(rect.top);
-    top = rect.top < 130;
+    top = rect.top < 142;
 
   }
 
@@ -28,8 +27,7 @@
   });
 </script>
 
-<HomePageNavigation posts="{posts}" categories="{categories}" {top}/>
-
+<HomePageNavigation categories="{categories}" {top}/>
 <main bind:this={mainRef} >
   <Home posts="{posts}" fotos="{fotos}" />
 </main>
