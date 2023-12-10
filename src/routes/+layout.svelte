@@ -9,7 +9,7 @@
   });
 
 </script>
-<div class=" flex min-h-[100vh] flex-col">
+<div class=" flex min-h-[100svh] flex-col">
   <Header />
   <div class=" mt-20">
     <slot />
