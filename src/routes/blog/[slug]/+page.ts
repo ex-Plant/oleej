@@ -48,8 +48,6 @@ export const load: Load = async ({ params }) => {
     throw new Error('Missing post data');
   }
 
-
-
   return {
       postData,
       globalFoto,

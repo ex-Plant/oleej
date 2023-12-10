@@ -12,7 +12,7 @@
 
 </script>
 
-<section title="lista artykulow" class="grid mt-16 px-primary">
+<section title="lista artykulow" class="grid my-16 px-primary">
   {#each posts as post}
     {#each fotos as foto}
       {#if post.acf.foto_id === foto.id}

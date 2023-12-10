@@ -33,9 +33,6 @@
     timeString = `${readingTimeInMinutes} minut`;
   }
 
- $: console.log(readingTimeInMinutes);
-
-
   function setPostSlugMap(posts: PostType[]) {
     const newMap: postSlugMapType = {};
 

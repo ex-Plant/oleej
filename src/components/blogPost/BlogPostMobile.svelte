@@ -63,7 +63,7 @@
 
   <div class=" flex flex-col justify-center">
     <p class="h-6 text-mobile14">Autor</p>
-    <p class="h-8 text-mobile18 font-bold">Piotr Olejnik</p>
+    <p class=" pb-6 text-mobile18 font-bold">Piotr Olejnik</p>
     <div class="flex gap-x-3">
       <div>
         <BigArrowDown />

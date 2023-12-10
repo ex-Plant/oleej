@@ -9,7 +9,7 @@
   href={link}
 >
   <div class=" relative">
-    <span> {name} </span>
+    <span class='whitespace-nowrap'> {name} </span>
     <span
       class="{'absolute bottom-[-3px] left-[50%] h-[1px] w-0 rounded bg-black duration-300' +
               ' group-hover:left-0 group-hover:w-full'}"
