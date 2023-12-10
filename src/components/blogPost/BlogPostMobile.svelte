@@ -29,7 +29,7 @@
       {@html customSanitization(caption)}
     </p>
   </div>
-  <p class="border-b border-black pb-6 text-mobile16">
+  <p class="border-b border-black pb-6 text-[26px]">
     {post_description}
   </p>
   <div
