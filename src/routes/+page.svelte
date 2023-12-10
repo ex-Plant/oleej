@@ -14,7 +14,8 @@
   let top = false;
   function checkElementPosition() {
     const rect = mainRef.getBoundingClientRect();
-    top = rect.top < 120;
+    console.log(rect.top);
+    top = rect.top < 130;
 
   }
 

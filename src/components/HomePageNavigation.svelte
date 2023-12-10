@@ -14,8 +14,8 @@
 
 <div
   title="categories navigation"
-     class={twMerge("px-primary no-scrollbar fixed left-0 right-0 top-[80px]  duration-100 overflow-hidden   ",
-     top ? "h-[1px]" : "h-12 "
+     class={twMerge("px-primary no-scrollbar fixed left-0 right-0 top-[80px]  duration-200 overflow-hidden   ",
+     top ? "h-[1px] " : "h-12 "
      )}
 >
   <div
