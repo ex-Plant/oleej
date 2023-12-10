@@ -3,6 +3,7 @@
   import Home from '../components/Home.svelte';
   import type { ImageType, PostType } from '../types';
   import { onMount } from 'svelte';
+  import { loading } from "../store/global";
   export let data;
   let posts: PostType[] = data.posts;
   let fotos: ImageType[] = data.fotos;
@@ -19,6 +20,8 @@
   }
 
   onMount(() => {
+    window.scrollTo(0, 0);
+    loading.set(false);
     window.addEventListener('scroll', checkElementPosition);
 
     return () => {

@@ -2,6 +2,7 @@
   import { spacesToDashes } from '../helpers/spacesToDashes.js';
   import { convertDateToNumericString } from '../helpers/convertDateToNumericString.js';
   import BigArrowUp from '../assets/BigArrowUp.svelte';
+  import {fade } from 'svelte/transition';
   import type { ImageType, PostType } from '../types';
   import { currentCategory } from '../store/HomeStore';
   export let posts: PostType[];
@@ -15,14 +16,15 @@
       (post) => post.acf.category === $currentCategory,
     );
   }
+
 </script>
 
-<section title="lista artykulow" class="px-primary my-16 grid">
+<section in:fade={{duration:500}} out:fade={{duration: 500}} title="lista artykulow" class="px-primary my-16 grid">
   {#each postsFilteredByCategory as post}
     {#each fotos as foto}
       {#if post.acf.foto_id === foto.id}
         <!--MOBILE-->
-        <article class=" mt-[-1px] grid gap-y-6 py-6 pt-6 md:hidden">
+        <article class=" mt-[-1px] grid gap-y-6 py-6 pt-6 md:hidden hover:shadow:md">
           <div class="grid gap-y-6">
             <h4 class="  text-mobile14 uppercase">{post.acf.category}</h4>
             <h2 class=" text-mobile18 font-[700]">{post.acf.title}</h2>
@@ -35,7 +37,7 @@
           </div>
         </article>
         <!--MD-->
-        <article class=" mt-[-1px] hidden py-8 pt-8 md:grid 1280:hidden">
+        <article class=" mt-[-1px] hidden py-8 pt-8 md:grid 1280:hidden hover:shadow-md duration-500">
           <div class=" md:grid md:grid-cols-2 md:gap-x-12">
             <a class="" href="{`/blog/${spacesToDashes(post.acf.slug)}`}">
               <img
@@ -55,7 +57,7 @@
         </article>
         <!--1280-->
         <a class="" href="{`/blog/${spacesToDashes(post.acf.slug)}`}">
-          <article class=" mt-[-1px] hidden gap-x-24 py-12 pt-12 1280:flex">
+          <article class=" mt-[-1px] hidden gap-x-24 py-12 pt-12 1280:flex hover:shadow:md">
             <div
               class="  flex w-[calc(550/1440*100vw)] shrink-0 flex-col uppercase"
             >

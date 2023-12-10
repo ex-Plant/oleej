@@ -2,6 +2,8 @@
   import { customSanitization } from '../../helpers/customSanitization';
   import BigArrowUp from "../../assets/BigArrowUp.svelte";
   import type { AboutMePageProps } from "../../types";
+  import { onMount } from "svelte";
+  import { loading } from "../../store/global";
 
   export let data : AboutMePageProps;
   const {
@@ -11,6 +13,12 @@
     main_text,
     txt_under_pictures,
   } = data;
+
+  onMount(() => {
+    window.scrollTo(0, 0);
+    loading.set(false);
+  });
+
 
 </script>
 

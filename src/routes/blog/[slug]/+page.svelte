@@ -4,6 +4,8 @@
   import BlogPostDesktop from '../../../components/blogPost/BlogPostDesktop.svelte';
   import type { postSlugMapType, PostType } from '../../../types';
   import { postsSlugMap } from '../../../store/BlogPostsStore';
+  import { onMount } from "svelte";
+  import { loading } from "../../../store/global";
   export let data: PageData;
   $: posts = data.posts;
   $: globalFoto = data.globalFoto;
@@ -46,6 +48,12 @@
   }
 
   $: postsSlugMap.set(setPostSlugMap(posts));
+
+  onMount(() => {
+    window.scrollTo(0, 0);
+    loading.set(false);
+  });
+
 
 </script>
 
