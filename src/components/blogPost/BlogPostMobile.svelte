@@ -52,10 +52,10 @@
 
 </section>
 
-<section title="skontaktuj się ze mną " class="flex gap-x-6 py-6">
-  <div class=" aspect-[200/160] max-h-[160px] grow-0 ">
+<section title="skontaktuj się ze mną " class="grid grid-cols-2 gap-x-6 py-6   ">
+  <div class=" flex   ">
     <img
-      class="aspect-[200/160] h-full object-cover"
+      class="  object-cover w-full object-top aspect-[150/120]"
       src="{globalFoto?.source_url}"
       alt="alt"
     />
