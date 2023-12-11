@@ -37,8 +37,8 @@
       <a class="outline" href="{`/blog/${spacesToDashes(post.acf.slug)}`}">
         <div class="  ">
           <CldImage
-            class=" "
-            sizes="100vw"
+
+            sizes="100vw max-width: 768px"
             src="{image.source_url}"
             alt="{image?.alt_text}"
             height="420"
