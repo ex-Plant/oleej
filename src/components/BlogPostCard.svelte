@@ -1,26 +1,22 @@
 <script lang="ts">
   import { CldImage } from 'svelte-cloudinary';
-  import type { PostType } from '../types.js';
-  import { baseUrl } from '../constans/constans.js';
+  import type { ImageType, PostType } from '../types.js';
   import { spacesToDashes } from '../helpers/spacesToDashes.js';
   import { convertDateToNumericString } from '../helpers/convertDateToNumericString.js';
   import BigArrowUp from '../assets/BigArrowUp.svelte';
+  import { fetchImageById } from '../routes/api/fetch-post-image';
 
   export let post: PostType;
+  let image: ImageType;
 
-  async function fetchImageById(imageId: string) {
-    try {
-      const response = await fetch(`${baseUrl}media/${imageId}`);
-      if (response.ok) {
-        const imageData = await response.json();
-        return imageData;
-      }
-    } catch (error) {
-      console.error('Fetch error:', error);
-    }
+  async function loadImage() {
+    if (!post?.id) return;
+    return (image = await fetchImageById(post.id));
   }
 
-  $: image = await fetchImageById(post.id);
+  $: if (post?.id) {
+    loadImage();
+  }
 </script>
 
 <!--MOBILE-->
