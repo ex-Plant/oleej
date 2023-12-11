@@ -1,8 +1,8 @@
 export type ACFPostType = {
   blog_right_side_foto_id: number;
-  category: string;
   mobile_foto_id: number;
   blog_desktop_foto_id: number;
+  category: string;
   post_content: string;
   post_description: string;
   slug: string;

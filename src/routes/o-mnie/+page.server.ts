@@ -1,12 +1,8 @@
 import type { Load } from '@sveltejs/kit';
 import { baseUrl } from '../../constans/constans';
 
-// todo static page  - add If you use a CI/CD pipeline, automate this process to  run whenever you update the data
-//  on your WordPress backend
-export const prerender = true;
-
-
 export const load: Load = async () => {
+
   try {
     const res = await fetch(`${baseUrl}pages?slug=o-mnie`);
     const pageData = await res.json();

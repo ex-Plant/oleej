@@ -1,6 +1,6 @@
 <script lang="ts">
-  import { currentCategory } from '../store/HomeStore';
-  import { allPosts } from '../store/global';
+
+  import { allPosts, currentCategory } from "../store/global";
   import BlogPostCard from "./BlogPostCard.svelte";
 
   $: postsFilteredByCategory = $allPosts;
@@ -13,14 +13,13 @@
     );
   }
 
-
 </script>
 
 <section
   title="lista artykułów"
   class="px-primary mb-16 mt-8 grid max-w-[1440px] md:mt-16 xl:mx-auto"
 >
-  {#each postsFilteredByCategory as post (post.id) }
+  {#each postsFilteredByCategory as post  }
     <BlogPostCard {post}/>
   {/each}
 </section>

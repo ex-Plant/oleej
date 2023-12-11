@@ -1,8 +1,7 @@
 <script lang="ts">
   import AllCategoriesButton from '../assets/AllCategoriesButton.svelte';
   import { twMerge } from 'tailwind-merge';
-  import { currentCategory } from '../store/HomeStore';
-  import { postCategories } from "../store/global";
+  import { currentCategory, postCategories } from "../store/global";
 
   export let top: boolean;
 

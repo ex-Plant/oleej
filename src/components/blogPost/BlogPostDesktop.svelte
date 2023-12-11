@@ -5,42 +5,36 @@
   import SmallArowUp from '../../assets/SmallArowUp.svelte';
   import FooterPostList from './FooterPostList.svelte';
   import type { ImageType, PostType } from '../../types';
-  import { postsSlugMap } from "../../store/BlogPostsStore";
   import { spacesToDashes } from "../../helpers/spacesToDashes";
-  export let posts: PostType[];
-  export let fotos: ImageType[];
-  export let postBySlug: PostType;
+  import { allPosts, postsSlugMap } from "../../store/global";
+  export let postData: PostType;
   export let postFoto: ImageType;
   export let globalFoto: ImageType;
   export let postSideFoto: ImageType;
   export let timeString: string;
 
-  console.log(posts
-  );
-
   let nextPostSlug: string;
   let nextBlogPostLink: string;
 
-  $: post_description = postBySlug.acf.post_description;
-  $: category = postBySlug.acf.category;
-  $: title = postBySlug.acf.title;
-  $: post_content = postBySlug.acf.post_content;
+  $: post_description = postData.acf.post_description;
+  $: category = postData.acf.category;
+  $: title = postData.acf.title;
+  $: post_content = postData.acf.post_content;
   $: caption = postFoto?.caption?.rendered;
-  $: publishDate = convertDateToNumericString(postBySlug.date);
+  $: publishDate = convertDateToNumericString(postData.date);
 
 
-  $: postMap = $postsSlugMap[postBySlug.acf.slug];
-  $: currentId = postMap ? posts.findIndex(post => post.acf.slug === postMap.slug) : -1;
-  $: if (currentId >= 0 && currentId < posts.length - 1) {
-    nextPostSlug = posts[currentId + 1].acf.slug;
+  $: postMap = $postsSlugMap[postData.acf.slug];
+  $: currentId = postMap ? $allPosts.findIndex(post => post.acf.slug === postMap.slug) : -1;
+  $: if (currentId >= 0 && currentId < $allPosts.length - 1) {
+    nextPostSlug = $allPosts[currentId + 1].acf.slug;
   } else {
-    nextPostSlug = posts[0].acf.slug;
+    nextPostSlug = $allPosts[0].acf.slug;
   }
 
   $: if (nextPostSlug) {
     nextBlogPostLink = `/blog/${spacesToDashes(nextPostSlug)}`;
   }
-
 
 </script>
 
@@ -102,9 +96,21 @@
       </p>
       <div
         class=" postContent text-desktop20 leading-[150%]  [&:p]:py-2  [&_h1]:text-24 [&_h2]:py-4  [&_h3]:py-2 [&_h4]:py-2 [&_h5]:py-2  [&_*]:block [&_b]:px-0 [&_*]px-0 [&_strong]:px-0
-        [&_h6]:py-2"
+        [&_h6]:py-2 tracking-[-0.2px]"
+
+
       >
         {@html customSanitization(post_content)}
+      </div>
+      <div class=' text-desktop20 leading-[150%]  tracking-[-0.8px]  outline '>
+        Bezsenność towarzyszy mi od kilkunastu lat. Przyszła w nocy, szukając schronu. Pozwoliłem jej zostać u siebie tak długo, aż nabierze sił i wyruszy dalej. Nie wiedziałem wtedy, że dotarła do celu, a ja rozpoczynałem drogę przez mękę.
+        Bezsenność towarzyszy mi od kilkunastu lat. Przyszła w nocy, szukając schronu. Pozwoliłem jej zostać u siebie tak długo, aż nabierze sił i wyruszy dalej. Nie wiedziałem wtedy, że dotarła do celu, a ja rozpoczynałem drogę przez mękę.
+        Przybłęda
+        stawała się nie do zniesienia. Przez nią spóźniałem się do pracy i traciłem w oczach swoich chlebodawców. Przez nią zaniedbywałem relacje i zasmucałem swoich bliskich. Przez nią popadałem w psychozy i nie ufałem sobie.
+
+        W końcu poprosiłem moją namolną współlokatorkę, aby się wyniosła albo chociaż dała mi się wyspać. Odpowiedziała na to, że ani jej się śni. Nie wierzyłem własnym uszom. Nerwy mi puściły i powtórzyłem swoje życzenie. Tym razem w sposób głośny i niecenzuralny.
+
+        W odpowiedzi usłyszałem śmiech. Sardoniczny, drwiący rechot. Później nastała ciemność, a ja dalej nie mogłem zasnąć.
       </div>
       <div class=" flex items-center">
         <p class="text-desktop20">
@@ -150,4 +156,4 @@
     </div>
   </section>
 </main>
-<FooterPostList posts="{posts}" fotos="{fotos}" />
+<!--<FooterPostList posts="{posts}" fotos="{fotos}" />-->

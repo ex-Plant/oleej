@@ -7,6 +7,9 @@
 
   export let data;
 
+  let mainRef: HTMLElement;
+  let top = false;
+
   onMount(() => {
     allPosts.set(data.allPosts);
     postCategories.set(data.postCategories);
@@ -16,20 +19,14 @@
     window.addEventListener('scroll', checkElementPosition);
   });
 
-
-  // $: console.log({data})
-
-  let mainRef: HTMLElement;
-  let top = false;
   function checkElementPosition() {
     if (!$md) return;
     const rect = mainRef.getBoundingClientRect();
     top = rect.top < 142;
   }
 
-
-
   $: getClientWidth();
+
 </script>
 
 <HomePageNavigation top="{top}" />

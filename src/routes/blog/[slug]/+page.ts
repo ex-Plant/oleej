@@ -1,57 +1,54 @@
 /** @type {import('./$types').PageLoad} */
-import { spacesToDashes } from '../../../helpers/spacesToDashes';
 import { error } from '@sveltejs/kit';
 import type { Load } from '@sveltejs/kit';
-import type { ImageType, PostType } from "../../../types";
-
-const url = 'https://serwer2304048.home.pl/wordpress/wp-json/wp/v2/';
+import type { postSlugMapType, PostType } from '../../../types';
+import { fetchImageById } from '../../api/fetch-post-image';
+import { baseUrl } from '../../../constans/constans';
+import { allPosts, postsSlugMap } from '../../../store/global';
+import { get } from "svelte/store";
 
 export const load: Load = async ({ params }) => {
-  const postsRes = await fetch(`${url}posts`);
-  const posts = await postsRes.json();
-  const allMedia = await fetch(`${url}media`);
-  const globalRes = await fetch(`${url}pages?slug=global`);
-  const fotos = await allMedia.json(); // all media
+  let postData: PostType;
+  const getPostFromSlug = `https://serwer2304048.home.pl/wordpress/wp-json/mycustom/v1/posts/${params.slug}`;
+  const res = await fetch(getPostFromSlug);
+  if (res.ok) {
+    postData = await res.json();
+  } else {
+    throw error(404, 'Missing post data');
+  }
+
+  async function getImageData(id: number) {
+    return await fetchImageById(id);
+  }
+
+  const mobile_foto = getImageData(postData.acf.mobile_foto_id);
+  const blogSideFoto = getImageData(postData.acf.blog_right_side_foto_id);
+  const blogDesktopFoto = getImageData(postData.acf.blog_desktop_foto_id);
+
+  const globalRes = await fetch(`${baseUrl}pages?slug=global`);
   const global = await globalRes.json();
+  const globalFoto = global[0].acf.foto_id;
 
-  const globalFoto = fotos.find(
-    (fotoObject: ImageType) => fotoObject.id === global[0].acf.mainfoto
-  );
+  function setPostSlugMap(posts: PostType[]) {
+    const newMap: postSlugMapType = {};
 
-  async function loadPostData(slug: string) {
-    let postBySlug: PostType, postFotoMobile, postSideFoto, postFotoDesktop;
-    try {
-      postBySlug = posts.find((p: PostType) => spacesToDashes(p?.acf?.slug) === slug);
-      if (!postBySlug) throw error(404, 'Not Found');
-      postFotoMobile = fotos.find(
-        (fotoObject: ImageType) => fotoObject.id === postBySlug?.acf?.foto_id,
-      );
-      postSideFoto = fotos.find(
-        (fotoObject: ImageType) => fotoObject.id === postBySlug?.acf?.blog_right_side_foto,
-      );
-      postFotoDesktop = fotos.find(
-        (fotoObject: ImageType) => fotoObject.id === postBySlug?.acf?.hero_desktop_id,
-      );
-      return {
-        postFotoMobile: postFotoMobile,
-        postFotoDesktop: postFotoDesktop,
-        postSideFoto: postSideFoto,
-        postBySlug: postBySlug,
+    posts.forEach((post, index) => {
+      newMap[post.acf.slug] = {
+        slug: post.acf.slug,
+        index: index,
       };
-    } catch (e) {
-      console.error(e);
-    }
+    });
+    return newMap;
   }
-  if (!params.slug) throw new Error('Missing params');
-  const postData = await loadPostData(params.slug);
-  if (!postData) {
-    throw new Error('Missing post data');
-  }
+
+  const map = setPostSlugMap(get(allPosts));
+  postsSlugMap.set(map);
 
   return {
-      postData,
-      globalFoto,
-      fotos,
-      posts,
+    postData,
+    globalFoto,
+    postFotoMobile: mobile_foto,
+    postFotoDesktop: blogDesktopFoto,
+    postSideFoto: blogSideFoto,
   };
-}
+};

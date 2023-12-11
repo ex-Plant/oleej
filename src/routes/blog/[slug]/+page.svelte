@@ -2,20 +2,13 @@
   import type { PageData } from './$types';
   import BlogPostMobile from '../../../components/blogPost/BlogPostMobile.svelte';
   import BlogPostDesktop from '../../../components/blogPost/BlogPostDesktop.svelte';
-  import type { postSlugMapType, PostType } from '../../../types';
-  import { postsSlugMap } from '../../../store/BlogPostsStore';
-  import { onMount } from "svelte";
-  import { loading } from "../../../store/global";
   export let data: PageData;
-  $: posts = data.posts;
   $: globalFoto = data.globalFoto;
   $: postData = data.postData;
-  $: fotos = data.fotos;
-  $: postBySlug = postData.postBySlug;
-  $: postFotoMobile = postData.postFotoMobile;
-  $: postFotoDesktop = postData.postFotoDesktop;
-  $: postSideFoto = postData.postSideFoto;
-  $: post_content = postBySlug.acf.post_content;
+  $: postFotoMobile = data.postFotoMobile;
+  $: postFotoDesktop = data.postFotoDesktop;
+  $: postSideFoto = data.postSideFoto;
+  $: post_content = postData.acf.post_content;
 
   function countWords(text: string) {
     return text.split(/\s+/).length;
@@ -36,33 +29,14 @@
 
   } else {
     timeString = `${readingTimeInMinutes} minut`;
-  }
-
-  function setPostSlugMap(posts: PostType[]) {
-    const newMap: postSlugMapType = {};
-
-    posts.forEach((post, index) => {
-      newMap[post.acf.slug] = {
-        slug: post.acf.slug,
-        index: index
-      };
-    });
-    return newMap;
-  }
-
-  $: postsSlugMap.set(setPostSlugMap(posts));
-
-  onMount(() => {
-    window.scrollTo(0, 0);
-    loading.set(false);
-  });
+  };
 
 
 </script>
 
 <main class="px-[clamp(20px,6vw,40px)] md:hidden">
   <BlogPostMobile
-    postBySlug="{postBySlug}"
+    postData="{postData}"
     postFoto="{postFotoMobile}"
     globalFoto="{globalFoto}"
     timeString='{timeString}'
@@ -70,11 +44,9 @@
 </main>
 <main class="hidden md:block">
   <BlogPostDesktop
-    postBySlug="{postBySlug}"
+    postData="{postData}"
     postFoto="{postFotoDesktop}"
     globalFoto="{globalFoto}"
-    posts="{posts}"
-    fotos="{fotos}"
     postSideFoto="{postSideFoto}"
     timeString='{timeString}'
   />

@@ -11,7 +11,7 @@
 
   async function loadImage() {
     if (!post?.id) return;
-    return (image = await fetchImageById(post.id));
+    return (image = await fetchImageById(post.acf.mobile_foto_id));
   }
 
   $: if (post?.id) {

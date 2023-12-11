@@ -6,14 +6,14 @@
   import type { ImageType, PostType } from "../../types";
   export let globalFoto: ImageType;
   export let postFoto: ImageType;
-  export let postBySlug: PostType;
+  export let postData: PostType;
   export let timeString: string;
-  $: post_description = postBySlug.acf.post_description
-  $: category = postBySlug.acf.category
-  $: title = postBySlug.acf.title
-  $: post_content = postBySlug.acf.post_content
+  $: post_description = postData.acf.post_description
+  $: category = postData.acf.category
+  $: title = postData.acf.title
+  $: post_content = postData.acf.post_content
   $: caption = postFoto?.caption?.rendered;
-  $: publishDate = convertDateToNumericString(postBySlug.date);
+  $: publishDate = convertDateToNumericString(postData.date);
 </script>
 
 <section class=" grid gap-y-6 pt-6">
@@ -38,6 +38,11 @@
   >
     {@html customSanitization(post_content)}
   </div>
+  <p class='text-[24px]'>
+    naglowek
+  </p>
+<!--  <div class='  leading-[170%] text-[20px]  tracking-[-0.8px]   '>-->
+<!--  </div>-->
   <div class='grid '>
     <p class="h-7 text-mobile14">
       <span class="pr-1">Data publikacji: </span><span class="font-[700]"

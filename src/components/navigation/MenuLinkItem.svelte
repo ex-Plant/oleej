@@ -8,7 +8,7 @@
 
   async function navigate(url:string) {
     if (url === $page.url.href) return;
-    loading.set(true);
+    // loading.set(true);
     await goto(url);
   }
 
