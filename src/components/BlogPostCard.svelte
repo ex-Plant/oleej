@@ -8,13 +8,18 @@
 
   export let post: PostType;
   let image: ImageType;
-
   async function loadImage() {
-    if (!post?.id) return;
+
+    if (!post?.acf?.mobile_foto_id) return;
+    try {
+      image = await fetchImageById(post.acf.mobile_foto_id);
+    } catch (error) {
+      console.error(error, post);
+    }
     return (image = await fetchImageById(post.acf.mobile_foto_id));
   }
 
-  $: if (post?.id) {
+  $: if (post?.acf.mobile_foto_id) {
     loadImage();
   }
 </script>

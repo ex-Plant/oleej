@@ -16,10 +16,10 @@
     </div>
     <p class="h-10 pt-4 text-mobile18 font-bold">piotrolej@gmail.com</p>
   </a>
-  <div class="flex space-x-12">
+  <div class="flex space-x-12 items-center">
     <p class="text-mobile18 font-bold">IG</p>
     <div class="grid">
-      <p class="h-6 text-mobile16">olejtopisze</p>
+      <p class="text-mobile16">olejtopisze</p>
     </div>
   </div>
 </div>

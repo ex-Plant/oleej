@@ -1,7 +1,5 @@
 
 <script lang="ts">
-  //todo -> change prerendered to true when development is over
-  // todo static page  - add If you use a CI/CD pipeline, automate this process to  run whenever you update the data
   //  on your WordPress backend
   import '../app.css';
   import { fade } from 'svelte/transition';
