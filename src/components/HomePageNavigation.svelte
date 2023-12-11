@@ -2,7 +2,8 @@
   import AllCategoriesButton from '../assets/AllCategoriesButton.svelte';
   import { twMerge } from 'tailwind-merge';
   import { currentCategory } from '../store/HomeStore';
-  export let categories: string[];
+  import { postCategories } from "../store/global";
+
   export let top: boolean;
 
   function filterByCategory(category: string) {
@@ -30,7 +31,7 @@
         class="{'absolute bottom-0 left-[50%] h-[1px] w-0 rounded bg-black duration-200' +
           ' group-hover:left-0 group-hover:w-full'}"></span>
     </button>
-    {#each categories as category}
+    {#each $postCategories as category}
       <button
         class="group relative"
         on:click="{() => filterByCategory(category)}"
