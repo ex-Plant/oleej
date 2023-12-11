@@ -1,7 +1,6 @@
 <script lang="ts">
   /** @type {import('./$types').PageData} */
 
-  export const prerender = true;
   import { onMount } from 'svelte';
   import { CldImage } from 'svelte-cloudinary';
   import { customSanitization } from '../../helpers/customSanitization';
@@ -18,7 +17,6 @@
   } = data;
 
   onMount(() => window.scrollTo(0, 0));
-
 </script>
 
 <main
@@ -75,7 +73,9 @@
   <div
     class="flex items-center justify-center space-x-6 border-t border-black px-[clamp(20px,6vw,60px)] py-8"
   >
-    <span class="whitespace-nowrap text-mobile28 sm:text-mobile34 "> NAPISZ DO MNIE </span>
+    <span class="whitespace-nowrap text-mobile28 sm:text-mobile34">
+      NAPISZ DO MNIE
+    </span>
     <div>
       <BigArrowUp />
     </div>

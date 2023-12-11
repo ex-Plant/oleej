@@ -1,8 +1,8 @@
 export type ACFPostType = {
-  blog_right_side_foto: number;
+  blog_right_side_foto_id: number;
   category: string;
-  foto_id: number;
-  hero_desktop_id: number;
+  mobile_foto_id: number;
+  blog_desktop_foto_id: number;
   post_content: string;
   post_description: string;
   slug: string;
@@ -35,25 +35,6 @@ export type ImageType = {
   source_url: string;
 };
 
-
-export type AboutMePageData = {
-  acf: {
-    main_text: string;
-    txt_under_pictures: string;
-    main_foto_id: number;
-    secondary_foto_id: number;
-    small_foto_id: number;
-  }
-}[];
-
-export type AboutMePageProps = {
-  mainFoto: ImageType;
-  secondary_foto: ImageType;
-  small_foto: ImageType;
-  main_text: string;
-  txt_under_pictures: string,
-
-};
 
 export type postSlugMapType = {
   [key: string]: { slug: string; index: number };
