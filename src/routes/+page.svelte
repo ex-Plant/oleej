@@ -1,20 +1,14 @@
 <script lang="ts">
   import HomePageNavigation from '../components/HomePageNavigation.svelte';
   import Home from '../components/Home.svelte';
-  import { onMount } from 'svelte';
-  import { allPosts, loading, postCategories } from "../store/global";
+  import { onDestroy, onMount } from "svelte";
   import { getClientWidth, md } from "../store/clientWidthStore";
-
-  export let data;
+  import { browser } from "$app/environment";
 
   let mainRef: HTMLElement;
   let top = false;
 
   onMount(() => {
-    allPosts.set(data.allPosts);
-    postCategories.set(data.postCategories);
-    window.scrollTo(0, 0);
-    loading.set(false);
     if (!$md) return;
     window.addEventListener('scroll', checkElementPosition);
   });
@@ -26,6 +20,12 @@
   }
 
   $: getClientWidth();
+
+  onDestroy(() => {
+    if (browser) {
+    window.removeEventListener('scroll', checkElementPosition);
+    }
+  });
 
 </script>
 

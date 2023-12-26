@@ -1,14 +1,17 @@
 <script lang="ts">
-  import { allPosts, currentCategory } from '../store/global';
+  import { activePostCat } from '../store/global';
   import BlogPostCard from './BlogPostCard.svelte';
+  import { page } from '$app/stores';
+  import type { PostType } from '../types';
 
-  $: postsFilteredByCategory = $allPosts;
+  $: allPosts = $page.data.allPosts;
+  $: postsFilteredByCategory = allPosts;
 
-  $: if ($currentCategory === '') {
-    postsFilteredByCategory = $allPosts;
+  $: if ($activePostCat === '') {
+    postsFilteredByCategory = allPosts;
   } else {
-    postsFilteredByCategory = $allPosts.filter(
-      (post) => post.acf.category === $currentCategory,
+    postsFilteredByCategory = allPosts.filter(
+      (post: PostType) => post.acf.category === $activePostCat,
     );
   }
 </script>

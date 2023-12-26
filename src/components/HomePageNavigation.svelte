@@ -1,13 +1,12 @@
 <script lang="ts">
   import AllCategoriesButton from '../assets/AllCategoriesButton.svelte';
   import { twMerge } from 'tailwind-merge';
-  import { currentCategory, postCategories } from "../store/global";
+  import { activePostCat } from "../store/global";
+  import { page } from "$app/stores";
 
   export let top: boolean;
+  $: postCategories = $page.data.postCategories;
 
-  function filterByCategory(category: string) {
-    currentCategory.set(category);
-  }
 </script>
 
 <div
@@ -23,17 +22,17 @@
     <button
       class="group relative"
       aria-label="reset categories"
-      on:click="{() => filterByCategory('')}"
+      on:click="{() =>  activePostCat.set('')}"
     >
       <AllCategoriesButton />
       <span
         class="{'absolute bottom-0 left-[50%] h-[1px] w-0 rounded bg-black duration-200' +
           ' group-hover:left-0 group-hover:w-full'}"></span>
     </button>
-    {#each $postCategories as category}
+    {#each postCategories as category}
       <button
         class="group relative"
-        on:click="{() => filterByCategory(category)}"
+        on:click="{() =>  activePostCat.set(category)}"
       >
         <span class="whitespace-nowrap text-mobile14 md:text-desktop24">
           {category}</span

@@ -1,12 +1,11 @@
 <script lang="ts">
   import { twMerge } from 'tailwind-merge';
-  import { loading } from '../store/global';
+
 </script>
 
 <div
   class="{twMerge(
     'fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2',
-    $loading ? 'block' : 'hidden',
   )}"
 >
   <div role="status" class="flex items-center justify-center">

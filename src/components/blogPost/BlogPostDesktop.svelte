@@ -6,6 +6,7 @@
   import { spacesToDashes } from '../../helpers/spacesToDashes';
   import BigArrowDown from '../../assets/BigArrowDown.svelte';
   import SmallArrowUp from '../../assets/SmallArowUp.svelte';
+  import { CldImage } from "svelte-cloudinary";
 
   export let postData: PostType;
   export let post_content: string;
@@ -17,7 +18,9 @@
   $: allPosts = $page.data.allPosts;
   $: post = postData.acf;
   $: publishDate = convertDateToNumericString(postData.date);
-  $: currPostIndex = allPosts.findIndex((p: PostType) => p.acf.slug === post.slug);
+  $: currPostIndex = allPosts.findIndex(
+    (p: PostType) => p.acf.slug === post.slug,
+  );
   $: nextPostSlug = allPosts[0]?.acf.slug;
 
   $: if (currPostIndex >= 0 && currPostIndex < allPosts.length - 1) {
@@ -61,12 +64,20 @@
     </div>
   </header>
 
+<!--  class=" z-[-100] h-[330px] w-full object-cover" todo-->
   <div class="w-full">
-    <img
-      class=" z-[-100] h-[330px] w-full object-cover"
-      src="{postFoto?.source_url}"
-      alt="alt"
-    />
+    {#if postFoto}
+      <CldImage
+        priority={true}
+        height="330"
+        width="1440"
+        quality="100"
+        placeholder="blur"
+        sizes="100vw"
+        src="{postFoto?.source_url}"
+        alt="{postFoto?.alt_text}"
+      />
+    {/if}
     <p class="text-xs w-full pt-3 text-12">
       {@html customSanitization(postFoto?.caption?.rendered)}
     </p>
