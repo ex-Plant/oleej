@@ -1,41 +1,29 @@
 <script lang="ts">
-  import { convertDateToNumericString } from '../../helpers/convertDateToNumericString';
-  import BigArrowDown from '../../assets/BigArrowDown.svelte';
-  import { customSanitization } from '../../helpers/customSanitization';
-  import SmallArowUp from '../../assets/SmallArowUp.svelte';
-  import FooterPostList from './FooterPostList.svelte';
+  import { page } from '$app/stores';
   import type { ImageType, PostType } from '../../types';
-  import { spacesToDashes } from "../../helpers/spacesToDashes";
-  import { allPosts, postsSlugMap } from "../../store/global";
+  import { convertDateToNumericString } from '../../helpers/convertDateToNumericString';
+  import { customSanitization } from '../../helpers/customSanitization';
+  import { spacesToDashes } from '../../helpers/spacesToDashes';
+  import BigArrowDown from '../../assets/BigArrowDown.svelte';
+  import SmallArrowUp from '../../assets/SmallArowUp.svelte';
+
   export let postData: PostType;
+  export let post_content: string;
   export let postFoto: ImageType;
   export let globalFoto: ImageType;
   export let postSideFoto: ImageType;
   export let timeString: string;
 
-  let nextPostSlug: string;
-  let nextBlogPostLink: string;
-
-  $: post_description = postData.acf.post_description;
-  $: category = postData.acf.category;
-  $: title = postData.acf.title;
-  $: post_content = postData.acf.post_content;
-  $: caption = postFoto?.caption?.rendered;
+  $: allPosts = $page.data.allPosts;
+  $: post = postData.acf;
   $: publishDate = convertDateToNumericString(postData.date);
+  $: currPostIndex = allPosts.findIndex((p: PostType) => p.acf.slug === post.slug);
+  $: nextPostSlug = allPosts[0]?.acf.slug;
 
-
-  $: postMap = $postsSlugMap[postData.acf.slug];
-  $: currentId = postMap ? $allPosts.findIndex(post => post.acf.slug === postMap.slug) : -1;
-  $: if (currentId >= 0 && currentId < $allPosts.length - 1) {
-    nextPostSlug = $allPosts[currentId + 1].acf.slug;
-  } else {
-    nextPostSlug = $allPosts[0].acf.slug;
+  $: if (currPostIndex >= 0 && currPostIndex < allPosts.length - 1) {
+    nextPostSlug = allPosts[currPostIndex + 1]?.acf.slug;
   }
-
-  $: if (nextPostSlug) {
-    nextBlogPostLink = `/blog/${spacesToDashes(nextPostSlug)}`;
-  }
-
+  $: nextBlogPostLink = `/blog/${spacesToDashes(nextPostSlug)}`;
 </script>
 
 <main
@@ -49,22 +37,19 @@
     </div>
     <div class="flex w-full flex-col pr-[clamp(65px,9vw,130px)]">
       <div class="flex gap-x-4 pb-3">
-        {#if category}
+        {#if post.category}
           <h3 class=" text-desktop24 uppercase">
-            {category}
+            {post.category}
           </h3>
         {/if}
-        <span class="text-desktop20"
-          >czyta się {timeString}
-        </span
-        >
+        <span class="text-desktop20">czyta się {timeString} </span>
       </div>
-      <h1 class="w-full text-desktop64 font-bold">{title}</h1>
+      <h1 class="w-full text-desktop64 font-bold">{post.title}</h1>
     </div>
     <div>
       <a
         href="{nextBlogPostLink}"
-        class="group relative whitespace-nowrap pb-1 text-desktop20 "
+        class="group relative whitespace-nowrap pb-1 text-desktop20"
       >
         <span> KOLEJNY ARTYKUL </span>
         <span
@@ -83,7 +68,7 @@
       alt="alt"
     />
     <p class="text-xs w-full pt-3 text-12">
-      {@html customSanitization(caption)}
+      {@html customSanitization(postFoto?.caption?.rendered)}
     </p>
   </div>
   <section
@@ -92,25 +77,31 @@
   >
     <div class="grid gap-y-6 xl:gap-y-12">
       <p class="border-b border-black pb-6 text-desktop24 xl:pb-12">
-        {post_description}
+        {post.post_description}
       </p>
       <div
-        class=" postContent text-desktop20 leading-[150%]  [&:p]:py-2  [&_h1]:text-24 [&_h2]:py-4  [&_h3]:py-2 [&_h4]:py-2 [&_h5]:py-2  [&_*]:block [&_b]:px-0 [&_*]px-0 [&_strong]:px-0
-        [&_h6]:py-2 tracking-[-0.2px]"
-
-
+        class=" postContent [&_*]px-0 text-desktop20 leading-[150%] tracking-[-0.2px] [&:p]:py-2 [&_*]:block [&_b]:px-0 [&_h1]:text-24 [&_h2]:py-4 [&_h3]:py-2 [&_h4]:py-2 [&_h5]:py-2
+        [&_h6]:py-2 [&_strong]:px-0"
       >
         {@html customSanitization(post_content)}
       </div>
-      <div class=' text-desktop20 leading-[150%]  tracking-[-0.8px]  outline '>
-        Bezsenność towarzyszy mi od kilkunastu lat. Przyszła w nocy, szukając schronu. Pozwoliłem jej zostać u siebie tak długo, aż nabierze sił i wyruszy dalej. Nie wiedziałem wtedy, że dotarła do celu, a ja rozpoczynałem drogę przez mękę.
-        Bezsenność towarzyszy mi od kilkunastu lat. Przyszła w nocy, szukając schronu. Pozwoliłem jej zostać u siebie tak długo, aż nabierze sił i wyruszy dalej. Nie wiedziałem wtedy, że dotarła do celu, a ja rozpoczynałem drogę przez mękę.
-        Przybłęda
-        stawała się nie do zniesienia. Przez nią spóźniałem się do pracy i traciłem w oczach swoich chlebodawców. Przez nią zaniedbywałem relacje i zasmucałem swoich bliskich. Przez nią popadałem w psychozy i nie ufałem sobie.
-
-        W końcu poprosiłem moją namolną współlokatorkę, aby się wyniosła albo chociaż dała mi się wyspać. Odpowiedziała na to, że ani jej się śni. Nie wierzyłem własnym uszom. Nerwy mi puściły i powtórzyłem swoje życzenie. Tym razem w sposób głośny i niecenzuralny.
-
-        W odpowiedzi usłyszałem śmiech. Sardoniczny, drwiący rechot. Później nastała ciemność, a ja dalej nie mogłem zasnąć.
+      <div class=" text-desktop20 leading-[150%] tracking-[-0.8px] outline">
+        Bezsenność towarzyszy mi od kilkunastu lat. Przyszła w nocy, szukając
+        schronu. Pozwoliłem jej zostać u siebie tak długo, aż nabierze sił i
+        wyruszy dalej. Nie wiedziałem wtedy, że dotarła do celu, a ja
+        rozpoczynałem drogę przez mękę. Bezsenność towarzyszy mi od kilkunastu
+        lat. Przyszła w nocy, szukając schronu. Pozwoliłem jej zostać u siebie
+        tak długo, aż nabierze sił i wyruszy dalej. Nie wiedziałem wtedy, że
+        dotarła do celu, a ja rozpoczynałem drogę przez mękę. Przybłęda stawała
+        się nie do zniesienia. Przez nią spóźniałem się do pracy i traciłem w
+        oczach swoich chlebodawców. Przez nią zaniedbywałem relacje i zasmucałem
+        swoich bliskich. Przez nią popadałem w psychozy i nie ufałem sobie. W
+        końcu poprosiłem moją namolną współlokatorkę, aby się wyniosła albo
+        chociaż dała mi się wyspać. Odpowiedziała na to, że ani jej się śni. Nie
+        wierzyłem własnym uszom. Nerwy mi puściły i powtórzyłem swoje życzenie.
+        Tym razem w sposób głośny i niecenzuralny. W odpowiedzi usłyszałem
+        śmiech. Sardoniczny, drwiący rechot. Później nastała ciemność, a ja
+        dalej nie mogłem zasnąć.
       </div>
       <div class=" flex items-center">
         <p class="text-desktop20">
@@ -122,7 +113,7 @@
           class=" text-desktop14 flex h-6 items-center space-x-2 pl-12 font-bold uppercase"
         >
           <button on:click="{() => alert('oh hi mark!')}">UDOSTĘPNIJ</button>
-          <SmallArowUp />
+          <SmallArrowUp />
         </p>
       </div>
     </div>

@@ -1,54 +1,58 @@
 /** @type {import('./$types').PageLoad} */
 import { error } from '@sveltejs/kit';
 import type { Load } from '@sveltejs/kit';
-import type { postSlugMapType, PostType } from '../../../types';
+import type { PostType } from '../../../types';
 import { fetchImageById } from '../../api/fetch-post-image';
 import { baseUrl } from '../../../constans/constans';
-import { allPosts, postsSlugMap } from '../../../store/global';
-import { get } from "svelte/store";
+import { spacesToDashes } from '../../../helpers/spacesToDashes';
 
 export const load: Load = async ({ params }) => {
-  let postData: PostType;
-  const getPostFromSlug = `https://serwer2304048.home.pl/wordpress/wp-json/mycustom/v1/posts/${params.slug}`;
-  const res = await fetch(getPostFromSlug);
-  if (res.ok) {
-    postData = await res.json();
-  } else {
-    throw error(404, 'Missing post data');
+
+  async function getGlobalFoto() {
+    const globalRes = await fetch(`${baseUrl}pages?slug=global`);
+    const global = await globalRes.json();
+    return global[0]?.acf?.foto_id;
   }
 
-  async function getImageData(id: number) {
-    return await fetchImageById(id);
+  async function getAllPosts() {
+    const allPostsRes = await fetch(`${baseUrl}posts`);
+
+    if (!allPostsRes.ok) {
+      error(404, 'Missing posts data');
+    }
+
+    return await allPostsRes.json();
   }
 
-  const mobile_foto = getImageData(postData.acf.mobile_foto_id);
-  const blogSideFoto = getImageData(postData.acf.blog_right_side_foto_id);
-  const blogDesktopFoto = getImageData(postData.acf.blog_desktop_foto_id);
+  async function getPostData() {
 
-  const globalRes = await fetch(`${baseUrl}pages?slug=global`);
-  const global = await globalRes.json();
-  const globalFoto = global[0].acf.foto_id;
+    const data = await getAllPosts();
 
-  function setPostSlugMap(posts: PostType[]) {
-    const newMap: postSlugMapType = {};
+    const postData = data.find(
+      (post: PostType) => spacesToDashes(post.acf.slug) === params.slug,
+    );
 
-    posts.forEach((post, index) => {
-      newMap[post.acf.slug] = {
-        slug: post.acf.slug,
-        index: index,
-      };
-    });
-    return newMap;
+    const mobile_foto = await fetchImageById(postData?.acf?.mobile_foto_id);
+
+    const blog_right_side_foto = await fetchImageById(
+      postData?.acf?.blog_right_side_foto_id,
+    );
+
+    const blog_desktop_foto = await fetchImageById(
+      postData?.acf?.blog_desktop_foto_id,
+    );
+
+    return {
+      postData,
+      mobile_foto,
+      blog_right_side_foto,
+      blog_desktop_foto,
+    };
   }
-
-  const map = setPostSlugMap(get(allPosts));
-  postsSlugMap.set(map);
 
   return {
-    postData,
-    globalFoto,
-    postFotoMobile: mobile_foto,
-    postFotoDesktop: blogDesktopFoto,
-    postSideFoto: blogSideFoto,
+    post: getPostData(),
+    globalFoto: getGlobalFoto(),
+    allPosts: getAllPosts(),
   };
 };

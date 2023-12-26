@@ -34,8 +34,3 @@ export type ImageType = {
   };
   source_url: string;
 };
-
-
-export type postSlugMapType = {
-  [key: string]: { slug: string; index: number };
-};

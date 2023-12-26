@@ -9,6 +9,8 @@ export const load: Load = async () => {
   let postCategories = allPosts.map((post: PostType) => post.acf.category);
   postCategories = [...new Set(postCategories)];
 
+
+
   return {
     allPosts,
     postCategories

@@ -3,15 +3,16 @@
   import BlogPostMobile from '../../../components/blogPost/BlogPostMobile.svelte';
   import BlogPostDesktop from '../../../components/blogPost/BlogPostDesktop.svelte';
   export let data: PageData;
-  $: globalFoto = data.globalFoto;
-  $: postData = data.postData;
-  $: postFotoMobile = data.postFotoMobile;
-  $: postFotoDesktop = data.postFotoDesktop;
-  $: postSideFoto = data.postSideFoto;
-  $: post_content = postData.acf.post_content;
+  const post = data.post;
+
+  const globalFoto = data?.globalFoto;
+  $: postFotoMobile = post?.mobile_foto;
+  $: postFotoDesktop = post?.blog_desktop_foto;
+  $: postSideFoto = post?.blog_right_side_foto;
+  $: post_content = post.postData?.acf?.post_content;
 
   function countWords(text: string) {
-    return text.split(/\s+/).length;
+    return text?.split(/\s+/).length;
   }
 
   $: numberOfWords = countWords(post_content);
@@ -19,35 +20,32 @@
   let timeString: string;
 
   $: if (readingTimeInMinutes < 1) {
-    timeString = "mniej niż minutę";
-
+    timeString = 'mniej niż minutę';
   } else if (readingTimeInMinutes === 1) {
-    timeString = "minutę";
-
+    timeString = 'minutę';
   } else if (readingTimeInMinutes >= 2 && readingTimeInMinutes <= 4) {
     timeString = ` ${readingTimeInMinutes} minuty`;
-
   } else {
     timeString = `${readingTimeInMinutes} minut`;
-  };
-
-
+  }
 </script>
 
 <main class="px-[clamp(20px,6vw,40px)] md:hidden">
   <BlogPostMobile
-    postData="{postData}"
+    postData="{post.postData}"
     postFoto="{postFotoMobile}"
     globalFoto="{globalFoto}"
-    timeString='{timeString}'
+    timeString="{timeString}"
+    post_content="{post_content}"
   />
-</main>
-<main class="hidden md:block">
-  <BlogPostDesktop
-    postData="{postData}"
-    postFoto="{postFotoDesktop}"
-    globalFoto="{globalFoto}"
-    postSideFoto="{postSideFoto}"
-    timeString='{timeString}'
-  />
+  </main>
+  <main class="hidden md:block">
+    <BlogPostDesktop
+      post_content='{post_content}'
+      postData="{post.postData}"
+      postFoto="{postFotoDesktop}"
+      globalFoto="{globalFoto}"
+      postSideFoto="{postSideFoto}"
+      timeString='{timeString}'
+    />
 </main>

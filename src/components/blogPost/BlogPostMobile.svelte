@@ -4,16 +4,19 @@
   import { customSanitization } from '../../helpers/customSanitization';
   import SmallArowUp from '../../assets/SmallArowUp.svelte';
   import type { ImageType, PostType } from "../../types";
+  import { CldImage } from "svelte-cloudinary";
   export let globalFoto: ImageType;
   export let postFoto: ImageType;
   export let postData: PostType;
+  export let post_content: string;
   export let timeString: string;
-  $: post_description = postData.acf.post_description
-  $: category = postData.acf.category
-  $: title = postData.acf.title
-  $: post_content = postData.acf.post_content
+  $: post_description = postData?.acf?.post_description
+  $: category = postData?.acf?.category
+  $: title = postData?.acf?.title
   $: caption = postFoto?.caption?.rendered;
   $: publishDate = convertDateToNumericString(postData.date);
+
+  $: console.log(postData);
 </script>
 
 <section class=" grid gap-y-6 pt-6">
@@ -24,7 +27,15 @@
 
   <div class="mx-auto">
     <p class='text-mobile12 pb-3'> Czyta się ok {timeString} minut</p>
-    <img class=" z-[-100]" src="{postFoto?.source_url}" alt="alt" />
+    <CldImage
+      sizes="100vw max-width: 768px"
+      src="{postFoto?.source_url}"
+      alt="{postFoto?.alt_text}"
+      height="420"
+      layout="fullWidth"
+      quality="100"
+      placeholder="blur"
+    />
     <p class="text-xs w-full pt-3 text-10">
       {@html customSanitization(caption)}
     </p>
