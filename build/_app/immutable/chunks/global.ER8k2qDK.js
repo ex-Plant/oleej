@@ -1,0 +1,1 @@
+import{w as o}from"./index.f2PuVC9h.js";const s=o(""),a=o({posts:[],postCategories:[],imagesData:[]}),e=o({mainFoto:{},secondary_foto:{},small_foto:{},main_text:"",txt_under_pictures:""}),r=o(),c=o([]),l=o([]),n=o([]),_=o(!1);export{a,e as b,c,l as d,n as e,_ as f,r as g,s as h};
