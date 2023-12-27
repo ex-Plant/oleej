@@ -4,7 +4,7 @@ import type { Load } from '@sveltejs/kit';
 
 import { baseUrl } from '../../../constans/constans';
 import { fetchImageById } from "../../api/fetch-post-image";
-export const prerender = true;
+
 
 export const load: Load = async ({ params }) => {
 
@@ -51,3 +51,5 @@ export const load: Load = async ({ params }) => {
     globalFoto: await getGlobalFoto(),
   };
 };
+
+export const prerender = true;
