@@ -16,8 +16,8 @@
   export let timeString: string;
 
   $: allPosts = $page.data.allPosts;
-  $: post = postData.acf;
-  $: publishDate = convertDateToNumericString(postData.date);
+  $: post = postData?.acf;
+  $: publishDate = convertDateToNumericString(postData?.date);
   $: currPostIndex = allPosts.findIndex(
     (p: PostType) => p.acf.slug === post.slug,
   );

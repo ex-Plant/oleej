@@ -3,7 +3,7 @@
   import BlogPostMobile from '../../../components/blogPost/BlogPostMobile.svelte';
   import BlogPostDesktop from '../../../components/blogPost/BlogPostDesktop.svelte';
   export let data: PageData;
-  const post = data.post;
+  const post = data?.post;
 
   const globalFoto = data?.globalFoto;
   $: postFotoMobile = post?.mobile_foto;
@@ -30,22 +30,24 @@
   }
 </script>
 
-<main class="px-[clamp(20px,6vw,40px)] md:hidden">
-  <BlogPostMobile
-    postData="{post.postData}"
-    postFoto="{postFotoMobile}"
-    globalFoto="{globalFoto}"
-    timeString="{timeString}"
-    post_content="{post_content}"
-  />
+{#if post?.postData}
+  <main class="px-[clamp(20px,6vw,40px)] md:hidden">
+    <BlogPostMobile
+      postData="{post.postData}"
+      postFoto="{postFotoMobile}"
+      globalFoto="{globalFoto}"
+      timeString="{timeString}"
+      post_content="{post_content}"
+    />
   </main>
   <main class="hidden md:block">
     <BlogPostDesktop
-      post_content='{post_content}'
+      post_content="{post_content}"
       postData="{post.postData}"
       postFoto="{postFotoDesktop}"
       globalFoto="{globalFoto}"
       postSideFoto="{postSideFoto}"
-      timeString='{timeString}'
+      timeString="{timeString}"
     />
-</main>
+  </main>
+{/if}

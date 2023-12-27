@@ -13,8 +13,8 @@
   export let post_content: string;
   export let timeString: string;
 
-  $: post = postData.acf;
-  $: publishDate = convertDateToNumericString(postData.date);
+  $: post = postData?.acf;
+  $: publishDate = convertDateToNumericString(postData?.date);
 
 </script>
 
