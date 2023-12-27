@@ -11,6 +11,7 @@ export type ACFPostType = {
 
 export type PostType = {
   acf: ACFPostType;
+  slug: string;
   author: number;
   categories: number[];
   date: Date;
@@ -19,12 +20,11 @@ export type PostType = {
   type: string;
 };
 
-
 export type ImageType = {
   caption: {
     rendered: string;
   };
-  alt_text: string,
+  alt_text: string;
   id: number;
   link: string;
   media_details: {

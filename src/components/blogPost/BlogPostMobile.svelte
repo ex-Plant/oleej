@@ -1,14 +1,18 @@
 <script lang="ts">
-  import type { ImageType, PostType } from "../../types";
+  import type { PostType } from "../../types";
   import { convertDateToNumericString } from '../../helpers/convertDateToNumericString';
   import { customSanitization } from '../../helpers/customSanitization';
   import { CldImage } from "svelte-cloudinary";
 
   import BigArrowDown from '../../assets/BigArrowDown.svelte';
   import SmallArrowUp from '../../assets/SmallArowUp.svelte';
+  import { blogPost_mobile_fotosStore, globalFotoStore } from "../../store/global";
 
-  export let globalFoto: ImageType;
-  export let postFoto: ImageType;
+
+  $: globalFoto = $globalFotoStore;
+  $: blogMobileFotos = $blogPost_mobile_fotosStore;
+  $: postFoto = blogMobileFotos?.find((foto) => foto.id === postData?.acf.mobile_foto_id);
+
   export let postData: PostType;
   export let post_content: string;
   export let timeString: string;

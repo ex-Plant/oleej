@@ -1,32 +1,35 @@
 <script lang="ts">
-  import { page } from '$app/stores';
-  import type { ImageType, PostType } from '../../types';
+  import type { PostType } from '../../types';
   import { convertDateToNumericString } from '../../helpers/convertDateToNumericString';
   import { customSanitization } from '../../helpers/customSanitization';
   import { spacesToDashes } from '../../helpers/spacesToDashes';
   import BigArrowDown from '../../assets/BigArrowDown.svelte';
   import SmallArrowUp from '../../assets/SmallArowUp.svelte';
   import { CldImage } from "svelte-cloudinary";
+  import { allPostsStore, blogPost_desktop_fotosStore, blogPost_mobile_fotosStore, globalFotoStore } from "../../store/global";
+
+  $: globalFoto = $globalFotoStore;
+  $: desktopPostFotoS = $blogPost_desktop_fotosStore;
+  $: postFoto = desktopPostFotoS?.find((foto) => foto.id === postData?.acf.blog_desktop_foto_id);
+  $: rightSideFotos = $blogPost_mobile_fotosStore;
+  $: postSideFoto = rightSideFotos?.find((foto) => foto.id === postData?.acf.blog_right_side_foto_id);
 
   export let postData: PostType;
   export let post_content: string;
-  export let postFoto: ImageType;
-  export let globalFoto: ImageType;
-  export let postSideFoto: ImageType;
   export let timeString: string;
 
-  // $: allPosts = $page.data.allPosts;
+  $: allPosts = $allPostsStore.posts;
   $: post = postData?.acf;
   $: publishDate = convertDateToNumericString(postData?.date);
-  // $: currPostIndex = allPosts.findIndex(
-  //   (p: PostType) => p.acf.slug === post.slug,
-  // );
-  // $: nextPostSlug = allPosts[0]?.acf.slug;
-  //
-  // $: if (currPostIndex >= 0 && currPostIndex < allPosts.length - 1) {
-  //   nextPostSlug = allPosts[currPostIndex + 1]?.acf.slug;
-  // }
-  // $: nextBlogPostLink = `/blog/${spacesToDashes(nextPostSlug)}`;
+  $: currPostIndex = allPosts.findIndex(
+    (p: PostType) => p.acf.slug === post.slug,
+  );
+  $: nextPostSlug = allPosts[0]?.acf.slug;
+
+  $: if (currPostIndex >= 0 && currPostIndex < allPosts.length - 1) {
+    nextPostSlug = allPosts[currPostIndex + 1]?.acf.slug;
+  }
+  $: nextBlogPostLink = `/blog/${spacesToDashes(nextPostSlug)}`;
 </script>
 
 <main
@@ -49,22 +52,21 @@
       </div>
       <h1 class="w-full text-desktop64 font-bold">{post.title}</h1>
     </div>
-<!--    <div>-->
-<!--      <a-->
-<!--        href="{nextBlogPostLink}"-->
-<!--        class="group relative whitespace-nowrap pb-1 text-desktop20"-->
-<!--      >-->
-<!--        <span> KOLEJNY ARTYKUL </span>-->
-<!--        <span-->
-<!--          class="{'absolute bottom-[-3px] left-[50%] h-[1px] w-0 rounded bg-black duration-300' +-->
-<!--            ' group-hover:left-0 group-hover:w-full'}"-->
-<!--        >-->
-<!--        </span>-->
-<!--      </a>-->
-<!--    </div>-->
+    <div>
+      <a
+        href="{nextBlogPostLink}"
+        class="group relative whitespace-nowrap pb-1 text-desktop20"
+      >
+        <span> KOLEJNY ARTYKUL </span>
+        <span
+          class="{'absolute bottom-[-3px] left-[50%] h-[1px] w-0 rounded bg-black duration-300' +
+            ' group-hover:left-0 group-hover:w-full'}"
+        >
+        </span>
+      </a>
+    </div>
   </header>
 
-<!--  class=" z-[-100] h-[330px] w-full object-cover" todo-->
   <div class="w-full">
     {#if postFoto}
       <CldImage

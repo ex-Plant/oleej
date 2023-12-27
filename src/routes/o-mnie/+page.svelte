@@ -4,8 +4,9 @@
   import { CldImage } from 'svelte-cloudinary';
   import { customSanitization } from '../../helpers/customSanitization';
   import BigArrowUp from '../../assets/BigArrowUp.svelte';
+  import { aboutPageStore } from "../../store/global";
 
-  export let data;
+  $: data = $aboutPageStore;
 
 </script>
 

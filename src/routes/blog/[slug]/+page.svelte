@@ -1,14 +1,13 @@
 <script lang="ts">
-  import type { PageData } from './$types';
   import BlogPostMobile from '../../../components/blogPost/BlogPostMobile.svelte';
   import BlogPostDesktop from '../../../components/blogPost/BlogPostDesktop.svelte';
-  export let data: PageData;
-  const post = data?.post?.postData[0];
+  import { allPostsStore } from "../../../store/global";
+  import { page } from "$app/stores";
+  import type { PostType } from "../../../types";
 
-  const globalFoto = data?.globalFoto;
-  $: postFotoMobile = data?.post?.mobile_foto;
-  $: postFotoDesktop = data?.post?.blog_desktop_foto;
-  $: postSideFoto = data?.post?.blog_right_side_foto;
+  $: slug = $page.params.slug;
+  $: posts = $allPostsStore?.posts;
+  $: post = posts?.find((post: PostType) => post.slug === slug);
   $: post_content = post.acf?.post_content;
 
   function countWords(text: string) {
@@ -34,8 +33,6 @@
   <main class="px-[clamp(20px,6vw,40px)] md:hidden">
     <BlogPostMobile
       postData="{post}"
-      postFoto="{postFotoMobile}"
-      globalFoto="{globalFoto}"
       timeString="{timeString}"
       post_content="{post_content}"
     />
@@ -44,9 +41,6 @@
     <BlogPostDesktop
       post_content="{post_content}"
       postData="{post}"
-      postFoto="{postFotoDesktop}"
-      globalFoto="{globalFoto}"
-      postSideFoto="{postSideFoto}"
       timeString="{timeString}"
     />
   </main>

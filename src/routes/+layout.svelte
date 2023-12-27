@@ -6,6 +6,13 @@
   import Footer from '../components/footer/Footer.svelte';
   import Spinner from '../components/Spinner.svelte';
   import { navigating } from '$app/stores';
+  import { onMount } from 'svelte';
+  import { dataIsLoadedStore } from '../store/global';
+
+  onMount(() => {
+    dataIsLoadedStore.set(true);
+  });
+
 </script>
 
 <div class=" flex min-h-[100svh] flex-col">
