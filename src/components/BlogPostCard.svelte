@@ -10,7 +10,7 @@
 </script>
 
 {#if postImage}
-  <a class="" href="{`/blog/${spacesToDashes(post.acf.slug)}`}">
+  <a class="" href="{`/blog/${post.slug}`}">
     <!--MOBILE-->
     <article
       class=" mt-[-1px] grid gap-y-6 border-t border-black py-6 first:border-0 md:hidden"

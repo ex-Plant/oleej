@@ -19,7 +19,7 @@
 </script>
 
 <section class=" grid gap-y-6 pt-6">
-  {#if post.category}
+  {#if post?.category}
     <h3 class="w-full text-center text-mobile14 uppercase ">{post.category}</h3>
   {/if}
   <h1 class="w-full text-center text-mobile28 font-bold">{post.title}</h1>
@@ -28,11 +28,12 @@
     <p class='text-mobile12 pb-3'> Czyta się ok {timeString} minut</p>
     <CldImage
       sizes="100vw max-width: 768px"
+      width="768"
+      class="object-top"
+      aspectRatio={316/260}
+      height='auto'
       src="{postFoto?.source_url}"
       alt="{postFoto?.alt_text}"
-      height="420"
-      layout="fullWidth"
-      quality="100"
       placeholder="blur"
     />
     <p class="text-xs w-full pt-3 text-10">
@@ -70,8 +71,11 @@
 
 <section title="skontaktuj się ze mną " class="grid grid-cols-2 gap-x-6 py-6   ">
   <div class=" flex   ">
-    <img
-      class="  object-cover w-full object-top aspect-[150/120]"
+    <CldImage
+      sizes="(max-width: 768px) 50vw"
+      aspectRatio={150/120}
+      height="auto"
+      width="384"
       src="{globalFoto?.source_url}"
       alt="alt"
     />

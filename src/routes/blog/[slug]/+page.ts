@@ -1,58 +1,52 @@
 /** @type {import('./$types').PageLoad} */
 import { error } from '@sveltejs/kit';
 import type { Load } from '@sveltejs/kit';
-import type { PostType } from '../../../types';
-import { fetchImageById } from '../../api/fetch-post-image';
+
 import { baseUrl } from '../../../constans/constans';
-import { spacesToDashes } from '../../../helpers/spacesToDashes';
+import { fetchImageById } from "../../api/fetch-post-image";
 
 export const load: Load = async ({ params }) => {
 
-  async function getGlobalFoto() {
-    const globalRes = await fetch(`${baseUrl}pages?slug=global`);
-    const global = await globalRes.json();
-    return global[0]?.acf?.foto_id;
-  }
 
-  async function getAllPosts() {
-    const allPostsRes = await fetch(`${baseUrl}posts`);
-
-    if (!allPostsRes.ok) {
-      error(404, 'Missing posts data');
-    }
-
-    return await allPostsRes.json();
-  }
 
   async function getPostData() {
 
-    const data = await getAllPosts();
+    const res = await fetch(`${baseUrl}posts?slug=${params.slug}`);
+    if (!res.ok) {
+      console.log(res.status);
+      error(404, 'Missing post data');
+    }
+    const postData = await res.json()
 
-    const postData = data.find(
-      (post: PostType) => spacesToDashes(post.acf.slug) === params.slug,
-    );
+    const fetchUrls = [
+      `${baseUrl}media/${postData[0]?.acf?.mobile_foto_id}`,
+      `${baseUrl}media/${postData[0]?.acf?.blog_right_side_foto_id}`,
+      `${baseUrl}media/${postData[0]?.acf?.blog_desktop_foto_id}`,
+    ];
 
-    const mobile_foto = await fetchImageById(postData?.acf?.mobile_foto_id);
-
-    const blog_right_side_foto = await fetchImageById(
-      postData?.acf?.blog_right_side_foto_id,
-    );
-
-    const blog_desktop_foto = await fetchImageById(
-      postData?.acf?.blog_desktop_foto_id,
-    );
+    const imageResponses = await Promise.all(fetchUrls.map((url) => fetch(url)));
+    const imagesData = await Promise.all(imageResponses.map((res) => res.json()));
 
     return {
       postData,
-      mobile_foto,
-      blog_right_side_foto,
-      blog_desktop_foto,
+      mobile_foto: imagesData[0],
+      blog_right_side_foto: imagesData[1],
+      blog_desktop_foto: imagesData[2],
     };
+  }
+
+  async function getGlobalFoto() {
+    const globalRes = await fetch(`${baseUrl}pages?slug=global`);
+    if (!globalRes.ok) {
+      error(404, 'Missing global data in blog page');
+    }
+    const global = await globalRes.json();
+    const id =  global[0]?.acf?.mainfoto;
+    return fetchImageById(id);
   }
 
   return {
     post: await getPostData(),
     globalFoto: await getGlobalFoto(),
-    allPosts: await getAllPosts(),
   };
 };

@@ -3,13 +3,13 @@
   import BlogPostMobile from '../../../components/blogPost/BlogPostMobile.svelte';
   import BlogPostDesktop from '../../../components/blogPost/BlogPostDesktop.svelte';
   export let data: PageData;
-  const post = data?.post;
+  const post = data?.post?.postData[0];
 
   const globalFoto = data?.globalFoto;
-  $: postFotoMobile = post?.mobile_foto;
-  $: postFotoDesktop = post?.blog_desktop_foto;
-  $: postSideFoto = post?.blog_right_side_foto;
-  $: post_content = post.postData?.acf?.post_content;
+  $: postFotoMobile = data?.post?.mobile_foto;
+  $: postFotoDesktop = data?.post?.blog_desktop_foto;
+  $: postSideFoto = data?.post?.blog_right_side_foto;
+  $: post_content = post.acf?.post_content;
 
   function countWords(text: string) {
     return text?.split(/\s+/).length;
@@ -30,10 +30,10 @@
   }
 </script>
 
-{#if post?.postData}
+{#if post}
   <main class="px-[clamp(20px,6vw,40px)] md:hidden">
     <BlogPostMobile
-      postData="{post.postData}"
+      postData="{post}"
       postFoto="{postFotoMobile}"
       globalFoto="{globalFoto}"
       timeString="{timeString}"
@@ -43,7 +43,7 @@
   <main class="hidden md:block">
     <BlogPostDesktop
       post_content="{post_content}"
-      postData="{post.postData}"
+      postData="{post}"
       postFoto="{postFotoDesktop}"
       globalFoto="{globalFoto}"
       postSideFoto="{postSideFoto}"

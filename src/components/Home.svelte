@@ -5,6 +5,7 @@
   import type { ImageType, PostType } from "../types";
 
   $: data = $page.data.allPosts;
+  $: console.log(data)
   let images: ImageType[]
   $: images = data?.imagesData;
   let postsFilteredByCategory: PostType[] = [];

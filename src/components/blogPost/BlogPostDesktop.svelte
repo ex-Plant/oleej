@@ -15,18 +15,18 @@
   export let postSideFoto: ImageType;
   export let timeString: string;
 
-  $: allPosts = $page.data.allPosts;
+  // $: allPosts = $page.data.allPosts;
   $: post = postData?.acf;
   $: publishDate = convertDateToNumericString(postData?.date);
-  $: currPostIndex = allPosts.findIndex(
-    (p: PostType) => p.acf.slug === post.slug,
-  );
-  $: nextPostSlug = allPosts[0]?.acf.slug;
-
-  $: if (currPostIndex >= 0 && currPostIndex < allPosts.length - 1) {
-    nextPostSlug = allPosts[currPostIndex + 1]?.acf.slug;
-  }
-  $: nextBlogPostLink = `/blog/${spacesToDashes(nextPostSlug)}`;
+  // $: currPostIndex = allPosts.findIndex(
+  //   (p: PostType) => p.acf.slug === post.slug,
+  // );
+  // $: nextPostSlug = allPosts[0]?.acf.slug;
+  //
+  // $: if (currPostIndex >= 0 && currPostIndex < allPosts.length - 1) {
+  //   nextPostSlug = allPosts[currPostIndex + 1]?.acf.slug;
+  // }
+  // $: nextBlogPostLink = `/blog/${spacesToDashes(nextPostSlug)}`;
 </script>
 
 <main
@@ -49,31 +49,30 @@
       </div>
       <h1 class="w-full text-desktop64 font-bold">{post.title}</h1>
     </div>
-    <div>
-      <a
-        href="{nextBlogPostLink}"
-        class="group relative whitespace-nowrap pb-1 text-desktop20"
-      >
-        <span> KOLEJNY ARTYKUL </span>
-        <span
-          class="{'absolute bottom-[-3px] left-[50%] h-[1px] w-0 rounded bg-black duration-300' +
-            ' group-hover:left-0 group-hover:w-full'}"
-        >
-        </span>
-      </a>
-    </div>
+<!--    <div>-->
+<!--      <a-->
+<!--        href="{nextBlogPostLink}"-->
+<!--        class="group relative whitespace-nowrap pb-1 text-desktop20"-->
+<!--      >-->
+<!--        <span> KOLEJNY ARTYKUL </span>-->
+<!--        <span-->
+<!--          class="{'absolute bottom-[-3px] left-[50%] h-[1px] w-0 rounded bg-black duration-300' +-->
+<!--            ' group-hover:left-0 group-hover:w-full'}"-->
+<!--        >-->
+<!--        </span>-->
+<!--      </a>-->
+<!--    </div>-->
   </header>
 
 <!--  class=" z-[-100] h-[330px] w-full object-cover" todo-->
   <div class="w-full">
     {#if postFoto}
       <CldImage
-        priority={true}
-        height="330"
-        width="1440"
-        quality="100"
+        sizes='(max-width: 1320px), 100vw'
+        height="auto"
+        width={1320}
+        aspectRatio={1320/327}
         placeholder="blur"
-        sizes="100vw"
         src="{postFoto?.source_url}"
         alt="{postFoto?.alt_text}"
       />
@@ -130,7 +129,14 @@
     </div>
     <aside class="flex items-center pl-8">
       {#if postSideFoto}
-        <img src="{postSideFoto?.source_url}" alt="{''}" />
+        <CldImage
+          sizes='(max-width: 204px), 8vw'
+          height="auto"
+          width={204}
+          aspectRatio={204/311}
+          src="{postSideFoto?.source_url}"
+          alt="{postSideFoto?.alt_text}"
+        />
       {/if}
     </aside>
   </section>
@@ -141,11 +147,15 @@
   >
     <div class="w-[clamp(115px,16vw,230px)] pr-8">
       <div class=" flex w-full flex-none">
-        <img
-          class="aspect-[160/200] h-[160px] w-full object-cover"
+        <CldImage
+          sizes='(max-width: 200px), 8vw'
+          height="auto"
+          width={200}
+          aspectRatio={200/160}
           src="{globalFoto?.source_url}"
-          alt="alt"
+          alt="{globalFoto?.alt_text}"
         />
+
       </div>
     </div>
 
