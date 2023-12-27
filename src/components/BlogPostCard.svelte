@@ -10,7 +10,7 @@
 </script>
 
 {#if postImage}
-  <a class="" href="{`/blog/${post.slug}`}">
+  <a class="" href="{`/blog/${post?.slug}`}">
     <!--MOBILE-->
     <article
       class=" mt-[-1px] grid gap-y-6 border-t border-black py-6 first:border-0 md:hidden"
@@ -22,14 +22,13 @@
       <div class="w-full">
         <div class="  ">
           <CldImage
-            class=" object-top"
-            sizes="100vw max-width: 768px"
+            sizes="(max-width: 768px) 100vw"
+            width="768"
+            class="object-top"
+            aspectRatio={316/260}
+            height='auto'
             src="{postImage.source_url}"
             alt="{postImage?.alt_text}"
-            height="420"
-            layout="fullWidth"
-            quality="100"
-            placeholder="blur"
           />
         </div>
 
@@ -41,13 +40,13 @@
     <article class=" mt-[-1px] hidden py-8 pt-8 md:grid 1280:hidden">
       <div class=" md:grid md:grid-cols-2 md:gap-x-12">
         <CldImage
-          class=" object-top"
-          sizes="50vw"
+          sizes="(max-width: 560px) 50vw"
+          width={560}
+          class="object-top"
+          aspectRatio={316/260}
+          height='auto'
           src="{postImage.source_url}"
           alt="{postImage.alt_text}"
-          height="320"
-          layout="fullWidth"
-          placeholder="blur"
         />
         <div class="  pb-8 uppercase">
           <h2 class=" text-desktop24 font-[700] md:line-clamp-4">
@@ -72,13 +71,14 @@
 
       <div class=" md:grid md:grid-cols-2 1280:gap-x-16">
         <CldImage
-          class=" object-top"
+          sizes="(max-width: 269px) 20vw"
           width="{269}"
-          height="{323}"
+          class="object-top"
+          aspectRatio={269/323}
+          height='auto'
+
           src="{postImage.source_url}"
           alt="{postImage.alt_text}"
-          sizes="max-width: 300px"
-          placeholder="blur"
         />
         <div>
           <p class="line-clamp-[8] text-desktop20">

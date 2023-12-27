@@ -130,7 +130,7 @@
     <aside class="flex items-center pl-8">
       {#if postSideFoto}
         <CldImage
-          sizes='(max-width: 204px), 8vw'
+          sizes='(max-width: 204px), 16vw'
           height="auto"
           width={204}
           aspectRatio={204/311}
@@ -148,7 +148,7 @@
     <div class="w-[clamp(115px,16vw,230px)] pr-8">
       <div class=" flex w-full flex-none">
         <CldImage
-          sizes='(max-width: 200px), 8vw'
+          sizes='(max-width: 200px), 16vw'
           height="auto"
           width={200}
           aspectRatio={200/160}

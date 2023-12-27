@@ -21,12 +21,12 @@
     <div class=" hidden flex-col items-end gap-y-6 lg:flex xl:gap-y-12">
       {#if data?.small_foto?.source_url}
         <CldImage
-          class=" "
-          sizes="100vw"
+          sizes="(max-width: 256px) 18vw"
           src="{data?.small_foto?.source_url}"
           alt="{data?.small_foto?.alt_text}"
-          height="128"
+          height="auto"
           width="256"
+          aspectRatio={256/128}
         />
       {/if}
       {#if data.secondary_foto?.source_url}
@@ -34,24 +34,34 @@
           class="mr-10 hidden aspect-[350/210] w-[280px] lg:block xl:mr-20 xl:w-[350px]"
         >
           <CldImage
-            class=" "
             src="{data.secondary_foto.source_url}"
             alt="{data.secondary_foto?.alt_text}"
-            height="210"
+            aspectRatio={350/210}
+            height="auto"
             width="350"
-            sizes="(min-width: 768px) 280px, (min-width: 1280px) 350px"
+            sizes="(max-width: 350px) 25vw"
           />
         </div>
       {/if}
     </div>
     {#if data.mainFoto?.source_url}
       <CldImage
-        class=" "
+        class="object-top hidden lg:block "
         src="{data.mainFoto.source_url}"
         alt="{data.mainFoto?.alt_text}"
         height="693"
+        aspectRatio={570/693}
         width="570"
         sizes="(max-width: 768px) 100vw, 40vw"
+      />
+      <CldImage
+        class="object-top lg:hidden "
+        src="{data.mainFoto.source_url}"
+        alt="{data.mainFoto?.alt_text}"
+        aspectRatio={335/277}
+        width={1024}
+        height="auto"
+        sizes="(max-width: 1024px) 100vw"
       />
     {/if}
   </div>

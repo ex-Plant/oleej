@@ -27,14 +27,13 @@
   <div class="mx-auto">
     <p class='text-mobile12 pb-3'> Czyta się ok {timeString} minut</p>
     <CldImage
-      sizes="100vw max-width: 768px"
+      sizes="(max-width: 768px) 100vw"
       width="768"
       class="object-top"
       aspectRatio={316/260}
       height='auto'
       src="{postFoto?.source_url}"
       alt="{postFoto?.alt_text}"
-      placeholder="blur"
     />
     <p class="text-xs w-full pt-3 text-10">
       {@html customSanitization(postFoto?.caption?.rendered)}
