@@ -1,9 +1,9 @@
 <script lang="ts">
   import HomePageNavigation from '../components/HomePageNavigation.svelte';
   import Home from '../components/Home.svelte';
-  import { onDestroy, onMount } from "svelte";
-  import { getClientWidth, md } from "../store/clientWidthStore";
-  import { browser } from "$app/environment";
+  import { onDestroy, onMount } from 'svelte';
+  import { getClientWidth, md } from '../store/clientWidthStore';
+  import { browser } from '$app/environment';
 
   let mainRef: HTMLElement;
   let top = false;
@@ -23,13 +23,12 @@
 
   onDestroy(() => {
     if (browser) {
-    window.removeEventListener('scroll', checkElementPosition);
+      window.removeEventListener('scroll', checkElementPosition);
     }
   });
-
 </script>
 
-<HomePageNavigation top="{top}" />
-<main class="" bind:this="{mainRef}">
-  <Home />
-</main>
+  <HomePageNavigation top="{top}" />
+  <main class="" bind:this="{mainRef}">
+    <Home />
+  </main>

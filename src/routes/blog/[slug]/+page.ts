@@ -51,8 +51,8 @@ export const load: Load = async ({ params }) => {
   }
 
   return {
-    post: getPostData(),
-    globalFoto: getGlobalFoto(),
-    allPosts: getAllPosts(),
+    post: await getPostData(),
+    globalFoto: await getGlobalFoto(),
+    allPosts: await getAllPosts(),
   };
 };

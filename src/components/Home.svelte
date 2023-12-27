@@ -2,18 +2,21 @@
   import { activePostCat } from '../store/global';
   import BlogPostCard from './BlogPostCard.svelte';
   import { page } from '$app/stores';
-  import type { PostType } from '../types';
+  import type { ImageType, PostType } from "../types";
 
-  $: allPosts = $page.data.allPosts;
-  $: postsFilteredByCategory = allPosts;
+  $: data = $page.data.allPosts;
+  let images: ImageType[]
+  $: images = data?.imagesData;
+  let postsFilteredByCategory: PostType[] = [];
 
   $: if ($activePostCat === '') {
-    postsFilteredByCategory = allPosts;
+    postsFilteredByCategory = data?.allPosts;
   } else {
-    postsFilteredByCategory = allPosts.filter(
+    postsFilteredByCategory = data?.allPosts.filter(
       (post: PostType) => post.acf.category === $activePostCat,
     );
   }
+
 </script>
 
 <section
@@ -21,6 +24,9 @@
   class="px-primary mb-16 mt-8 grid max-w-[1440px] md:mt-16 xl:mx-auto"
 >
   {#each postsFilteredByCategory as post}
-    <BlogPostCard post="{post}" />
+    <BlogPostCard
+      post="{post}"
+      postImage="{images.find((img) => post.acf.mobile_foto_id === img.id) ?? undefined }"
+    />
   {/each}
 </section>

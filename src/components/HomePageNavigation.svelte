@@ -5,7 +5,8 @@
   import { page } from "$app/stores";
 
   export let top: boolean;
-  $: postCategories = $page.data.postCategories;
+  let postCategories: string[] = [];
+  $: postCategories = $page?.data?.allPosts?.postCategories;
 
 </script>
 
