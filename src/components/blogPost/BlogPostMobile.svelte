@@ -28,7 +28,7 @@
   {/if}
   <h1 class="w-full text-center text-mobile28 font-bold">{post.title}</h1>
 
-  <div class="mx-auto">
+  <div class=" ">
     <p class='text-mobile12 pb-3'> Czyta się ok {timeString} minut</p>
     <CldImage
       sizes="(max-width: 768px) 100vw"
