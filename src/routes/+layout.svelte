@@ -1,18 +1,14 @@
 <script lang="ts">
-  //  on your WordPress backend
+  import { dev } from '$app/environment';
+  import { inject } from '@vercel/analytics';
   import '../app.css';
   import { fade } from 'svelte/transition';
   import Header from '../components/navigation/Header.svelte';
   import Footer from '../components/footer/Footer.svelte';
   import Spinner from '../components/Spinner.svelte';
   import { navigating } from '$app/stores';
-  import { onMount } from 'svelte';
-  import { dataIsLoadedStore } from '../store/global';
 
-  // onMount(() => {
-  //   dataIsLoadedStore.set(true);
-  // });
-
+  inject({ mode: dev ? 'development' : 'production' });
 </script>
 
 <div class=" flex min-h-[100svh] flex-col">
