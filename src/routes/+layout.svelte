@@ -9,9 +9,9 @@
   import { onMount } from 'svelte';
   import { dataIsLoadedStore } from '../store/global';
 
-  onMount(() => {
-    dataIsLoadedStore.set(true);
-  });
+  // onMount(() => {
+  //   dataIsLoadedStore.set(true);
+  // });
 
 </script>
 

@@ -13,7 +13,7 @@ import {
 } from '../store/global';
 import { get } from 'svelte/store';
 
-//prevent svelte from refetching data on the client - store it all in the global store after initiial build load
+//prevent svelte from refetching data on the client - store it all in the global store after initial build load
 
 export const load: LayoutLoad = async () => {
   const dataIsLoaded = get(dataIsLoadedStore);
@@ -106,6 +106,7 @@ export const load: LayoutLoad = async () => {
   blogPost_mobile_fotosStore.set(blogPost_mobile_fotos);
   blogPost_right_side_fotosStore.set(blogPost_right_side_fotos);
   dataIsLoadedStore.set(true);
+
 };
 
 export const prerender = true;

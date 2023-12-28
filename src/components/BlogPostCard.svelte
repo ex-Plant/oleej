@@ -25,8 +25,8 @@
             sizes="(max-width: 768px) 100vw"
             width="768"
             class="object-top"
-            aspectRatio={316/260}
-            height='auto'
+            aspectRatio="{316 / 260}"
+            height="auto"
             src="{postImage.source_url}"
             alt="{postImage?.alt_text}"
           />
@@ -41,10 +41,10 @@
       <div class=" md:grid md:grid-cols-2 md:gap-x-12">
         <CldImage
           sizes="(max-width: 560px) 50vw"
-          width={560}
+          width="{560}"
           class="object-top"
-          aspectRatio={316/260}
-          height='auto'
+          aspectRatio="{316 / 260}"
+          height="auto"
           src="{postImage.source_url}"
           alt="{postImage.alt_text}"
         />
@@ -58,8 +58,10 @@
       </div>
     </article>
     <!--1280-->
-    <article class=" mt-[-1px] hidden gap-x-24 py-12 pt-12 1280:flex">
-      <div class="  flex w-[calc(550/1440*100vw)] shrink-0 flex-col uppercase">
+    <article
+      class=" mt-[-1px] hidden gap-x-24 py-12 pt-12  1280:flex"
+    >
+      <div class=" flex w-[550px] shrink-0 flex-col uppercase">
         <h2 class="  text-[3rem] font-[700] leading-tight">
           <span class="line-clamp-5"> {post.acf.title} <BigArrowUp /></span>
         </h2>
@@ -69,14 +71,13 @@
         </p>
       </div>
 
-      <div class=" md:grid md:grid-cols-2 1280:gap-x-16">
+      <div class="  md:grid md:grid-cols-2 1280:gap-x-16">
         <CldImage
           sizes="(max-width: 269px) 20vw"
           width="{269}"
           class="object-top"
-          aspectRatio={269/323}
-          height='auto'
-
+          aspectRatio="{269 / 323}"
+          height="auto"
           src="{postImage.source_url}"
           alt="{postImage.alt_text}"
         />

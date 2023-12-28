@@ -13,12 +13,12 @@
 <div
   title="categories navigation"
   class="{twMerge(
-    'px-primary no-scrollbar fixed left-0 right-0 top-16 overflow-hidden  bg-[#F7F4F0;] duration-100  md:top-20 ',
+    'px-primary no-scrollbar fixed left-0 right-0 top-16 overflow-hidden  bg-[#F7F4F0;] duration-100  md:top-20 max-w-[1440px] mx-auto ',
     top ? 'h-[1px] ' : 'h-12 ',
   )}"
 >
   <div
-    class="flex h-full items-center space-x-6 overflow-hidden overflow-x-scroll border-b border-black lg:space-x-12 [&_button]:h-10 [&_button]:uppercase"
+    class="flex h-full items-center space-x-6 overflow-hidden overflow-x-scroll border-b border-black lg:space-x-12 [&_button]:h-10 [&_button]:uppercase "
   >
     <button
       class="group relative"
