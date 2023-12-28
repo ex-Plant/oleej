@@ -1,7 +1,6 @@
 <script lang="ts">
   import { CldImage } from 'svelte-cloudinary';
   import type { ImageType, PostType } from '../types.js';
-  import { spacesToDashes } from '../helpers/spacesToDashes.js';
   import { convertDateToNumericString } from '../helpers/convertDateToNumericString.js';
   import BigArrowUp from '../assets/BigArrowUp.svelte';
 

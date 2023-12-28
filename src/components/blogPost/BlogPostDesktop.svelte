@@ -2,7 +2,6 @@
   import type { PostType } from '../../types';
   import { convertDateToNumericString } from '../../helpers/convertDateToNumericString';
   import { customSanitization } from '../../helpers/customSanitization';
-  import { spacesToDashes } from '../../helpers/spacesToDashes';
   import BigArrowDown from '../../assets/BigArrowDown.svelte';
   import SmallArrowUp from '../../assets/SmallArowUp.svelte';
   import { CldImage } from "svelte-cloudinary";
@@ -22,14 +21,14 @@
   $: post = postData?.acf;
   $: publishDate = convertDateToNumericString(postData?.date);
   $: currPostIndex = allPosts.findIndex(
-    (p: PostType) => p.acf.slug === post.slug,
+    (p: PostType) => p.slug === post.slug,
   );
-  $: nextPostSlug = allPosts[0]?.acf.slug;
+  $: nextPostSlug = allPosts[0]?.slug;
 
   $: if (currPostIndex >= 0 && currPostIndex < allPosts.length - 1) {
-    nextPostSlug = allPosts[currPostIndex + 1]?.acf.slug;
+    nextPostSlug = allPosts[currPostIndex + 1]?.slug;
   }
-  $: nextBlogPostLink = `/blog/${spacesToDashes(nextPostSlug)}`;
+  $: nextBlogPostLink = `/blog/${nextPostSlug}`;
 </script>
 
 <main
