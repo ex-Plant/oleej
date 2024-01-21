@@ -93,6 +93,12 @@ body {
     .px-primary {
         @apply px-[clamp(1.25rem,calc(20/360*100vw),3.75rem)];
     }
+    .pr-primary {
+        @apply pr-[clamp(1.25rem,calc(20/360*100vw),3.75rem)];
+    }
+    .pl-primary {
+        @apply pl-[clamp(1.25rem,calc(20/360*100vw),3.75rem)];
+    }
 
     .paddings-left {
         @apply pl-4 640:pl-8 lg:pl-10 xl:pl-14 xxl:pl-[6.5rem];

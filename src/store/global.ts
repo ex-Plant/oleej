@@ -1,12 +1,13 @@
 import { writable } from 'svelte/store';
-import type { ImageType } from '../types';
+import type { ImageType, PostType } from "../types";
 export const activePostCat = writable('');
 
 export const allPostsStore = writable({
   posts: [] as PostType[],
   postCategories: [] as string[],
-  imagesData: [] as ImageType[],
 });
+
+
 
 
 export const aboutPageStore = writable({

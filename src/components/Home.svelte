@@ -1,32 +1,32 @@
 <script lang="ts">
-  import { activePostCat } from '../store/global';
+  import { activePostCat, blogPost_mobile_fotosStore } from '../store/global';
   import BlogPostCard from './BlogPostCard.svelte';
-  import { page } from '$app/stores';
-  import type { ImageType, PostType } from "../types";
+  import type { ImageType, PostType } from '../types';
+  import { allPostsStore } from '../store/global.js';
 
-  $: data = $page.data.allPosts;
-  let images: ImageType[]
-  $: images = data?.imagesData;
+  $: allPosts = $allPostsStore.posts;
+  let images: ImageType[];
+  $: images = $blogPost_mobile_fotosStore;
   let postsFilteredByCategory: PostType[] = [];
 
   $: if ($activePostCat === '') {
-    postsFilteredByCategory = data?.allPosts;
+    postsFilteredByCategory = allPosts;
   } else {
-    postsFilteredByCategory = data?.allPosts.filter(
+    postsFilteredByCategory = allPosts.filter(
       (post: PostType) => post.acf.category === $activePostCat,
     );
   }
-
 </script>
 
 <section
   title="lista artykułów"
-  class="px-primary mb-16 mt-8 grid max-w-[1440px] md:mt-16 xl:mx-auto"
+  class="px-primary mb-16 grid max-w-[1440px] xl:mx-auto"
 >
-  {#each postsFilteredByCategory as post}
+  {#each postsFilteredByCategory as post (post.id)}
     <BlogPostCard
       post="{post}"
-      postImage="{images.find((img) => post.acf.mobile_foto_id === img.id) ?? undefined }"
+      postImage="{images.find((img) => post.acf.mobile_foto_id === img.id) ??
+        undefined}"
     />
   {/each}
 </section>

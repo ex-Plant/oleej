@@ -6,9 +6,12 @@
   import Header from '../components/navigation/Header.svelte';
   import Footer from '../components/footer/Footer.svelte';
   import Spinner from '../components/Spinner.svelte';
-  import { navigating } from '$app/stores';
+  import { navigating, page } from '$app/stores';
+  import { twMerge } from 'tailwind-merge';
 
   inject({ mode: dev ? 'development' : 'production' });
+
+  $: homePage = $page.route.id === '/';
 </script>
 
 <div class=" flex min-h-[100svh] flex-col">
@@ -16,7 +19,7 @@
   <div
     in:fade="{{ duration: 500 }}"
     out:fade="{{ duration: 500 }}"
-    class=" mt-20"
+    class="{twMerge(homePage ? 'mt-0' : 'mt-20')}"
   >
     {#if $navigating} <Spinner /> {/if}
 

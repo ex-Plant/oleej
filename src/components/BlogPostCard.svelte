@@ -8,36 +8,36 @@
   export let postImage: ImageType | undefined;
 </script>
 
-{#if postImage}
-  <a class="" href="{`/blog/${post?.slug}`}">
-    <!--MOBILE-->
-    <article
-      class=" mt-[-1px] grid gap-y-6 border-t border-black py-6 first:border-0 md:hidden"
-    >
-      <div class="grid gap-y-6">
-        <h4 class="  text-mobile14 uppercase">{post.acf.category}</h4>
-        <h2 class=" text-mobile18 font-[700]">{post.acf.title}</h2>
-      </div>
-      <div class="w-full">
-        <div class="  ">
-          <CldImage
-            sizes="(max-width: 768px) 100vw"
-            width="768"
-            class="object-top"
-            aspectRatio="{316 / 260}"
-            height="auto"
-            src="{postImage.source_url}"
-            alt="{postImage?.alt_text}"
-          />
-        </div>
+<a class="" href="{`/blog/${post?.slug}`}">
 
-        <p class="mt-6 line-clamp-4">{post.acf.post_description}</p>
+  <!--MOBILE-->
+  <article class=" grid border-t border-black pt-7 first:border-0 md:hidden">
+    <div class="grid">
+      <h4 class="  text-[0.75rem] uppercase">{post.acf.category}</h4>
+      <h2 class=" pt-4 text-[1.125rem] font-[700] uppercase">
+        {post.acf.title}
+      </h2>
+    </div>
+    {#if postImage}
+      <div class="w-full pt-7">
+        <CldImage
+          sizes="(max-width: 768px) 100vw"
+          width="768"
+          class="object-top"
+          aspectRatio="{316 / 260}"
+          height="auto"
+          src="{postImage.source_url}"
+          alt="{postImage?.alt_text}"
+        />
+        <p class="line-clamp-4 pt-5">{post.acf.post_description}</p>
       </div>
-    </article>
+    {/if}
+  </article>
 
-    <!--MD-->
-    <article class=" mt-[-1px] hidden py-8 pt-8 md:grid 1280:hidden">
-      <div class=" md:grid md:grid-cols-2 md:gap-x-12">
+  <!--MD-->
+  <article class="hidden pt-7 md:grid 1280:hidden">
+    <div class=" md:grid md:grid-cols-2 md:gap-x-12">
+      {#if postImage}
         <CldImage
           sizes="(max-width: 560px) 50vw"
           width="{560}"
@@ -47,30 +47,30 @@
           src="{postImage.source_url}"
           alt="{postImage.alt_text}"
         />
-        <div class="  pb-8 uppercase">
-          <h2 class=" text-desktop24 font-[700] md:line-clamp-4">
-            {post.acf.title}
-          </h2>
-          <h4 class=" pt-1 text-desktop24">{post.acf.category}</h4>
-          <p class="mt-6 md:line-clamp-6">{post.acf.post_description}</p>
-        </div>
-      </div>
-    </article>
-    <!--1280-->
-    <article
-      class=" mt-[-1px] hidden gap-x-24 py-12 pt-12  1280:flex"
-    >
-      <div class=" flex w-[550px] shrink-0 flex-col uppercase">
-        <h2 class="  text-[3rem] font-[700] leading-tight">
-          <span class="line-clamp-5"> {post.acf.title} <BigArrowUp /></span>
+      {/if}
+      <div class=" uppercase ">
+        <h2 class=" text-desktop24 font-[700] md:line-clamp-4">
+          {post.acf.title}
         </h2>
-        <h4 class=" pt-1 text-desktop24">{post.acf.category}</h4>
-        <p class=" mt-auto pt-24 text-desktop24">
-          {convertDateToNumericString(post.date)}
-        </p>
+        <h4 class=" bg-green-700 pt-4 text-desktop24">{post.acf.category}</h4>
+        <p class="pt-7 md:line-clamp-6">{post.acf.post_description}</p>
       </div>
+    </div>
+  </article>
+  <!--1280-->
+  <article class=" hidden gap-x-24 py-12 pt-12 1280:flex">
+    <div class=" flex w-[550px] shrink-0 flex-col uppercase">
+      <h2 class="  text-[3rem] font-[700] leading-tight">
+        <span class="line-clamp-5"> {post.acf.title} <BigArrowUp /></span>
+      </h2>
+      <h4 class=" pt-1 text-desktop24">{post.acf.category}</h4>
+      <p class=" mt-auto pt-24 text-desktop24">
+        {convertDateToNumericString(post.date)}
+      </p>
+    </div>
 
-      <div class="  md:grid md:grid-cols-2 1280:gap-x-16">
+    <div class="  md:grid md:grid-cols-2 1280:gap-x-16">
+      {#if postImage}
         <CldImage
           sizes="(max-width: 269px) 20vw"
           width="{269}"
@@ -80,12 +80,13 @@
           src="{postImage.source_url}"
           alt="{postImage.alt_text}"
         />
-        <div>
-          <p class="line-clamp-[8] text-desktop20">
-            {post.acf.post_description}
-          </p>
-        </div>
+      {/if}
+
+      <div>
+        <p class="line-clamp-[8] text-desktop20">
+          {post.acf.post_description}
+        </p>
       </div>
-    </article>
-  </a>
-{/if}
+    </div>
+  </article>
+</a>

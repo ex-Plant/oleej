@@ -1,9 +1,7 @@
-
-
 import { error } from '@sveltejs/kit';
 import { baseUrl } from '../constans/constans';
 import type { LayoutLoad } from '../../.svelte-kit/types/src/routes/$types';
-import type { PostType } from '../types';
+import type { ACFPostType, PostType } from "../types";
 import {
   aboutPageStore,
   allPostsStore,
@@ -20,7 +18,6 @@ import { get } from 'svelte/store';
 export const load: LayoutLoad = async () => {
   const dataIsLoaded = get(dataIsLoadedStore);
   if (dataIsLoaded) return;
-
 
   async function getGlobalFoto() {
     const globalRes = await fetch(`${baseUrl}pages?slug=global`);
@@ -52,13 +49,18 @@ export const load: LayoutLoad = async () => {
     };
   }
 
+
+
   async function getImages(acfImageField: string) {
     const postsData = await getAllPosts();
     const responseArr = await Promise.all(
-      postsData.posts.map((post: PostType) =>
-        fetch(`${baseUrl}media/${post.acf[acfImageField]}`),
-      ),
+      postsData.posts.map((post: PostType) => {
+        const key = acfImageField as keyof ACFPostType; // Keep this as is
+        const id = post.acf[key] as number; // Assert that the value will be a number
+        return fetch(`${baseUrl}media/${id}`);
+      }),
     );
+
     if (!responseArr.every((res) => res.ok)) {
       responseArr.forEach((res) =>
         console.log('imageResponses: ', res.statusText),
@@ -67,6 +69,8 @@ export const load: LayoutLoad = async () => {
     }
     return await Promise.all(responseArr.map((res) => res.json()));
   }
+
+  // console.log(test, "test")
 
   async function getAboutPageData() {
     const pageDataResponse = await fetch(`${baseUrl}pages?slug=o-mnie`);
@@ -108,7 +112,6 @@ export const load: LayoutLoad = async () => {
   blogPost_mobile_fotosStore.set(blogPost_mobile_fotos);
   blogPost_right_side_fotosStore.set(blogPost_right_side_fotos);
   dataIsLoadedStore.set(true);
-
 };
 
 export const prerender = true;

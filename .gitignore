@@ -268,3 +268,4 @@ fabric.properties
 .DS_Store
 
 .vercel
+!/src/routes/notes.md

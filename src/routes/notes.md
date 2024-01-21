@@ -1,0 +1,6 @@
+- posty się nie pobierają
+- sprawdzić odległość między postami
+- menu desktop
+- line height
+- leading
+  -

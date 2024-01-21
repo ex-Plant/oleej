@@ -1,29 +1,24 @@
 <script lang="ts">
   import AllCategoriesButton from '../assets/AllCategoriesButton.svelte';
   import { twMerge } from 'tailwind-merge';
-  import { activePostCat } from "../store/global";
-  import { page } from "$app/stores";
+  import { activePostCat, allPostsStore } from '../store/global';
 
-  export let top: boolean;
   let postCategories: string[] = [];
-  $: postCategories = $page?.data?.allPosts?.postCategories;
-
+  $: postCategories = $allPostsStore?.postCategories;
 </script>
 
 <div
-  title="categories navigation"
   class="{twMerge(
-    'px-primary no-scrollbar fixed left-0 right-0 top-16 overflow-hidden  bg-[#F7F4F0;] duration-100  md:top-20 max-w-[1440px] mx-auto ',
-    top ? 'h-[1px] ' : 'h-12 ',
+    ' no-scrollbar overflow-x-hidden bg-[#F7F4F0;] duration-100  ',
   )}"
 >
   <div
-    class="flex h-full items-center space-x-6 overflow-hidden overflow-x-scroll border-b border-black lg:space-x-12 [&_button]:h-10 [&_button]:uppercase "
+    class=" pb-4 md:pb-5 flex items-center space-x-6 overflow-hidden overflow-x-scroll border-b border-black lg:space-x-12  "
   >
     <button
       class="group relative"
       aria-label="reset categories"
-      on:click="{() =>  activePostCat.set('')}"
+      on:click="{() => activePostCat.set('')}"
     >
       <AllCategoriesButton />
       <span
@@ -32,8 +27,8 @@
     </button>
     {#each postCategories as category}
       <button
-        class="group relative"
-        on:click="{() =>  activePostCat.set(category)}"
+        class="group relative uppercase"
+        on:click="{() => activePostCat.set(category)}"
       >
         <span class="whitespace-nowrap text-mobile14 md:text-desktop24">
           {category}</span
