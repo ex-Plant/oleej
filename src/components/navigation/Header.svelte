@@ -5,7 +5,6 @@
   import { page } from '$app/stores';
   $: homePage = $page.route.id === '/';
 
-  let opened = false;
 </script>
 
 <div class="{twMerge(homePage && 'hidden')}">
@@ -13,6 +12,6 @@
     <HeaderDesktop />
   </div>
   <div class="md:hidden">
-    <HeaderMobile {opened}/>
+    <HeaderMobile />
   </div>
 </div>

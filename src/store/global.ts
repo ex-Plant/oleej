@@ -7,9 +7,6 @@ export const allPostsStore = writable({
   postCategories: [] as string[],
 });
 
-
-
-
 export const aboutPageStore = writable({
   mainFoto: {} as ImageType,
   secondary_foto: {} as ImageType,
@@ -25,3 +22,6 @@ export const blogPost_right_side_fotosStore = writable([] as ImageType[]);
 
 
 export const dataIsLoadedStore = writable(false);
+
+
+export let mobileMenuOpened = writable(false);

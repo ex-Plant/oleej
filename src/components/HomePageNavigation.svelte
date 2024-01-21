@@ -27,10 +27,10 @@
     </button>
     {#each postCategories as category}
       <button
-        class="group relative uppercase"
+        class="group relative uppercase font-[400] text-[0.75rem] md:text-[1.25rem] "
         on:click="{() => activePostCat.set(category)}"
       >
-        <span class="whitespace-nowrap text-mobile14 md:text-desktop24">
+        <span class="whitespace-nowrap">
           {category}</span
         >
         <span

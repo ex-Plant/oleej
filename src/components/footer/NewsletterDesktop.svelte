@@ -1,11 +1,13 @@
 <div
-  class='px-[clamp(20px,6vw,60px)]  lg:flex items-center  hidden gap-x-6 h-24   '>
+  class='px-[clamp(20px,6vw,60px)]  lg:flex items-center  hidden gap-x-6 h-24'>
   <p class='text-[28px]  font-bold '>Newsletter</p>
-  <div class='flex w-[300px] items-center'>
-    <p class='text-16  border-b-[2px] border-black w-full pb-1 pt-5  mb-7 mr-4 '>
+  <div class='flex w-[300px]'>
+    <p class='text-16 border-b-[2px] border-black w-full mr-2 leading-[200%]'>
       Twój e-mail
     </p>
-    <div class='mt-[2px]'>
+  </div>
+
+    <div class='mt-[24px]'>
       <svg class='' width="36" height="37" viewBox="0 0 36 37" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M0 22.6032C0 10.6792 10.8009 -0.242055 21.6019 0.00408252C30.3446 0.25022 36 5.71084 36 14.4077C36 26.3317 24.4248 36.7607 13.6239 36.7607C5.14555 36.7607 0 31.0448 0 22.6032Z" fill="#010101"/>
         <g clip-path="url(#clip0_32_978)">
@@ -18,5 +20,4 @@
         </defs>
       </svg>
     </div>
-  </div>
 </div>

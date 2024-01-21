@@ -7,6 +7,8 @@
   export let className = '';
 
   export let homeDesktopFullMenu = false;
+
+  export let menuMobile = false;
 </script>
 
 <a
@@ -18,15 +20,21 @@
   )}"
 >
   <div class=" relative">
-    <span class={twMerge("whitespace-nowrap ",
-    homeDesktopFullMenu ? `text-[1.5rem] ` : 'text-[1.5rem] md:text-[1.125rem]',
-
-    )
-    }>
+    <span
+      class="{twMerge(
+        'whitespace-nowrap ',
+        homeDesktopFullMenu
+          ? `text-[1.5rem] `
+          : 'text-[1.5rem] md:text-[1.125rem]',
+      )}"
+    >
       {name}
     </span>
     <span
-      class="{`absolute bottom-[-1px] left-[50%] h-[1px] w-0 rounded bg-black duration-300 group-hover:left-0 group-hover:w-full`}"
+      class="{twMerge(
+        `absolute bottom-[-1px] left-[50%] h-[1px] w-0 rounded duration-300 group-hover:left-0 group-hover:w-full`,
+        menuMobile ? `bg-white` : `bg-black`,
+      )}"
     >
     </span>
   </div>

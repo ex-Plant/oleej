@@ -6,12 +6,15 @@
 
   export let post: PostType;
   export let postImage: ImageType | undefined;
+
+
+
 </script>
 
-<a class="" href="{`/blog/${post?.slug}`}">
+<a class="border-black border-b last:border-0" href="{`/blog/${post?.slug}`}">
 
   <!--MOBILE-->
-  <article class=" grid border-t border-black pt-7 first:border-0 md:hidden">
+  <article class=" grid  py-7  md:hidden">
     <div class="grid">
       <h4 class="  text-[0.75rem] uppercase">{post.acf.category}</h4>
       <h2 class=" pt-4 text-[1.125rem] font-[700] uppercase">
@@ -35,7 +38,7 @@
   </article>
 
   <!--MD-->
-  <article class="hidden pt-7 md:grid 1280:hidden">
+  <article class="hidden py-12 md:grid 1280:hidden">
     <div class=" md:grid md:grid-cols-2 md:gap-x-12">
       {#if postImage}
         <CldImage
@@ -49,22 +52,23 @@
         />
       {/if}
       <div class=" uppercase ">
-        <h2 class=" text-desktop24 font-[700] md:line-clamp-4">
+        <h2 class=" text-[2.5rem] font-[700] md:line-clamp-4">
           {post.acf.title}
         </h2>
-        <h4 class=" bg-green-700 pt-4 text-desktop24">{post.acf.category}</h4>
-        <p class="pt-7 md:line-clamp-6">{post.acf.post_description}</p>
+        <h4 class=" text-[1.5rem] pt-4">{post.acf.category}</h4>
+        <p class="pt-7 text-[1.25rem] md:line-clamp-6">{post.acf.post_description}</p>
       </div>
     </div>
   </article>
+
   <!--1280-->
-  <article class=" hidden gap-x-24 py-12 pt-12 1280:flex">
+  <article class=" hidden gap-x-24 py-12 1280:flex ">
     <div class=" flex w-[550px] shrink-0 flex-col uppercase">
-      <h2 class="  text-[3rem] font-[700] leading-tight">
+      <h2 class="  text-[3.75rem] font-[700]">
         <span class="line-clamp-5"> {post.acf.title} <BigArrowUp /></span>
       </h2>
-      <h4 class=" pt-1 text-desktop24">{post.acf.category}</h4>
-      <p class=" mt-auto pt-24 text-desktop24">
+      <h4 class=" pt-1 text-[1.5rem]">{post.acf.category}</h4>
+      <p class=" mt-auto pt-24 text-[1.125rem] ">
         {convertDateToNumericString(post.date)}
       </p>
     </div>
@@ -83,7 +87,7 @@
       {/if}
 
       <div>
-        <p class="line-clamp-[8] text-desktop20">
+        <p class="line-clamp-[8] text-[1.25rem] leading-[140%]">
           {post.acf.post_description}
         </p>
       </div>

@@ -1,8 +1,8 @@
 <div
   class='px-[clamp(20px,6vw,60px)] md:pr-[20px] h-full flex flex-col lg:hidden  '>
-  <p class='text-mobile28 pt-5 font-bold '>Newsletter</p>
+  <p class='text-[1.75rem] pt-5 font-bold '>Newsletter</p>
   <div class='flex w-[280px]'>
-    <p class='text-mobile14 pt-2  border-b-[2px] border-black w-full pb-3 mb-7 mr-4 '>
+    <p class='  border-b-[2px] border-black w-full pb-1 mb-7 mr-4 '>
       Twój e-mail
     </p>
     <div class='mt-[2px]'>

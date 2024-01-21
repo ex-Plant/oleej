@@ -18,10 +18,7 @@
   }
 </script>
 
-<section
-  title="lista artykułów"
-  class="px-primary mb-16 grid max-w-[1440px] xl:mx-auto"
->
+<section class="px-primary mb-16 grid max-w-[1440px] xl:mx-auto">
   {#each postsFilteredByCategory as post (post.id)}
     <BlogPostCard
       post="{post}"

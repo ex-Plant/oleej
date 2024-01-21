@@ -22,14 +22,19 @@
 
 </script>
 
-<section class=" grid gap-y-6 pt-6">
+<section class=" grid">
   {#if post?.category}
-    <h3 class="w-full text-center text-mobile14 uppercase ">{post.category}</h3>
+    <h3 class="w-full pt-7 text-[0.875rem] uppercase  ">{post.category}</h3>
   {/if}
-  <h1 class="w-full text-center text-mobile28 font-bold">{post.title}</h1>
+  <h1 class="w-full text-[1.75rem] font-bold uppercase pt-7">{post.title}</h1>
 
   <div class=" ">
-    <p class='text-mobile12 pb-3'> Czyta się ok {timeString} minut</p>
+    <p class='text-[0.75rem] pt-7 pb-2.5 '> <span>
+      Czyta się około:
+    </span>
+      <span class='font-bold'>
+        {timeString}
+      </span></p>
     <CldImage
       sizes="(max-width: 768px) 100vw"
       width="768"
@@ -39,26 +44,23 @@
       src="{postFoto?.source_url}"
       alt="{postFoto?.alt_text}"
     />
-    <p class="text-xs w-full pt-3 text-10">
+    <p class="text-xs w-full pt-2.5 text-[0.75rem]">
       {@html customSanitization(postFoto?.caption?.rendered)}
     </p>
   </div>
-  <p class="border-b border-black pb-6 text-[26px]">
+  <p class="border-b border-black py-7 text-[1.25rem] leading-[100%] font-bold">
     {post.post_description}
   </p>
-  <div
-    class=" postContent text-mobile18 [&:h1]:text-[24px] [&_*]:leading-[200%] border-b border-black [&_p]:py-6 0  [&:p]:py-2 [&_h1]:py-2 [&_h2]:py-2 [&_h3]:py-2 [&_h4]:py-2 [&_h5]:py-2 [&_*]:p-2 [&_*]:block [&_b]:px-0 [&_*]px-0 [&_strong]:px-0
-    [&_h6]:py-2"
-  >
-    {@html customSanitization(post_content)}
-  </div>
-  <p class='text-[24px]'>
-    naglowek
-  </p>
+    <div
+      class=" prose postContent [&_p]:pb-3 [&_*]:block [&_*]px-0 [&_strong]:px-0 [&_strong]:font-bold py-7 border-b border-black "
+    >
+      {@html customSanitization(post_content)}
+    </div>
+
 <!--  <div class='  leading-[170%] text-[20px]  tracking-[-0.8px]   '>-->
 <!--  </div>-->
-  <div class='grid '>
-    <p class="h-7 text-mobile14">
+  <div class='grid pt-7'>
+    <p class="h-7 text-[0.875rem]">
       <span class="pr-1">Data publikacji: </span><span class="font-[700]"
     >{publishDate}</span
     >
