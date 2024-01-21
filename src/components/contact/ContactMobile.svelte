@@ -3,20 +3,33 @@
 </script>
 
 <div
-  class="grid max-w-[1440px] gap-y-6 px-[clamp(20px,6vw,60px)] py-6 md:hidden md:gap-y-12 md:pb-12 xl:mx-auto"
+  class="grid max-w-[1440px]  px-[clamp(20px,6vw,60px)] md:hidden"
 >
+<div class='py-12 text-[1.125rem] font-bold'>
+  <p>
+    Potrzebujesz tekstu?
+  </p>
+  <p>
+    Korekty ? Pomysłu?
+  </p>
+</div>
+
   <a
-    class="{'pr-4 text-mobile58 font-bold md:text-desktop196'}"
+    class="{'pr-4 text-[3.625rem] font-bold leading-[89%]'}"
     href="mailto:piotrolej@gmail.com"
   >
-    <p>NAPISZ</p>
-    <span> DO MNIE </span>
-    <div class=" inline-block aspect-square h-[clamp(24px,7vw,48px)]">
-      <BigArrowDown />
+    <div class='pb-12'>
+      <p>NAPISZ</p>
+      <span> DO MNIE </span>
+      <div class=" inline-block aspect-square h-[25px]">
+        <BigArrowDown />
+      </div>
     </div>
+
+
     <p class="h-10 pt-4 text-mobile18 font-bold">piotrolej@gmail.com</p>
   </a>
-  <div class="flex space-x-12 items-center">
+  <div class="flex space-x-12 items-center ">
     <p class="text-mobile18 font-bold">IG</p>
     <div class="grid">
       <p class="text-mobile16">olejtopisze</p>
