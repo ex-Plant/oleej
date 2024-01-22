@@ -203,54 +203,61 @@ body {
 .postContent * {
   font-size: 1rem;
   line-height: 1.4375rem;
-  font-family: 'NotoSans';
+  font-family: 'NotoSans', 'roboto', sans-serif;
+  margin: 0;
+  padding-bottom: 0;
+  padding-top: 0;
+}
+
+.postContent h2,
+.postContent h2 * {
+  font-family: 'Courier', monospace;
+  font-size: 1.125rem;
+  line-height: 1.25rem;
+  font-weight: 700;
 }
 
 .postContent h1,
-.postContent h2,
-.postContent h3,
-.postContent h4,
-.postContent h5,
-.postContent h6,
-.postContent h1 *,
-.postContent h2 *,
-.postContent h3 *,
-.postContent h4 *,
-.postContent h5 *,
-.postContent h6 * {
+.postContent h1 * {
   font-family: 'Courier', monospace;
-  font-size: 1.25rem;
+  font-size: 1rem;
+  line-height: 137.5%;
   font-weight: 700;
-  line-height: 100%;
 }
 
-/*.postContent ul {*/
-/*    list-style: disc;*/
-/*}*/
-/*.postContent ul li::marker {*/
-/*    color: red;*/
-/*}*/
+.postcontent h3,
+.postContent h3 * {
+  font-family: 'Courier', monospace;
+  font-size: 0.9375rem;
+  line-height: 1.375rem;
+  font-weight: 700;
+}
+
 
 @media (min-width: 720px) {
   .postContent * {
-    font-family: 'NotoSans';
     font-size: 1.125rem;
     line-height: 1.75rem;
   }
+
   .postContent h1,
-  .postContent h2,
-  .postContent h3,
-  .postContent h4,
-  .postContent h5,
-  .postContent h6,
-  .postContent h1 *,
-  .postContent h2 *,
-  .postContent h3 *,
-  .postContent h4 *,
-  .postContent h5 *,
-  .postContent h6 * {
-    font-family: 'Courier', monospace;
+  .postContent h1 * {
     font-size: 1.375rem;
     line-height: 1.75rem;
   }
+
+
+  /* */
+  .postContent h2,
+  .postContent h2 * {
+    font-size: 1.25rem ;
+    line-height: 1.625rem;
+  }
+
+  .postcontent h3,
+  .postContent h3 * {
+    font-size: 0.9375rem;
+    line-height: 1.375rem;
+  }
+
 }

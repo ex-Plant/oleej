@@ -15,7 +15,7 @@
     class="{twMerge(
       ' px-primary flex h-20 w-full items-center justify-between  border-black duration-200',
          !homePage ? 'border-b bg-primary h-20' :
-      homePage && top ? 'border-b bg-primary opacity-100 h-20' : '  opacity-0 h-0'
+      homePage && top ? 'border-b bg-primary opacity-100 h-20' : ' opacity-0 h-0'
     )}"
   >
     <a class="flex" href="/">
@@ -25,6 +25,9 @@
       <MenuLinkItem name="BLOG" link="/" />
       <MenuLinkItem name="O MNIE" link="/o-mnie" />
       <MenuLinkItem name="KONTAKT" link="/kontakt" />
+      <MenuLinkItem name="SZUKAJ" search='true' />
+
+
     </div>
   </nav>
 </div>

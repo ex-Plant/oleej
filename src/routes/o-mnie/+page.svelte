@@ -13,7 +13,7 @@
 <main
   class="mx-auto grid max-w-[1440px] gap-y-6 px-[clamp(20px,6vw,60px)] py-6 pb-12 md:gap-y-12"
 >
-  <p class="text-xs w-full text-mobile16 md:text-desktop40">
+  <p class="text-xs w-full postContent prose [&_p]:pb-3 [&_*]:block [&_*]px-0 [&_strong]:px-0 [&_strong]:font-bold">
     {@html customSanitization(data.main_text)}
   </p>
   <div
@@ -66,7 +66,7 @@
       />
     {/if}
   </div>
-  <div class="text-mobile16 font-bold md:text-desktop64">
+  <div class=" font-bold postContent prose [&_p]:pb-3 [&_*]:block [&_*]px-0 [&_strong]:px-0 [&_strong]:font-bold">
     {@html customSanitization(data.txt_under_pictures)}
   </div>
 </main>
