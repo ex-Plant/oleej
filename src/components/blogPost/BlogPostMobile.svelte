@@ -52,7 +52,7 @@
     {post.post_description}
   </p>
     <div
-      class=" prose postContent [&_p]:pb-3 [&_*]:block [&_*]px-0 [&_strong]:px-0 [&_strong]:font-bold py-7 border-b border-black "
+      class=" prose postContent [&_p]:pb-3 [&_*]px-0 [&_strong]:px-0 [&_strong]:font-bold py-7 border-b border-black "
     >
       {@html customSanitization(post_content)}
     </div>

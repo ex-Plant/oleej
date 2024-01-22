@@ -66,7 +66,8 @@
       />
     {/if}
   </div>
-  <div class=" font-bold postContent prose [&_p]:pb-3 [&_*]:block [&_*]px-0 [&_strong]:px-0 [&_strong]:font-bold">
+  <div class=" font-bold postContent prose [&_p]:pb-3 [&_*]px-0 [&_strong]:px-0 [&_strong]:font-bold
+">
     {@html customSanitization(data.txt_under_pictures)}
   </div>
 </main>

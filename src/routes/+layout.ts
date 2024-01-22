@@ -43,6 +43,9 @@ export const load: LayoutLoad = async () => {
     let postCategories = posts.map((post: PostType) => post.acf.category);
     postCategories = [...new Set(postCategories)];
 
+    let slugs = posts.map((post: PostType) => post.slug);
+    console.log(slugs);
+
     return {
       posts,
       postCategories,

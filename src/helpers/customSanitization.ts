@@ -8,7 +8,7 @@ import sanitizeHtml from "sanitize-html";
 export const customSanitization = (html: string) => {
   return sanitizeHtml(html, {
     allowedTags: [
-      "h1", "h2", "h3", "h4", "h5", "h6", "p", "em", "strong", "a", "ul", "ol", "li", "span", "b"
+      "h1", "h2", "h3", "h4", "h5", "h6", "p", "em", "strong", "a", "ul", "ol", "li", "span", "b", "em"
     ],
     allowedAttributes: {
       'a': [ 'href' ]

@@ -9,9 +9,10 @@
 
 
 
+  $: console.log(  `/blog/${post?.slug}`);
 </script>
 
-<a class="border-black border-b last:border-0" href="{`/blog/${post?.slug}`}">
+<a class="border-black border-b last:border-0" href={`/blog/${post?.slug}`}>
 
   <!--MOBILE-->
   <article class=" grid  py-7  md:hidden">
