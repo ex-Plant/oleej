@@ -13,10 +13,14 @@ import {
 } from '../store/global';
 import { get } from 'svelte/store';
 
+export const prerender = true;
+
+
 //prevent svelte from refetching data on the client - store it all in the global store after initial build load
 
 export const load: LayoutLoad = async () => {
   const dataIsLoaded = get(dataIsLoadedStore);
+  console.log({ dataIsLoaded })
   if (dataIsLoaded) return;
 
   async function getGlobalFoto() {
@@ -68,12 +72,10 @@ export const load: LayoutLoad = async () => {
       responseArr.forEach((res) =>
         console.log('imageResponses: ', res.statusText),
       );
-      error(404, 'Missing images data from layout.ts');
     }
     return await Promise.all(responseArr.map((res) => res.json()));
   }
 
-  // console.log(test, "test")
 
   async function getAboutPageData() {
     const pageDataResponse = await fetch(`${baseUrl}pages?slug=o-mnie`);
@@ -117,5 +119,4 @@ export const load: LayoutLoad = async () => {
   dataIsLoadedStore.set(true);
 };
 
-export const prerender = true;
 export const trailingSlash = 'always';

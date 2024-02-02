@@ -23,5 +23,4 @@ export const blogPost_right_side_fotosStore = writable([] as ImageType[]);
 
 export const dataIsLoadedStore = writable(false);
 
-
 export let mobileMenuOpened = writable(false);

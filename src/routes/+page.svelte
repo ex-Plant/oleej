@@ -10,8 +10,8 @@
   import LogoHomeMobile from '../assets/fotos/LogoHomeMobile.svelte';
   import Logo from '../assets/Logo.svelte';
   import LogoHomeDesktop from '../assets/LogoHomeDesktop.svelte';
-  import MenuLinkItem from "../components/navigation/MenuLinkItem.svelte";
-  import { mobileMenuOpened } from "../store/global";
+  import MenuLinkItem from '../components/navigation/MenuLinkItem.svelte';
+  import { mobileMenuOpened } from '../store/global';
 
   let mainRef: HTMLElement;
   let top = false;
@@ -33,7 +33,6 @@
       window.removeEventListener('scroll', checkElementPosition);
     }
   });
-
 </script>
 
 <div class="{twMerge('md:hidden')}">
@@ -41,9 +40,12 @@
 </div>
 
 <div class=" px-primary md:hidden">
-  <button on:click="{() => mobileMenuOpened.set(true)}" class="h-20 whitespace-nowrap text-[1.25rem]">
-    [ MENU ]</button
+  <button
+    on:click="{() => mobileMenuOpened.set(true)}"
+    class="h-20 whitespace-nowrap text-[1.25rem]"
   >
+    [MENU]
+  </button>
   <a href="/">
     <LogoHomeMobile />
   </a>
@@ -57,18 +59,18 @@
 </div>
 
 <!-- DESKTOP -->
-<div class=" px-primary hidden md:block pt-12">
-  <div class='flex justify-between'>
-<div class='flex flex-col gap-y-2'>
-  <MenuLinkItem name="BLOG" link="/" homeDesktopFullMenu/>
-  <MenuLinkItem name="O MNIE" link="/o-mnie" homeDesktopFullMenu/>
-  <MenuLinkItem name="KONTAKT" link="/kontakt" homeDesktopFullMenu/>
-</div>
-    <div class="pl-24 ">
-      <a class='flex ' href="/">
+<div class=" px-primary hidden pt-12 md:block">
+  <div class="flex justify-between">
+    <div class="flex flex-col gap-y-2">
+      <MenuLinkItem name="BLOG" link="/" homeDesktopFullMenu />
+      <MenuLinkItem name="O MNIE" link="/o-mnie" homeDesktopFullMenu />
+      <MenuLinkItem name="KONTAKT" link="/kontakt" homeDesktopFullMenu />
+    </div>
+    <div class="pl-24">
+      <a class="flex" href="/">
         <LogoHomeDesktop />
       </a>
-      <div class="pt-5 font-bold leading-[100%] text-[2rem]">
+      <div class="pt-5 text-[2rem] font-bold leading-[100%]">
         <p>PISZE O TRUDACH</p>
         <p>PROSTEGO ŻYCIA</p>
       </div>
