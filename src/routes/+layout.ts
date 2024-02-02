@@ -14,7 +14,7 @@ import {
 import { get } from 'svelte/store';
 
 export const prerender = true;
-
+export const trailingSlash = 'always';
 
 //prevent svelte from refetching data on the client - store it all in the global store after initial build load
 
@@ -118,5 +118,3 @@ export const load: LayoutLoad = async () => {
   blogPost_right_side_fotosStore.set(blogPost_right_side_fotos);
   dataIsLoadedStore.set(true);
 };
-
-export const trailingSlash = 'always';
