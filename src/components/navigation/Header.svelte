@@ -4,7 +4,6 @@
   import { twMerge } from 'tailwind-merge';
   import { page } from '$app/stores';
   $: homePage = $page.route.id === '/';
-
 </script>
 
 <div class="{twMerge(homePage && 'hidden')}">

@@ -1,42 +1,37 @@
 <script lang="ts">
-  import type { PostType } from '../../types';
+  import type { ImageType, PostType } from '../../types';
   import { convertDateToNumericString } from '../../helpers/convertDateToNumericString';
   import { customSanitization } from '../../helpers/customSanitization';
   import BigArrowDown from '../../assets/BigArrowDown.svelte';
   import SmallArrowUp from '../../assets/SmallArowUp.svelte';
   import { CldImage } from 'svelte-cloudinary';
-  import {
-    allPostsStore,
-    blogPost_desktop_fotosStore,
-    blogPost_mobile_fotosStore,
-    globalFotoStore,
-  } from '../../store/global';
-  import FooterPostList from "./FooterPostList.svelte";
-
-  $: globalFoto = $globalFotoStore;
-  $: desktopPostFotoS = $blogPost_desktop_fotosStore;
-  $: postFoto = desktopPostFotoS?.find(
-    (foto) => foto.id === postData?.acf.blog_desktop_foto_id,
-  );
-  $: rightSideFotos = $blogPost_mobile_fotosStore;
-  $: postSideFoto = rightSideFotos?.find(
-    (foto) => foto.id === postData?.acf.blog_right_side_foto_id,
-  );
+  import FooterPostList from './FooterPostList.svelte';
+  import { page } from '$app/stores';
 
   export let postData: PostType;
   export let post_content: string;
   export let timeString: string;
 
-  $: allPosts = $allPostsStore.posts;
-  $: post = postData?.acf;
-  $: publishDate = convertDateToNumericString(postData?.date);
-  $: currPostIndex = allPosts.findIndex((p: PostType) => p.slug === post.slug);
-  $: nextPostSlug = allPosts[0]?.slug;
+  const images = $page.data.images;
+  const globalFoto = $page.data.globalFoto;
+  const postFoto = images?.find(
+    (foto: ImageType) => foto.id === postData?.acf.blog_desktop_foto_id,
+  );
+  const postSideFoto = images?.find(
+    (foto: ImageType) => foto.id === postData?.acf.blog_right_side_foto_id,
+  );
 
-  $: if (currPostIndex >= 0 && currPostIndex < allPosts.length - 1) {
-    nextPostSlug = allPosts[currPostIndex + 1]?.slug;
+  const posts = $page?.data?.allPosts.posts;
+  const post = postData?.acf;
+  const publishDate = convertDateToNumericString(postData?.date);
+  const currPostIndex = posts.findIndex((p: PostType) => p.slug === post.slug);
+
+  let nextPostSlug = posts[0]?.slug;
+
+  if (currPostIndex >= 0 && currPostIndex < posts.length - 1) {
+    nextPostSlug = posts[currPostIndex + 1]?.slug;
   }
-  $: nextBlogPostLink = `/blog/${nextPostSlug}`;
+  const nextBlogPostLink = `/blog/${nextPostSlug}`;
 </script>
 
 <main class="px-primary mx-auto grid max-w-[1440px] flex-col pt-12">
@@ -101,11 +96,13 @@
     class="grid grid-cols-[auto_clamp(115px,16vw,230px)] pl-[clamp(115px,16vw,230px)] pt-7"
   >
     <div class="grid">
-      <p class="border-b border-black pb-12 text-[1.5rem] font-bold leading-[125%] ">
+      <p
+        class="border-b border-black pb-12 text-[1.5rem] font-bold leading-[125%]"
+      >
         {post.post_description}
       </p>
       <div
-        class=" prose postContent [&_p]:pb-3  [&_*]px-0 [&_strong]:px-0 [&_strong]:font-bold py-12  "
+        class=" postContent [&_*]px-0 prose py-12 [&_p]:pb-3 [&_strong]:px-0 [&_strong]:font-bold"
       >
         {@html customSanitization(post_content)}
       </div>
@@ -116,9 +113,7 @@
             >{publishDate}</span
           >
         </p>
-        <p
-          class="  flex h-6 items-center space-x-2 pl-12 font-bold uppercase"
-        >
+        <p class="  flex h-6 items-center space-x-2 pl-12 font-bold uppercase">
           <button on:click="{() => alert('oh hi mark!')}">UDOSTĘPNIJ</button>
           <SmallArrowUp />
         </p>
@@ -164,4 +159,4 @@
     </div>
   </section>
 </main>
-<FooterPostList  />
+<FooterPostList />

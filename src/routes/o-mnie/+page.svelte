@@ -1,57 +1,30 @@
 <script lang="ts">
-  /** @type {import('./$types').PageData} */
-
   import { CldImage } from 'svelte-cloudinary';
   import { customSanitization } from '../../helpers/customSanitization';
   import BigArrowUp from '../../assets/BigArrowUp.svelte';
-  import { aboutPageStore } from "../../store/global";
+  import { page } from "$app/stores";
 
-  $: data = $aboutPageStore;
-
+   const data = $page.data;
 </script>
 
 <main
   class="mx-auto grid max-w-[1440px] gap-y-6 px-[clamp(20px,6vw,60px)] py-6 pb-12 md:gap-y-12"
 >
-  <p class="text-xs w-full postContent prose [&_p]:pb-3 [&_*]:block [&_*]px-0 [&_strong]:px-0 [&_strong]:font-bold">
+  <p
+    class="text-xs postContent [&_*]px-0 prose w-full [&_*]:block [&_p]:pb-3 [&_strong]:px-0 [&_strong]:font-bold"
+  >
     {@html customSanitization(data.main_text)}
   </p>
   <div
     class="flex items-center justify-center md:gap-x-12 lg:justify-end lg:gap-x-16"
   >
-    <div class=" hidden flex-col items-end gap-y-6 lg:flex xl:gap-y-12">
-      {#if data?.small_foto?.source_url}
-        <CldImage
-          sizes="(max-width: 256px) 18vw"
-          src="{data?.small_foto?.source_url}"
-          alt="{data?.small_foto?.alt_text}"
-          height="auto"
-          width="256"
-          aspectRatio={256/128}
-        />
-      {/if}
-      {#if data.secondary_foto?.source_url}
-        <div
-          class="mr-10 hidden aspect-[350/210] w-[280px] lg:block xl:mr-20 xl:w-[350px]"
-        >
-          <CldImage
-            src="{data.secondary_foto.source_url}"
-            alt="{data.secondary_foto?.alt_text}"
-            aspectRatio={350/210}
-            height="auto"
-            width="350"
-            sizes="(max-width: 350px) 25vw"
-          />
-        </div>
-      {/if}
-    </div>
     {#if data.mainFoto?.source_url}
       <CldImage
-        class="object-top hidden lg:block "
+        class="hidden object-top lg:block "
         src="{data.mainFoto.source_url}"
         alt="{data.mainFoto?.alt_text}"
         height="693"
-        aspectRatio={570/693}
+        aspectRatio="{570 / 693}"
         width="570"
         sizes="(max-width: 768px) 100vw, 40vw"
       />
@@ -59,16 +32,12 @@
         class="object-top lg:hidden "
         src="{data.mainFoto.source_url}"
         alt="{data.mainFoto?.alt_text}"
-        aspectRatio={335/277}
-        width={1024}
+        aspectRatio="{335 / 277}"
+        width="{1024}"
         height="auto"
         sizes="(max-width: 1024px) 100vw"
       />
     {/if}
-  </div>
-  <div class=" font-bold postContent prose [&_p]:pb-3 [&_*]px-0 [&_strong]:px-0 [&_strong]:font-bold
-">
-    {@html customSanitization(data.txt_under_pictures)}
   </div>
 </main>
 <a href="/kontakt">

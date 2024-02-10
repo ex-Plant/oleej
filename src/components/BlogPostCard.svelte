@@ -25,6 +25,7 @@
     {#if postImage}
       <div class="w-full pt-7">
         <CldImage
+          loading="lazy"
           sizes="(max-width: 768px) 100vw"
           width="768"
           class="object-top"
@@ -43,6 +44,7 @@
     <div class=" md:grid md:grid-cols-2 md:gap-x-12">
       {#if postImage}
         <CldImage
+          loading="lazy"
           sizes="(max-width: 560px) 50vw"
           width="{560}"
           class="object-top"
@@ -77,6 +79,7 @@
     <div class="  md:grid md:grid-cols-2 1280:gap-x-16">
       {#if postImage}
         <CldImage
+          loading="lazy"
           sizes="(max-width: 269px) 20vw"
           width="{269}"
           class="object-top"

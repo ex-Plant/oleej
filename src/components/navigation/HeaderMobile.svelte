@@ -6,7 +6,6 @@
   import { mobileMenuOpened } from '../../store/global';
 
   export let top = false;
-
   $: homePage = $page.route.id === '/';
 </script>
 
@@ -14,21 +13,17 @@
   <nav
     class="{twMerge(
       ' flex w-full items-center justify-between border-black duration-200',
-      !homePage
-        ? 'h-20 border-b bg-primary'
-        : homePage && top
-        ? 'h-20 border-b bg-primary opacity-100'
-        : '  h-0 opacity-0',
+      !homePage && 'h-20 border-b bg-primary',
+      homePage && top && 'h-20 border-b bg-primary opacity-100',
+      homePage && !top && ' h-0 opacity-0 border-none',
     )}"
   >
     <a
       class="{twMerge(
         'duration-200',
-        !homePage
-          ? 'opacity-100'
-          : homePage && top
-          ? 'opacity-100'
-          : 'opacity-0',
+        !homePage && 'opacity-100',
+        homePage && top && 'opacity-100',
+        homePage && !top && 'opacity-0',
       )}"
       href="/"
     >

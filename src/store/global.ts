@@ -1,5 +1,8 @@
 import { writable } from 'svelte/store';
 import type { ImageType, PostType } from "../types";
+
+export const mobileMenuOpened = writable(false);
+
 export const activePostCat = writable('');
 
 export const allPostsStore = writable({
@@ -9,11 +12,11 @@ export const allPostsStore = writable({
 
 export const aboutPageStore = writable({
   mainFoto: {} as ImageType,
-  secondary_foto: {} as ImageType,
-  small_foto: {} as ImageType,
   main_text: '',
-  txt_under_pictures: '',
 });
+export const aboutPageDataLoaded = writable(false);
+
+
 
 export const globalFotoStore = writable<ImageType>();
 export const blogPost_desktop_fotosStore = writable([] as ImageType[]);
@@ -22,5 +25,3 @@ export const blogPost_right_side_fotosStore = writable([] as ImageType[]);
 
 
 export const dataIsLoadedStore = writable(false);
-
-export let mobileMenuOpened = writable(false);

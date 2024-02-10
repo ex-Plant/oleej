@@ -1,24 +1,23 @@
 <script lang="ts">
   import BlogPostMobile from '../../../components/blogPost/BlogPostMobile.svelte';
   import BlogPostDesktop from '../../../components/blogPost/BlogPostDesktop.svelte';
-  import { allPostsStore } from "../../../store/global";
-  import { page } from "$app/stores";
-  import type { PostType } from "../../../types";
+  import { page } from '$app/stores';
+  import type { PostType } from '../../../types';
 
-  $: slug = $page.params.slug;
-  $: posts = $allPostsStore?.posts;
-  $: post = posts?.find((post: PostType) => post.slug === slug);
-  $: post_content = post.acf?.post_content;
+  const slug = $page.params.slug;
+  const posts = $page.data.allPosts.posts
+  const post = posts?.find((post: PostType) => post.slug === slug);
+  const post_content = post.acf?.post_content;
 
   function countWords(text: string) {
     return text?.split(/\s+/).length;
   }
-
-  $: numberOfWords = countWords(post_content);
-  $: readingTimeInMinutes = Math.floor(numberOfWords / 200); // 200 words per minute
+  //
+  const numberOfWords = countWords(post_content);
+  const readingTimeInMinutes = Math.floor(numberOfWords / 200); // 200 words per minute
   let timeString: string;
 
-  $: if (readingTimeInMinutes < 1) {
+  if (readingTimeInMinutes < 1) {
     timeString = 'mniej niż minutę';
   } else if (readingTimeInMinutes === 1) {
     timeString = 'minutę';

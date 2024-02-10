@@ -3,11 +3,11 @@
   import { inject } from '@vercel/analytics';
   import '../app.css';
   import { fade } from 'svelte/transition';
-  import Header from '../components/navigation/Header.svelte';
-  import Footer from '../components/footer/Footer.svelte';
   import Spinner from '../components/Spinner.svelte';
   import { navigating, page } from '$app/stores';
   import { twMerge } from 'tailwind-merge';
+  import Header from '../components/navigation/Header.svelte';
+  import Footer from '../components/footer/Footer.svelte';
 
   inject({ mode: dev ? 'development' : 'production' });
 
