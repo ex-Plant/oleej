@@ -19,7 +19,6 @@
 
   $: getClientWidth();
 
-  // $: console.log({ top });
   onMount(() => {
     window.addEventListener('scroll', checkElementPosition);
   });

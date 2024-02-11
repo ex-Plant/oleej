@@ -2,8 +2,6 @@
   import { twMerge } from 'tailwind-merge';
   import Logo from '../../assets/Logo.svelte';
   import MenuLinkItem from './MenuLinkItem.svelte';
-  import { page } from '$app/stores';
-  $: homePage = $page.route.id === '/';
 
   export let top = false;
 </script>
@@ -12,9 +10,8 @@
   <nav
     class="{twMerge(
       ' px-primary flex h-20 w-full items-center justify-between  border-black duration-200',
-      !homePage && 'h-20 border-b bg-primary',
-      homePage && top && 'h-20 border-b bg-primary opacity-100',
-      homePage && !top && 'h-0 opacity-0',
+      top && 'h-20 border-b bg-primary opacity-100',
+      !top && 'h-0 opacity-0',
     )}"
   >
     <a class="flex" href="/">

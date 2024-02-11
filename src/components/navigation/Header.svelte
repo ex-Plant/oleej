@@ -8,9 +8,9 @@
 
 <div class="{twMerge(homePage && 'hidden')}">
   <div class="{'hidden md:block'}">
-    <HeaderDesktop />
+    <HeaderDesktop top/>
   </div>
   <div class="md:hidden">
-    <HeaderMobile />
+    <HeaderMobile top/>
   </div>
 </div>

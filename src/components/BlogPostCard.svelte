@@ -15,7 +15,7 @@
 <a class="border-black border-b last:border-0" href={`/blog/${post?.slug}`}>
 
   <!--MOBILE-->
-  <article class=" grid  py-7  md:hidden">
+  <article class=" grid py-7 md:hidden">
     <div class="grid">
       <h4 class="  text-[0.75rem] uppercase">{post.acf.category}</h4>
       <h2 class=" pt-4 text-[1.125rem] font-[700] uppercase">
@@ -65,7 +65,7 @@
   </article>
 
   <!--1280-->
-  <article class=" hidden gap-x-24 py-12 1280:flex ">
+  <article class=" hidden gap-x-24 py-12 1280:grid grid-cols-2 ">
     <div class=" flex w-[550px] shrink-0 flex-col uppercase">
       <h2 class="  text-[3.75rem] font-[700]">
         <span class="line-clamp-5"> {post.acf.title} <BigArrowUp /></span>
@@ -76,7 +76,7 @@
       </p>
     </div>
 
-    <div class="  md:grid md:grid-cols-2 1280:gap-x-16">
+    <div class="  md:grid md:grid-cols-2 1280:gap-x-16 ">
       {#if postImage}
         <CldImage
           loading="lazy"
@@ -91,7 +91,7 @@
       {/if}
 
       <div>
-        <p class="line-clamp-[8] text-[1.25rem] leading-[140%]">
+        <p class="line-clamp-[8] text-[1.25rem] leading-[140%]  w-full">
           {post.acf.post_description}
         </p>
       </div>

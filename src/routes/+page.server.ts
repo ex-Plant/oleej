@@ -28,6 +28,8 @@ export const load: PageLoad = async () => {
     };
   }
 
+
+
   async function getImages() {
     const data = await fetch(`${baseUrl}media/`);
     return data.json();
@@ -41,6 +43,7 @@ export const load: PageLoad = async () => {
   const blogPost_mobile_fotos = images.filter((img) =>
     mobileFotosIds.includes(img.id),
   );
+
 
   return {
     allPosts,

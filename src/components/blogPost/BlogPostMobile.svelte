@@ -51,7 +51,7 @@
     {post.post_description}
   </p>
   <div
-    class=" postContent [&_*]px-0 prose border-b border-black py-7 [&_p]:pb-3 [&_strong]:px-0 [&_strong]:font-bold"
+    class=" prose postContent blog-post-container  border-b border-black py-7"
   >
     {@html customSanitization(post_content)}
   </div>

@@ -56,7 +56,7 @@
         </span>
       </div>
       <h1
-        class="w-full pt-4 text-[2.5rem] font-bold leading-[110%] 1280:text-[4rem]"
+        class="w-full pt-4 text-[3.5625rem] leading-[100%] font-bold  1280:text-[4rem]"
       >
         {post.title}
       </h1>
@@ -102,7 +102,7 @@
         {post.post_description}
       </p>
       <div
-        class=" postContent [&_*]px-0 prose py-12 [&_p]:pb-3 [&_strong]:px-0 [&_strong]:font-bold"
+        class="blog-post-container postContent prose  py-12 "
       >
         {@html customSanitization(post_content)}
       </div>
