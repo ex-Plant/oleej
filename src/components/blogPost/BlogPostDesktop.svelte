@@ -45,7 +45,7 @@
     <div class="flex w-full flex-col pr-[clamp(65px,9vw,130px)]">
       <div class="flex items-center gap-x-4">
         {#if post.category}
-          <h3 class=" text-[1.5rem] uppercase">
+          <h3 class=" text-[1.125rem] uppercase">
             {post.category}
           </h3>
         {/if}
@@ -65,11 +65,11 @@
     <div class=" flex items-start justify-end">
       <a
         href="{nextBlogPostLink}"
-        class="group relative whitespace-nowrap pb-1 text-right 1280:text-[1.25rem]"
+        class="group relative whitespace-nowrap pb-1 text-right text-[1.125rem]"
       >
         <span> KOLEJNY ARTYKUL </span>
         <span
-          class="{'absolute bottom-[-3px] left-[50%] h-[1px] w-0 rounded bg-black duration-300 group-hover:left-0 group-hover:w-full'}"
+          class="{'absolute bottom-[-2px] left-[50%] h-[1px] w-0 rounded bg-black duration-300 group-hover:left-0 group-hover:w-full'}"
         >
         </span>
       </a>
@@ -111,7 +111,7 @@
       </div>
 
       <div class=" flex items-center">
-        <p class="text-[1.25rem]">
+        <p class="">
           <span class="pr-1">Data publikacji: </span><span class="font-[700]"
             >{publishDate}</span
           >
@@ -136,9 +136,9 @@
     </aside>
   </section>
 
-  <section
-    title="skontaktuj się ze mną"
-    class="mb-12 flex h-[160px] items-center gap-x-4"
+  <a
+    href="/o-mnie"
+    class="mb-12 flex h-[160px] items-center gap-x-4 group"
   >
     <div class="w-[clamp(115px,16vw,230px)] pr-8">
       <div class=" flex w-full flex-none">
@@ -153,13 +153,13 @@
       </div>
     </div>
 
-    <div class=" flex flex-col justify-center">
+    <div class=" flex flex-col justify-center ">
       <p class="h-6 text-desktop16">Autor</p>
       <p class="h-8 text-desktop24 font-bold">Piotr Olejnik</p>
     </div>
-    <div class="mt-6 h-12">
+    <div class="mt-6 h-12 group-hover:scale-125 duration-500">
       <BigArrowDown />
     </div>
-  </section>
+  </a>
 </main>
 <FooterPostList />

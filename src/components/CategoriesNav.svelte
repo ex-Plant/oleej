@@ -7,7 +7,7 @@
   const postCategories = $page.data.allPosts?.postCategories;
 </script>
 
-<div class="{twMerge(' xl:px-primary max-w-[1440px] bg-[#F7F4F0]')}">
+<div class="{twMerge('   max-w-[1440px] mx-auto bg-[#F7F4F0]')}">
   <div
     class=" no-scrollbar flex items-center space-x-6 overflow-hidden overflow-x-scroll border-b border-black pb-4 md:pb-5 md:space-x-12"
   >

@@ -4,7 +4,7 @@
   import MenuLinkItem from './navigation/MenuLinkItem.svelte';
 </script>
 
-<div class=" px-primary hidden pt-12 md:block ">
+<div class=" px-primary hidden pt-12 md:block mx-auto max-w-[1440px] ">
   <div class="flex justify-between">
     <div class="flex flex-col gap-y-2">
       <MenuLinkItem name="BLOG" link="/" homeDesktopFullMenu />

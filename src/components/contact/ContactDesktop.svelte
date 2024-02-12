@@ -7,7 +7,7 @@
 >
   <div class=" pt-16 pb-[112px] font-bold">
     <p class='text-[2.25rem] leading-[2.5rem] '>Potrzebujesz tekstu?</p>
-    <p class='text-[2.25rem] leading-[2.5rem] '>Korekty ? Pomysłu?</p>
+    <p class='text-[2.25rem] leading-[2.5rem] '>Korekty? Pomysłu?</p>
   </div>
   <a
     class="{'pr-4'}"
@@ -26,12 +26,12 @@
   </a>
   <a href="mailto:piotrolej@gmail.com">
     <div class=" flex flex-col space-y-4">
-      <p class="  mt-20 text-[clamp(32px,3vw,44px)] font-bold">
+      <p class="  mt-20 text-[2.25rem] leading-[2.5rem] font-bold">
         piotrolej@gmail.com
       </p>
-      <div class="flex space-x-10 text-[2.25rem] ">
-        <p class=" font-bold">IG</p>
-        <p class=" ">Olejto</p>
+      <div class="flex space-x-10 ">
+        <p class=" font-bold text-[2.25rem] leading-[2.5rem]">IG</p>
+        <p class="text-[2.25rem] leading-[2.5rem] ">Olejto</p>
       </div>
     </div>
   </a>

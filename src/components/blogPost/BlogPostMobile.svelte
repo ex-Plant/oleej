@@ -52,9 +52,7 @@
   <p class="border-b border-black py-7 text-[1.25rem] font-bold leading-[110%]">
     {post.post_description}
   </p>
-  <div
-    class="postContent blog-post-container border-b border-black py-7"
-  >
+  <div class="postContent blog-post-container border-b border-black py-7">
     {@html customSanitization(post_content)}
   </div>
 
@@ -68,7 +66,7 @@
     </p>
 
     <p
-      class=" flex h-6 items-center space-x-2 text-mobile14 font-bold uppercase"
+      class=" flex h-6 items-center space-x-2 text-[0.875rem] font-bold uppercase"
     >
       <span>UDOSTĘPNIJ</span>
       <SmallArrowUp />
@@ -76,7 +74,7 @@
   </div>
 </section>
 
-<section title="skontaktuj się ze mną " class="grid grid-cols-2 gap-x-6 py-6">
+<section class="grid grid-cols-2 gap-x-6 py-6">
   <div class=" flex">
     <CldImage
       sizes="(max-width: 768px) 50vw"
@@ -88,7 +86,7 @@
     />
   </div>
 
-  <div class=" flex flex-col justify-center">
+  <a href="/o-mnie" class=" flex flex-col justify-center">
     <p class="h-6 text-mobile14">Autor</p>
     <p class=" pb-6 text-mobile18 font-bold">Piotr Olejnik</p>
     <div class="flex gap-x-3">
@@ -100,5 +98,5 @@
         <span>NAPISZ</span><span>DO MNIE</span>
       </p>
     </div>
-  </div>
+  </a>
 </section>
