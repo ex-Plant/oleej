@@ -1,12 +1,10 @@
 import { error } from '@sveltejs/kit';
 import { baseUrl } from '../constans/constans';
-import type { ImageType, PostType } from '../types';
+import type { PostType } from '../types';
 import type { PageLoad } from '../../.svelte-kit/types/src/routes/o-mnie/$types';
 export const prerender = true;
 export const trailingSlash = 'always';
 
-//prevent svelte from refetching data on the client - store it all in the global store after initial build load
-//
 export const load: PageLoad = async () => {
 
   async function getAllPosts() {
@@ -25,24 +23,8 @@ export const load: PageLoad = async () => {
     };
   }
 
-
-  async function getImages() {
-    const data = await fetch(`${baseUrl}media/`);
-    return data.json();
-  }
-
-  const images: ImageType[] = await getImages();
   const allPosts = await getAllPosts();
-  const mobileFotosIds = allPosts.posts.map(
-    (post: PostType) => post.acf.mobile_foto_id,
-  );
-  const blogPost_mobile_fotos = images.filter((img) =>
-    mobileFotosIds.includes(img.id),
-  );
-
-
   return {
     allPosts,
-    blogPost_mobile_fotos,
   };
 };

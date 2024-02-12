@@ -12,6 +12,19 @@
   inject({ mode: dev ? 'development' : 'production' });
 
   $: homePage = $page.route.id === '/';
+
+  let showSpinner = false;
+
+  $: if ($navigating) {
+    setTimeout(() => {
+      showSpinner = true;
+    }, 100);
+  }
+
+  $: if (showSpinner && !$navigating) {
+      showSpinner = false;
+  }
+
 </script>
 
 <div class=" flex min-h-[100svh] flex-col">
@@ -21,7 +34,7 @@
     out:fade="{{ duration: 500 }}"
     class="{twMerge(homePage ? 'mt-0' : 'mt-20')}"
   >
-    {#if $navigating} <Spinner /> {/if}
+    {#if showSpinner} <Spinner /> {/if}
 
     <slot />
   </div>

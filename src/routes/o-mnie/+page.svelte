@@ -43,7 +43,7 @@
 
 <!--// desktop -->
 <main
-  class=" grid-cols-[auto_clamp(230px,32vw,460px)] mx60-auto hidden max-w-[1440px] gap-y-12 py-6 pb-12 pl-[clamp(115px,16vw,230px)] lg:grid gap-x-20"
+  class="grid-cols-[auto_clamp(230px,32vw,460px)] mx-auto hidden max-w-[1440px] gap-y-12 py-6 pb-12 pl-[clamp(115px,16vw,230px)] lg:grid gap-x-20"
 >
   <div>
     <div class="text-xs postContent w-full">
@@ -74,7 +74,7 @@
       </a>
     </div>
   </div>
-  <div class=" flex justify-end">
+  <div class=" flex justify-end pr-primary">
     {#if data.mainFoto?.source_url}
       <CldImage
         class="hidden object-top lg:block "

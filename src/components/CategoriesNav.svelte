@@ -5,9 +5,10 @@
   import { page } from '$app/stores';
 
   const postCategories = $page.data.allPosts?.postCategories;
+
 </script>
 
-<div class="{twMerge('   max-w-[1440px] mx-auto bg-[#F7F4F0]')}">
+<div class="{twMerge(' max-w-[1440px] mx-auto bg-[#F7F4F0]')}">
   <div
     class=" no-scrollbar flex items-center space-x-6 overflow-hidden overflow-x-scroll border-b-[2px] border-black pb-4 md:pb-5 md:space-x-12"
   >
@@ -19,7 +20,10 @@
       >
         <AllCategoriesButton />
         <span
-          class="{'absolute bottom-[-4px] left-[50%] h-[1px] w-0 rounded bg-black duration-200 group-hover:left-0 group-hover:w-full'}"
+          class="{twMerge('absolute bottom-[-4px] left-[50%] h-[1px] w-0 rounded bg-black duration-200 group-hover:left-0 group-hover:w-full',
+          $activePostCat === '' && 'w-full left-0'
+
+          )}"
         ></span>
       </button>
     </div>
@@ -31,7 +35,9 @@
       >
         <span class="whitespace-nowrap"> {category}</span>
         <span
-          class="{'absolute bottom-0 left-[50%] h-[1px] w-0 rounded bg-black duration-300 group-hover:left-0 group-hover:w-full'}"
+          class="{twMerge('absolute bottom-0 left-[50%] h-[1px] w-0 rounded bg-black duration-300 group-hover:left-0 group-hover:w-full',
+          $activePostCat === category && 'w-full left-0'
+          )}"
         ></span>
       </button>
     {/each}

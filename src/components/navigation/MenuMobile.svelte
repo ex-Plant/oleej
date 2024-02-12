@@ -2,15 +2,16 @@
   import { twMerge } from 'tailwind-merge';
   import MenuLinkItem from './MenuLinkItem.svelte';
   import {
-    allPostsStore,
     activePostCat,
     mobileMenuOpened,
   } from '../../store/global.js';
+  import { page } from "$app/stores";
 
   function onSelectCategory(category: string) {
     activePostCat.set(category);
     mobileMenuOpened.set(false);
   }
+
 </script>
 
 <div
@@ -48,7 +49,7 @@
       </button>
     </div>
     <div class=" [&:*]:lowercase flex flex-col pb-6">
-      {#each $allPostsStore.postCategories as category}
+      {#each $page.data.allPosts.postCategories as category}
         <a class="h-9 w-full" href="/">
           <button
             class="group relative pb-1 text-left"
