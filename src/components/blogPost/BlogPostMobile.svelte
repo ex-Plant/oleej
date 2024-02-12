@@ -19,6 +19,23 @@
 
   const post = postData?.acf;
   const publishDate = convertDateToNumericString(postData?.date);
+
+  let dialog: HTMLDialogElement;
+  let timeoutId: ReturnType<typeof setTimeout> | undefined;
+
+  const saveLink = async () => {
+    try {
+      await navigator.clipboard.writeText($page.url.href);
+      dialog.show();
+      clearTimeout(timeoutId)
+      timeoutId = setTimeout(() => {
+        dialog.close();
+      }, 1000);
+    } catch (err) {
+      console.error('Failed to copy: ', err);
+    }
+  };
+
 </script>
 
 <section class=" grid">
@@ -49,28 +66,32 @@
       {@html customSanitization(postFoto?.caption?.rendered)}
     </p>
   </div>
-  <p class="border-b-[2px] border-black py-7 text-[1.25rem] font-bold leading-[110%]">
+  <p
+    class="border-b-[2px] border-black py-7 text-[1.25rem] font-bold leading-[110%]"
+  >
     {post.post_description}
   </p>
   <div class="postContent blog-post-container border-b-[2px] border-black py-7">
     {@html customSanitization(post_content)}
   </div>
 
-  <!--  <div class='  leading-[170%] text-[20px]  tracking-[-0.8px]   '>-->
-  <!--  </div>-->
-  <div class="grid pt-7">
+  <div class="relative grid pt-7 ">
     <p class="h-7 text-[0.875rem]">
       <span class="pr-1">Data publikacji: </span><span class="font-[700]"
         >{publishDate}</span
       >
     </p>
 
-    <p
+    <button
+      on:click="{saveLink}"
       class=" flex h-6 items-center space-x-2 text-[0.875rem] font-bold uppercase"
     >
       <span>UDOSTĘPNIJ</span>
       <SmallArrowUp />
-    </p>
+    </button>
+    <dialog class=" absolute right-0 top-0 translate-y-1/2 rounded" bind:this="{dialog}">
+      skopiowano do schowka
+    </dialog>
   </div>
 </section>
 
@@ -100,3 +121,9 @@
     </div>
   </a>
 </section>
+
+<style>
+  dialog::backdrop {
+    background-color: transparent;
+  }
+</style>

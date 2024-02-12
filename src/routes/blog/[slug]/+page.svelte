@@ -26,6 +26,7 @@
   } else {
     timeString = `${readingTimeInMinutes} minut`;
   }
+
 </script>
 
 {#if post}

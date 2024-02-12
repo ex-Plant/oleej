@@ -7,12 +7,10 @@
   import { CldImage } from 'svelte-cloudinary';
   import FooterPostList from './FooterPostList.svelte';
   import { page } from '$app/stores';
-  import { twMerge } from 'tailwind-merge';
 
   export let postData: PostType;
   export let post_content: string;
   export let timeString: string;
-
   const images = $page.data.images;
   const globalFoto = $page.data.globalFoto;
   const postFoto = images?.find(
@@ -33,6 +31,22 @@
     nextPostSlug = posts[currPostIndex + 1]?.slug;
   }
   const nextBlogPostLink = `/blog/${nextPostSlug}`;
+
+  let dialog: HTMLDialogElement;
+  let timeoutId: ReturnType<typeof setTimeout> | undefined;
+
+  const saveLink = async () => {
+    try {
+      await navigator.clipboard.writeText($page.url.href);
+      dialog.show();
+      clearTimeout(timeoutId)
+      timeoutId = setTimeout(() => {
+        dialog.close();
+      }, 1000);
+    } catch (err) {
+      console.error('Failed to copy: ', err);
+    }
+  };
 </script>
 
 <main class="px-primary mx-auto grid max-w-[1440px] flex-col pt-12">
@@ -106,19 +120,22 @@
             {@html customSanitization(post_content)}
           </div>
 
-          <div class=" flex items-center">
+          <div class=" relative flex items-center">
             <p class="">
               <span class="pr-1">Data publikacji: </span><span
                 class="font-[700]">{publishDate}</span
               >
             </p>
-            <p
+            <button
+              on:click="{saveLink}"
               class="  flex h-6 items-center space-x-2 pl-12 font-bold uppercase"
             >
-              <button on:click="{() => alert('oh hi mark!')}">UDOSTĘPNIJ</button
-              >
+              <span>UDOSTĘPNIJ</span>
               <SmallArrowUp />
-            </p>
+            </button>
+            <dialog class="  absolute left-0 top-0 translate-y-1/2 rounded" bind:this="{dialog}">
+              skopiowano do schowka
+            </dialog>
           </div>
         </div>
         <aside class="flex items-center pl-8">
