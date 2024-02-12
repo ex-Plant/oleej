@@ -50,26 +50,26 @@
       {@html customSanitization(data.main_text)}
     </div>
 
-    <div class=" hidden grid-cols-2 gap-x-16 lg:grid">
+    <div class=" hidden grid-cols-2 gap-x-16 lg:grid group ">
       <a href="/kontakt">
         <div class=" flex h-full flex-col justify-end py-8">
-          <div class=" mb-4 aspect-square w-[clamp(29px,4vw,57px)]">
+          <div class=" mb-4 aspect-square w-[clamp(29px,4vw,57px)] group-hover:scale-125 duration-500">
             <BigArrowDown />
           </div>
           <span class="w-[450px] text-[6.25rem] leading-[80%]">
             NAPISZ DO MNIE
           </span>
-          <a class="mt-10" href="mailto:piotrolej@gmail.com">
+          <div class="mt-10" >
             <div class=" grid text-[1.5rem]">
-              <p class="flex h-10 items-end font-bold">
+              <div class="flex h-10 items-end font-bold">
                 <span> piotrolej@gmail.com </span>
-              </p>
-              <p class="flex h-10 items-end space-x-10">
+              </div>
+              <div class="flex h-10 items-end space-x-10">
                 <span class=" font-bold">IG</span>
                 <span class=" ">Olejto</span>
-              </p>
+              </div>
             </div>
-          </a>
+          </div>
         </div>
       </a>
     </div>
