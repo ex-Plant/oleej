@@ -7,17 +7,13 @@
   const postCategories = $page.data.allPosts?.postCategories;
 </script>
 
-<div
-  class="{twMerge(
-    ' no-scrollbar overflow-x-hidden bg-[#F7F4F0;] duration-100',
-  )}"
->
+<div class="{twMerge(' xl:px-primary max-w-[1440px] bg-[#F7F4F0]')}">
   <div
-    class=" flex items-center space-x-4 overflow-hidden overflow-x-scroll border-b border-black pb-4 md:pb-5 lg:space-x-12"
+    class=" no-scrollbar flex items-center space-x-6 overflow-hidden overflow-x-scroll border-b border-black pb-4 md:pb-5 md:space-x-12"
   >
     <div class="group relative flex items-center justify-center">
       <button
-        class="relative aspect-square h-[clamp(8px,2vw,18px)] inline-block"
+        class="relative inline-block aspect-square h-[clamp(8px,2vw,18px)]"
         aria-label="reset categories"
         on:click="{() => activePostCat.set('')}"
       >
