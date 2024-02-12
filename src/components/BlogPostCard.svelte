@@ -6,16 +6,17 @@
 
   export let post: PostType;
   export let postImage: ImageType | undefined;
-
 </script>
 
-<a class="border-black border-b-[2px] last:border-0" href={`/blog/${post?.slug}`}>
-
+<a
+  class="group border-b-[2px] border-black last:border-0"
+  href="{`/blog/${post?.slug}`}"
+>
   <!--MOBILE-->
-  <article class=" grid py-7 md:hidden">
+  <article class=" grid py-7 lg:hidden">
     <div class="grid">
       <h4 class="  text-[0.75rem] uppercase">{post.acf.category}</h4>
-      <h2 class=" pt-4 text-[1.125rem] leading-[108%] font-[700] uppercase">
+      <h2 class=" pt-4 text-[1.125rem] font-[700] uppercase leading-[108%]">
         {post.acf.title}
       </h2>
     </div>
@@ -37,8 +38,8 @@
   </article>
 
   <!--MD-->
-  <article class="hidden py-12 md:grid 1280:hidden">
-    <div class=" md:grid md:grid-cols-2 md:gap-x-12">
+  <article class="hidden py-12 lg:grid 1280:hidden">
+    <div class=" grid grid-cols-2 gap-x-12">
       {#if postImage}
         <CldImage
           loading="lazy"
@@ -51,29 +52,39 @@
           alt="{postImage.alt_text}"
         />
       {/if}
-      <div class=" uppercase ">
-        <h2 class=" text-[2.5rem] leading-[108%] font-[700] md:line-clamp-4">
+      <div class=" uppercase">
+        <h2 class=" line-clamp-5 text-[2.5rem] font-[700] leading-[108%]">
           {post.acf.title}
+          <span class="inline-block duration-500 group-hover:scale-125">
+            <BigArrowUp />
+          </span>
         </h2>
-        <h4 class=" text-[1.5rem] pb-2 pt-4">{post.acf.category}</h4>
-        <p class=" text-[1.25rem] md:line-clamp-4 leading-[140%]">{post.acf.excerpt}</p>
+        <h4 class=" pb-2 pt-4 text-[1.5rem]">{post.acf.category}</h4>
+        <p class=" line-clamp-3 text-[1.25rem] leading-[140%]">
+          {post.acf.excerpt}
+        </p>
       </div>
     </div>
   </article>
 
   <!--1280-->
-  <article class=" hidden gap-x-24 py-12 1280:grid grid-cols-2 ">
+  <article class=" hidden grid-cols-2 gap-x-24 py-12 1280:grid">
     <div class=" flex w-[550px] shrink-0 flex-col uppercase">
       <h2 class=" ">
-        <span class="line-clamp-4  text-[3.75rem] font-[700] leading-[108%]"> {post.acf.title} <BigArrowUp /></span>
+        <span class="line-clamp-5  text-[3.75rem] font-[700] leading-[108%]">
+          {post.acf.title}
+          <span class="inline-block duration-500 group-hover:scale-150">
+            <BigArrowUp />
+          </span>
+        </span>
       </h2>
       <h4 class=" pt-4 text-[1.5rem]">{post.acf.category}</h4>
-      <p class=" mt-auto pt-4 text-[1.125rem] ">
+      <p class=" mt-auto pt-4 text-[1.125rem]">
         {convertDateToNumericString(post.date)}
       </p>
     </div>
 
-    <div class="grid grid-cols-2 gap-x-16 ">
+    <div class="grid grid-cols-2 gap-x-16">
       {#if postImage}
         <CldImage
           loading="lazy"
@@ -88,7 +99,7 @@
       {/if}
 
       <div>
-        <p class="line-clamp-[10] text-[1.25rem] leading-[140%] w-full">
+        <p class="line-clamp-[10] w-full text-[1.25rem] leading-[140%]">
           {post.acf.excerpt}
         </p>
       </div>
