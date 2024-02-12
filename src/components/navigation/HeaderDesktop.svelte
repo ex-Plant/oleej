@@ -9,9 +9,8 @@
 <div class="{twMerge(' fixed left-0 top-0 z-10 w-full')}">
   <nav
     class="{twMerge(
-      ' px-primary flex h-20 w-full items-center justify-between  border-black duration-300',
-      top && 'h-20 border-b-[2px] bg-primary translate-y-0',
-      !top && 'h-0 -translate-y-10',
+      ' px-primary flex w-full items-center justify-between  border-b-[2px] border-black bg-primary duration-300',
+      top ? 'h-20  translate-y-0' : !top && 'h-0 -translate-y-20',
     )}"
   >
     <a class="flex" href="/">
