@@ -89,7 +89,7 @@
       <span>UDOSTĘPNIJ</span>
       <SmallArrowUp />
     </button>
-    <dialog class=" absolute right-0 top-0 translate-y-1/2 rounded" bind:this="{dialog}">
+    <dialog class=" absolute right-0 top-0 translate-y-1/2 rounded text-[10px] " bind:this="{dialog}">
       skopiowano do schowka
     </dialog>
   </div>
