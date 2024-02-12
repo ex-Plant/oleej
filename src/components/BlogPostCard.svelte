@@ -70,14 +70,12 @@
   <!--1280-->
   <article class=" hidden grid-cols-2 gap-x-24 py-12 1280:grid">
     <div class=" flex w-[550px] shrink-0 flex-col uppercase">
-      <h2 class=" ">
-        <span class="line-clamp-5  text-[3.75rem] font-[700] leading-[108%]">
+        <h2 class="line-clamp-5  text-[3.75rem] font-[700] leading-[108%]">
           {post.acf.title}
           <span class="inline-block duration-500 group-hover:scale-150">
             <BigArrowUp />
           </span>
-        </span>
-      </h2>
+        </h2>
       <h4 class=" pt-4 text-[1.5rem]">{post.acf.category}</h4>
       <p class=" mt-auto pt-4 text-[1.125rem]">
         {convertDateToNumericString(post.date)}
