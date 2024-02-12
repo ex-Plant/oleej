@@ -5,7 +5,7 @@
 <div
   class="hidden max-w-[1440px] px-[clamp(20px,6vw,60px)] lg:block xl:mx-auto"
 >
-  <div class="py-[112px] font-bold">
+  <div class=" pt-16 pb-[112px] font-bold">
     <p class='text-[2.25rem] leading-[2.5rem] '>Potrzebujesz tekstu?</p>
     <p class='text-[2.25rem] leading-[2.5rem] '>Korekty ? Pomysłu?</p>
   </div>

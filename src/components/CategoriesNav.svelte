@@ -13,18 +13,21 @@
   )}"
 >
   <div
-    class=" flex items-center space-x-6 overflow-hidden overflow-x-scroll border-b border-black pb-4 md:pb-5 lg:space-x-12"
+    class=" flex items-center space-x-4 overflow-hidden overflow-x-scroll border-b border-black pb-4 md:pb-5 lg:space-x-12"
   >
-    <button
-      class="group relative"
-      aria-label="reset categories"
-      on:click="{() => activePostCat.set('')}"
-    >
-      <AllCategoriesButton />
-      <span
-        class="{'absolute bottom-0 left-[50%] h-[1px] w-0 rounded bg-black duration-200' +
-          ' group-hover:left-0 group-hover:w-full'}"></span>
-    </button>
+    <div class="group relative flex items-center justify-center">
+      <button
+        class="relative aspect-square h-[clamp(8px,2vw,18px)] inline-block"
+        aria-label="reset categories"
+        on:click="{() => activePostCat.set('')}"
+      >
+        <AllCategoriesButton />
+        <span
+          class="{'absolute bottom-[-4px] left-[50%] h-[1px] w-0 rounded bg-black duration-200 group-hover:left-0 group-hover:w-full'}"
+        ></span>
+      </button>
+    </div>
+
     {#each postCategories as category}
       <button
         class="group relative text-[0.75rem] font-[400] uppercase md:text-[1.25rem]"

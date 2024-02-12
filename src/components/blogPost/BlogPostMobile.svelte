@@ -25,10 +25,12 @@
   {#if post?.category}
     <h3 class="w-full pt-7 text-[0.875rem] uppercase">{post.category}</h3>
   {/if}
-  <h1 class="w-full pt-7 text-[1.75rem] font-bold uppercase">{post.title}</h1>
+  <h1 class="w-full pt-4 text-[1.75rem] font-bold uppercase leading-[114%]">
+    {post.title}
+  </h1>
 
   <div class=" ">
-    <p class="pb-2.5 pt-7 text-[0.75rem]">
+    <p class="pb-2.5 pt-4 text-[0.75rem]">
       <span> Czyta się około: </span>
       <span class="font-bold">
         {timeString}
@@ -47,11 +49,11 @@
       {@html customSanitization(postFoto?.caption?.rendered)}
     </p>
   </div>
-  <p class="border-b border-black py-7 text-[1.25rem] font-bold leading-[100%]">
+  <p class="border-b border-black py-7 text-[1.25rem] font-bold leading-[110%]">
     {post.post_description}
   </p>
   <div
-    class=" prose postContent blog-post-container  border-b border-black py-7"
+    class="postContent blog-post-container border-b border-black py-7"
   >
     {@html customSanitization(post_content)}
   </div>

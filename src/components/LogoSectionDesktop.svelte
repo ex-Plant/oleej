@@ -15,9 +15,9 @@
       <a class="flex" href="/">
         <LogoHomeDesktop />
       </a>
-      <div class="pt-5 text-[2rem] font-bold leading-[100%]">
-        <p>PISZE O TRUDACH</p>
-        <p>PROSTEGO ŻYCIA</p>
+      <div class="pt-5 text-[2rem] font-bold italic ">
+        <p class='leading-[100%]'>PISZE O TRUDACH</p>
+        <p class='leading-[100%]'>PROSTEGO ŻYCIA</p>
       </div>
     </div>
   </div>

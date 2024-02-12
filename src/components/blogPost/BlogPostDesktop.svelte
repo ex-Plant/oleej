@@ -7,6 +7,7 @@
   import { CldImage } from 'svelte-cloudinary';
   import FooterPostList from './FooterPostList.svelte';
   import { page } from '$app/stores';
+  import { twMerge } from 'tailwind-merge';
 
   export let postData: PostType;
   export let post_content: string;
@@ -56,7 +57,7 @@
         </span>
       </div>
       <h1
-        class="w-full pt-4 text-[3.5625rem] leading-[100%] font-bold  1280:text-[4rem]"
+        class="w-full pt-4 text-[2.5rem] lg:text-[3.5625rem] font-bold leading-[100%] 1280:text-[4rem]"
       >
         {post.title}
       </h1>
@@ -102,7 +103,9 @@
         {post.post_description}
       </p>
       <div
-        class="blog-post-container postContent prose  py-12 "
+        class="{twMerge(`blog-post-container postContent py-12
+
+         `)}"
       >
         {@html customSanitization(post_content)}
       </div>

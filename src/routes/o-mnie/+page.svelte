@@ -57,12 +57,6 @@
 >
   <div
     class="text-xs postContent w-full
- [&_h1]:text-[3.5625rem] [&_h1]:leading-[2.5625rem]
-  [&_h2]:text-[1.5rem] [&_h2]:leading-[2rem]
-  [&_h3]:text-[1.25rem] [&_h3]:leading-[1.5rem]
-  [&_h4]:text-[1.25rem] [&_h4]:leading-[1.625rem]
-  [&_h5]:text-[1rem] [&_h5]:leading-[1.25rem]
-  [&_h6]:text-[1.125rem] [&_h6]:leading-[1.75]
 "
   >
     {@html customSanitization(data.main_text)}
