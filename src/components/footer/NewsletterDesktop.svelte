@@ -1,5 +1,5 @@
 <div
-  class='px-[clamp(20px,6vw,60px)]  lg:flex items-center  hidden gap-x-6 h-24'>
+  class='pr-[clamp(10px,6vw,60px)]  lg:flex items-center  hidden gap-x-6 h-24'>
   <p class='text-[28px]  font-bold '>Newsletter</p>
   <div class='flex w-[300px]'>
     <p class='text-16 border-b-[2px] border-black w-full mr-2 leading-[200%]'>

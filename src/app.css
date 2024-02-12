@@ -134,16 +134,16 @@ body {
   overflow: hidden;
 }
 
-.postContent * {
+.postContent *:not(h1, h2, h3, h4, h5, h6) {
   font-size: 1rem;
   line-height: 1.4375rem;
   font-family: 'Noto Sans', 'Comic Sans MS', serif;
   margin: 0;
   padding: 0;
 }
-.postContent strong {
-    font-weight: 700;
 
+.postContent strong {
+  font-weight: 700;
 }
 .postContent ul {
   /*list-style-position: inside;*/
@@ -151,107 +151,14 @@ body {
 .postContent ul li {
 }
 
+.postContent *:is(h1, h2, h3, h4, h5, h6),
+.postContent *:is(h1, h2, h3, h4, h5, h6) * {
+  font-family: 'Courier Prime', monospace;
+  font-weight: 700;
+  margin: 0;
+  padding: 0;
+}
 
 .postContent * li::marker {
   color: #000;
-}
-
-.postContent h1,
-.postContent h1 * {
-  font-family: 'Courier', monospace;
-  font-size: 1.75rem;
-  line-height: 2rem;
-  font-weight: 700;
-}
-
-.postContent h2,
-.postContent h2 * {
-  font-family: 'Courier', monospace;
-  font-size: 1.25rem;
-  line-height: 1.375rem;
-  font-weight: 700;
-}
-
-.postcontent h3,
-.postContent h3 * {
-  font-family: 'Courier', monospace;
-  font-size: 1.125rem;
-  line-height: 1.25rem;
-  font-weight: 700;
-}
-.postcontent h4,
-.postContent h4 * {
-  font-family: 'Courier', monospace;
-  font-size: 1rem;
-  line-height: 1.325rem;
-  font-weight: 700;
-}
-.postcontent h5,
-.postContent h5 * {
-  font-family: 'Courier', monospace;
-  font-size: 0.875rem;
-  line-height: 1rem;
-  font-weight: 700;
-}
-.postcontent h6,
-.postContent h6 * {
-  font-family: 'Courier', monospace;
-  font-size: 1rem;
-  line-height: 1.4375;
-  font-weight: 700;
-}
-
-/*.postcontent h7,*/
-/*.postContent h7 * {*/
-/*  font-family: 'Courier', monospace;*/
-/*  font-size: 0.75;*/
-/*  line-height: 0.875;*/
-/*  font-weight: 700;*/
-/*}*/
-
-@media (min-width: 720px) {
-  .postContent * {
-    font-size: 1.125rem;
-    line-height: 1.75rem;
-  }
-
-
-  .postContent h1,
-  .postContent h1 * {
-    font-size: 3.5625rem;
-    line-height: 3.5625rem;
-  }
-
-  /* */
-  .postContent h2,
-  .postContent h2 * {
-    font-size: 1.5rem;
-    line-height: 2rem;
-  }
-
-  .postcontent h3,
-  .postContent h3 * {
-    font-size: 1.25rem;
-    line-height: 1.5rem;
-  }
-  .postcontent h4,
-  .postContent h4 * {
-    font-size: 1.25rem;
-    line-height: 1.625rem;
-  }
-  .postcontent h5,
-  .postContent h5 * {
-    font-size: 1rem;
-    line-height: 1.25rem;
-  }
-  .postcontent h6,
-  .postContent h6 * {
-    font-size: 1.125rem;
-    line-height: 1.75rem;
-  }
-  /*.postcontent h7,*/
-  /*.postContent h7 * {*/
-  /*  font-size: 0.875rem;*/
-  /*  line-height: 1.125rem;*/
-  /*}*/
 }
