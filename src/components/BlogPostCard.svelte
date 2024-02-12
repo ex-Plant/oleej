@@ -7,9 +7,11 @@
   export let post: PostType;
   export let postImage: ImageType | undefined;
 
+  console.log(post)
+
 </script>
 
-<a class="border-black border-b last:border-0" href={`/blog/${post?.slug}`}>
+<a class="border-black border-b-[2px] last:border-0" href={`/blog/${post?.slug}`}>
 
   <!--MOBILE-->
   <article class=" grid py-7 md:hidden">
@@ -31,7 +33,7 @@
           src="{postImage.source_url}"
           alt="{postImage?.alt_text}"
         />
-        <p class="line-clamp-4 pt-5 leading-[137%]">{post.acf.post_description}</p>
+        <p class="line-clamp-4 pt-5 leading-[137%]">{post.acf.excerpt}</p>
       </div>
     {/if}
   </article>
@@ -56,7 +58,7 @@
           {post.acf.title}
         </h2>
         <h4 class=" text-[1.5rem] pb-2 pt-4">{post.acf.category}</h4>
-        <p class=" text-[1.25rem] md:line-clamp-4 leading-[140%]">{post.acf.post_description}</p>
+        <p class=" text-[1.25rem] md:line-clamp-4 leading-[140%]">{post.acf.excerpt}</p>
       </div>
     </div>
   </article>
@@ -89,7 +91,7 @@
 
       <div>
         <p class="line-clamp-[10] text-[1.25rem] leading-[140%] w-full">
-          {post.acf.post_description}
+          {post.acf.excerpt}
         </p>
       </div>
     </div>

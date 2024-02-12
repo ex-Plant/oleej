@@ -42,6 +42,7 @@
     <div class="aspect-square w-[clamp(50px,calc(100/1440*100vw),100px)]">
       <BigArrowDown />
     </div>
+
     <div class="flex w-full flex-col pr-[clamp(65px,9vw,130px)]">
       <div class="flex items-center gap-x-4">
         {#if post.category}
@@ -57,7 +58,7 @@
         </span>
       </div>
       <h1
-        class="w-full pt-4 text-[2.5rem] lg:text-[3.5625rem] font-bold leading-[100%] 1280:text-[4rem]"
+        class="w-full pt-4 text-[2.5rem] font-bold leading-[100%] lg:text-[3.5625rem] 1280:text-[4rem]"
       >
         {post.title}
       </h1>
@@ -92,54 +93,51 @@
       {@html customSanitization(postFoto?.caption?.rendered)}
     </p>
   </div>
-  <section
-    title="treść posta"
-    class="grid grid-cols-[auto_clamp(115px,16vw,230px)] pl-[clamp(115px,16vw,230px)] pt-7"
-  >
+  <section class="grid pl-[clamp(115px,16vw,230px)] pt-7">
     <div class="grid">
-      <p
-        class="border-b border-black pb-12 text-[1.5rem] font-bold leading-[125%]"
+      <div
+        class="border-b-[2px] border-black pb-12 pr-[clamp(115px,16vw,230px)] text-[1.5rem] font-bold leading-[125%]"
       >
         {post.post_description}
-      </p>
-      <div
-        class="{twMerge(`blog-post-container postContent py-12
-
-         `)}"
-      >
-        {@html customSanitization(post_content)}
       </div>
+      <div class="grid grid-cols-[auto_clamp(115px,16vw,230px)]">
+        <div>
+          <div class="blog-post-container postContent py-12">
+            {@html customSanitization(post_content)}
+          </div>
 
-      <div class=" flex items-center">
-        <p class="">
-          <span class="pr-1">Data publikacji: </span><span class="font-[700]"
-            >{publishDate}</span
-          >
-        </p>
-        <p class="  flex h-6 items-center space-x-2 pl-12 font-bold uppercase">
-          <button on:click="{() => alert('oh hi mark!')}">UDOSTĘPNIJ</button>
-          <SmallArrowUp />
-        </p>
+          <div class=" flex items-center">
+            <p class="">
+              <span class="pr-1">Data publikacji: </span><span
+                class="font-[700]">{publishDate}</span
+              >
+            </p>
+            <p
+              class="  flex h-6 items-center space-x-2 pl-12 font-bold uppercase"
+            >
+              <button on:click="{() => alert('oh hi mark!')}">UDOSTĘPNIJ</button
+              >
+              <SmallArrowUp />
+            </p>
+          </div>
+        </div>
+        <aside class="flex items-center pl-8">
+          {#if postSideFoto}
+            <CldImage
+              sizes="(max-width: 204px), 16vw"
+              height="auto"
+              width="{204}"
+              aspectRatio="{204 / 311}"
+              src="{postSideFoto?.source_url}"
+              alt="{postSideFoto?.alt_text}"
+            />
+          {/if}
+        </aside>
       </div>
     </div>
-    <aside class="flex items-center pl-8">
-      {#if postSideFoto}
-        <CldImage
-          sizes="(max-width: 204px), 16vw"
-          height="auto"
-          width="{204}"
-          aspectRatio="{204 / 311}"
-          src="{postSideFoto?.source_url}"
-          alt="{postSideFoto?.alt_text}"
-        />
-      {/if}
-    </aside>
   </section>
 
-  <a
-    href="/o-mnie"
-    class="mb-12 flex h-[160px] items-center gap-x-4 group"
-  >
+  <a href="/o-mnie" class="group mb-12 flex h-[160px] items-center gap-x-4">
     <div class="w-[clamp(115px,16vw,230px)] pr-8">
       <div class=" flex w-full flex-none">
         <CldImage
@@ -153,11 +151,11 @@
       </div>
     </div>
 
-    <div class=" flex flex-col justify-center ">
+    <div class=" flex flex-col justify-center">
       <p class="h-6 text-desktop16">Autor</p>
       <p class="h-8 text-desktop24 font-bold">Piotr Olejnik</p>
     </div>
-    <div class="mt-6 h-12 group-hover:scale-125 duration-500">
+    <div class="mt-6 h-12 duration-500 group-hover:scale-125">
       <BigArrowDown />
     </div>
   </a>

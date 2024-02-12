@@ -49,10 +49,10 @@
       {@html customSanitization(postFoto?.caption?.rendered)}
     </p>
   </div>
-  <p class="border-b border-black py-7 text-[1.25rem] font-bold leading-[110%]">
+  <p class="border-b-[2px] border-black py-7 text-[1.25rem] font-bold leading-[110%]">
     {post.post_description}
   </p>
-  <div class="postContent blog-post-container border-b border-black py-7">
+  <div class="postContent blog-post-container border-b-[2px] border-black py-7">
     {@html customSanitization(post_content)}
   </div>
 

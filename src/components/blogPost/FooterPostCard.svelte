@@ -8,9 +8,9 @@
 
 {#if postImage}
   <a href="{`/blog/${post?.slug}`}">
-    <article class=" grid">
+    <article class=" grid group">
       <div class="grid">
-        <h2 class=" line-clamp-2 h-[90px] text-[1.875rem] font-[700] uppercase">
+        <h2 class=" line-clamp-2 h-[110px] text-[1.875rem] leading-[110%] font-[700] uppercase">
           {post.acf.title}
         </h2>
         <h4 class=" text-[1.25rem] uppercase">{post.acf.category}</h4>
@@ -27,14 +27,11 @@
           alt="{postImage?.alt_text}"
         />
         <p class="line-clamp-4 h-[144px] pt-8 text-[1.25rem] leading-[140%]">
-          {post.acf.post_description}
+          {post.acf.excerpt}
         </p>
         <p class="pt-4">
-          <span class="group relative pb-1 font-bold">
-            <span> WIĘCEJ </span>
-            <span
-              class="{'absolute bottom-0 left-[50%] h-[1px] w-0 rounded bg-black duration-300 group-hover:left-0 group-hover:w-full'}"
-            ></span>
+          <span class=" relative pb-1 font-bold">
+            <span class='group-hover:underline'> WIĘCEJ </span>
           </span>
         </p>
       </div>

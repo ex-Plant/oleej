@@ -11,7 +11,7 @@
   <nav
     class="{twMerge(
       ' flex w-full items-center justify-between border-black duration-200',
-      top && 'h-20 border-b bg-primary opacity-100',
+      top && 'h-20 border-b-[2px] bg-primary opacity-100',
       !top && ' h-0 border-none opacity-0',
     )}"
   >

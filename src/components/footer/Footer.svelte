@@ -4,7 +4,7 @@
 </script>
 
 <footer
-  class="mt-auto border-t-black border-[1px]  w-full">
+  class="mt-auto border-t-black border-[2px]  w-full">
   <div class=' md:flex justify-between items-center '>
     <NewsletterMobile />
     <p

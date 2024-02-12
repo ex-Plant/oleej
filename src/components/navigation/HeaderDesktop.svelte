@@ -10,7 +10,7 @@
   <nav
     class="{twMerge(
       ' px-primary flex h-20 w-full items-center justify-between  border-black duration-200',
-      top && 'h-20 border-b bg-primary opacity-100',
+      top && 'h-20 border-b-[2px] bg-primary opacity-100',
       !top && 'h-0 opacity-0',
     )}"
   >

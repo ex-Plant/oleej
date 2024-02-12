@@ -9,7 +9,7 @@
 
 <div class="{twMerge('   max-w-[1440px] mx-auto bg-[#F7F4F0]')}">
   <div
-    class=" no-scrollbar flex items-center space-x-6 overflow-hidden overflow-x-scroll border-b border-black pb-4 md:pb-5 md:space-x-12"
+    class=" no-scrollbar flex items-center space-x-6 overflow-hidden overflow-x-scroll border-b-[2px] border-black pb-4 md:pb-5 md:space-x-12"
   >
     <div class="group relative flex items-center justify-center">
       <button

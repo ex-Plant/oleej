@@ -7,6 +7,7 @@ export type ACFPostType = {
   post_description: string;
   slug: string;
   title: string;
+  excerpt: string;
 };
 
 export type PostType = {

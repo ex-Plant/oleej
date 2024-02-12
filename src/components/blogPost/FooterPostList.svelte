@@ -1,35 +1,31 @@
 <script lang="ts">
-  import {
-    activePostCat,
-    allPostsStore,
-    blogPost_mobile_fotosStore,
-  } from '../../store/global';
   import type { ImageType, PostType } from '../../types';
   import FooterPostCard from './FooterPostCard.svelte';
+  import { page } from "$app/stores";
 
-  $: allPosts = $allPostsStore.posts;
-  let images: ImageType[];
-  $: images = $blogPost_mobile_fotosStore;
-  let postsFilteredByCategory: PostType[] = [];
+  const posts:PostType[] = $page.data.allPosts?.posts;
+  const images: ImageType[] = $page.data.images;
 
-  $: if ($activePostCat === '') {
-    postsFilteredByCategory = allPosts;
-  } else {
-    postsFilteredByCategory = allPosts.filter(
-      (post: PostType) => post.acf.category === $activePostCat,
-    );
-  }
+  //sort posts by date
+ const sorted = posts.sort((a, b) => {
+    return new Date(b.date).getTime() - new Date(a.date).getTime();
+  });
+
+ const lastPosts = sorted.slice(0, 4);
+
 </script>
 
-<section class="px-primary mx-auto max-w-[1440px]">
-  <div
-    class=" grid grid-cols-3 border-t border-black py-12 gap-x-12 gap-y-12"
-  >
-    {#each postsFilteredByCategory as post (post.id)}
+{#if lastPosts?.length > 0}
+  <section class=" border-t-[2px] border-black">
+    <div
+      class=" px-primary mx-auto grid max-w-[1440px] grid-cols-3 gap-x-12 gap-y-12 py-12"
+    >
+      {#each lastPosts as post (post.id)}
         <FooterPostCard
           post="{post}"
           postImage="{images.find((img) => post.acf.mobile_foto_id === img.id)}"
         />
-    {/each}
-  </div>
-</section>
+      {/each}
+    </div>
+  </section>
+{/if}
