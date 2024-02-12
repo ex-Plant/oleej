@@ -13,12 +13,12 @@
 
   const images = $page.data.images;
   const globalFoto = $page.data.globalFoto;
-  const postFoto = images?.find(
+  $: postFoto = images?.find(
     (foto: ImageType) => foto.id === postData?.acf.mobile_foto_id,
   );
 
-  const post = postData?.acf;
-  const publishDate = convertDateToNumericString(postData?.date);
+  $: post = postData?.acf;
+  $: publishDate = convertDateToNumericString(postData?.date);
 
   let dialog: HTMLDialogElement;
   let timeoutId: ReturnType<typeof setTimeout> | undefined;

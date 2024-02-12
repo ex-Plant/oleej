@@ -12,34 +12,39 @@
   export let post_content: string;
   export let timeString: string;
   const images = $page.data.images;
-  const globalFoto = $page.data.globalFoto;
-  const postFoto = images?.find(
-    (foto: ImageType) => foto.id === postData?.acf.blog_desktop_foto_id,
-  );
-  const postSideFoto = images?.find(
-    (foto: ImageType) => foto.id === postData?.acf.blog_right_side_foto_id,
-  );
-
   const posts = $page?.data?.allPosts.posts;
-  const post = postData?.acf;
-  const publishDate = convertDateToNumericString(postData?.date);
-  const currPostIndex = posts.findIndex((p: PostType) => p.slug === post.slug);
-
-  let nextPostSlug = posts[0]?.slug;
-
-  if (currPostIndex >= 0 && currPostIndex < posts.length - 1) {
-    nextPostSlug = posts[currPostIndex + 1]?.slug;
-  }
-  const nextBlogPostLink = `/blog/${nextPostSlug}`;
+  const globalFoto = $page.data.globalFoto;
 
   let dialog: HTMLDialogElement;
   let timeoutId: ReturnType<typeof setTimeout> | undefined;
+
+  $: postFoto = images?.find(
+    (foto: ImageType) => foto.id === postData?.acf.blog_desktop_foto_id,
+  );
+  $: postSideFoto = images?.find(
+    (foto: ImageType) => foto.id === postData?.acf.blog_right_side_foto_id,
+  );
+
+  $: post = postData?.acf;
+  $: publishDate = convertDateToNumericString(postData?.date);
+  $: currPostIndex = posts.findIndex(
+    (p: PostType) => p.slug === $page.params.slug,
+  );
+
+  $: nextPostSlug = posts[0]?.slug;
+
+  $: if (currPostIndex >= 0 && currPostIndex < posts.length - 1) {
+    nextPostSlug = posts[currPostIndex + 1]?.slug;
+  } else {
+    nextPostSlug = posts[0]?.slug;
+  }
+  $: nextBlogPostLink = `/blog/${nextPostSlug}`;
 
   const saveLink = async () => {
     try {
       await navigator.clipboard.writeText($page.url.href);
       dialog.show();
-      clearTimeout(timeoutId)
+      clearTimeout(timeoutId);
       timeoutId = setTimeout(() => {
         dialog.close();
       }, 1000);
@@ -133,7 +138,10 @@
               <span>UDOSTĘPNIJ</span>
               <SmallArrowUp />
             </button>
-            <dialog class="  absolute left-0 top-0 translate-y-1/2 rounded" bind:this="{dialog}">
+            <dialog
+              class="  absolute left-0 top-0 translate-y-1/2 rounded"
+              bind:this="{dialog}"
+            >
               skopiowano do schowka
             </dialog>
           </div>

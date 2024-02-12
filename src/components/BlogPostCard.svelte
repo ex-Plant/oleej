@@ -7,8 +7,6 @@
   export let post: PostType;
   export let postImage: ImageType | undefined;
 
-  console.log(post)
-
 </script>
 
 <a class="border-black border-b-[2px] last:border-0" href={`/blog/${post?.slug}`}>

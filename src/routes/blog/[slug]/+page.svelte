@@ -4,20 +4,26 @@
   import { page } from '$app/stores';
   import type { PostType } from '../../../types';
 
-  const slug = $page.params.slug;
-  const posts = $page.data.allPosts.posts
-  const post = posts?.find((post: PostType) => post.slug === slug);
-  const post_content = post.acf?.post_content;
+  $: slug = $page.params.slug;
+  const posts = $page.data.allPosts.posts;
+
+
+  let post: PostType
+  $: if (slug) {
+    console.log('here')
+    post = posts?.find((post: PostType) => post.slug === slug);
+  }
+  $: post_content = post.acf?.post_content;
 
   function countWords(text: string) {
     return text?.split(/\s+/).length;
   }
   //
-  const numberOfWords = countWords(post_content);
-  const readingTimeInMinutes = Math.floor(numberOfWords / 200); // 200 words per minute
+  $: numberOfWords = countWords(post_content);
+  $: readingTimeInMinutes = Math.floor(numberOfWords / 200); // 200 words per minute
   let timeString: string;
 
-  if (readingTimeInMinutes < 1) {
+  $: if (readingTimeInMinutes < 1) {
     timeString = 'mniej niż minutę';
   } else if (readingTimeInMinutes === 1) {
     timeString = 'minutę';
@@ -26,7 +32,6 @@
   } else {
     timeString = `${readingTimeInMinutes} minut`;
   }
-
 </script>
 
 {#if post}

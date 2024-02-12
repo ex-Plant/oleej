@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { activePostCat } from '../store/global';
+  import { activePostCat } from "../store/global";
   import BlogPostCard from './BlogPostCard.svelte';
   import type { ImageType, PostType } from '../types';
   import { page } from '$app/stores';
@@ -15,6 +15,8 @@
       (post: PostType) => post.acf.category === $activePostCat,
     );
   }
+
+
 </script>
 
 <section class="px-primary mb-16 grid max-w-[1440px] xl:mx-auto ">
