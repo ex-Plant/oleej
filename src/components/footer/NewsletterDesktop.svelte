@@ -3,7 +3,7 @@
   <p class='text-[28px]  font-bold '>Newsletter</p>
   <div class='flex w-[300px]'>
     <p class='text-16 border-b-[2px] border-black w-full mr-2 leading-[200%]'>
-      Twój e-mail
+      Zapisz się do newslettera
     </p>
   </div>
 
