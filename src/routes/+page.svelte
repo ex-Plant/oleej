@@ -28,6 +28,8 @@
       window.removeEventListener('scroll', checkElementPosition);
     }
   });
+
+
 </script>
 
 <!-- visible after scrolling down-->
