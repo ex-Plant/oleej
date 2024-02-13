@@ -1,6 +1,5 @@
-- posty się nie pobierają
-- sprawdzić odległość między postami
-- menu desktop
-- line height
-- leading
-  -
+- posty wysokosc
+- favicon
+- bledy w deploymentach 
+- robots?
+- 
