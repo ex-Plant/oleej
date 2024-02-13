@@ -1,5 +1,20 @@
 <script lang="ts">
   import BigArrowDown from '../../assets/BigArrowDown.svelte';
+  import { onMount } from "svelte";
+
+
+
+  let anchor: HTMLAnchorElement;
+
+
+  onMount(() => {
+    const encodedUsername = btoa('piotrolej'); // Base64 encode
+    const encodedHostname = btoa('gmail.com'); // Base64 encode
+    const decodedLinkText = `${atob(encodedUsername)}@${atob(encodedHostname)}`; // Decode when setting
+
+    anchor.href = `mailto:${decodedLinkText}`;
+    anchor.textContent = decodedLinkText;
+  });
 </script>
 
 <div
@@ -21,10 +36,10 @@
     </div>
   </div>
   <div>
-    <a href="mailto:piotrolej@gmail.com" class=" flex flex-col space-y-4">
-      <p class="  mt-20 text-[2.25rem] font-bold leading-[2.5rem] hover:underline">
+    <div  class=" flex flex-col space-y-4">
+      <a bind:this={anchor} class="  mt-20 text-[2.25rem] font-bold leading-[2.5rem] hover:underline">
         piotrolej@gmail.com
-      </p>
+      </a>
       <a target='_blank'
         href="https://www.instagram.com/0lejto?igsh=eXhoenEyNWNuOWJ4&utm_source=qr"
         class="flex space-x-10 hover:underline"
@@ -32,6 +47,6 @@
         <p class=" text-[2.25rem] font-bold leading-[2.5rem]">IG</p>
         <p class="text-[2.25rem] leading-[2.5rem]">Olejto</p>
       </a>
-    </a>
+    </div>
   </div>
 </div>

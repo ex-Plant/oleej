@@ -1,5 +1,18 @@
-<script>
+<script lang="ts">
   import BigArrowDown from '../../assets/BigArrowDown.svelte';
+  import { onMount } from 'svelte';
+
+  let anchor: HTMLAnchorElement;
+
+
+  onMount(() => {
+    const encodedUsername = btoa('piotrolej'); // Base64 encode
+    const encodedHostname = btoa('gmail.com'); // Base64 encode
+    const decodedLinkText = `${atob(encodedUsername)}@${atob(encodedHostname)}`; // Decode when setting
+
+    anchor.href = `mailto:${decodedLinkText}`;
+    anchor.textContent = decodedLinkText;
+  });
 </script>
 
 <div class="grid max-w-[1440px] px-[clamp(20px,6vw,60px)] lg:hidden">
@@ -9,8 +22,8 @@
   </div>
 
   <a
+    bind:this="{anchor}"
     class="{' group text-[3.625rem]  font-bold'}"
-    href="mailto:piotrolej@gmail.com"
   >
     <div class="pb-12">
       <p class="leading-[84%]">NAPISZ</p>
@@ -26,7 +39,8 @@
       piotrolej@gmail.com
     </p>
   </a>
-  <a target='_blank'
+  <a
+    target="_blank"
     href="https://www.instagram.com/0lejto?igsh=eXhoenEyNWNuOWJ4&utm_source=qr"
     class="flex items-center space-x-6 hover:underline"
   >
