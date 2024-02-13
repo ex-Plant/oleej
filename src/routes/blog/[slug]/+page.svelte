@@ -10,7 +10,6 @@
 
   let post: PostType
   $: if (slug) {
-    console.log('here')
     post = posts?.find((post: PostType) => post.slug === slug);
   }
   $: post_content = post.acf?.post_content;

@@ -13,7 +13,7 @@
   <button on:click="{onOpenMenu}" class="h-20 whitespace-nowrap text-[1.25rem]">
     [MENU]
   </button>
-  <a href="/">
+  <a aria-label='home' href="/">
     <LogoHomeMobile />
   </a>
   <div class="pt-4 font-bold italic leading-[100%]">

@@ -2,11 +2,17 @@ import { error } from '@sveltejs/kit';
 import { baseUrl } from '../constans/constans';
 import type { ImageType, PostType } from '../types';
 import type { PageLoad } from '../../.svelte-kit/types/src/routes/o-mnie/$types';
-export const prerender = true;
 export const trailingSlash = 'always';
+export const prerender = true;
 
 //prevent svelte from refetching data on the client - store it all in the global store after initial build load
 //
+
+// export const config = {
+//   isr: {
+//     expiration: 1800,
+//   }
+// };
 export const load: PageLoad = async () => {
 
   async function getAllPosts() {

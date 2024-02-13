@@ -12,7 +12,7 @@
       <MenuLinkItem name="KONTAKT" link="/kontakt" homeDesktopFullMenu />
     </div>
     <div class="pl-24">
-      <a class="flex" href="/">
+      <a aria-label='home' class="flex" href="/">
         <LogoHomeDesktop />
       </a>
       <div class="pt-5 text-[2rem] font-bold italic ">

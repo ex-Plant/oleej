@@ -15,7 +15,7 @@
   <!--MOBILE-->
   <article class=" grid py-7 lg:hidden">
     <div class="grid">
-      <h4 class="  text-[0.75rem] uppercase">{post.acf.category}</h4>
+      <p class="  text-[0.75rem] uppercase">{post.acf.category}</p>
       <h2 class=" pt-4 text-[1.125rem] font-[700] uppercase leading-[108%]">
         {post.acf.title}
       </h2>
@@ -23,7 +23,6 @@
     {#if postImage}
       <div class="w-full pt-7">
         <CldImage
-          loading="lazy"
           sizes="(max-width: 768px) 100vw"
           width="768"
           class="object-top"
@@ -42,7 +41,6 @@
     <div class=" grid grid-cols-2 gap-x-12">
       {#if postImage}
         <CldImage
-          loading="lazy"
           sizes="(max-width: 560px) 50vw"
           width="{560}"
           class="object-top"
@@ -59,7 +57,7 @@
             <BigArrowUp />
           </span>
         </h2>
-        <h4 class=" pb-2 pt-4 text-[1.5rem]">{post.acf.category}</h4>
+        <p class=" pb-2 pt-4 text-[1.5rem]">{post.acf.category}</p>
         <p class=" line-clamp-3 text-[1.25rem] leading-[140%]">
           {post.acf.excerpt}
         </p>
@@ -76,7 +74,7 @@
             <BigArrowUp />
           </span>
         </h2>
-      <h4 class=" pt-4 text-[1.5rem]">{post.acf.category}</h4>
+      <p class=" pt-4 text-[1.5rem]">{post.acf.category}</p>
       <p class=" mt-auto pt-4 text-[1.125rem]">
         {convertDateToNumericString(post.date)}
       </p>
@@ -85,7 +83,6 @@
     <div class="grid grid-cols-2 gap-x-16">
       {#if postImage}
         <CldImage
-          loading="lazy"
           sizes="(max-width: 269px) 20vw"
           width="{269}"
           class="object-top"
