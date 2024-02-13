@@ -1,29 +1,16 @@
-<script lang="ts">
-  import BigArrowDown from '../../assets/BigArrowDown.svelte';
-  import { onMount } from 'svelte';
-
-  let anchor: HTMLAnchorElement;
-
-
-  onMount(() => {
-    const encodedUsername = btoa('piotrolej'); // Base64 encode
-    const encodedHostname = btoa('gmail.com'); // Base64 encode
-    const decodedLinkText = `${atob(encodedUsername)}@${atob(encodedHostname)}`; // Decode when setting
-
-    anchor.href = `mailto:${decodedLinkText}`;
-    anchor.textContent = decodedLinkText;
-  });
+<script>
+  import BigArrowDown from "../../assets/BigArrowDown.svelte";
 </script>
 
-<div class="grid max-w-[1440px] px-[clamp(20px,6vw,60px)] lg:hidden">
-  <div class="py-12 text-[1.125rem] font-bold">
-    <p class="leading-[110%]">Potrzebujesz tekstu?</p>
-    <p class="leading-[110%]">Korekty? Pomysłu?</p>
+<div class='grid max-w-[1440px] px-[clamp(20px,6vw,60px)] lg:hidden'>
+  <div class='py-12 text-[1.125rem] font-bold'>
+    <p class='leading-[110%]'>Potrzebujesz tekstu?</p>
+    <p class='leading-[110%]'>Korekty? Pomysłu?</p>
   </div>
 
   <a
-    bind:this="{anchor}"
     class="{' group text-[3.625rem]  font-bold'}"
+    href='/redirect'
   >
     <div class="pb-12">
       <p class="leading-[84%]">NAPISZ</p>
@@ -39,8 +26,7 @@
       piotrolej@gmail.com
     </p>
   </a>
-  <a
-    target="_blank"
+  <a target='_blank'
     href="https://www.instagram.com/0lejto?igsh=eXhoenEyNWNuOWJ4&utm_source=qr"
     class="flex items-center space-x-6 hover:underline"
   >

@@ -1,20 +1,5 @@
 <script lang="ts">
   import BigArrowDown from '../../assets/BigArrowDown.svelte';
-  import { onMount } from "svelte";
-
-
-
-  let anchor: HTMLAnchorElement;
-
-
-  onMount(() => {
-    const encodedUsername = btoa('piotrolej'); // Base64 encode
-    const encodedHostname = btoa('gmail.com'); // Base64 encode
-    const decodedLinkText = `${atob(encodedUsername)}@${atob(encodedHostname)}`; // Decode when setting
-
-    anchor.href = `mailto:${decodedLinkText}`;
-    anchor.textContent = decodedLinkText;
-  });
 </script>
 
 <div
@@ -36,11 +21,15 @@
     </div>
   </div>
   <div>
-    <div  class=" flex flex-col space-y-4">
-      <a bind:this={anchor} class="  mt-20 text-[2.25rem] font-bold leading-[2.5rem] hover:underline">
+    <div class=" flex flex-col space-y-4">
+      <a
+        href="/api/redirect"
+        class="  mt-20 text-[2.25rem] font-bold leading-[2.5rem] hover:underline"
+      >
         piotrolej@gmail.com
       </a>
-      <a target='_blank'
+      <a
+        target="_blank"
         href="https://www.instagram.com/0lejto?igsh=eXhoenEyNWNuOWJ4&utm_source=qr"
         class="flex space-x-10 hover:underline"
       >
