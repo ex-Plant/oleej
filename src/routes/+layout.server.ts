@@ -2,6 +2,8 @@ import { error } from '@sveltejs/kit';
 import { baseUrl } from '../constans/constans';
 import type { PostType } from '../types';
 import type { PageLoad } from '../../.svelte-kit/types/src/routes/o-mnie/$types';
+export const trailingSlash = 'always';
+// import mailchimp from '@mailchimp/mailchimp_marketing';
 
 export const load: PageLoad = async () => {
   async function getAllPosts() {

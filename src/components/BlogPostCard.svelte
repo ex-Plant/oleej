@@ -13,7 +13,7 @@
   href="{`/blog/${post?.slug}`}"
 >
   <!--MOBILE-->
-  <article class=" grid py-7 lg:hidden">
+  <article class=" grid py-7 md:hidden">
     <div class="grid">
       <p class="  text-[0.75rem] uppercase">{post.acf.category}</p>
       <h2 class=" pt-4 text-[1.125rem] font-[700] uppercase leading-[108%]">
@@ -37,21 +37,21 @@
   </article>
 
   <!--MD-->
-  <article class="hidden py-12 lg:grid 1280:hidden">
+  <article class="hidden py-12 md:grid 1280:hidden">
     <div class=" grid grid-cols-2 gap-x-12">
       {#if postImage}
         <CldImage
           sizes="(max-width: 560px) 50vw"
           width="{560}"
           class="object-top"
-          aspectRatio="{316 / 260}"
+          aspectRatio="{316 / 300}"
           height="auto"
           src="{postImage.source_url}"
           alt="{postImage.alt_text}"
         />
       {/if}
       <div class=" uppercase">
-        <h2 class=" line-clamp-5 text-[2.5rem] font-[700] leading-[108%]">
+        <h2 class=" line-clamp-4 text-[2.5rem] font-[700] leading-[108%]">
           {post.acf.title}
           <span class="inline-block duration-500 group-hover:scale-125">
             <BigArrowUp />

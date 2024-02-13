@@ -2,6 +2,14 @@ import { baseUrl } from '../../../constans/constans';
 import { error } from '@sveltejs/kit';
 import type { ImageType, PostType } from '../../../types';
 
+export const prerender = true;
+export const trailingSlash = 'always';
+// export const config = {
+//   isr: {
+//     expiration: 1800,
+//   }
+// };
+
 export const load = async () => {
   async function getGlobalFotoId() {
     const globalRes = await fetch(`${baseUrl}pages?slug=global`);
