@@ -1,7 +1,7 @@
 <a href="https://olejtopisze.us11.list-manage.com/subscribe?u=61dcbf1be77d78740c0573d42&id=40dad5cfd7" target='blank'
   class='pr-[clamp(10px,6vw,60px)]  lg:flex items-center  hidden gap-x-6 h-24'>
   <p class='text-[28px]  font-bold '>Newsletter</p>
-  <div class='flex w-[300px]'>
+  <div class='flex w-[200px]'>
     <p class='text-16 border-b-[2px] border-black w-full mr-2 leading-[200%]'>
       Zapisz się
     </p>

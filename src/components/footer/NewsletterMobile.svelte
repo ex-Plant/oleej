@@ -4,7 +4,7 @@
   class="flex h-full flex-col px-[clamp(20px,6vw,60px)] md:pr-[20px] lg:hidden"
 >
   <p class="pt-5 text-[1.75rem] font-bold">Newsletter</p>
-  <div class="flex w-[280px]">
+  <div class="flex w-[200px]">
     <p class="  mb-7 mr-4 w-full border-b-[2px] border-black pb-1">
       Zapisz się
     </p>
