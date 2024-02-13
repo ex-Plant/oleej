@@ -6,7 +6,7 @@
   <p class="pt-5 text-[1.75rem] font-bold">Newsletter</p>
   <div class="flex w-[280px]">
     <p class="  mb-7 mr-4 w-full border-b-[2px] border-black pb-1">
-      Zapisz się do newslettera
+      Zapisz się
     </p>
     <div class="mt-[2px]">
       <svg
