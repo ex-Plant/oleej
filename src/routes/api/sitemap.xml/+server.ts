@@ -2,6 +2,8 @@ import { baseUrl } from '../../../constans/constans';
 import type { PostType } from '../../../types';
 
 
+
+
 async function getAllPosts() {
   const postsRes = await fetch(`${baseUrl}posts`);
   const posts = await postsRes.json();

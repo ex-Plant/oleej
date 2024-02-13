@@ -4,6 +4,9 @@ import adapter from '@sveltejs/adapter-vercel';
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
   preprocess: vitePreprocess(),
+    alias: {
+      'source-map-js': 'source-map',
+  },
   kit: {
     adapter: adapter(),
     prerender: {
