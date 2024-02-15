@@ -29,7 +29,7 @@
       </h2>
     </div>
     {#if postImage}
-      <div class="w-full pt-7 h-[200px]  ">
+      <div class="w-full pt-7 ">
         <CldImage
           loading="{loading}"
           sizes="(max-width: 768px) 100vw"
