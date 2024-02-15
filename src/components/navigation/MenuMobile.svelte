@@ -5,10 +5,10 @@
     activePostCat,
     mobileMenuOpened,
   } from '../../store/global.js';
-  import { page } from "$app/stores";
   import { onMount } from "svelte";
   import { baseUrl } from "../../constans/constans";
   import type { PostType } from "../../types";
+  import { browser } from "$app/environment";
 
   function onSelectCategory(category: string) {
     activePostCat.set(category);
@@ -34,6 +34,13 @@
     };
   }
 
+  $: if ($mobileMenuOpened && browser) {
+    document.body.style.overflow = "hidden";
+  }
+  $: if (!$mobileMenuOpened && browser) {
+    document.body.style.overflow = "auto";
+  }
+
 
 </script>
 
@@ -45,7 +52,7 @@
 >
   <div
     class="{twMerge(
-      'pl-primary h-[100svh] bg-primaryBlack text-white duration-300 ',
+      'pl-primary h-[100lvh] bg-primaryBlack text-white duration-300 ',
       $mobileMenuOpened ? ' translate-x-0 ' : ' translate-x-full ',
     )}"
   >
