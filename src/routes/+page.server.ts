@@ -6,7 +6,6 @@ export const trailingSlash = 'always';
 export const prerender = true;
 
 export const load: PageLoad = async () => {
-
   async function getAllPosts() {
     const postsRes = await fetch(`${baseUrl}posts`);
     if (!postsRes.ok) {
@@ -23,7 +22,6 @@ export const load: PageLoad = async () => {
     };
   }
 
-
   async function getImages() {
     const data = await fetch(`${baseUrl}media/`);
     return data.json();
@@ -37,7 +35,6 @@ export const load: PageLoad = async () => {
   const blogPost_mobile_fotos = images.filter((img) =>
     mobileFotosIds.includes(img.id),
   );
-
 
   return {
     allPosts,

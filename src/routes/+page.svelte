@@ -34,7 +34,7 @@
 
 </script>
 
-<div in:fade="{{ duration: 200 }}">
+<div in:fade="{{ duration: 500 }}">
 <!-- visible after scrolling down-->
 <div class="{twMerge('md:hidden')}">
   <HeaderMobile top="{top}" />

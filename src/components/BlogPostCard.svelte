@@ -14,7 +14,7 @@
 </script>
 
 <a
-  in:fade="{{ duration: 200 }}"
+  in:fade="{{ duration: 500 }}"
   class="group border-b-[2px] border-black last:border-0"
   href="{`/blog/${post?.slug}`}"
 >

@@ -33,22 +33,21 @@
   }
 </script>
 
-{#if post}
-  <main
-    in:fade="{{ duration: 200 }}"
-    class="px-[clamp(20px,6vw,40px)] md:hidden"
-  >
-    <BlogPostMobile
-      postData="{post}"
-      timeString="{timeString}"
-      post_content="{post_content}"
-    />
-  </main>
-  <main class="hidden md:block">
-    <BlogPostDesktop
-      post_content="{post_content}"
-      postData="{post}"
-      timeString="{timeString}"
-    />
-  </main>
-{/if}
+<div in:fade="{{ duration: 500 }}">
+  {#if post}
+    <main class="px-[clamp(20px,6vw,40px)] md:hidden">
+      <BlogPostMobile
+        postData="{post}"
+        timeString="{timeString}"
+        post_content="{post_content}"
+      />
+    </main>
+    <main class="hidden md:block">
+      <BlogPostDesktop
+        post_content="{post_content}"
+        postData="{post}"
+        timeString="{timeString}"
+      />
+    </main>
+  {/if}
+</div>

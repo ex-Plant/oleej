@@ -8,7 +8,8 @@
   const data = $page.data;
 </script>
 
-<div in:fade="{{ duration: 200 }}"></div>
+<div in:fade="{{ duration: 500 }}">
+
 <!--mobile-->
 <main class=" gap-y-6 px-[clamp(20px,6vw,60px)] py-6 pb-12 lg:hidden">
   <div class="text-xs postContent w-full pb-10">
@@ -91,3 +92,4 @@
     {/if}
   </div>
 </main>
+</div>

@@ -3,11 +3,8 @@
 
   export let name: string;
   export let link: string;
-
   export let className = '';
-
   export let homeDesktopFullMenu = false;
-
   export let menuMobile = false;
 </script>
 

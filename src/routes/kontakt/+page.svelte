@@ -4,7 +4,7 @@
   import { fade } from 'svelte/transition';
 </script>
 
-<main in:fade="{{ duration: 200 }}" class="flex flex-col pb-16">
+<main in:fade="{{ duration: 500 }}" class="flex flex-col pb-16">
   <ContactMobile />
   <ContactDesktop />
 </main>

@@ -6,11 +6,34 @@
     mobileMenuOpened,
   } from '../../store/global.js';
   import { page } from "$app/stores";
+  import { onMount } from "svelte";
+  import { baseUrl } from "../../constans/constans";
+  import type { PostType } from "../../types";
 
   function onSelectCategory(category: string) {
     activePostCat.set(category);
     mobileMenuOpened.set(false);
   }
+
+  let postCategories: string[] = [];
+
+  onMount(() => {
+    getAllPosts().then(({ postCategories: loadedPostCategories }) => {
+      postCategories = loadedPostCategories;
+    });
+  });
+
+  async function getAllPosts() {
+    const postsRes = await fetch(`${baseUrl}posts`);
+    const posts = await postsRes.json();
+    let postCategories = posts.map((post: PostType) => post?.acf?.category);
+    postCategories = [...new Set(postCategories)];
+
+    return {
+      postCategories,
+    };
+  }
+
 
 </script>
 
@@ -49,7 +72,7 @@
       </button>
     </div>
     <div class=" [&:*]:lowercase flex flex-col pb-6">
-      {#each $page.data.allPosts.postCategories as category}
+      {#each postCategories as category}
         <a class="h-9 w-full" href="/">
           <button
             class="group relative pb-1 text-left"
