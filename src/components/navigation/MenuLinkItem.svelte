@@ -22,10 +22,8 @@
   <div class=" relative">
     <span
       class="{twMerge(
-        'whitespace-nowrap ',
-        homeDesktopFullMenu
-          ? `text-[1.5rem] `
-          : 'text-[1.5rem] md:text-[1.125rem]',
+        'whitespace-nowrap text-[1.5rem] ',
+        !homeDesktopFullMenu && ' md:text-[1.125rem]',
       )}"
     >
       {name}
