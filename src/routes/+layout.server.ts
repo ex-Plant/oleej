@@ -7,7 +7,7 @@ export const load: PageLoad = async () => {
   async function getAllPosts() {
     const postsRes = await fetch(`${baseUrl}posts`);
     const posts = await postsRes.json();
-    let postCategories = posts.map((post: PostType) => post.acf.category);
+    let postCategories = posts.map((post: PostType) => post?.acf?.category);
     postCategories = [...new Set(postCategories)];
 
     return {
