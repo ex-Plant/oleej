@@ -19,7 +19,7 @@
   <div class="flex items-center justify-center">
     {#if data.mainFoto?.source_url}
       <CldImage
-        class="object-top lg:hidden "
+        class="object-top lg:hidden shadow-[inset_0_0_0_1px_black] "
         src="{data.mainFoto.source_url}"
         alt="{data.mainFoto?.alt_text}"
         aspectRatio="{335 / 277}"
@@ -81,7 +81,7 @@
   <div class=" pr-primary flex justify-end">
     {#if data.mainFoto?.source_url}
       <CldImage
-        class="hidden object-top lg:block "
+        class="hidden object-top lg:block shadow-[inset_0_0_0_1px_black]"
         src="{data.mainFoto.source_url}"
         alt="{data.mainFoto?.alt_text}"
         height="463"

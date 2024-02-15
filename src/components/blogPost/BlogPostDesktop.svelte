@@ -99,6 +99,7 @@
   <div class="w-full pt-12">
     {#if postFoto}
       <CldImage
+        class="shadow-[inset_0_0_0_1px_black] "
         sizes="(max-width: 1320px), 100vw"
         height="auto"
         width="{1320}"

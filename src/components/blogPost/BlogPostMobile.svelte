@@ -56,7 +56,7 @@
     <CldImage
       sizes="(max-width: 768px) 100vw"
       width="768"
-      class="object-top"
+      class="object-top shadow-[inset_0_0_0_1px_black]"
       aspectRatio="{316 / 260}"
       height="auto"
       src="{postFoto?.source_url}"

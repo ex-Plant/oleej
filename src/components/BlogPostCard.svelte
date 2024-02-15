@@ -29,17 +29,18 @@
       </h2>
     </div>
     {#if postImage}
-      <div class="w-full pt-7">
+      <div class="w-full pt-7 h-[200px]  ">
         <CldImage
           loading="{loading}"
           sizes="(max-width: 768px) 100vw"
           width="768"
-          class="object-top"
+          class="object-top shadow-[inset_0_0_0_1px_black] "
           aspectRatio="{316 / 260}"
           height="auto"
           src="{postImage.source_url}"
           alt="{postImage?.alt_text}"
         />
+
         <p class="line-clamp-4 pt-5 leading-[137%]">{post.acf.excerpt}</p>
       </div>
     {/if}
@@ -47,13 +48,13 @@
 
   <!--MD-->
   <article class="hidden py-12 md:grid 1280:hidden">
-    <div class=" grid grid-cols-2 gap-x-12">
+    <div class=" grid grid-cols-2 gap-x-12 ">
       {#if postImage}
         <CldImage
           loading="{loading}"
           sizes="(max-width: 560px) 50vw"
           width="{560}"
-          class="object-top"
+          class="object-top shadow-[inset_0_0_0_1px_black] "
           aspectRatio="{318 / 280}"
           height="auto"
           src="{postImage.source_url}"
@@ -102,7 +103,7 @@
           loading="{loading}"
           sizes="(max-width: 320px) 20vw"
           width="{269}"
-          class="object-top"
+          class="object-top shadow-[inset_0_0_0_1px_black]"
           aspectRatio="{269 / 323}"
           height="auto"
           src="{postImage.source_url}"
