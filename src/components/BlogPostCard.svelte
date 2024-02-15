@@ -3,12 +3,13 @@
   import type { ImageType, PostType } from '../types.js';
   import { convertDateToNumericString } from '../helpers/convertDateToNumericString.js';
   import BigArrowUp from '../assets/BigArrowUp.svelte';
-
+  import { fade } from 'svelte/transition';
   export let post: PostType;
   export let postImage: ImageType | undefined;
 </script>
 
 <a
+  in:fade="{{ duration: 200 }}"
   class="group border-b-[2px] border-black last:border-0"
   href="{`/blog/${post?.slug}`}"
 >
@@ -72,10 +73,8 @@
   <!--1280-->
   <article class=" hidden grid-cols-2 gap-x-16 py-12 1280:grid">
     <div class=" flex w-[550px] shrink-0 flex-col uppercase">
-      <div class='h-[260px] '>
-        <h2
-          class="line-clamp-4  text-[3rem] font-[700] leading-[108%]"
-        >
+      <div class="h-[260px]">
+        <h2 class="line-clamp-4 text-[3rem] font-[700] leading-[108%]">
           {post.acf.title}
 
           <span class="inline-block duration-500 group-hover:scale-150">
