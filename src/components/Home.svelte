@@ -21,11 +21,12 @@
 
 <section class="px-primary mb-16 grid max-w-[1440px] xl:mx-auto ">
   {#if postsFilteredByCategory.length > 0}
-    {#each postsFilteredByCategory as post (post.id)}
+    {#each postsFilteredByCategory as post, index (post.id)}
       <BlogPostCard
         post="{post}"
         postImage="{images.find((img) => post.acf.mobile_foto_id === img.id) ??
           undefined}"
+        {index}
       />
     {/each}
   {/if}

@@ -6,6 +6,11 @@
   import { fade } from 'svelte/transition';
   export let post: PostType;
   export let postImage: ImageType | undefined;
+  export let index: number;
+
+  type LoadingType = 'lazy' | 'eager';
+  //first post is eager, the rest are lazy
+  let loading: LoadingType = index === 0 ? 'eager' : 'lazy';
 </script>
 
 <a
@@ -26,6 +31,7 @@
     {#if postImage}
       <div class="w-full pt-7">
         <CldImage
+          loading="{loading}"
           sizes="(max-width: 768px) 100vw"
           width="768"
           class="object-top"
@@ -44,6 +50,7 @@
     <div class=" grid grid-cols-2 gap-x-12">
       {#if postImage}
         <CldImage
+          loading="{loading}"
           sizes="(max-width: 560px) 50vw"
           width="{560}"
           class="object-top"
@@ -92,6 +99,7 @@
     <div class="grid grid-cols-2 gap-x-16">
       {#if postImage}
         <CldImage
+          loading="{loading}"
           sizes="(max-width: 320px) 20vw"
           width="{269}"
           class="object-top"
