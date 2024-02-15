@@ -1,17 +1,21 @@
 <script>
-  import NewsletterMobile from "./NewsletterMobile.svelte";
-  import NewsletterDesktop from "./NewsletterDesktop.svelte";
+  import NewsletterMobile from './NewsletterMobile.svelte';
+  import NewsletterDesktop from './NewsletterDesktop.svelte';
 </script>
 
-<footer
-  class="mt-auto border-t-black border-[2px]  w-full">
-  <div class=' md:flex justify-between items-center '>
-    <NewsletterMobile />
+<footer class="mt-auto w-full border-[2px] border-t-black">
+  <div class=" items-center justify-between lg:flex">
+    <div class='640:hidden'>
+      <NewsletterMobile />
+    </div>
+    <div class='px-[clamp(20px,6vw,60px)] lg:pr-0 '>
+      <NewsletterDesktop />
+    </div>
     <p
-      class="h-24 flex items-center uppercase md:border-0 border-t border-black px-[clamp(20px,6vw,60px)] md:pl-0 lg:pl-[clamp(20px,6vw,60px)] lg:pr-0  text-[0.8125rem]">
+      class="flex h-24 items-center border-t-[2px] border-black px-[clamp(20px,6vw,60px)]  text-[0.8125rem] uppercase lg:border-0 lg:pl-0"
+    >
       <span class=" inline-block pr-2 italic">olej.to </span>
-      <span class="italic "> pisze o trudach prostego życia</span>
+      <span class="italic"> pisze o trudach prostego życia</span>
     </p>
-    <NewsletterDesktop />
   </div>
 </footer>

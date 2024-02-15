@@ -9,6 +9,14 @@
   import Header from '../components/navigation/Header.svelte';
   import Footer from '../components/footer/Footer.svelte';
 
+  import '@fontsource-variable/noto-sans';
+  import '@fontsource-variable/noto-sans/wdth.css';
+  import '@fontsource-variable/noto-sans/wdth-italic.css';
+  import '@fontsource/courier-prime/400.css';
+  import '@fontsource/courier-prime/700.css';
+  import '@fontsource/courier-prime/400-italic.css';
+  import '@fontsource/courier-prime/700-italic.css';
+
   inject({ mode: dev ? 'development' : 'production' });
 
   $: homePage = $page.route.id === '/';

@@ -24,11 +24,13 @@
       <Logo />
     </a>
     <button
-      class="h-full whitespace-nowrap text-[1.25rem]"
+      class="h-full whitespace-nowrap text-[1.25rem] flex justify-center items-center"
       on:click="{() => mobileMenuOpened.set(true)}"
     >
-      [MENU]</button
-    >
+      <span class="">[</span>
+      <span class="mt-[3px]">MENU</span>
+      <span class="">]</span>
+    </button>
   </nav>
 </div>
 

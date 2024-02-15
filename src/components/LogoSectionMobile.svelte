@@ -10,10 +10,12 @@
 </script>
 
 <div class=" px-primary md:hidden">
-  <button on:click="{onOpenMenu}" class="h-20 whitespace-nowrap text-[1.25rem]">
-    [MENU]
+  <button on:click="{onOpenMenu}" class="h-20 whitespace-nowrap text-[1.25rem] flex justify-center items-center">
+    <span class=''>[</span>
+    <span class='mt-[3px]'>MENU</span>
+    <span class=''>]</span>
   </button>
-  <a aria-label='home' href="/">
+  <a aria-label="home" href="/">
     <LogoHomeMobile />
   </a>
   <div class="pt-4 font-bold italic leading-[100%]">

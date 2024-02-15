@@ -15,6 +15,7 @@
     "@img/sharp-linux-x64": "^0.33.1",
     "@sveltejs/kit": "^2.0.0",
     "@sveltejs/vite-plugin-svelte": "^3.0.0",
+    "@tailwindcss/typography": "^0.5.10",
     "@types/sanitize-html": "^2.9.5",
     "@typescript-eslint/eslint-plugin": "5.62.0",
     "@typescript-eslint/parser": "5.62.0",
@@ -36,6 +37,8 @@
   "packageManager": "pnpm@8.10.5",
   "type": "module",
   "dependencies": {
+    "@fontsource-variable/noto-sans": "^5.0.1",
+    "@fontsource/courier-prime": "^5.0.18",
     "@sveltejs/adapter-vercel": "^4.0.0",
     "@vercel/analytics": "^1.1.1",
     "sanitize-html": "^2.11.0",
