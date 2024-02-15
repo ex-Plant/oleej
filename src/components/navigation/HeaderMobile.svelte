@@ -14,17 +14,15 @@
     )}"
   >
     <a
-      class="{twMerge(
-        'duration-200',
-        top && 'opacity-100',
-        !top && 'opacity-0',
-      )}"
+      aria-label="home"
+      class="{twMerge('duration-200', top ? 'opacity-100' : 'opacity-0')}"
       href="/"
     >
       <Logo />
     </a>
     <button
-      class="h-full whitespace-nowrap text-[1.25rem] flex justify-center items-center"
+      aria-label="menu"
+      class="flex h-full items-center justify-center whitespace-nowrap text-[1.25rem]"
       on:click="{() => mobileMenuOpened.set(true)}"
     >
       <span class="">[</span>

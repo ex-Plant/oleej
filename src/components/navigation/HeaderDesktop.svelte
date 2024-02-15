@@ -13,7 +13,9 @@
       top ? 'h-20  translate-y-0' : !top && 'h-0 -translate-y-20',
     )}"
   >
-    <a class="flex" href="/">
+    <a
+      aria-label='home'
+      class="flex" href="/">
       <Logo />
     </a>
     <div class=" flex [&_button]:uppercase">
