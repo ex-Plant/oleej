@@ -8,6 +8,8 @@
   import { twMerge } from 'tailwind-merge';
   import LogoSectionMobile from '../components/LogoSectionMobile.svelte';
   import LogoSectionDesktop from '../components/LogoSectionDesktop.svelte';
+  import { fade } from 'svelte/transition';
+
 
   let mainRef: HTMLElement;
   let top = false;
@@ -32,6 +34,7 @@
 
 </script>
 
+<div in:fade="{{ duration: 200 }}">
 <!-- visible after scrolling down-->
 <div class="{twMerge('md:hidden')}">
   <HeaderMobile top="{top}" />
@@ -46,3 +49,4 @@
 <main class="" bind:this="{mainRef}">
   <Home />
 </main>
+</div>

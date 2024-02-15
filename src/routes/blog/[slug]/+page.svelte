@@ -3,12 +3,12 @@
   import BlogPostDesktop from '../../../components/blogPost/BlogPostDesktop.svelte';
   import { page } from '$app/stores';
   import type { PostType } from '../../../types';
+  import { fade } from 'svelte/transition';
 
   $: slug = $page.params.slug;
   const posts = $page.data.allPosts.posts;
 
-
-  let post: PostType
+  let post: PostType;
   $: if (slug) {
     post = posts?.find((post: PostType) => post.slug === slug);
   }
@@ -34,7 +34,10 @@
 </script>
 
 {#if post}
-  <main class="px-[clamp(20px,6vw,40px)] md:hidden">
+  <main
+    in:fade="{{ duration: 200 }}"
+    class="px-[clamp(20px,6vw,40px)] md:hidden"
+  >
     <BlogPostMobile
       postData="{post}"
       timeString="{timeString}"

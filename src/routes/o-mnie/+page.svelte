@@ -4,10 +4,11 @@
   import BigArrowUp from '../../assets/BigArrowUp.svelte';
   import { page } from '$app/stores';
   import BigArrowDown from '../../assets/BigArrowDown.svelte';
-
+  import { fade } from 'svelte/transition';
   const data = $page.data;
 </script>
 
+<div in:fade="{{ duration: 200 }}"></div>
 <!--mobile-->
 <main class=" gap-y-6 px-[clamp(20px,6vw,60px)] py-6 pb-12 lg:hidden">
   <div class="text-xs postContent w-full pb-10">
@@ -43,23 +44,25 @@
 
 <!--// desktop -->
 <main
-  class="grid-cols-[auto_clamp(230px,32vw,460px)] mx-auto hidden max-w-[1440px] gap-y-12 py-6 pb-12 pl-[clamp(115px,16vw,230px)] lg:grid gap-x-20"
+  class="mx-auto hidden max-w-[1440px] grid-cols-[auto_clamp(230px,32vw,460px)] gap-x-20 gap-y-12 py-6 pb-12 pl-[clamp(115px,16vw,230px)] lg:grid"
 >
   <div>
     <div class="text-xs postContent w-full">
       {@html customSanitization(data.main_text)}
     </div>
 
-    <div class=" hidden grid-cols-2 gap-x-16 lg:grid group ">
+    <div class=" group hidden grid-cols-2 gap-x-16 lg:grid">
       <a href="/kontakt">
         <div class=" flex h-full flex-col justify-end py-8">
-          <div class=" mb-4 aspect-square w-[clamp(29px,4vw,57px)] group-hover:scale-125 duration-500">
+          <div
+            class=" mb-4 aspect-square w-[clamp(29px,4vw,57px)] duration-500 group-hover:scale-125"
+          >
             <BigArrowDown />
           </div>
           <span class="w-[450px] text-[6.25rem] leading-[80%]">
             NAPISZ DO MNIE
           </span>
-          <div class="mt-10" >
+          <div class="mt-10">
             <div class=" grid text-[1.5rem]">
               <div class="flex h-10 items-end font-bold">
                 <span> piotrolej@gmail.com </span>
@@ -74,7 +77,7 @@
       </a>
     </div>
   </div>
-  <div class=" flex justify-end pr-primary">
+  <div class=" pr-primary flex justify-end">
     {#if data.mainFoto?.source_url}
       <CldImage
         class="hidden object-top lg:block "
