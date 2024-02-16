@@ -23,7 +23,7 @@
   <div>
     <div class=" flex flex-col space-y-4">
       <a
-        href="/api/redirect"
+        href="mailto: piotrolej@gmail.com"
         class="  mt-20 text-[2.25rem] font-bold leading-[2.5rem] hover:underline"
       >
         piotrolej@gmail.com
