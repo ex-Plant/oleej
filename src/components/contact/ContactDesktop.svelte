@@ -9,21 +9,21 @@
     <p class="text-[2.25rem] leading-[2.5rem]">Potrzebujesz tekstu?</p>
     <p class="text-[2.25rem] leading-[2.5rem]">Korekty? Pomysłu?</p>
   </div>
-  <div class="{'pr-4'}">
-    <div class="">
+  <div class="{'pr-4 group'}">
+    <a href="/napisz-do-mnie" class="">
       <p class="text-[10rem] leading-[73%] xl:text-[12.25rem]">NAPISZ</p>
       <span class="text-[10rem] leading-[73%] xl:text-[12.25rem]">
         DO MNIE
       </span>
-      <span class=" ml-10 inline-block aspect-square w-[clamp(53px,7vw,106px)]">
+      <span class=" ml-10 inline-block aspect-square w-[clamp(53px,7vw,106px)] group-hover:scale-125 duration-500">
         <BigArrowDown />
       </span>
-    </div>
+    </a>
   </div>
   <div>
     <div class=" flex flex-col space-y-4">
       <a
-        href="mailto: piotrolej@gmail.com"
+        href="/napisz-do-mnie"
         class="  mt-20 text-[2.25rem] font-bold leading-[2.5rem] hover:underline"
       >
         piotrolej@gmail.com

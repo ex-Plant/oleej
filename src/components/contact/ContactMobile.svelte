@@ -10,7 +10,7 @@
 
   <a
     class="{' group text-[3.625rem]  font-bold'}"
-    href="mailto: piotrolej@gmail.com"
+    href="/napisz-do-mnie"
     target="_blank"
   >
     <div class="pb-12">
