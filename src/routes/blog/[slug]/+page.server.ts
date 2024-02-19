@@ -64,7 +64,6 @@ export const actions: Actions = {
 
     const headers = new Headers({
       'Content-Type': 'application/json',
-      'Authorization': 'Basic ' + btoa(user + ':' + pass), // Base64 encode the username and application password
     });
 
     const formData = Object.fromEntries(await request.formData());
@@ -89,10 +88,10 @@ export const actions: Actions = {
     if (!response.ok) {
       console.error('response: ', response.statusText  );
       // throw new Error('Failed to submit comment');
-      return;
+      return response;
 
     }
     console.log('response: ', response);
-    return await response.json(); // The newly created comment object
+    return response;
   }
 };
