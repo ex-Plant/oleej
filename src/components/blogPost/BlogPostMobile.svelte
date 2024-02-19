@@ -124,8 +124,9 @@
     </div>
   </a>
 </section>
-<Comment post_id="{postData.id}" />
-
+<div class='mb-8'>
+  <Comment post_id="{postData.id}" />
+</div>
 <style>
   dialog::backdrop {
     background-color: transparent;

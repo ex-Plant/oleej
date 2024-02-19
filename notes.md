@@ -4,6 +4,8 @@
 pobieranie komentarzy od razu === dodatkowy fetch
 * menu categories  - czy one nie sa pobrane od razu ? 
 
+captchta na wiadomość i komentarz
+
 
 
 form - rounded corners

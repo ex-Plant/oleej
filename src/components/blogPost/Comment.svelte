@@ -30,7 +30,7 @@
   }
 </script>
 
-<div class="mb-4 text-[2.25rem] font-bold uppercase leading-[2.75rem]">
+<div class="mb-0 md:mb-4  text-[1.125rem] md:text-[2.25rem] font-bold uppercase leading-[2.75rem]">
   Zostaw swój komentarz
 </div>
 <form
@@ -46,7 +46,7 @@
     <textarea
       placeholder="treść"
       required
-      class="h-40 border border-black bg-primary p-4 placeholder:text-black text-[14px]"
+      class="h-40 border border-black bg-primary p-4 text-[14px] placeholder:text-black"
       name="content"></textarea>
   </div>
   <div class="grid w-full max-w-[600px] gap-x-4 md:grid-cols-2">
@@ -61,7 +61,7 @@
     </div>
     <button
       type="submit"
-      class="bg:transparent flex h-[46px] items-center justify-center space-x-4 border border-black bg-black px-4 text-[1.25rem] font-bold uppercase text-white duration-500 lg:text-black lg:bg-transparent lg:hover:bg-black lg:hover:text-white"
+      class="bg:transparent mt-2 flex h-[46px] items-center justify-center space-x-4 border border-black bg-black px-4 text-[1.25rem] font-bold uppercase text-white duration-500 md:mt-0 lg:bg-transparent lg:text-black lg:hover:bg-black lg:hover:text-white"
     >
       <span>Wyślij</span>
     </button>
