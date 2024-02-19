@@ -163,8 +163,8 @@
         </aside>
       </div>
     </div>
+
   </section>
-  <Comment post_id={postData.id}/>
 
   <a href="/o-mnie" class="group mb-12 flex h-[160px] items-center gap-x-4">
     <div class="w-[clamp(115px,16vw,230px)] pr-8">
@@ -188,6 +188,10 @@
       <BigArrowDown />
     </div>
   </a>
+  <div class='pl-[clamp(115px,16vw,230px)] pr-[clamp(65px,9vw,130px)] pb-12'>
+    <Comment post_id={postData.id}/>
+  </div>
+
 </main>
 
 <FooterPostList />

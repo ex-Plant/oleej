@@ -4,16 +4,8 @@
   import { page } from '$app/stores';
   import type { PostType } from '../../../types';
   import { fade } from 'svelte/transition';
-  import type { ActionResult } from "@sveltejs/kit";
-  import Comment from "../../../components/blogPost/Comment.svelte";
 
-  $: slug = $page.params.slug;
-  const posts = $page.data.allPosts.posts;
-
-  let post: PostType;
-  $: if (slug) {
-    post = posts?.find((post: PostType) => post.slug === slug);
-  }
+  const post: PostType = $page.data.post;
   $: post_content = post.acf?.post_content;
 
   function countWords(text: string) {
