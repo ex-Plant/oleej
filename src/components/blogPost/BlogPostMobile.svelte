@@ -6,6 +6,7 @@
   import BigArrowDown from '../../assets/BigArrowDown.svelte';
   import SmallArrowUp from '../../assets/SmallArowUp.svelte';
   import { page } from '$app/stores';
+  import Comment from './Comment.svelte';
 
   export let postData: PostType;
   export let post_content: string;
@@ -27,7 +28,7 @@
     try {
       await navigator.clipboard.writeText($page.url.href);
       dialog.show();
-      clearTimeout(timeoutId)
+      clearTimeout(timeoutId);
       timeoutId = setTimeout(() => {
         dialog.close();
       }, 1000);
@@ -35,7 +36,6 @@
       console.error('Failed to copy: ', err);
     }
   };
-
 </script>
 
 <section class=" grid">
@@ -75,7 +75,7 @@
     {@html customSanitization(post_content)}
   </div>
 
-  <div class="relative grid pt-7 ">
+  <div class="relative grid pt-7">
     <p class="h-7 text-[0.875rem]">
       <span class="pr-1">Data publikacji: </span><span class="font-[700]"
         >{publishDate}</span
@@ -89,7 +89,10 @@
       <span>UDOSTĘPNIJ</span>
       <SmallArrowUp />
     </button>
-    <dialog class=" absolute right-0 top-0 translate-y-1/2 rounded text-[10px] " bind:this="{dialog}">
+    <dialog
+      class=" absolute right-0 top-0 translate-y-1/2 rounded text-[10px]"
+      bind:this="{dialog}"
+    >
       skopiowano do schowka
     </dialog>
   </div>
@@ -121,6 +124,7 @@
     </div>
   </a>
 </section>
+<Comment post_id="{postData.id}" />
 
 <style>
   dialog::backdrop {
