@@ -1,9 +1,10 @@
-* posty wysokosc
-* bledy w deploymentach
 * caching mechanism
-* czcionki
-
-* nawias wyrównać // done
-* favicon //done
-* error page wyśrodkować i ukryć newsletter // done
 * robots?
+* comments
+* 
+
+
+
+form - rounded corners
+mobile - menu kreska ma paddingi
+newsletter footer mobile - coś za dugi się wydaje

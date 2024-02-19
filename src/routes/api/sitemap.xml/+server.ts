@@ -22,6 +22,7 @@ export async function GET() {
     { url: '', lastmod: '2023-02-13' },
     { url: '/o-mnie', lastmod: '2023-02-13' },
     { url: '/kontakt', lastmod: '2023-02-13' },
+    { url: '/wiadomosc', lastmod: '2023-02-13' },
     // Add more pages as needed
   ];
 

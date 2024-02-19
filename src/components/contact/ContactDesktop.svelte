@@ -10,7 +10,7 @@
     <p class="text-[2.25rem] leading-[2.5rem]">Korekty? Pomysłu?</p>
   </div>
   <div class="{'pr-4 group'}">
-    <a href="/napisz-do-mnie" class="">
+    <a href="/wiadomosc" class="">
       <p class="text-[10rem] leading-[73%] xl:text-[12.25rem]">NAPISZ</p>
       <span class="text-[10rem] leading-[73%] xl:text-[12.25rem]">
         DO MNIE

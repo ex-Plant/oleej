@@ -4,6 +4,8 @@
   import { page } from '$app/stores';
   import type { PostType } from '../../../types';
   import { fade } from 'svelte/transition';
+  import type { ActionResult } from "@sveltejs/kit";
+  import Comment from "../../../components/blogPost/Comment.svelte";
 
   $: slug = $page.params.slug;
   const posts = $page.data.allPosts.posts;

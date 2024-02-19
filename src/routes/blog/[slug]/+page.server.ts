@@ -1,8 +1,9 @@
 import { baseUrl } from '../../../constans/constans';
-import { error } from '@sveltejs/kit';
+import { type Actions, error } from "@sveltejs/kit";
 import type { ImageType, PostType } from '../../../types';
+import * as https from "https";
 
-export const prerender = true;
+// export const prerender = true;
 export const trailingSlash = 'always';
 // export const config = {
 //   isr: {
@@ -51,4 +52,47 @@ export const load = async () => {
     images,
     allPosts,
   };
+};
+
+// 8fPc BRq9 Wupy 82Ra hnZD ZHHV
+
+export const actions: Actions = {
+  add_comment: async ({ request }) => {
+
+    const user = 'admin';
+    const pass = 'fPc BRq9 Wupy 82Ra hnZD ZHHV';
+
+    const headers = new Headers({
+      'Content-Type': 'application/json',
+      'Authorization': 'Basic ' + btoa(user + ':' + pass), // Base64 encode the username and application password
+    });
+
+    const formData = Object.fromEntries(await request.formData());
+    const postId = formData.post_id as string;
+    const authorName = formData.author_name as string;
+    const authorEmail = formData.author_email as string;
+    const content = formData.content as string;
+    const response = await fetch(
+      'https://serwer2304048.home.pl/wordpress/wp-json/wp/v2/comments',
+      {
+        method: 'POST',
+        headers: headers,
+        body: JSON.stringify({
+          post: postId,
+          author_name: authorName,
+          author_email: authorEmail,
+          content: content,
+        }),
+      },
+    );
+
+    if (!response.ok) {
+      console.error('response: ', response.statusText  );
+      // throw new Error('Failed to submit comment');
+      return;
+
+    }
+    console.log('response: ', response);
+    return await response.json(); // The newly created comment object
+  }
 };

@@ -10,7 +10,7 @@
 
   <a
     class="{' group text-[3.625rem]  font-bold'}"
-    href="/napisz-do-mnie"
+    href="/wiadomosc"
     target="_blank"
   >
     <div class="pb-12">

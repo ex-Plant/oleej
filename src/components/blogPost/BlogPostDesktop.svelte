@@ -7,6 +7,7 @@
   import { CldImage } from 'svelte-cloudinary';
   import FooterPostList from './FooterPostList.svelte';
   import { page } from '$app/stores';
+  import Comment from "./Comment.svelte";
 
   export let postData: PostType;
   export let post_content: string;
@@ -26,6 +27,7 @@
   );
 
   $: post = postData?.acf;
+
   $: publishDate = convertDateToNumericString(postData?.date);
   $: currPostIndex = posts.findIndex(
     (p: PostType) => p.slug === $page.params.slug,
@@ -162,6 +164,7 @@
       </div>
     </div>
   </section>
+  <Comment post_id={postData.id}/>
 
   <a href="/o-mnie" class="group mb-12 flex h-[160px] items-center gap-x-4">
     <div class="w-[clamp(115px,16vw,230px)] pr-8">
@@ -186,4 +189,5 @@
     </div>
   </a>
 </main>
+
 <FooterPostList />
