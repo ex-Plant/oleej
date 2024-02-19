@@ -64,6 +64,7 @@ export const actions: Actions = {
 
     const headers = new Headers({
       'Content-Type': 'application/json',
+      'Authorization': 'Basic ' + btoa(user + ':' + pass),
     });
 
     const formData = Object.fromEntries(await request.formData());
@@ -80,18 +81,21 @@ export const actions: Actions = {
           post: postId,
           author_name: authorName,
           author_email: authorEmail,
-          content: content,
+          content: { raw: 'test' },
         }),
       },
     );
 
     if (!response.ok) {
       console.error('response: ', response.statusText  );
+      return response.statusText;
       // throw new Error('Failed to submit comment');
-      return response;
+      // console.log('response: ', response);
+      // return response;
 
     }
-    console.log('response: ', response);
-    return response;
+    console.log('response: ', response.statusText  );
+    return response.statusText;
+    // return response;
   }
 };
