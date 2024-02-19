@@ -38,7 +38,7 @@
   in:fade="{{ duration: 500 }}"
   class="max-w-[1440px] px-[clamp(20px,6vw,60px)] pt-16 lg:block xl:mx-auto"
 >
-  <!--  <button class="text-2xl" on:click="{() => dialog.showModal()}">open</button>-->
+    <button class="text-2xl" on:click="{() => dialog.showModal()}">open</button>
   <form class="flex flex-col gap-y-4" on:submit|preventDefault="{sendEmail}">
     <div class="grid max-w-[600px] gap-y-1">
       <label class="flex w-[200px]">Twoje imię</label>
@@ -60,7 +60,7 @@
 </main>
 <dialog
   on:click="{() => dialog.close()}"
-  class=" fixed inset-0 z-[1000] cursor-pointer rounded text-[24px]"
+  class=" fixed inset-0 z-[1000] cursor-pointer rounded text-[16px] max-w-[260px]"
   bind:this="{dialog}"
 >
   <p>
