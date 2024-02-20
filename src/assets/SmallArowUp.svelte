@@ -1,9 +1,14 @@
+<script>
+  export let className
+</script>
+
 <svg
   xmlns="http://www.w3.org/2000/svg"
   width="7"
   height="7"
   viewBox="0 0 7 7"
   fill="none"
+  class={className}
 >
   <g clip-path="url(#clip0_32_693)">
     <path

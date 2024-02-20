@@ -35,3 +35,10 @@ export type ImageType = {
   };
   source_url: string;
 };
+
+export type CommentType = {
+  author_name: string;
+  content: {
+    rendered: string;
+  };
+};

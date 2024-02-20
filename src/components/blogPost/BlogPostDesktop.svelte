@@ -7,7 +7,7 @@
   import { CldImage } from 'svelte-cloudinary';
   import FooterPostList from './FooterPostList.svelte';
   import { page } from '$app/stores';
-  import Comment from "./Comment.svelte";
+  import Comment from "./Comments.svelte";
 
   export let postData: PostType;
   export let post_content: string;

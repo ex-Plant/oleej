@@ -6,7 +6,7 @@
   import BigArrowDown from '../../assets/BigArrowDown.svelte';
   import SmallArrowUp from '../../assets/SmallArowUp.svelte';
   import { page } from '$app/stores';
-  import Comment from './Comment.svelte';
+  import Comment from './Comments.svelte';
 
   export let postData: PostType;
   export let post_content: string;
