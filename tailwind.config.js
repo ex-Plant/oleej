@@ -1,9 +1,11 @@
 /** @type {import('tailwindcss').Config} */
-export default {
+const config = {
   future: {
     hoverOnlyWhenSupported: true,
   },
   content: ['./src/**/*.{html,js,svelte,ts}'],
+  darkMode: ['class'],
+  safelist: ['dark'],
   theme: {
     fontSize: {
       12: ['0.75rem', '1.063rem'],
@@ -54,13 +56,43 @@ export default {
         toxic: 'rgba(232, 255, 1)',
         background: 'rgba(236, 229, 209, 1)',
         red: 'rgba(255, 0, 0, 1)',
+        border: 'hsl(var(--border) / <alpha-value>)',
+        input: 'hsl(var(--input) / <alpha-value>)',
+        ring: 'hsl(var(--ring) / <alpha-value>)',
+        foreground: 'hsl(var(--foreground) / <alpha-value>)',
+        secondary: {
+          DEFAULT: 'hsl(var(--secondary) / <alpha-value>)',
+          foreground: 'hsl(var(--secondary-foreground) / <alpha-value>)',
+        },
+        destructive: {
+          DEFAULT: 'hsl(var(--destructive) / <alpha-value>)',
+          foreground: 'hsl(var(--destructive-foreground) / <alpha-value>)',
+        },
+        muted: {
+          DEFAULT: 'hsl(var(--muted) / <alpha-value>)',
+          foreground: 'hsl(var(--muted-foreground) / <alpha-value>)',
+        },
+
+        popover: {
+          DEFAULT: 'hsl(var(--popover) / <alpha-value>)',
+          foreground: 'hsl(var(--popover-foreground) / <alpha-value>)',
+        },
+        card: {
+          DEFAULT: 'hsl(var(--card) / <alpha-value>)',
+          foreground: 'hsl(var(--card-foreground) / <alpha-value>)',
+        },
       },
       borderWidth: {
         1: '1px',
       },
+      borderRadius: {
+        lg: 'var(--radius)',
+        md: 'calc(var(--radius) - 2px)',
+        sm: 'calc(var(--radius) - 4px)',
+      },
     },
   },
-  plugins: [
-    require('@tailwindcss/typography'),
-  ],
+  plugins: [require('@tailwindcss/typography')],
 };
+
+export default config;
