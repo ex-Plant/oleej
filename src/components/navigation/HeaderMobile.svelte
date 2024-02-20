@@ -6,18 +6,14 @@
   export let top = false;
 </script>
 
-<div class="{twMerge(' px-primary fixed left-0 right-0 top-0 z-10 ')}">
+<div class="{twMerge(' fixed left-0 right-0 top-0 z-10 ')}">
   <nav
     class="{twMerge(
-      ' flex w-full items-center justify-between border-b-[2px] border-black bg-primary duration-300 ',
+      ' px-primary flex w-full items-center justify-between border-b-[2px] border-black bg-primary duration-300 ',
       top ? 'h-20 translate-y-0' : !top && ' h-0 -translate-y-10',
     )}"
   >
-    <a
-      aria-label="home"
-      class="{twMerge('duration-200', top ? 'opacity-100' : 'opacity-0')}"
-      href="/"
-    >
+    <a aria-label="home" class="{twMerge('duration-200', top ? 'opacity-100' : 'opacity-0')}" href="/">
       <Logo />
     </a>
     <button

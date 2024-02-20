@@ -1,5 +1,4 @@
 <script lang="ts">
-  import SmallArowUp from '../../assets/SmallArowUp.svelte';
   import type { CommentType } from '../../types';
   import * as Accordion from '../ui/accordion';
   import CommentResponseForm from './CommentResponseForm.svelte';
