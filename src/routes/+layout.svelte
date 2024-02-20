@@ -15,28 +15,27 @@
   import '@fontsource/courier-prime/700.css';
   import '@fontsource/courier-prime/400-italic.css';
   import '@fontsource/courier-prime/700-italic.css';
+  import { loading } from '../store/global';
 
   inject({ mode: dev ? 'development' : 'production' });
 
   $: homePage = $page.route.id === '/';
 
-  let showSpinner = false;
-
   $: if ($navigating) {
     setTimeout(() => {
-      showSpinner = true;
+      loading.set(true);
     }, 100);
   }
 
-  $: if (showSpinner && !$navigating) {
-    showSpinner = false;
+  $: if (!$navigating) {
+    loading.set(false);
   }
 </script>
 
 <div class=" flex min-h-[100svh] flex-col">
   <Header />
   <div class="{twMerge(homePage ? 'mt-0' : 'mt-20')}">
-    {#if showSpinner} <Spinner /> {/if}
+    {#if $loading} <Spinner /> {/if}
     <slot />
   </div>
   <Footer />

@@ -1,6 +1,9 @@
 <script lang="ts">
   import { twMerge } from 'tailwind-merge';
+  import { fade } from 'svelte/transition';
 </script>
+
+<!--transition:fade="{{ duration: 100 }}"-->
 
 <div
   class="{twMerge('fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2')}"

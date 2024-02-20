@@ -41,4 +41,6 @@ export type CommentType = {
   content: {
     rendered: string;
   };
+  id: number;
+  parent: number;
 };

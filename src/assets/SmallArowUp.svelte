@@ -1,5 +1,7 @@
-<script>
-  export let className
+<script lang="ts">
+  import { twMerge } from "tailwind-merge";
+
+  export let className = "";
 </script>
 
 <svg
@@ -8,7 +10,7 @@
   height="7"
   viewBox="0 0 7 7"
   fill="none"
-  class={className}
+  class={twMerge(`arrowUp `, className)}
 >
   <g clip-path="url(#clip0_32_693)">
     <path
