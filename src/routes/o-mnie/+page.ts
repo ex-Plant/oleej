@@ -1,6 +1,6 @@
 import { baseUrl } from '../../constans/constans';
 
-export const prerender = true;
+// export const prerender = true;
 export const trailingSlash = 'always';
 export const load = async () => {
   async function getAboutPageData() {
