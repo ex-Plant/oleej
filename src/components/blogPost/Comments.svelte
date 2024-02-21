@@ -10,7 +10,7 @@
 
   const post_id: number = $page.data.post.id;
 
-  let commentsOpen = false;
+  let commentsOpen =  true;
 
   function toggleComments() {
     commentsOpen = !commentsOpen;
