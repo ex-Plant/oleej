@@ -7,6 +7,7 @@
   export let post_id: number;
   export let comment: CommentType;
   export let responses: CommentType[];
+
 </script>
 
 <div in:fade="{{ duration: 500 }}">

@@ -13,6 +13,9 @@
   let timeoutId: ReturnType<typeof setTimeout> | undefined;
   let message = 'oj coś nie pykło..., spróbuj jeszcze raz lub zgłoś problem: piotrolej@gmail.com';
 
+  let name = '';
+  let content = '';
+
   function handleSubmit() {
     return async ({
       result,
@@ -23,8 +26,10 @@
     }) => {
       sendingForm.set(true);
       if (result.type === 'success') {
-        await update();
+        await update({ reset: false });
         console.log(result);
+        name = '';
+        content = '';
       } else {
         dialog.show();
         clearTimeout(timeoutId);
@@ -52,7 +57,9 @@
         placeholder="treść"
         required
         class="h-40 border border-black bg-primary p-4 text-[14px] placeholder:text-black"
-        name="content"></textarea>
+        name="content"
+      bind:value="{content}"
+      ></textarea>
     </div>
     <div class="grid w-full max-w-[600px] gap-x-4 md:grid-cols-2">
       <div class="grid h-[46px] w-full max-w-[600px] gap-y-4">
@@ -63,6 +70,7 @@
           class="h-[46px] border border-black bg-primary p-4 text-[14px] placeholder:text-black"
           type="text"
           name="author_name"
+          bind:value="{name}"
         />
       </div>
       <Button

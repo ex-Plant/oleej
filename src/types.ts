@@ -44,3 +44,5 @@ export type CommentType = {
   id: number;
   parent: number;
 };
+
+export type LoadingType = 'lazy' | 'eager';

@@ -1,11 +1,13 @@
 <script lang="ts">
-  import { CldImage } from 'svelte-cloudinary';
-  import type { ImageType, PostType } from '../types.js';
+  import type { PostType } from '../types.js';
   import { convertDateToNumericString } from '../helpers/convertDateToNumericString.js';
   import BigArrowUp from '../assets/BigArrowUp.svelte';
   import { fade } from 'svelte/transition';
+  import CustomImage from './ui/CustomImage.svelte';
+  import { page } from '$app/stores';
+  import ImgPlaceholder from './ui/ImgPlaceholder.svelte';
+
   export let post: PostType;
-  export let postImage: ImageType | undefined;
   export let index: number;
 
   type LoadingType = 'lazy' | 'eager';
@@ -13,58 +15,52 @@
   let loading: LoadingType = index === 0 ? 'eager' : 'lazy';
 </script>
 
-<a
-  in:fade="{{ duration: 500 }}"
-  class="group border-b-[2px] border-black last:border-0"
-  href="{`/blog/${post?.slug}`}"
->
+<a in:fade="{{ duration: 500 }}" class="group border-b-[2px] border-black last:border-0" href="{`/blog/${post?.slug}`}">
   <!--MOBILE-->
   <article class=" grid py-7 md:hidden">
     <div class="grid">
       <p class="  text-[0.75rem] uppercase">{post.acf.category}</p>
-      <h2
-        class=" line-clamp-5 pt-4 text-[1.125rem] font-[700] uppercase leading-[108%]"
-      >
+      <h2 class=" line-clamp-5 pt-4 text-[1.125rem] font-[700] uppercase leading-[108%]">
         {post.acf.title}
       </h2>
     </div>
-    {#if postImage}
-      <div class="w-full pt-7 ">
-        <CldImage
+    <div class="w-full pt-7">
+      {#await $page.data.images}
+        <ImgPlaceholder aspect="{'aspect-[316/260]'}" />
+      {:then images}
+        <CustomImage
           loading="{loading}"
           sizes="(max-width: 768px) 100vw"
           width="768"
-          class="object-top shadow-[inset_0_0_0_1px_black] "
+          className="object-top shadow-[inset_0_0_0_1px_black] "
           aspectRatio="{316 / 260}"
           height="auto"
-          src="{postImage.source_url}"
-          alt="{postImage?.alt_text}"
+          data="{images.find((img) => img.id === post.acf.mobile_foto_id)}"
         />
+      {/await}
 
-        <p class="line-clamp-4 pt-5 leading-[137%]">{post.acf.excerpt}</p>
-      </div>
-    {/if}
+      <p class="line-clamp-4 pt-5 leading-[137%]">{post.acf.excerpt}</p>
+    </div>
   </article>
 
   <!--MD-->
   <article class="hidden py-12 md:grid 1280:hidden">
-    <div class=" grid grid-cols-2 gap-x-12 ">
-      {#if postImage}
-        <CldImage
+    <div class=" grid grid-cols-2 gap-x-12">
+      {#await $page.data.images}
+        <ImgPlaceholder aspect="{'aspect-[316/260]'}" />
+      {:then images}
+        <CustomImage
           loading="{loading}"
           sizes="(max-width: 560px) 50vw"
           width="{560}"
-          class="object-top shadow-[inset_0_0_0_1px_black] "
+          className="object-top shadow-[inset_0_0_0_1px_black] "
           aspectRatio="{318 / 280}"
           height="auto"
-          src="{postImage.source_url}"
-          alt="{postImage.alt_text}"
+          data="{images.find((img) => img.id === post.acf.mobile_foto_id)}"
         />
-      {/if}
+      {/await}
       <div class=" uppercase">
-        <h2
-          class=" line-clamp-4 h-[140px] text-[2rem] font-[700] leading-[108%]"
-        >
+        <h2 class=" line-clamp-4 h-[140px] text-[2rem] font-[700] leading-[108%]">
           {post.acf.title}
           <span class="inline-block duration-500 group-hover:scale-125">
             <BigArrowUp />
@@ -98,18 +94,19 @@
     </div>
 
     <div class="grid grid-cols-2 gap-x-16">
-      {#if postImage}
-        <CldImage
+      {#await $page.data.images}
+        <ImgPlaceholder aspect="{'aspect-[316/260]'}" />
+      {:then images}
+        <CustomImage
           loading="{loading}"
           sizes="(max-width: 320px) 20vw"
           width="{269}"
-          class="object-top shadow-[inset_0_0_0_1px_black]"
           aspectRatio="{269 / 323}"
+          className="object-top shadow-[inset_0_0_0_1px_black] "
           height="auto"
-          src="{postImage.source_url}"
-          alt="{postImage.alt_text}"
+          data="{images.find((img) => img.id === post.acf.mobile_foto_id)}"
         />
-      {/if}
+      {/await}
 
       <div>
         <p class="line-clamp-[10] w-full text-[1.25rem] leading-[140%]">

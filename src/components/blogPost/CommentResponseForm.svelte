@@ -6,7 +6,7 @@
   import SmallArowUp from '../../assets/SmallArowUp.svelte';
   import * as Accordion from '../ui/accordion';
   import type { ActionResult } from '@sveltejs/kit';
-  import { sendingForm } from "../../store/global";
+  import { sendingForm } from '../../store/global';
 
   export let post_id: number;
   export let comment: CommentType;
@@ -29,9 +29,11 @@
       sendingForm.set(true);
       value = '';
       if (result.type === 'success') {
-        await update();
+        await update({ reset: false });
         console.log(result);
         sendingForm.set(false);
+        content = '';
+        sign = '';
       } else {
         dialog.show();
         clearTimeout(timeoutId);
@@ -64,7 +66,7 @@
         <div class="grid w-full gap-y-1">
           <textarea
             on:focus="{() => sendingForm.set(false)}"
-            value="{content}"
+            bind:value="{content}"
             placeholder="treść"
             required
             class="h-40 border border-black bg-primary p-4 text-[14px] placeholder:text-black"
@@ -78,8 +80,8 @@
               required
               class="h-[46px] border border-black bg-primary p-4 text-[14px] placeholder:text-black"
               type="text"
-              value="{sign}"
               name="author_name"
+              bind:value="{sign}"
             />
           </div>
           <Button

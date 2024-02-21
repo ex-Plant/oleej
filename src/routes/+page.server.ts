@@ -1,6 +1,6 @@
 import { error } from '@sveltejs/kit';
 import { baseUrl } from '../constans/constans';
-import type { ImageType, PostType } from '../types';
+import type { PostType } from '../types';
 import type { PageLoad } from '../../.svelte-kit/types/src/routes/o-mnie/$types';
 export const trailingSlash = 'always';
 export const prerender = true;
@@ -27,17 +27,10 @@ export const load: PageLoad = async () => {
     return data.json();
   }
 
-  const images: ImageType[] = await getImages();
   const allPosts = await getAllPosts();
-  const mobileFotosIds = allPosts.posts.map(
-    (post: PostType) => post.acf.mobile_foto_id,
-  );
-  const blogPost_mobile_fotos = images.filter((img) =>
-    mobileFotosIds.includes(img.id),
-  );
 
   return {
     allPosts,
-    blogPost_mobile_fotos,
+    images: getImages(),
   };
 };

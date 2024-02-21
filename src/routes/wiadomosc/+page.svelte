@@ -6,7 +6,10 @@
   let sending = false;
   let dialog: HTMLDialogElement;
   let timeoutId: ReturnType<typeof setTimeout> | undefined;
-  let message = 'wszystko git 😎! dzięki! odezwę się  🚀🚀🚀';
+  let dialogMessage = 'wszystko git 😎! dzięki! odezwę się  🚀🚀🚀';
+  let name = '';
+  let email = '';
+  let message = '';
 
   const sendEmail = async (e) => {
     sending = true;
@@ -21,6 +24,9 @@
     clearTimeout(timeoutId);
     timeoutId = setTimeout(() => {
       dialog.close();
+      email = '';
+      name = '';
+      message = '';
     }, 3000);
   };
 </script>
@@ -29,19 +35,19 @@
   <Spinner />
 {/if}
 <main in:fade="{{ duration: 500 }}" class="max-w-[1440px] px-[clamp(20px,6vw,60px)] pt-16 lg:block xl:mx-auto">
-  <button class="text-2xl" on:click="{() => dialog.showModal()}">open</button>
+  <!--  <button class="text-2xl" on:click="{() => dialog.showModal()}">open</button>-->
   <form class="flex flex-col gap-y-4" on:submit|preventDefault="{sendEmail}">
     <div class="grid max-w-[600px] gap-y-1">
       <label class="flex w-[200px]">Twoje imię</label>
-      <input required class="h-10 p-4" type="text" name="name" />
+      <input required class="h-10 p-4" type="text" name="name" bind:value="{name}" />
     </div>
     <div class="grid max-w-[600px] gap-y-1">
       <label class="flex w-[200px]">Twój mail</label>
-      <input required class="h-10 p-4" type="email" name="email" />
+      <input required class="h-10 p-4" type="email" name="email" bind:value="{email}" />
     </div>
     <div class="grid max-w-[600px] gap-y-1">
       <label class="flex w-[200px]">Wiadomość</label>
-      <textarea required class="h-40 p-4" name="message"></textarea>
+      <textarea required class="h-40 p-4" name="message" bind:value="{message}"></textarea>
     </div>
     <div class="flex items-center justify-start space-x-4">
       <span>Wyślij</span>
@@ -55,6 +61,6 @@
   bind:this="{dialog}"
 >
   <p>
-    {message}
+    {dialogMessage}
   </p>
 </dialog>

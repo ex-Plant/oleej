@@ -2,10 +2,9 @@
   import { CldImage } from 'svelte-cloudinary';
   import { customSanitization } from '../../helpers/customSanitization';
   import BigArrowUp from '../../assets/BigArrowUp.svelte';
-  import { page } from '$app/stores';
   import BigArrowDown from '../../assets/BigArrowDown.svelte';
   import { fade } from 'svelte/transition';
-  const data = $page.data;
+  export let data;
 </script>
 
 <div in:fade="{{ duration: 500 }}">
