@@ -131,7 +131,7 @@
     </div>
   </section>
 
-  <a href="/o-mnie" class="group mb-12 flex h-[160px] items-center gap-x-4">
+  <a href="/o-mnie" class="group mb-12 flex h-[160px] items-center ">
     <div class="w-[clamp(115px,16vw,230px)] pr-8">
       <div class=" flex w-full flex-none">
         {#await images then images}
