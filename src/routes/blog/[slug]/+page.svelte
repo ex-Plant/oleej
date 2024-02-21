@@ -5,7 +5,7 @@
   import type { PostType } from '../../../types';
   import { fade } from 'svelte/transition';
 
-  const post: PostType = $page.data.post;
+  $: post = $page.data.post;
   $: post_content = post.acf?.post_content;
 
   function countWords(text: string) {

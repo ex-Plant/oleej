@@ -11,7 +11,7 @@
   import ImgPlaceholder from '../ui/ImgPlaceholder.svelte';
   import PostFoto from './PostFoto.svelte';
 
-  const postData: PostType = $page.data.post;
+  $: postData = $page.data.post;
   $: post_content = postData.acf?.post_content;
 
   export let timeString: string;

@@ -12,7 +12,7 @@
 
   export let timeString: string;
 
-  const postData: PostType = $page.data.post;
+  $: postData = $page.data.post;
   $: post_content = postData.acf?.post_content;
 
   const images: ImageType[] = $page.data.images;

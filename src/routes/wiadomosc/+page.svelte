@@ -8,7 +8,7 @@
   let timeoutId: ReturnType<typeof setTimeout> | undefined;
   let message = 'wszystko git 😎! dzięki! odezwę się  🚀🚀🚀';
 
-  const sendEmail = async (e) => {§
+  const sendEmail = async (e) => {
     sending = true;
     const data = await emailjs.sendForm('service_dtv5cga', 'template_cs5li6k', e.target, {
       publicKey: 'REJftFiEDivsRd49v',
