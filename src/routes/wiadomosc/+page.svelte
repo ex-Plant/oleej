@@ -6,7 +6,7 @@
   let sending = false;
   let dialog: HTMLDialogElement;
   let timeoutId: ReturnType<typeof setTimeout> | undefined;
-  let dialogMessage = 'wszystko git 😎! dzięki! odezwę się  🚀🚀🚀';
+  let dialogMessage = 'Git, doszło! Daj mi chwilę - niebawem odpiszę✌️';
   let name = '';
   let email = '';
   let message = '';
@@ -36,7 +36,7 @@
 {/if}
 <main in:fade="{{ duration: 500 }}" class="max-w-[1440px] px-[clamp(20px,6vw,60px)] pt-16 lg:block xl:mx-auto">
   <!--  <button class="text-2xl" on:click="{() => dialog.showModal()}">open</button>-->
-  <form class="flex flex-col gap-y-4" on:submit|preventDefault="{sendEmail}">
+  <form class="flex flex-col gap-y-4 pb-20" on:submit|preventDefault="{sendEmail}">
     <div class="grid max-w-[600px] gap-y-1">
       <label class="flex w-[200px]">Twoje imię</label>
       <input required class="h-10 p-4" type="text" name="name" bind:value="{name}" />

@@ -8,7 +8,7 @@
   class=" fixed inset-0 flex flex-col items-center justify-center space-y-4 pt-20 bg-primary"
 >
   <p>Oj, coś tu nie pykło...</p>
-  <p>Ale teraz na pewno się uda</p>
+  <p>Ale teraz na pewno się uda!</p>
 
   <a href="/" class=" cursor-pointer ">
     <div class='flex items-center justify-center  space-x-4'>
