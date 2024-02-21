@@ -1,16 +1,8 @@
 import { baseUrl } from '../../../constans/constans';
 import { type Actions, error } from '@sveltejs/kit';
-import type { ImageType, PostType } from '../../../types';
-import * as https from 'https';
+import type { PostType } from '../../../types';
 
-// export const prerender = true;
 export const trailingSlash = 'always';
-// export const config = {
-//   isr: {
-//     expiration: 1800,
-//   }
-// };
-
 export const load = async ({ params }) => {
   async function getGlobalFotoId() {
     const globalRes = await fetch(`${baseUrl}pages?slug=global`);
@@ -46,22 +38,18 @@ export const load = async ({ params }) => {
     const response = await fetch(
       `https://serwer2304048.home.pl/wordpress/wp-json/wp/v2/comments?post=${postId}&per_page=${100}`,
     );
-    return await response.json();
+    return response.json();
   }
 
   const allPosts = await getAllPosts();
-  const images = await getImages();
-  const global_id = await getGlobalFotoId();
-  const globalFoto = images.find((img: ImageType) => img.id === global_id);
   const post = allPosts.posts.find((post: PostType) => post.slug === params.slug);
-  const comments = await getComments(post.id);
 
   return {
-    globalFoto,
-    images,
-    allPosts,
+    global_id: getGlobalFotoId(),
+    comments: getComments(post.id),
+    images: getImages(),
     post,
-    comments,
+    allPosts,
   };
 };
 

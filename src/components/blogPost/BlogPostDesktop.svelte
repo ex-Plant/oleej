@@ -4,34 +4,26 @@
   import { customSanitization } from '../../helpers/customSanitization';
   import BigArrowDown from '../../assets/BigArrowDown.svelte';
   import SmallArrowUp from '../../assets/SmallArowUp.svelte';
-  import { CldImage } from 'svelte-cloudinary';
   import FooterPostList from './FooterPostList.svelte';
   import { page } from '$app/stores';
-  import Comment from "./CommentsSection.svelte";
+  import CommentsSection from './CommentsSection.svelte';
+  import CustomImage from '../ui/CustomImage.svelte';
+  import ImgPlaceholder from '../ui/ImgPlaceholder.svelte';
+  import PostFoto from './PostFoto.svelte';
 
-  export let postData: PostType;
-  export let post_content: string;
+  const postData: PostType = $page.data.post;
+  $: post_content = postData.acf?.post_content;
+
   export let timeString: string;
-  const images = $page.data.images;
   const posts = $page?.data?.allPosts.posts;
-  const globalFoto = $page.data.globalFoto;
-
+  const images: ImageType[] = $page.data.images;
+  const global_id = $page.data.global_id;
   let dialog: HTMLDialogElement;
   let timeoutId: ReturnType<typeof setTimeout> | undefined;
 
-  $: postFoto = images?.find(
-    (foto: ImageType) => foto.id === postData?.acf.blog_desktop_foto_id,
-  );
-  $: postSideFoto = images?.find(
-    (foto: ImageType) => foto.id === postData?.acf.blog_right_side_foto_id,
-  );
-
   $: post = postData?.acf;
-
   $: publishDate = convertDateToNumericString(postData?.date);
-  $: currPostIndex = posts.findIndex(
-    (p: PostType) => p.slug === $page.params.slug,
-  );
+  $: currPostIndex = posts.findIndex((p: PostType) => p.slug === $page.params.slug);
 
   $: nextPostSlug = posts[0]?.slug;
 
@@ -57,9 +49,7 @@
 </script>
 
 <main class="px-primary mx-auto grid max-w-[1440px] flex-col pt-12">
-  <header
-    class=" grid grid-cols-[clamp(115px,14vw,230px)_auto_clamp(115px,14vw,230px)]"
-  >
+  <header class=" grid grid-cols-[clamp(115px,14vw,230px)_auto_clamp(115px,14vw,230px)]">
     <div class="aspect-square w-[clamp(50px,calc(100/1440*100vw),100px)]">
       <BigArrowDown />
     </div>
@@ -78,17 +68,12 @@
           </span>
         </span>
       </div>
-      <h1
-        class="w-full pt-4 text-[2.5rem] font-bold leading-[100%] lg:text-[3.5625rem] 1280:text-[4rem]"
-      >
+      <h1 class="w-full pt-4 text-[2.5rem] font-bold leading-[100%] lg:text-[3.5625rem] 1280:text-[4rem]">
         {post.title}
       </h1>
     </div>
     <div class=" flex items-start justify-end">
-      <a
-        href="{nextBlogPostLink}"
-        class="group relative whitespace-nowrap pb-1 text-right text-[1.125rem]"
-      >
+      <a href="{nextBlogPostLink}" class="group relative whitespace-nowrap pb-1 text-right text-[1.125rem]">
         <span> KOLEJNY ARTYKUL </span>
         <span
           class="{'absolute bottom-[-2px] left-[50%] h-[1px] w-0 rounded bg-black duration-300 group-hover:left-0 group-hover:w-full'}"
@@ -99,21 +84,11 @@
   </header>
 
   <div class="w-full pt-12">
-    {#if postFoto}
-      <CldImage
-        class="shadow-[inset_0_0_0_1px_black] "
-        sizes="(max-width: 1320px), 100vw"
-        height="auto"
-        width="{1320}"
-        aspectRatio="{1320 / 327}"
-        placeholder="blur"
-        src="{postFoto?.source_url}"
-        alt="{postFoto?.alt_text}"
-      />
-    {/if}
-    <p class="text-xs w-full pt-2 text-12">
-      {@html customSanitization(postFoto?.caption?.rendered)}
-    </p>
+    {#await $page.data.images}
+      <ImgPlaceholder aspect="aspect-[1320/327] " />
+    {:then images}
+      <PostFoto postFoto="{images?.find((foto) => foto.id === postData?.acf.blog_desktop_foto_id)}" />
+    {/await}
   </div>
   <section class="grid pl-[clamp(115px,16vw,230px)] pt-7">
     <div class="grid">
@@ -130,53 +105,46 @@
 
           <div class=" relative flex items-center">
             <p class="">
-              <span class="pr-1">Data publikacji: </span><span
-                class="font-[700]">{publishDate}</span
-              >
+              <span class="pr-1">Data publikacji: </span><span class="font-[700]">{publishDate}</span>
             </p>
-            <button
-              on:click="{saveLink}"
-              class="  flex h-6 items-center space-x-2 pl-12 font-bold uppercase"
-            >
+            <button on:click="{saveLink}" class="  flex h-6 items-center space-x-2 pl-12 font-bold uppercase">
               <span>UDOSTĘPNIJ</span>
               <SmallArrowUp />
             </button>
-            <dialog
-              class="  absolute left-0 top-0 translate-y-1/2 rounded"
-              bind:this="{dialog}"
-            >
+            <dialog class="  absolute left-0 top-0 translate-y-1/2 rounded" bind:this="{dialog}">
               skopiowano do schowka
             </dialog>
           </div>
         </div>
         <aside class="flex items-center pl-8">
-          {#if postSideFoto}
-            <CldImage
+          {#await $page.data.images then images}
+            <CustomImage
               sizes="(max-width: 204px), 16vw"
               height="auto"
               width="{204}"
               aspectRatio="{204 / 311}"
-              src="{postSideFoto?.source_url}"
-              alt="{postSideFoto?.alt_text}"
+              data="{images.find((img) => img.id === postData?.acf.blog_right_side_foto_id)}"
             />
-          {/if}
+          {/await}
         </aside>
       </div>
     </div>
-
   </section>
 
   <a href="/o-mnie" class="group mb-12 flex h-[160px] items-center gap-x-4">
     <div class="w-[clamp(115px,16vw,230px)] pr-8">
       <div class=" flex w-full flex-none">
-        <CldImage
-          sizes="(max-width: 200px), 16vw"
-          height="auto"
-          width="{200}"
-          aspectRatio="{200 / 160}"
-          src="{globalFoto?.source_url}"
-          alt="{globalFoto?.alt_text}"
-        />
+        {#await images then images}
+          {#await global_id then global_id}
+            <CustomImage
+              sizes="(max-width: 200px), 16vw"
+              height="auto"
+              width="{200}"
+              aspectRatio="{200 / 160}"
+              data="{images?.find((img) => img.id === global_id)}"
+            />
+          {/await}
+        {/await}
       </div>
     </div>
 
@@ -188,10 +156,8 @@
       <BigArrowDown />
     </div>
   </a>
-  <div class='pl-[clamp(115px,16vw,230px)] pr-[clamp(65px,9vw,130px)] pb-12'>
-    <Comment post_id={postData.id}/>
+  <div class="pb-12 pl-[clamp(115px,16vw,230px)] pr-[clamp(65px,9vw,130px)]">
+    <CommentsSection />
   </div>
-
 </main>
-
 <FooterPostList />

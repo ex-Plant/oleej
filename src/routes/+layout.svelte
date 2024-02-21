@@ -27,7 +27,7 @@
     }, 100);
   }
 
-  $: if (!$navigating) {
+  $: if (!$navigating && $loading) {
     loading.set(false);
   }
 </script>

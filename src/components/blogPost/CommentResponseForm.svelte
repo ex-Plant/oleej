@@ -6,7 +6,7 @@
   import SmallArowUp from '../../assets/SmallArowUp.svelte';
   import * as Accordion from '../ui/accordion';
   import type { ActionResult } from '@sveltejs/kit';
-  import { loading } from '../../store/global';
+  import { sendingForm } from "../../store/global";
 
   export let post_id: number;
   export let comment: CommentType;
@@ -26,12 +26,12 @@
       result: ActionResult<any, any>;
       update: (opts?: { reset?: boolean; invalidateAll?: boolean }) => Promise<void>;
     }) => {
-      loading.set(true);
+      sendingForm.set(true);
       value = '';
       if (result.type === 'success') {
         await update();
         console.log(result);
-        loading.set(false);
+        sendingForm.set(false);
       } else {
         dialog.show();
         clearTimeout(timeoutId);
@@ -39,7 +39,7 @@
           dialog.close();
         }, 1000);
       }
-      loading.set(false);
+      sendingForm.set(false);
     };
   }
 </script>
@@ -63,7 +63,7 @@
         <input type="hidden" name="parent" value="{comment.id}" />
         <div class="grid w-full gap-y-1">
           <textarea
-            on:focus="{() => loading.set(false)}"
+            on:focus="{() => sendingForm.set(false)}"
             value="{content}"
             placeholder="treść"
             required
@@ -73,7 +73,7 @@
         <div class="grid w-full gap-x-4 md:grid-cols-2">
           <div class="grid h-[46px] w-full gap-y-4">
             <input
-              on:focus="{() => loading.set(false)}"
+              on:focus="{() => sendingForm.set(false)}"
               placeholder="podpis"
               required
               class="h-[46px] border border-black bg-primary p-4 text-[14px] placeholder:text-black"
@@ -84,7 +84,7 @@
           </div>
           <Button
             class=" mt-2 flex h-[46px] items-center justify-center space-x-4 rounded-none border border-black !bg-black px-4 text-[1.25rem] font-bold uppercase text-white duration-500 md:mt-0 md:!bg-transparent md:text-black md:hover:!bg-black md:hover:!text-white"
-            on:click="{() => loading.set(true)}"
+            on:click="{() => sendingForm.set(true)}"
             type="submit"
             variant="outline">Wyślij</Button
           >

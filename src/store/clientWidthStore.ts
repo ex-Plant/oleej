@@ -6,7 +6,6 @@ export const lg = writable(false);
 export const xl = writable(false);
 
 function setWidth() {
-
   md.set(window.innerWidth > 768);
   lg.set(window.innerWidth > 1040);
   xl.set(window.innerWidth > 1280);

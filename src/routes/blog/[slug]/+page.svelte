@@ -30,18 +30,10 @@
 <div in:fade="{{ duration: 500 }}">
   {#if post}
     <main class="px-[clamp(20px,6vw,40px)] md:hidden">
-      <BlogPostMobile
-        postData="{post}"
-        timeString="{timeString}"
-        post_content="{post_content}"
-      />
+      <BlogPostMobile timeString="{timeString}" />
     </main>
     <main class="hidden md:block">
-      <BlogPostDesktop
-        post_content="{post_content}"
-        postData="{post}"
-        timeString="{timeString}"
-      />
+      <BlogPostDesktop timeString="{timeString}" />
     </main>
   {/if}
 </div>
