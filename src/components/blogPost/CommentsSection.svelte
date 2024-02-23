@@ -6,7 +6,9 @@
   import { enhance } from '$app/forms';
   import type { ActionResult } from '@sveltejs/kit';
   import Spinner from '../Spinner.svelte';
+  import type { CommentType } from "../../types";
 
+  export let comments: CommentType[] = [];
   const post_id: number = $page.data.post.id;
 
   let dialog: HTMLDialogElement;
@@ -81,9 +83,7 @@
       >
     </div>
   </form>
-  {#await $page.data.comments then comments}
     <Comments comments="{comments}" />
-  {/await}
 </div>
 
 <dialog

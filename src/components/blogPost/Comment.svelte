@@ -7,7 +7,8 @@
   export let post_id: number;
   export let comment: CommentType;
   export let responses: CommentType[];
-
+  const name = comment.author.node.name;
+  const content = comment.content;
 </script>
 
 <div in:fade="{{ duration: 500 }}">
@@ -15,12 +16,12 @@
     <div class="aspect-square w-[20px] grow-0 bg-[#D9D9D9] md:w-[33px]"></div>
     <div class="flex h-[33px] items-center text-[1rem] font-bold md:text-[1.25rem]">
       <span>
-        {comment.author_name}
+        {name}
       </span>
     </div>
   </div>
   <div>
-    <div class="mb-2 text-[0.875rem] md:text-[1.25rem]">{@html comment.content.rendered}</div>
+    <div class="mb-2 text-[0.875rem] md:text-[1.25rem]">{@html content}</div>
   </div>
   {#if responses.length > 0}
     <Accordion.Root class=" w-full max-w-[600px] ">
@@ -38,12 +39,12 @@
                   <div class="aspect-square w-[20px] grow-0 bg-[#D9D9D9] md:w-[33px]"></div>
                   <div class="flex h-[33px] items-center text-[1rem] font-bold">
                     <span>
-                      {comment.author_name}
+                      {name}
                     </span>
                   </div>
                 </div>
                 <div>
-                  <div class="mt-2 text-[0.875rem] md:text-[1.25rem]">{@html comment.content.rendered}</div>
+                  <div class="mt-2 text-[0.875rem] md:text-[1.25rem]">{@html content}</div>
                 </div>
               </div>
             {/each}

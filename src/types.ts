@@ -12,8 +12,16 @@ export type ACFPostType = {
 export type PostResponse = {
   data: {
     post: PostType;
+    page: {
+      featuredImage: {
+        node: {
+          altText: string;
+          mediaItemUrl: string;
+        };
+      };
+    };
   };
-}
+};
 
 export type PostType = {
   id: string;
@@ -21,40 +29,59 @@ export type PostType = {
   slug: string;
   date: string;
   blogPost: BlogPost;
-}
+  comments: {
+    nodes: CommentType[];
+  };
+};
 
+export type CommentType = {
+    parentId: number;
+    id: number;
+    content: string;
+    author: {
+      node: {
+        name: string;
+      };
+    };
+};
 export type BlogPost = {
-    blogDesktopFotoId: {
-      node: {
-        altText: string;
-        mediaItemUrl: string;
-      };
+  blogDesktopFotoId: {
+    node: {
+      altText: string;
+      mediaItemUrl: string;
     };
-    blogRightSideFotoId: {
-      node: {
-        altText: string;
-        mediaItemUrl: string;
-      };
+  };
+  blogRightSideFotoId: {
+    node: {
+      altText: string;
+      mediaItemUrl: string;
     };
-    blogSecondFotoId: {
-      node: {
-        mediaItemUrl: string;
-        altText: string;
-      };
+  };
+  blogSecondFotoId: {
+    node: {
+      mediaItemUrl: string;
+      altText: string;
     };
-    blogThirdFotoId: {
-      node: {
-        altText: string;
-        mediaItemUrl: string;
-      };
+  };
+  blogThirdFotoId: {
+    node: {
+      altText: string;
+      mediaItemUrl: string;
     };
-    postContent: string;
-    postContentSecond: string;
-    postContentThird: string;
-    postDescription: string;
-    title: string;
-    category: string;
-}
+  };
+  mobileFotoId: {
+    node: {
+      altText: string;
+      mediaItemUrl: string;
+    };
+  };
+  postContent: string;
+  postContentSecond: string;
+  postContentThird: string;
+  postDescription: string;
+  title: string;
+  category: string;
+};
 
 export type ImageType = {
   caption: {
@@ -69,15 +96,6 @@ export type ImageType = {
     width: number;
   };
   source_url: string;
-};
-
-export type CommentType = {
-  author_name: string;
-  content: {
-    rendered: string;
-  };
-  id: number;
-  parent: number;
 };
 
 export type LoadingType = 'lazy' | 'eager';

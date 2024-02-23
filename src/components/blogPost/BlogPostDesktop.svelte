@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { ImageType, PostType } from '../../types';
+  import type { BlogPost, CommentType, PostType } from "../../types";
   import { convertDateToNumericString } from '../../helpers/convertDateToNumericString';
   import { customSanitization } from '../../helpers/customSanitization';
   import BigArrowDown from '../../assets/BigArrowDown.svelte';
@@ -7,30 +7,26 @@
   import FooterPostList from './FooterPostList.svelte';
   import { page } from '$app/stores';
   import CommentsSection from './CommentsSection.svelte';
-  import CustomImage from '../ui/CustomImage.svelte';
-  import ImgPlaceholder from '../ui/ImgPlaceholder.svelte';
-  import PostFoto from './PostFoto.svelte';
-
-  $: postData = $page.data.post;
-  // $: console.log('test:', $page.data.test)
+  import { CldImage } from 'svelte-cloudinary';
 
   export let timeString: string;
-  export let blogPost;
+  export let blogPost: BlogPost;
   export let title: string;
-  export let category: string;
-  export let description: string;
+  export let date: string;
+  export let aboutMeImage: {
+    mediaItemUrl: string;
+    altText: string;
+  }
 
+  export let comments: CommentType[] = [];
+  const { category, postDescription, blogDesktopFotoId, blogSecondFotoId, blogThirdFotoId, blogRightSideFotoId, } =
+    blogPost;
+  const publishDate = convertDateToNumericString(date);
   const posts = $page?.data?.allPosts.posts;
-  const images: ImageType[] = $page.data.images;
-  const global_id = $page.data.global_id;
   let dialog: HTMLDialogElement;
   let timeoutId: ReturnType<typeof setTimeout> | undefined;
 
-  $: post = postData?.acf;
-  // $: console.log(post.postData?.acf.blog_second_foto_id)
-  $: publishDate = convertDateToNumericString(postData?.date);
   $: currPostIndex = posts.findIndex((p: PostType) => p.slug === $page.params.slug);
-
   $: nextPostSlug = posts[0]?.slug;
 
   $: if (currPostIndex >= 0 && currPostIndex < posts.length - 1) {
@@ -75,7 +71,7 @@
         </span>
       </div>
       <h1 class="w-full pt-4 text-[2.5rem] font-bold leading-[100%] lg:text-[3.5625rem] 1280:text-[4rem]">
-        {post.title}
+        {title}
       </h1>
     </div>
     <div class=" flex items-start justify-end">
@@ -90,43 +86,65 @@
   </header>
 
   <div class="w-full pt-12">
-    {#await $page.data.images}
-      <ImgPlaceholder aspect="aspect-[1320/327] " />
-    {:then images}
-      <PostFoto postFoto="{images?.find((foto) => foto.id === postData?.acf.blog_desktop_foto_id)}" />
-    {/await}
+    <CldImage
+      class="hidden shadow-[inset_0_0_0_1px_black] md:block"
+      sizes="(max-width: 1320px), 100vw"
+      aspectRatio="{1320 / 327}"
+      height="auto"
+      width="{1320}"
+      alt="{blogDesktopFotoId.node.altText || 'zdjęcie do artykułu'}"
+      src="{blogDesktopFotoId.node.mediaItemUrl}"
+    />
+    <!--      <p class=" w-full pt-2.5 text-[0.75rem] md:text-12">-->
+    <!--        {@html customSanitization(postFoto?.caption?.rendered)}-->
+    <!--      </p>-->
   </div>
   <section class="grid pl-[clamp(115px,16vw,230px)] pt-7">
     <div class="grid">
       <div
         class="border-b-[2px] border-black pb-12 pr-[clamp(115px,16vw,230px)] text-[1.5rem] font-bold leading-[125%]"
       >
-        {post.post_description}
+        {postDescription}
       </div>
       <div class="grid grid-cols-[auto_clamp(115px,16vw,230px)]">
         <div>
           <div class="blog-post-container postContent py-12">
-            {@html customSanitization(postData.acf.post_content)}
+            {@html customSanitization(blogPost.postContent)}
           </div>
-          <div class="w-full pt-12">
-            {#await $page.data.images}
-              <ImgPlaceholder aspect="aspect-[1320/327] " />
-            {:then images}
-              <PostFoto postFoto="{images?.find((foto) => foto.id === postData.acf.blog_second_foto_id)}" {images}/>
-            {/await}
-          </div>
-          <div class="blog-post-container postContent py-12">
-            {@html customSanitization(postData.acf.post_content_second)}
-          </div>
-          {#await $page.data.images}
-            <ImgPlaceholder aspect="aspect-[1320/327] " />
-          {:then images}
-            <PostFoto postFoto="{images?.find((foto) => foto.id === postData.acf.blog_second_foto_id)}" />
-          {/await}
-          <div class="blog-post-container postContent py-12">
-            {@html customSanitization(postData.acf.post_content_third)}
-          </div>
-
+          {#if blogSecondFotoId}
+            <div class="w-full pt-12">
+              <CldImage
+                class="hidden shadow-[inset_0_0_0_1px_black] md:block"
+                sizes="(max-width: 1320px), 100vw"
+                aspectRatio="{1320 / 327}"
+                height="auto"
+                width="{1320}"
+                alt="{blogSecondFotoId.node.altText || 'zdjęcie do artykułu'}"
+                src="{blogSecondFotoId.node.mediaItemUrl}"
+              />
+            </div>
+          {/if}
+          {#if blogPost.postContentSecond}
+            <div class="blog-post-container postContent py-12">
+              {@html customSanitization(blogPost.postContentSecond)}
+            </div>
+          {/if}
+          {#if blogThirdFotoId}
+            <CldImage
+              class="hidden shadow-[inset_0_0_0_1px_black] md:block"
+              sizes="(max-width: 1320px), 100vw"
+              aspectRatio="{1320 / 327}"
+              height="auto"
+              width="{1320}"
+              alt="{blogThirdFotoId.node.altText || 'zdjęcie do artykułu'}"
+              src="{blogThirdFotoId.node.mediaItemUrl}"
+            />
+          {/if}
+          {#if blogPost.postContentThird}
+            <div class="blog-post-container postContent py-12">
+              {@html customSanitization(blogPost.postContentThird)}
+            </div>
+          {/if}
           <div class=" relative flex items-center">
             <p class="">
               <span class="pr-1">Data publikacji: </span><span class="font-[700]">{publishDate}</span>
@@ -141,15 +159,16 @@
           </div>
         </div>
         <aside class="flex items-center pl-8">
-          {#await $page.data.images then images}
-            <CustomImage
+          {#if blogRightSideFotoId}
+            <CldImage
               sizes="(max-width: 204px), 16vw"
+              aspectRatio="{204 / 311}"
               height="auto"
               width="{204}"
-              aspectRatio="{204 / 311}"
-              data="{images.find((img) => img.id === postData?.acf.blog_right_side_foto_id)}"
+              alt="{blogRightSideFotoId.node.altText || 'zdjęcie do artykułu'}"
+              src="{blogRightSideFotoId.node.mediaItemUrl}"
             />
-          {/await}
+          {/if}
         </aside>
       </div>
     </div>
@@ -158,17 +177,15 @@
   <a href="/o-mnie" class="group mb-12 flex h-[160px] items-center">
     <div class="w-[clamp(115px,16vw,230px)] pr-8">
       <div class=" flex w-full flex-none">
-        {#await images then images}
-          {#await global_id then global_id}
-            <CustomImage
+            <CldImage
+              class='object-top'
               sizes="(max-width: 200px), 16vw"
               height="auto"
               width="{200}"
               aspectRatio="{200 / 160}"
-              data="{images?.find((img) => img.id === global_id)}"
+              alt={aboutMeImage.altText}
+              src={aboutMeImage.mediaItemUrl}
             />
-          {/await}
-        {/await}
       </div>
     </div>
 
@@ -181,7 +198,7 @@
     </div>
   </a>
   <div class="pb-12 pl-[clamp(115px,16vw,230px)] pr-[clamp(65px,9vw,130px)]">
-    <CommentsSection />
+    <CommentsSection {comments}/>
   </div>
 </main>
 <FooterPostList />

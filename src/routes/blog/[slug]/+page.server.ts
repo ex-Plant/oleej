@@ -1,20 +1,10 @@
-import { baseUrl, graphqlUrl } from '../../../constans/constans';
+import { baseUrl } from '../../../constans/constans';
 import { type Actions, error } from '@sveltejs/kit';
 import type { PostType } from '../../../types';
-import { getData, getPostData, getPostDataQuery } from '../../../constans/queries';
+import { getData, getPostDataQuery } from '../../../constans/queries';
 
 export const trailingSlash = 'always';
 export const load = async ({ params }) => {
-  async function getGlobalFotoId() {
-    const globalRes = await fetch(`${baseUrl}pages?slug=global`);
-    if (!globalRes.ok) {
-      error(404, 'Missing global data');
-    }
-    const globalData = await globalRes.json();
-    return globalData[0]?.acf?.mainfoto;
-  }
-
-  const postData = getData(getPostDataQuery(params.slug));
 
 
   async function getAllPosts() {
@@ -40,24 +30,14 @@ export const load = async ({ params }) => {
     return data.json();
   }
 
-  async function getComments(postId: number) {
-    const response = await fetch(
-      `https://serwer2304048.home.pl/wordpress/wp-json/wp/v2/comments?post=${postId}&per_page=${100}`,
-    );
-    return response.json();
-  }
-
   const allPosts = await getAllPosts();
   const post = allPosts.posts.find((post: PostType) => post.slug === params.slug);
 
 
   return {
-    global_id: getGlobalFotoId(),
-    comments: getComments(post.id),
     images: getImages(post.id),
-    post,
     allPosts,
-    test: await  getData(getPostDataQuery(params.slug))
+    post: await getData(getPostDataQuery(params.slug))
   };
 };
 

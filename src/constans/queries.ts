@@ -9,8 +9,6 @@ export const getData = async (query: string) => {
   return data.json();
 };
 
-
-
 export const getPostDataQuery = (slug: string) => {
   return `
   {
@@ -19,6 +17,18 @@ export const getPostDataQuery = (slug: string) => {
       title
       slug
       date
+      comments {
+        nodes {
+          parentId
+          id
+          content
+          author{
+            node{
+              name
+            }
+          }
+        }
+      }
       blogPost {
         blogDesktopFotoId {
           node {
@@ -34,11 +44,17 @@ export const getPostDataQuery = (slug: string) => {
         }
         blogSecondFotoId {
           node {
-            mediaItemUrl
             altText
+            mediaItemUrl
           }
         }
         blogThirdFotoId {
+          node {
+            altText
+            mediaItemUrl
+          }
+        }
+        mobileFotoId {
           node {
             altText
             mediaItemUrl
@@ -50,6 +66,14 @@ export const getPostDataQuery = (slug: string) => {
         postDescription
         title
         category
+      }
+    }
+    page(id:"cG9zdDoxNjk=") {
+      featuredImage{
+        node{
+          altText
+          mediaItemUrl
+        }
       }
     }
   }`;

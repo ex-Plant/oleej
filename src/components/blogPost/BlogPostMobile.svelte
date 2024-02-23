@@ -1,26 +1,25 @@
 <script lang="ts">
-  import type { BlogPost, ImageType, PostType } from "../../types";
+  import type { BlogPost, CommentType } from '../../types';
   import { convertDateToNumericString } from '../../helpers/convertDateToNumericString';
   import { customSanitization } from '../../helpers/customSanitization';
   import BigArrowDown from '../../assets/BigArrowDown.svelte';
   import SmallArrowUp from '../../assets/SmallArowUp.svelte';
   import { page } from '$app/stores';
   import CommentsSection from './CommentsSection.svelte';
-  import CustomImage from '../ui/CustomImage.svelte';
-  import PostFoto from './PostFoto.svelte';
-  import ImgPlaceholder from '../ui/ImgPlaceholder.svelte';
+  import { CldImage } from 'svelte-cloudinary';
 
   export let timeString: string;
   export let blogPost: BlogPost;
   export let title: string;
   export let date: string;
-  const { category, postDescription } = blogPost;
+  export let aboutMeImage: {
+    mediaItemUrl: string;
+    altText: string;
+  };
+  export let comments: CommentType[] = [];
 
-  const images: ImageType[] = $page.data.images;
-  const global_id = $page.data.global_id;
-
+  const { category, postDescription, mobileFotoId, blogSecondFotoId, blogThirdFotoId } = blogPost;
   const publishDate = convertDateToNumericString(date);
-
   let dialog: HTMLDialogElement;
   let timeoutId: ReturnType<typeof setTimeout> | undefined;
 
@@ -53,12 +52,15 @@
         {timeString}
       </span>
     </p>
-
-    <!--{#await $page.data.images}-->
-    <!--  <ImgPlaceholder aspect="aspect-[316/260] " />-->
-    <!--{:then images}-->
-    <!--  <PostFoto postFoto="{images?.find((foto) => foto.id === postData?.acf.mobile_foto_id)}" />-->
-    <!--{/await}-->
+    <CldImage
+      class="object-top shadow-[inset_0_0_0_1px_black] md:hidden"
+      sizes="(max-width: 768px) 100vw"
+      aspectRatio="{316 / 260}"
+      height="auto"
+      width="768"
+      alt="{mobileFotoId.node.altText || 'zdjęcie do artykułu'}"
+      src="{mobileFotoId.node.mediaItemUrl}"
+    />
   </div>
   <p class="border-b-[2px] border-black py-7 text-[1.25rem] font-bold leading-[110%]">
     {postDescription}
@@ -66,10 +68,32 @@
   <div class="postContent border-b-[2px] border-black py-7">
     {@html customSanitization(blogPost?.postContent)}
   </div>
+  {#if blogSecondFotoId}
+    <CldImage
+      class="object-top shadow-[inset_0_0_0_1px_black] md:hidden"
+      sizes="(max-width: 768px) 100vw"
+      aspectRatio="{316 / 260}"
+      height="auto"
+      width="768"
+      alt="{blogSecondFotoId.node.altText || 'zdjęcie do artykułu'}"
+      src="{blogSecondFotoId.node.mediaItemUrl}"
+    />
+  {/if}
   {#if blogPost?.postContentSecond}
     <div class="postContent border-b-[2px] border-black py-7">
       {@html customSanitization(blogPost?.postContentSecond)}
     </div>
+  {/if}
+  {#if blogThirdFotoId}
+    <CldImage
+      class="object-top shadow-[inset_0_0_0_1px_black] md:hidden"
+      sizes="(max-width: 768px) 100vw"
+      aspectRatio="{316 / 260}"
+      height="auto"
+      width="768"
+      alt="{blogThirdFotoId.node.altText || 'zdjęcie do artykułu'}"
+      src="{blogThirdFotoId.node.mediaItemUrl}"
+    />
   {/if}
   {#if blogPost?.postContentThird}
     <div class="postContent border-b-[2px] border-black py-7">
@@ -79,7 +103,7 @@
 
   <div class="relative grid pt-7">
     <p class="h-7 text-[0.875rem]">
-            <span class="pr-1">Data publikacji: </span><span class="font-[700]">{publishDate}</span>
+      <span class="pr-1">Data publikacji: </span><span class="font-[700]">{publishDate}</span>
     </p>
 
     <button on:click="{saveLink}" class=" flex h-6 items-center space-x-2 text-[0.875rem] font-bold uppercase">
@@ -94,17 +118,14 @@
 
 <section class="grid grid-cols-2 gap-x-6 py-6">
   <div class=" flex">
-    {#await images then images}
-      {#await global_id then global_id}
-        <CustomImage
-          sizes="(max-width: 768px) 50vw"
-          aspectRatio="{150 / 120}"
-          height="auto"
-          width="384"
-          data="{images?.find((img) => img.id === global_id)}"
-        />
-      {/await}
-    {/await}
+    <CldImage
+      sizes="(max-width: 768px) 50vw"
+      aspectRatio="{150 / 120}"
+      height="auto"
+      width="384"
+      alt="{aboutMeImage.altText || 'zdjęcie autora'}"
+      src="{aboutMeImage.mediaItemUrl}"
+    />
   </div>
 
   <a href="/o-mnie" class=" flex flex-col justify-center">
@@ -121,5 +142,5 @@
   </a>
 </section>
 <div class="mb-8">
-  <CommentsSection />
+  <CommentsSection comments="{comments}" />
 </div>

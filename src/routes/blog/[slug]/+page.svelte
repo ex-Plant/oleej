@@ -2,13 +2,14 @@
   import BlogPostMobile from '../../../components/blogPost/BlogPostMobile.svelte';
   import BlogPostDesktop from '../../../components/blogPost/BlogPostDesktop.svelte';
   import { fade } from 'svelte/transition';
-  import type { PostResponse } from "../../../types";
+  import type { PostResponse } from '../../../types';
 
   export let data;
-  const post: PostResponse = data.test;
+  const post: PostResponse = data.post;
   const postData = post.data.post;
   const { blogPost, title, date } = postData;
-  console.log(date)
+  const aboutMeImage = post.data.page.featuredImage.node;
+  const comments = postData.comments.nodes;
 
   //only for calculating reading time!!
   const content = blogPost.postContent + blogPost.postContentSecond + blogPost.postContentThird;
@@ -34,9 +35,23 @@
 
 <div in:fade="{{ duration: 500 }}">
   <main class="px-[clamp(20px,6vw,40px)] md:hidden">
-    <BlogPostMobile {timeString} {blogPost} {title} {date}/>
+    <BlogPostMobile
+      timeString="{timeString}"
+      blogPost="{blogPost}"
+      title="{title}"
+      date="{date}"
+      aboutMeImage="{aboutMeImage}"
+      {comments}
+    />
   </main>
   <main class="hidden md:block">
-    <BlogPostDesktop {timeString} {postData} />
+    <BlogPostDesktop
+      timeString="{timeString}"
+      blogPost="{blogPost}"
+      title="{title}"
+      date="{date}"
+      aboutMeImage="{aboutMeImage}"
+      {comments}
+    />
   </main>
 </div>

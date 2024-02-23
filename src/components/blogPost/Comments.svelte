@@ -6,12 +6,9 @@
   import { page } from '$app/stores';
 
   export let comments: CommentType[] = [];
-  $: parentComments = comments.filter((comment) => comment.parent === 0);
-
+  $: parentComments = comments.filter((comment) => !comment.parentId);
   const post_id: number = $page.data.post.id;
-
-  let commentsOpen =  true;
-
+  let commentsOpen = true;
   function toggleComments() {
     commentsOpen = !commentsOpen;
   }
@@ -29,7 +26,7 @@
         <Comment
           comment="{comment}"
           post_id="{post_id}"
-          responses="{comments.filter((c) => c.parent === comment.id && c.id !== comment.id)}"
+          responses="{comments.filter((c) => c.parentId === comment.id && c.id !== comment.id)}"
         />
       {/each}
     </div>
