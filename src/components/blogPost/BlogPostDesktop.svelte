@@ -17,12 +17,16 @@
     mediaItemUrl: string;
     altText: string;
   };
+  $: category = blogPost?.category;
+  $: postDescription = blogPost?.postDescription;
+  $: blogDesktopFotoId = blogPost?.blogDesktopFotoId;
+  $: blogSecondFotoId = blogPost?.blogSecondFotoId;
+  $: blogThirdFotoId = blogPost?.blogThirdFotoId;
+  $: blogRightSideFotoId = blogPost?.blogRightSideFotoId;
+  $: publishDate = convertDateToNumericString(date);
 
-  const { category, postDescription, blogDesktopFotoId, blogSecondFotoId, blogThirdFotoId, blogRightSideFotoId } =
-    blogPost;
-  const publishDate = convertDateToNumericString(date);
   const posts = $page?.data?.post.data.posts.nodes;
-  console.log(posts);
+
   let dialog: HTMLDialogElement;
   let timeoutId: ReturnType<typeof setTimeout> | undefined;
 

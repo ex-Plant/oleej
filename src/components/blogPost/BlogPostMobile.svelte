@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { BlogPost, CommentType } from '../../types';
+  import type { BlogPost } from '../../types';
   import { convertDateToNumericString } from '../../helpers/convertDateToNumericString';
   import { customSanitization } from '../../helpers/customSanitization';
   import BigArrowDown from '../../assets/BigArrowDown.svelte';
@@ -16,8 +16,14 @@
     mediaItemUrl: string;
     altText: string;
   };
-  const { category, postDescription, mobileFotoId, blogSecondFotoId, blogThirdFotoId } = blogPost;
-  const publishDate = convertDateToNumericString(date);
+
+  $: category = blogPost?.category
+  $: postDescription = blogPost?.postDescription
+  $: mobileFotoId = blogPost?.mobileFotoId
+  $: blogSecondFotoId = blogPost?.blogSecondFotoId
+  $: blogThirdFotoId = blogPost?.blogThirdFotoId
+  $: publishDate = convertDateToNumericString(date);
+
   let dialog: HTMLDialogElement;
   let timeoutId: ReturnType<typeof setTimeout> | undefined;
 

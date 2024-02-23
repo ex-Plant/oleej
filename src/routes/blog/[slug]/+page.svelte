@@ -3,21 +3,17 @@
   import BlogPostDesktop from '../../../components/blogPost/BlogPostDesktop.svelte';
   import { fade } from 'svelte/transition';
   import type { PostResponse } from '../../../types';
-  import { page } from "$app/stores";
 
   export let data;
-  const post: PostResponse = data.post;
-  const postData = post.data.post;
-  const { blogPost, title, date } = postData;
-  const aboutMeImage = post.data.page.featuredImage.node;
+  const aboutMeImage = data.post.data.page.featuredImage.node;
+  $: post = data.post as PostResponse;
+  $: postData = post.data.post;
+  $: blogPost = postData.blogPost;
+  $: title = postData.title;
+  $: date = postData.date;
 
   //only for calculating reading time!!
-  const content = blogPost.postContent + blogPost.postContentSecond + blogPost.postContentThird;
-
-  function countWords(text: string) {
-    return text?.split(/\s+/).length;
-  }
-  //
+  $: content = blogPost?.postContent + blogPost?.postContentSecond + blogPost?.postContentThird + '';
   $: numberOfWords = countWords(content);
   $: readingTimeInMinutes = Math.floor(numberOfWords / 200); // 200 words per minute
   let timeString: string;
@@ -31,25 +27,33 @@
   } else {
     timeString = `${readingTimeInMinutes} minut`;
   }
+
+  function countWords(text: string) {
+    return text?.split(/\s+/).length;
+  }
 </script>
 
-<div in:fade="{{ duration: 500 }}">
-  <main class="px-[clamp(20px,6vw,40px)] md:hidden">
-    <BlogPostMobile
-      timeString="{timeString}"
-      blogPost="{blogPost}"
-      title="{title}"
-      date="{date}"
-      aboutMeImage="{aboutMeImage}"
-    />
-  </main>
-  <main class="hidden md:block">
-    <BlogPostDesktop
-      timeString="{timeString}"
-      blogPost="{blogPost}"
-      title="{title}"
-      date="{date}"
-      aboutMeImage="{aboutMeImage}"
-    />
-  </main>
-</div>
+{#if data.post.data.post.id}
+  {#key data.post.data.post.id}
+    <div in:fade="{{ duration: 500 }}">
+      <main class="px-[clamp(20px,6vw,40px)] md:hidden">
+        <BlogPostMobile
+          timeString="{timeString}"
+          blogPost="{blogPost}"
+          title="{title}"
+          date="{date}"
+          aboutMeImage="{aboutMeImage}"
+        />
+      </main>
+      <main class="hidden md:block">
+        <BlogPostDesktop
+          timeString="{timeString}"
+          blogPost="{blogPost}"
+          title="{title}"
+          date="{date}"
+          aboutMeImage="{aboutMeImage}"
+        />
+      </main>
+    </div>
+  {/key}
+{/if}
