@@ -31,7 +31,6 @@ export type PostType = {
   title: string;
   slug: string;
   date: string;
-  excerpt: string;
   blogPost: BlogPost;
   comments: {
     nodes: CommentType[];
@@ -85,6 +84,7 @@ export type BlogPost = {
   postDescription: string;
   title: string;
   category: string;
+  excerpt: string;
 };
 
 export type ImageType = {

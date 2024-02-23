@@ -1,43 +1,24 @@
-import { error } from '@sveltejs/kit';
-import { baseUrl } from '../constans/constans';
+import { graphqlUrl } from '../constans/constans';
 import type { PostType } from '../types';
 import type { PageLoad } from '../../.svelte-kit/types/src/routes/o-mnie/$types';
+import { allPostsQuery } from '../constans/queries';
 export const trailingSlash = 'always';
 // export const prerender = true;
 
 export const load: PageLoad = async () => {
-  async function getAllPosts() {
-    const postsRes = await fetch(`${baseUrl}posts`);
-    if (!postsRes.ok) {
-      console.log('postsRes: ', postsRes.statusText);
-      error(404, 'Missing getAllPosts');
-    }
-    const posts = await postsRes.json();
-    let postCategories = posts.map((post: PostType) => post.acf.category);
-    postCategories = [...new Set(postCategories)];
-
-    return {
-      posts,
-      postCategories,
-    };
-  }
-
-  // async function getImages() {
-  //   const data = await fetch(`${baseUrl}media/`);
-  //   return data.json();
-  // }
-
-  const perPage = 100; // Set this to the number of images you want to retrieve, up to 100
-
-  async function getImages() {
-    const data = await fetch(`${baseUrl}media?per_page=${perPage}`);
-    return data.json();
-  }
-
-  const allPosts = await getAllPosts();
+  const getData = async () => {
+    const data = await fetch(graphqlUrl, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ query: allPostsQuery }),
+    });
+    return await data.json();
+  };
+  const allPosts = await getData();
+  const postCategories = new Set(allPosts.data.posts.nodes.map((post: PostType) => post.blogPost.category));
 
   return {
     allPosts,
-    images: getImages(),
+    postCategories,
   };
 };

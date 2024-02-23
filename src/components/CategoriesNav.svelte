@@ -4,7 +4,7 @@
   import { activePostCat } from '../store/global';
   import { page } from '$app/stores';
 
-  const postCategories = $page.data.allPosts?.postCategories;
+  const postCategories = $page.data.postCategories;
 
 </script>
 
