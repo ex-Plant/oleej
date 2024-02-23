@@ -1,13 +1,3 @@
-export const graphqlUrl = 'https://serwer2304048.home.pl/wordpress/graphql';
-
-export const getData = async (query: string) => {
-  const data = await fetch(graphqlUrl, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ query }),
-  });
-  return data.json();
-};
 
 export const getPostDataQuery = (slug: string) => {
   return `
@@ -68,6 +58,24 @@ export const getPostDataQuery = (slug: string) => {
         category
       }
     }
+    posts(where: {orderby: {field: DATE, order: ASC}}) {
+      nodes {
+        title
+        slug
+        date
+        id
+          blogPost {
+            category
+            excerpt
+            mobileFotoId {
+                node {
+                  altText
+                  mediaItemUrl
+              }
+            }
+          }
+        }
+      }
     page(id:"cG9zdDoxNjk=") {
       featuredImage{
         node{

@@ -2,10 +2,11 @@
   import { Button } from '../ui/button/index.js';
   import Comment from './Comment.svelte';
   import { fade } from 'svelte/transition';
-  import type { CommentType } from '../../types';
   import { page } from '$app/stores';
+  import type { CommentType } from "../../types";
 
-  export let comments: CommentType[] = [];
+
+  const comments: CommentType[] = $page.data.post.data.post.comments.nodes;
   $: parentComments = comments.filter((comment) => !comment.parentId);
   const post_id: number = $page.data.post.id;
   let commentsOpen = true;

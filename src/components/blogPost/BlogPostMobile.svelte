@@ -16,8 +16,6 @@
     mediaItemUrl: string;
     altText: string;
   };
-  export let comments: CommentType[] = [];
-
   const { category, postDescription, mobileFotoId, blogSecondFotoId, blogThirdFotoId } = blogPost;
   const publishDate = convertDateToNumericString(date);
   let dialog: HTMLDialogElement;
@@ -142,5 +140,5 @@
   </a>
 </section>
 <div class="mb-8">
-  <CommentsSection comments="{comments}" />
+  <CommentsSection />
 </div>

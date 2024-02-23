@@ -12,6 +12,9 @@ export type ACFPostType = {
 export type PostResponse = {
   data: {
     post: PostType;
+    posts: {
+      nodes:PostType[]
+    };
     page: {
       featuredImage: {
         node: {
@@ -28,6 +31,7 @@ export type PostType = {
   title: string;
   slug: string;
   date: string;
+  excerpt: string;
   blogPost: BlogPost;
   comments: {
     nodes: CommentType[];

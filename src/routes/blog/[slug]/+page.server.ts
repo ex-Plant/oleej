@@ -1,43 +1,21 @@
-import { baseUrl } from '../../../constans/constans';
-import { type Actions, error } from '@sveltejs/kit';
-import type { PostType } from '../../../types';
-import { getData, getPostDataQuery } from '../../../constans/queries';
+import { type Actions } from '@sveltejs/kit';
+import { getPostDataQuery } from '../../../constans/queries';
+import { graphqlUrl } from '../../../constans/constans';
 
-export const trailingSlash = 'always';
 export const load = async ({ params }) => {
+  const postDataQuery = getPostDataQuery(params.slug);
 
-
-  async function getAllPosts() {
-    const postsRes = await fetch(`${baseUrl}posts`);
-    if (!postsRes.ok) {
-      console.log('postsRes: ', postsRes.statusText);
-      error(404, 'Missing getAllPosts');
-    }
-    const posts = await postsRes.json();
-    let postCategories = posts.map((post: PostType) => post.acf.category);
-    postCategories = [...new Set(postCategories)];
-
-    return {
-      posts,
-      postCategories,
-    };
-  }
-
-  async function getImages(postId: number) {
-    // const data = await fetch(`${baseUrl}media/`);
-    const data = await fetch(`${baseUrl}media/`);
-    // const data = await fetch(`${baseUrl}wp-json/wp/v2/media?parent=${postId}&per_page=100`);
+  const getData = async (query: string) => {
+    const data = await fetch(graphqlUrl, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ query }),
+    });
     return data.json();
-  }
-
-  const allPosts = await getAllPosts();
-  const post = allPosts.posts.find((post: PostType) => post.slug === params.slug);
-
+  };
 
   return {
-    images: getImages(post.id),
-    allPosts,
-    post: await getData(getPostDataQuery(params.slug))
+    post: await getData(postDataQuery),
   };
 };
 

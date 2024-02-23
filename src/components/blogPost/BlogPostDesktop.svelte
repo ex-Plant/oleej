@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { BlogPost, CommentType, PostType } from "../../types";
+  import type { BlogPost, PostType } from '../../types';
   import { convertDateToNumericString } from '../../helpers/convertDateToNumericString';
   import { customSanitization } from '../../helpers/customSanitization';
   import BigArrowDown from '../../assets/BigArrowDown.svelte';
@@ -16,19 +16,19 @@
   export let aboutMeImage: {
     mediaItemUrl: string;
     altText: string;
-  }
+  };
 
-  export let comments: CommentType[] = [];
-  const { category, postDescription, blogDesktopFotoId, blogSecondFotoId, blogThirdFotoId, blogRightSideFotoId, } =
+  const { category, postDescription, blogDesktopFotoId, blogSecondFotoId, blogThirdFotoId, blogRightSideFotoId } =
     blogPost;
   const publishDate = convertDateToNumericString(date);
-  const posts = $page?.data?.allPosts.posts;
+  const posts = $page?.data?.post.data.posts.nodes;
+  console.log(posts);
   let dialog: HTMLDialogElement;
   let timeoutId: ReturnType<typeof setTimeout> | undefined;
 
   $: currPostIndex = posts.findIndex((p: PostType) => p.slug === $page.params.slug);
   $: nextPostSlug = posts[0]?.slug;
-
+  //
   $: if (currPostIndex >= 0 && currPostIndex < posts.length - 1) {
     nextPostSlug = posts[currPostIndex + 1]?.slug;
   } else {
@@ -177,15 +177,15 @@
   <a href="/o-mnie" class="group mb-12 flex h-[160px] items-center">
     <div class="w-[clamp(115px,16vw,230px)] pr-8">
       <div class=" flex w-full flex-none">
-            <CldImage
-              class='object-top'
-              sizes="(max-width: 200px), 16vw"
-              height="auto"
-              width="{200}"
-              aspectRatio="{200 / 160}"
-              alt={aboutMeImage.altText}
-              src={aboutMeImage.mediaItemUrl}
-            />
+        <CldImage
+          class="object-top"
+          sizes="(max-width: 200px), 16vw"
+          height="auto"
+          width="{200}"
+          aspectRatio="{200 / 160}"
+          alt="{aboutMeImage.altText}"
+          src="{aboutMeImage.mediaItemUrl}"
+        />
       </div>
     </div>
 
@@ -198,7 +198,7 @@
     </div>
   </a>
   <div class="pb-12 pl-[clamp(115px,16vw,230px)] pr-[clamp(65px,9vw,130px)]">
-    <CommentsSection {comments}/>
+    <CommentsSection />
   </div>
 </main>
 <FooterPostList />

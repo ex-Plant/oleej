@@ -3,13 +3,13 @@
   import BlogPostDesktop from '../../../components/blogPost/BlogPostDesktop.svelte';
   import { fade } from 'svelte/transition';
   import type { PostResponse } from '../../../types';
+  import { page } from "$app/stores";
 
   export let data;
   const post: PostResponse = data.post;
   const postData = post.data.post;
   const { blogPost, title, date } = postData;
   const aboutMeImage = post.data.page.featuredImage.node;
-  const comments = postData.comments.nodes;
 
   //only for calculating reading time!!
   const content = blogPost.postContent + blogPost.postContentSecond + blogPost.postContentThird;
@@ -41,7 +41,6 @@
       title="{title}"
       date="{date}"
       aboutMeImage="{aboutMeImage}"
-      {comments}
     />
   </main>
   <main class="hidden md:block">
@@ -51,7 +50,6 @@
       title="{title}"
       date="{date}"
       aboutMeImage="{aboutMeImage}"
-      {comments}
     />
   </main>
 </div>
