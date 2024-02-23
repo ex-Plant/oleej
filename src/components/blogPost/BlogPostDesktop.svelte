@@ -54,7 +54,8 @@
   };
 </script>
 
-<main class="px-primary mx-auto grid max-w-[1440px] flex-col pt-12">
+<main
+  class="px-primary mx-auto grid max-w-[1440px] flex-col pt-12">
   <header class=" grid grid-cols-[clamp(115px,14vw,230px)_auto_clamp(115px,14vw,230px)]">
     <div class="aspect-square w-[clamp(50px,calc(100/1440*100vw),100px)]">
       <BigArrowDown />
@@ -112,11 +113,11 @@
       </div>
       <div class="grid grid-cols-[auto_clamp(115px,16vw,230px)]">
         <div>
-          <div class="blog-post-container postContent py-12">
+          <div class="blog-post-container postContent py-12 ">
             {@html customSanitization(blogPost.postContent)}
           </div>
           {#if blogSecondFotoId}
-            <div class="w-full pt-12">
+            <div class="w-full pb-12">
               <CldImage
                 class="hidden shadow-[inset_0_0_0_1px_black] md:block"
                 sizes="(max-width: 1320px), 100vw"
@@ -129,13 +130,13 @@
             </div>
           {/if}
           {#if blogPost.postContentSecond}
-            <div class="blog-post-container postContent py-12">
+            <div class="blog-post-container postContent pb-12">
               {@html customSanitization(blogPost.postContentSecond)}
             </div>
           {/if}
           {#if blogThirdFotoId}
             <CldImage
-              class="hidden shadow-[inset_0_0_0_1px_black] md:block"
+              class="hidden shadow-[inset_0_0_0_1px_black] md:block mb-12"
               sizes="(max-width: 1320px), 100vw"
               aspectRatio="{1320 / 327}"
               height="auto"
@@ -145,7 +146,7 @@
             />
           {/if}
           {#if blogPost.postContentThird}
-            <div class="blog-post-container postContent py-12">
+            <div class="blog-post-container postContent pb-12">
               {@html customSanitization(blogPost.postContentThird)}
             </div>
           {/if}
@@ -197,9 +198,9 @@
       <p class="h-6 text-desktop16">Autor</p>
       <p class="h-8 text-desktop24 font-bold">Piotr Olejnik</p>
     </div>
-    <div class="mt-6 h-12 duration-500 group-hover:scale-125">
-      <BigArrowDown />
-    </div>
+<!--    <div class="mt-6 h-12 duration-500 group-hover:scale-125">-->
+<!--      <BigArrowDown />-->
+<!--    </div>-->
   </a>
   <div class="pb-12 pl-[clamp(115px,16vw,230px)] pr-[clamp(65px,9vw,130px)]">
     <CommentsSection />

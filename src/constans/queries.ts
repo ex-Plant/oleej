@@ -1,4 +1,3 @@
-
 export const getPostDataQuery = (slug: string) => {
   return `
   {
@@ -101,7 +100,7 @@ export const allPostsQuery = `
                 node {
                   altText
                   mediaItemUrl
-              }
+              } 
             }
           }
         }

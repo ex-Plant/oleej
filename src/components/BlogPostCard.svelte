@@ -17,7 +17,7 @@
 </script>
 
 <a in:fade="{{ duration: 500 }}" class="group border-b-[2px] border-black last:border-0" href="{`/blog/${post?.slug}`}">
-  <!--  &lt;!&ndash;MOBILE&ndash;&gt;-->
+    <!--MOBILE-->
   <article class=" grid py-7 md:hidden">
     <div class="grid">
       <p class="  text-[0.75rem] uppercase">{category}</p>

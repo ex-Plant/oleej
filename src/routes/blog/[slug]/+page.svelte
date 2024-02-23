@@ -33,27 +33,27 @@
   }
 </script>
 
-{#if data.post.data.post.id}
-  {#key data.post.data.post.id}
-    <div in:fade="{{ duration: 500 }}">
-      <main class="px-[clamp(20px,6vw,40px)] md:hidden">
-        <BlogPostMobile
-          timeString="{timeString}"
-          blogPost="{blogPost}"
-          title="{title}"
-          date="{date}"
-          aboutMeImage="{aboutMeImage}"
-        />
-      </main>
-      <main class="hidden md:block">
-        <BlogPostDesktop
-          timeString="{timeString}"
-          blogPost="{blogPost}"
-          title="{title}"
-          date="{date}"
-          aboutMeImage="{aboutMeImage}"
-        />
-      </main>
-    </div>
-  {/key}
-{/if}
+<div in:fade="{{ duration: 500 }}">
+    {#key data.post.data.post.id}
+      <div in:fade="{{ duration: 500 }}">
+        <main class="px-[clamp(20px,6vw,40px)] md:hidden">
+          <BlogPostMobile
+            timeString="{timeString}"
+            blogPost="{blogPost}"
+            title="{title}"
+            date="{date}"
+            aboutMeImage="{aboutMeImage}"
+          />
+        </main>
+        <main class="hidden md:block">
+          <BlogPostDesktop
+            timeString="{timeString}"
+            blogPost="{blogPost}"
+            title="{title}"
+            date="{date}"
+            aboutMeImage="{aboutMeImage}"
+          />
+        </main>
+      </div>
+    {/key}
+</div>
