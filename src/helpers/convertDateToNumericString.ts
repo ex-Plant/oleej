@@ -1,12 +1,7 @@
-export function convertDateToNumericString(isoDateString: Date) {
-  // Create a date object from the ISO string
-  const dateObj: Date = new Date(isoDateString);
-
-  // Extract the day, month, and year from the date object
-  const day = String(dateObj.getDate()).padStart(2, '0');
-  const month = String(dateObj.getMonth() + 1).padStart(2, '0'); // January is 0!
-  const year = dateObj.getFullYear();
-
-  // Return the formatted date string
+export function convertDateToNumericString(dateString: string): string {
+  const date = new Date(dateString);
+  const day = date.getDate().toString().padStart(2, '0');
+  const month = (date.getMonth() + 1).toString().padStart(2, '0'); // getMonth() is zero-based
+  const year = date.getFullYear();
   return `${day}.${month}.${year}`;
 }

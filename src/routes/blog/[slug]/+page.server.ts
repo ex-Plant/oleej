@@ -1,6 +1,7 @@
-import { baseUrl } from '../../../constans/constans';
+import { baseUrl, graphqlUrl } from '../../../constans/constans';
 import { type Actions, error } from '@sveltejs/kit';
 import type { PostType } from '../../../types';
+import { getData, getPostData, getPostDataQuery } from '../../../constans/queries';
 
 export const trailingSlash = 'always';
 export const load = async ({ params }) => {
@@ -12,6 +13,9 @@ export const load = async ({ params }) => {
     const globalData = await globalRes.json();
     return globalData[0]?.acf?.mainfoto;
   }
+
+  const postData = getData(getPostDataQuery(params.slug));
+
 
   async function getAllPosts() {
     const postsRes = await fetch(`${baseUrl}posts`);
@@ -29,8 +33,10 @@ export const load = async ({ params }) => {
     };
   }
 
-  async function getImages() {
+  async function getImages(postId: number) {
+    // const data = await fetch(`${baseUrl}media/`);
     const data = await fetch(`${baseUrl}media/`);
+    // const data = await fetch(`${baseUrl}wp-json/wp/v2/media?parent=${postId}&per_page=100`);
     return data.json();
   }
 
@@ -44,12 +50,14 @@ export const load = async ({ params }) => {
   const allPosts = await getAllPosts();
   const post = allPosts.posts.find((post: PostType) => post.slug === params.slug);
 
+
   return {
     global_id: getGlobalFotoId(),
     comments: getComments(post.id),
-    images: getImages(),
+    images: getImages(post.id),
     post,
     allPosts,
+    test: await  getData(getPostDataQuery(params.slug))
   };
 };
 

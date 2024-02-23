@@ -12,9 +12,14 @@
   import PostFoto from './PostFoto.svelte';
 
   $: postData = $page.data.post;
-  $: post_content = postData.acf?.post_content;
+  // $: console.log('test:', $page.data.test)
 
   export let timeString: string;
+  export let blogPost;
+  export let title: string;
+  export let category: string;
+  export let description: string;
+
   const posts = $page?.data?.allPosts.posts;
   const images: ImageType[] = $page.data.images;
   const global_id = $page.data.global_id;
@@ -22,6 +27,7 @@
   let timeoutId: ReturnType<typeof setTimeout> | undefined;
 
   $: post = postData?.acf;
+  // $: console.log(post.postData?.acf.blog_second_foto_id)
   $: publishDate = convertDateToNumericString(postData?.date);
   $: currPostIndex = posts.findIndex((p: PostType) => p.slug === $page.params.slug);
 
@@ -56,9 +62,9 @@
 
     <div class="flex w-full flex-col pr-[clamp(65px,9vw,130px)]">
       <div class="flex items-center gap-x-4">
-        {#if post.category}
+        {#if category}
           <h3 class=" text-[1.125rem] uppercase">
-            {post.category}
+            {category}
           </h3>
         {/if}
         <span class="pt-1">
@@ -100,7 +106,25 @@
       <div class="grid grid-cols-[auto_clamp(115px,16vw,230px)]">
         <div>
           <div class="blog-post-container postContent py-12">
-            {@html customSanitization(post_content)}
+            {@html customSanitization(postData.acf.post_content)}
+          </div>
+          <div class="w-full pt-12">
+            {#await $page.data.images}
+              <ImgPlaceholder aspect="aspect-[1320/327] " />
+            {:then images}
+              <PostFoto postFoto="{images?.find((foto) => foto.id === postData.acf.blog_second_foto_id)}" {images}/>
+            {/await}
+          </div>
+          <div class="blog-post-container postContent py-12">
+            {@html customSanitization(postData.acf.post_content_second)}
+          </div>
+          {#await $page.data.images}
+            <ImgPlaceholder aspect="aspect-[1320/327] " />
+          {:then images}
+            <PostFoto postFoto="{images?.find((foto) => foto.id === postData.acf.blog_second_foto_id)}" />
+          {/await}
+          <div class="blog-post-container postContent py-12">
+            {@html customSanitization(postData.acf.post_content_third)}
           </div>
 
           <div class=" relative flex items-center">
@@ -131,7 +155,7 @@
     </div>
   </section>
 
-  <a href="/o-mnie" class="group mb-12 flex h-[160px] items-center ">
+  <a href="/o-mnie" class="group mb-12 flex h-[160px] items-center">
     <div class="w-[clamp(115px,16vw,230px)] pr-8">
       <div class=" flex w-full flex-none">
         {#await images then images}

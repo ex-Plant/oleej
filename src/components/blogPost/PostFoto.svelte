@@ -3,6 +3,11 @@
   import type { ImageType } from '../../types';
   import { customSanitization } from '../../helpers/customSanitization';
   export let postFoto: ImageType;
+  // export let images = null;
+
+  // $: if (images) {
+  //   console.log(images);
+  // }
 </script>
 
 <CustomImage

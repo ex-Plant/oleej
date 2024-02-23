@@ -9,17 +9,52 @@ export type ACFPostType = {
   title: string;
   excerpt: string;
 };
+export type PostResponse = {
+  data: {
+    post: PostType;
+  };
+}
 
 export type PostType = {
-  acf: ACFPostType;
+  id: string;
+  title: string;
   slug: string;
-  author: number;
-  categories: number[];
-  date: Date;
-  id: number;
-  modified: string;
-  type: string;
-};
+  date: string;
+  blogPost: BlogPost;
+}
+
+export type BlogPost = {
+    blogDesktopFotoId: {
+      node: {
+        altText: string;
+        mediaItemUrl: string;
+      };
+    };
+    blogRightSideFotoId: {
+      node: {
+        altText: string;
+        mediaItemUrl: string;
+      };
+    };
+    blogSecondFotoId: {
+      node: {
+        mediaItemUrl: string;
+        altText: string;
+      };
+    };
+    blogThirdFotoId: {
+      node: {
+        altText: string;
+        mediaItemUrl: string;
+      };
+    };
+    postContent: string;
+    postContentSecond: string;
+    postContentThird: string;
+    postDescription: string;
+    title: string;
+    category: string;
+}
 
 export type ImageType = {
   caption: {

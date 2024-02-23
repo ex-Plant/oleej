@@ -1,18 +1,23 @@
 <script lang="ts">
   import BlogPostMobile from '../../../components/blogPost/BlogPostMobile.svelte';
   import BlogPostDesktop from '../../../components/blogPost/BlogPostDesktop.svelte';
-  import { page } from '$app/stores';
-  import type { PostType } from '../../../types';
   import { fade } from 'svelte/transition';
+  import type { PostResponse } from "../../../types";
 
-  $: post = $page.data.post;
-  $: post_content = post.acf?.post_content;
+  export let data;
+  const post: PostResponse = data.test;
+  const postData = post.data.post;
+  const { blogPost, title, date } = postData;
+  console.log(date)
+
+  //only for calculating reading time!!
+  const content = blogPost.postContent + blogPost.postContentSecond + blogPost.postContentThird;
 
   function countWords(text: string) {
     return text?.split(/\s+/).length;
   }
   //
-  $: numberOfWords = countWords(post_content);
+  $: numberOfWords = countWords(content);
   $: readingTimeInMinutes = Math.floor(numberOfWords / 200); // 200 words per minute
   let timeString: string;
 
@@ -28,12 +33,10 @@
 </script>
 
 <div in:fade="{{ duration: 500 }}">
-  {#if post}
-    <main class="px-[clamp(20px,6vw,40px)] md:hidden">
-      <BlogPostMobile timeString="{timeString}" />
-    </main>
-    <main class="hidden md:block">
-      <BlogPostDesktop timeString="{timeString}" />
-    </main>
-  {/if}
+  <main class="px-[clamp(20px,6vw,40px)] md:hidden">
+    <BlogPostMobile {timeString} {blogPost} {title} {date}/>
+  </main>
+  <main class="hidden md:block">
+    <BlogPostDesktop {timeString} {postData} />
+  </main>
 </div>

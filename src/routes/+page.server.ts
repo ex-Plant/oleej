@@ -22,8 +22,15 @@ export const load: PageLoad = async () => {
     };
   }
 
+  // async function getImages() {
+  //   const data = await fetch(`${baseUrl}media/`);
+  //   return data.json();
+  // }
+
+  const perPage = 100; // Set this to the number of images you want to retrieve, up to 100
+
   async function getImages() {
-    const data = await fetch(`${baseUrl}media/`);
+    const data = await fetch(`${baseUrl}media?per_page=${perPage}`);
     return data.json();
   }
 
