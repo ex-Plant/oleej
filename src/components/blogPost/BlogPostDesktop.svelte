@@ -198,9 +198,9 @@
       <p class="h-6 text-desktop16">Autor</p>
       <p class="h-8 text-desktop24 font-bold">Piotr Olejnik</p>
     </div>
-<!--    <div class="mt-6 h-12 duration-500 group-hover:scale-125">-->
-<!--      <BigArrowDown />-->
-<!--    </div>-->
+    <div class="mt-6 h-12 duration-500 group-hover:scale-125">
+      <BigArrowDown />
+    </div>
   </a>
   <div class="pb-12 pl-[clamp(115px,16vw,230px)] pr-[clamp(65px,9vw,130px)]">
     <CommentsSection />

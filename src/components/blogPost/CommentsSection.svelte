@@ -8,7 +8,6 @@
   import Spinner from '../Spinner.svelte';
   import type { CommentType } from "../../types";
 
-  export let comments: CommentType[] = [];
   const post_id: number = $page.data.post.id;
 
   let dialog: HTMLDialogElement;
@@ -49,7 +48,7 @@
 {/if}
 <div>
   <div class="mb-0 text-[1.125rem] font-bold uppercase leading-[2.75rem] md:mb-4 md:text-[2.25rem]">
-    Zostaw swój komentarz
+    Chcesz coś dodać?
   </div>
   <form class="flex flex-col items-start gap-y-4" action="?/add_comment" method="POST" use:enhance="{handleSubmit}">
     <input type="hidden" name="post_id" value="{post_id}" />
@@ -58,7 +57,7 @@
         on:focus="{() => sendingForm.set(false)}"
         placeholder="treść"
         required
-        class="h-40 border border-black bg-primary p-4 text-[14px] placeholder:text-black"
+        class="h-40 border border-black bg-primary p-4 placeholder:text-black"
         name="content"
       bind:value="{content}"
       ></textarea>
@@ -69,7 +68,7 @@
           on:focus="{() => sendingForm.set(false)}"
           placeholder="podpis"
           required
-          class="h-[46px] border border-black bg-primary p-4 text-[14px] placeholder:text-black"
+          class="h-[46px] border border-black bg-primary p-4  placeholder:text-black"
           type="text"
           name="author_name"
           bind:value="{name}"
@@ -79,11 +78,15 @@
         class=" mt-2 flex h-[46px] items-center justify-center space-x-4 rounded-none border border-black !bg-black px-4 text-[1.25rem] font-bold uppercase text-white duration-500 md:mt-0 md:!bg-transparent md:text-black md:hover:!bg-black md:hover:!text-white"
         on:click="{() => sendingForm.set(true)}"
         type="submit"
-        variant="outline">Wyślij</Button
+        variant="outline">
+        <span class=' pt-1'>
+          Wyślij
+        </span>
+        </Button
       >
     </div>
   </form>
-    <Comments comments="{comments}" />
+    <Comments />
 </div>
 
 <dialog

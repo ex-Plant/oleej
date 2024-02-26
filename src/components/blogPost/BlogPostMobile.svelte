@@ -76,7 +76,7 @@
     <CldImage
       class="object-top shadow-[inset_0_0_0_1px_black] md:hidden"
       sizes="(max-width: 768px) 100vw"
-      aspectRatio="{316 / 260}"
+      aspectRatio="{316 / 130}"
       height="auto"
       width="768"
       alt="{blogSecondFotoId.node.altText || 'zdjęcie do artykułu'}"
@@ -92,7 +92,7 @@
     <CldImage
       class="object-top shadow-[inset_0_0_0_1px_black] md:hidden"
       sizes="(max-width: 768px) 100vw"
-      aspectRatio="{316 / 260}"
+      aspectRatio="{316 / 130}"
       height="auto"
       width="768"
       alt="{blogThirdFotoId.node.altText || 'zdjęcie do artykułu'}"
@@ -135,14 +135,14 @@
   <a href="/o-mnie" class=" flex flex-col justify-center">
     <p class="h-6 text-[0.875rem]">Autor</p>
     <p class=" pb-6 text-[1.125rem] font-bold">Piotr Olejnik</p>
-<!--    <div class="flex gap-x-3">-->
-<!--      <div>-->
-<!--        <BigArrowDown />-->
-<!--      </div>-->
-<!--      <p class="flex flex-col text-14 font-bold uppercase">-->
+    <div class="flex gap-x-3">
+      <div>
+        <BigArrowDown />
+      </div>
+      <p class="flex flex-col text-14 font-bold uppercase">
 <!--        <span>NAPISZ</span><span>DO MNIE</span>-->
-<!--      </p>-->
-<!--    </div>-->
+      </p>
+    </div>
   </a>
 </section>
 <div class="mb-8">

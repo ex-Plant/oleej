@@ -69,7 +69,7 @@
             bind:value="{content}"
             placeholder="treść"
             required
-            class="h-40 border border-black bg-primary p-4 text-[14px] placeholder:text-black"
+            class="h-40 border border-black bg-primary p-4  placeholder:text-black"
             name="content"></textarea>
         </div>
         <div class="grid w-full gap-x-4 md:grid-cols-2">
@@ -78,7 +78,7 @@
               on:focus="{() => sendingForm.set(false)}"
               placeholder="podpis"
               required
-              class="h-[46px] border border-black bg-primary p-4 text-[14px] placeholder:text-black"
+              class="h-[46px] border border-black bg-primary p-4 placeholder:text-black"
               type="text"
               name="author_name"
               bind:value="{sign}"
@@ -88,7 +88,10 @@
             class=" mt-2 flex h-[46px] items-center justify-center space-x-4 rounded-none border border-black !bg-black px-4 text-[1.25rem] font-bold uppercase text-white duration-500 md:mt-0 md:!bg-transparent md:text-black md:hover:!bg-black md:hover:!text-white"
             on:click="{() => sendingForm.set(true)}"
             type="submit"
-            variant="outline">Wyślij</Button
+            variant="outline">
+            <span class='pt-1'>
+              Wyślij
+            </span></Button
           >
         </div>
       </form>
