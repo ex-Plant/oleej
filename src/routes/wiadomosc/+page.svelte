@@ -12,6 +12,8 @@
   let message = '';
 
   const sendEmail = async (e) => {
+    state = State.requesting;
+    doRecaptcha();
     sending = true;
     const data = await emailjs.sendForm('service_dtv5cga', 'template_cs5li6k', e.target, {
       publicKey: 'REJftFiEDivsRd49v',
@@ -29,6 +31,26 @@
       message = '';
     }, 3000);
   };
+  import { onMount } from "svelte";
+
+  const key = "6Ldvac0ZAAAAAFmtvwilkJ3MOD4IGou9KjhRglIo";
+  let State = {
+    idle: "idle",
+    requesting: "requesting",
+    success: "success"
+  };
+  let token;
+  let state = State.idle;
+
+
+  function doRecaptcha() {
+    grecaptcha.ready(function() {
+      grecaptcha.execute(key, { action: "submit" }).then(function(t) {
+        state = State.success;
+        token = t;
+      });
+    });
+  }
 </script>
 
 {#if sending}
@@ -37,7 +59,6 @@
 <main in:fade="{{ duration: 500 }}" class="max-w-[1440px] px-[clamp(20px,6vw,60px)] pt-16 lg:block xl:mx-auto">
   <!--  <button class="text-2xl" on:click="{() => dialog.showModal()}">open</button>-->
   <form class="flex flex-col gap-y-4 pb-20" on:submit|preventDefault="{sendEmail}">
-    <div class="g-recaptcha" data-sitekey="your_site_key"></div>
     <div class="grid max-w-[600px] gap-y-1">
       <label class="flex w-[200px]">Twoje imię</label>
       <input required class="h-10 p-4" type="text" name="name" bind:value="{name}" />
