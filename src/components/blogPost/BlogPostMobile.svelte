@@ -17,11 +17,11 @@
     altText: string;
   };
 
-  $: category = blogPost?.category
-  $: postDescription = blogPost?.postDescription
-  $: mobileFotoId = blogPost?.mobileFotoId
-  $: blogSecondFotoId = blogPost?.blogSecondFotoId
-  $: blogThirdFotoId = blogPost?.blogThirdFotoId
+  $: category = blogPost?.category;
+  $: postDescription = blogPost?.postDescription;
+  $: mobileFotoId = blogPost?.mobileFotoId;
+  $: blogSecondFotoId = blogPost?.blogSecondFotoId;
+  $: blogThirdFotoId = blogPost?.blogThirdFotoId;
   $: publishDate = convertDateToNumericString(date);
 
   let dialog: HTMLDialogElement;
@@ -57,7 +57,7 @@
       </span>
     </p>
     <CldImage
-      class="object-top shadow-[inset_0_0_0_1px_black] md:hidden"
+      class="object-top md:hidden"
       sizes="(max-width: 768px) 100vw"
       aspectRatio="{316 / 260}"
       height="auto"
@@ -69,41 +69,43 @@
   <p class="border-b-[2px] border-black py-7 text-[1.25rem] font-bold leading-[110%]">
     {postDescription}
   </p>
-  <div class="postContent border-b-[2px] border-black py-7">
-    {@html customSanitization(blogPost?.postContent)}
+  <div class="border-b-[2px] border-black">
+    <div class="postContent py-7">
+      {@html customSanitization(blogPost?.postContent)}
+    </div>
+    {#if blogSecondFotoId}
+      <CldImage
+        class="object-top md:hidden"
+        sizes="(max-width: 768px) 100vw"
+        aspectRatio="{316 / 130}"
+        height="auto"
+        width="768"
+        alt="{blogSecondFotoId.node.altText || 'zdjęcie do artykułu'}"
+        src="{blogSecondFotoId.node.mediaItemUrl}"
+      />
+    {/if}
+    {#if blogPost?.postContentSecond}
+      <div class="postContent py-7">
+        {@html customSanitization(blogPost?.postContentSecond)}
+      </div>
+    {/if}
+    {#if blogThirdFotoId}
+      <CldImage
+        class="object-top  md:hidden"
+        sizes="(max-width: 768px) 100vw"
+        aspectRatio="{316 / 130}"
+        height="auto"
+        width="768"
+        alt="{blogThirdFotoId.node.altText || 'zdjęcie do artykułu'}"
+        src="{blogThirdFotoId.node.mediaItemUrl}"
+      />
+    {/if}
+    {#if blogPost?.postContentThird}
+      <div class="postContent py-7">
+        {@html customSanitization(blogPost?.postContentThird)}
+      </div>
+    {/if}
   </div>
-  {#if blogSecondFotoId}
-    <CldImage
-      class="object-top shadow-[inset_0_0_0_1px_black] md:hidden"
-      sizes="(max-width: 768px) 100vw"
-      aspectRatio="{316 / 130}"
-      height="auto"
-      width="768"
-      alt="{blogSecondFotoId.node.altText || 'zdjęcie do artykułu'}"
-      src="{blogSecondFotoId.node.mediaItemUrl}"
-    />
-  {/if}
-  {#if blogPost?.postContentSecond}
-    <div class="postContent border-b-[2px] border-black py-7">
-      {@html customSanitization(blogPost?.postContentSecond)}
-    </div>
-  {/if}
-  {#if blogThirdFotoId}
-    <CldImage
-      class="object-top shadow-[inset_0_0_0_1px_black] md:hidden"
-      sizes="(max-width: 768px) 100vw"
-      aspectRatio="{316 / 130}"
-      height="auto"
-      width="768"
-      alt="{blogThirdFotoId.node.altText || 'zdjęcie do artykułu'}"
-      src="{blogThirdFotoId.node.mediaItemUrl}"
-    />
-  {/if}
-  {#if blogPost?.postContentThird}
-    <div class="postContent border-b-[2px] border-black py-7">
-      {@html customSanitization(blogPost?.postContentThird)}
-    </div>
-  {/if}
 
   <div class="relative grid pt-7">
     <p class="h-7 text-[0.875rem]">
@@ -140,7 +142,7 @@
         <BigArrowDown />
       </div>
       <p class="flex flex-col text-14 font-bold uppercase">
-<!--        <span>NAPISZ</span><span>DO MNIE</span>-->
+        <!--        <span>NAPISZ</span><span>DO MNIE</span>-->
       </p>
     </div>
   </a>
