@@ -12,8 +12,6 @@
   let message = '';
 
   const sendEmail = async (e) => {
-    state = State.requesting;
-    doRecaptcha();
     sending = true;
     const data = await emailjs.sendForm('service_dtv5cga', 'template_cs5li6k', e.target, {
       publicKey: 'REJftFiEDivsRd49v',
@@ -31,26 +29,6 @@
       message = '';
     }, 3000);
   };
-  import { onMount } from "svelte";
-
-  const key = "6Ldvac0ZAAAAAFmtvwilkJ3MOD4IGou9KjhRglIo";
-  let State = {
-    idle: "idle",
-    requesting: "requesting",
-    success: "success"
-  };
-  let token;
-  let state = State.idle;
-
-
-  function doRecaptcha() {
-    grecaptcha.ready(function() {
-      grecaptcha.execute(key, { action: "submit" }).then(function(t) {
-        state = State.success;
-        token = t;
-      });
-    });
-  }
 </script>
 
 {#if sending}
