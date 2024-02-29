@@ -29,7 +29,7 @@
           quality='100'
         />
         <p class="line-clamp-4 h-[144px] pt-8 text-[1.25rem] leading-[140%]">
-          <!--{post.acf.excerpt}-->
+          {post.blogPost.excerpt}
         </p>
         <p class="pt-4">
           <span class=" relative pb-1 font-bold">
