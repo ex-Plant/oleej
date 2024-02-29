@@ -58,7 +58,7 @@
         src="{mobileFotoId.node.mediaItemUrl}"
         quality='100'
       />
-      <div class=" uppercase">
+      <div >
         <h2 class=" line-clamp-4 h-[140px] text-[2rem] font-[700] leading-[108%] uppercase">
           {title}
           <span class="inline-block duration-500 group-hover:scale-125">
