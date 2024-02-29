@@ -98,6 +98,7 @@
       width="{1320}"
       alt="{blogDesktopFotoId.node.altText || 'zdjęcie do artykułu'}"
       src="{blogDesktopFotoId.node.mediaItemUrl}"
+      quality="100"
     />
     {#if blogDesktopFotoId?.node?.caption}
       <p class=" w-full pt-2.5 text-[0.75rem] md:text-12">
@@ -127,6 +128,7 @@
                 width="{1320}"
                 alt="{blogSecondFotoId.node.altText || 'zdjęcie do artykułu'}"
                 src="{blogSecondFotoId.node.mediaItemUrl}"
+                quality="100"
               />
             </div>
           {/if}
@@ -149,6 +151,7 @@
               width="{1320}"
               alt="{blogThirdFotoId.node.altText || 'zdjęcie do artykułu'}"
               src="{blogThirdFotoId.node.mediaItemUrl}"
+              quality="100"
             />
           {/if}
           {#if blogThirdFotoId?.node?.caption}

@@ -26,6 +26,7 @@
           height="auto"
           src="{post.blogPost.mobileFotoId.node.mediaItemUrl}"
           alt="{post.blogPost.mobileFotoId?.node.altText}"
+          quality='100'
         />
         <p class="line-clamp-4 h-[144px] pt-8 text-[1.25rem] leading-[140%]">
           <!--{post.acf.excerpt}-->
