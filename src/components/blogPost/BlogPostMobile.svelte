@@ -65,6 +65,11 @@
       alt="{mobileFotoId.node.altText || 'zdjęcie do artykułu'}"
       src="{mobileFotoId.node.mediaItemUrl}"
     />
+    {#if mobileFotoId?.node?.caption}
+      <p class="pb-2.5 pt-4 text-[0.75rem]">
+        {@html customSanitization(mobileFotoId.node.caption)}
+      </p>
+    {/if}
   </div>
   <p class="border-b-[2px] border-black py-7 text-[1.25rem] font-bold leading-[110%]">
     {postDescription}
@@ -84,6 +89,11 @@
         src="{blogSecondFotoId.node.mediaItemUrl}"
       />
     {/if}
+    {#if blogSecondFotoId?.node?.caption}
+      <p class="pb-2.5 pt-4 text-[0.75rem]">
+        {@html customSanitization(mobileFotoId.node.caption)}
+      </p>
+    {/if}
     {#if blogPost?.postContentSecond}
       <div class="postContent py-7">
         {@html customSanitization(blogPost?.postContentSecond)}
@@ -99,6 +109,11 @@
         alt="{blogThirdFotoId.node.altText || 'zdjęcie do artykułu'}"
         src="{blogThirdFotoId.node.mediaItemUrl}"
       />
+    {/if}
+    {#if blogThirdFotoId?.node?.caption}
+      <p class="pb-2.5 pt-4 text-[0.75rem]">
+        {@html customSanitization(mobileFotoId.node.caption)}
+      </p>
     {/if}
     {#if blogPost?.postContentThird}
       <div class="postContent py-7">

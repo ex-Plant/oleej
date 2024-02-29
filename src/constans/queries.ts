@@ -23,30 +23,35 @@ export const getPostDataQuery = (slug: string) => {
           node {
             altText
             mediaItemUrl
+            caption
           }
         }
         blogRightSideFotoId {
           node {
             altText
             mediaItemUrl
+            caption
           }
         }
         blogSecondFotoId {
           node {
             altText
             mediaItemUrl
+            caption
           }
         }
         blogThirdFotoId {
           node {
             altText
             mediaItemUrl
+            caption
           }
         }
         mobileFotoId {
           node {
             altText
             mediaItemUrl
+            caption
           }
         }
         postContent

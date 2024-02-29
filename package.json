@@ -41,6 +41,7 @@
     "@fontsource-variable/noto-sans": "^5.0.1",
     "@fontsource/courier-prime": "^5.0.18",
     "@sveltejs/adapter-vercel": "^4.0.0",
+    "@types/grecaptcha": "^3.0.7",
     "@vercel/analytics": "^1.1.1",
     "bits-ui": "^0.18.1",
     "clsx": "^2.1.0",

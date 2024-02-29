@@ -54,8 +54,7 @@
   };
 </script>
 
-<main
-  class="px-primary mx-auto grid max-w-[1440px] flex-col pt-12">
+<main class="px-primary mx-auto grid max-w-[1440px] flex-col pt-12">
   <header class=" grid grid-cols-[clamp(115px,14vw,230px)_auto_clamp(115px,14vw,230px)]">
     <div class="aspect-square w-[clamp(50px,calc(100/1440*100vw),100px)]">
       <BigArrowDown />
@@ -100,9 +99,11 @@
       alt="{blogDesktopFotoId.node.altText || 'zdjęcie do artykułu'}"
       src="{blogDesktopFotoId.node.mediaItemUrl}"
     />
-    <!--      <p class=" w-full pt-2.5 text-[0.75rem] md:text-12">-->
-    <!--        {@html customSanitization(postFoto?.caption?.rendered)}-->
-    <!--      </p>-->
+    {#if blogDesktopFotoId?.node?.caption}
+      <p class=" w-full pt-2.5 text-[0.75rem] md:text-12">
+        {@html customSanitization(blogDesktopFotoId.node.caption)}
+      </p>
+    {/if}
   </div>
   <section class="grid pl-[clamp(115px,16vw,230px)] pt-7">
     <div class="grid">
@@ -113,7 +114,7 @@
       </div>
       <div class="grid grid-cols-[auto_clamp(115px,16vw,230px)]">
         <div>
-          <div class="blog-post-container postContent py-12 ">
+          <div class="blog-post-container postContent py-12">
             {@html customSanitization(blogPost.postContent)}
           </div>
           {#if blogSecondFotoId}
@@ -129,6 +130,11 @@
               />
             </div>
           {/if}
+          {#if blogSecondFotoId?.node?.caption}
+            <p class=" w-full pt-2.5 text-[0.75rem] md:text-12">
+              {@html customSanitization(blogSecondFotoId.node.caption)}
+            </p>
+          {/if}
           {#if blogPost.postContentSecond}
             <div class="blog-post-container postContent pb-12">
               {@html customSanitization(blogPost.postContentSecond)}
@@ -136,7 +142,7 @@
           {/if}
           {#if blogThirdFotoId}
             <CldImage
-              class="hidden shadow-[inset_0_0_0_1px_black] md:block mb-12"
+              class="mb-12 hidden shadow-[inset_0_0_0_1px_black] md:block"
               sizes="(max-width: 1320px), 100vw"
               aspectRatio="{1320 / 327}"
               height="auto"
@@ -144,6 +150,11 @@
               alt="{blogThirdFotoId.node.altText || 'zdjęcie do artykułu'}"
               src="{blogThirdFotoId.node.mediaItemUrl}"
             />
+          {/if}
+          {#if blogThirdFotoId?.node?.caption}
+            <p class=" w-full pt-2.5 text-[0.75rem] md:text-12">
+              {@html customSanitization(blogThirdFotoId.node.caption)}
+            </p>
           {/if}
           {#if blogPost.postContentThird}
             <div class="blog-post-container postContent pb-12">

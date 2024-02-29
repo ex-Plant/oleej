@@ -17,6 +17,9 @@ dependencies:
   '@sveltejs/adapter-vercel':
     specifier: ^4.0.0
     version: 4.0.5(@sveltejs/kit@2.5.0)
+  '@types/grecaptcha':
+    specifier: ^3.0.7
+    version: 3.0.7
   '@vercel/analytics':
     specifier: ^1.1.1
     version: 1.2.1
@@ -740,6 +743,10 @@ packages:
 
   /@types/estree@1.0.5:
     resolution: {integrity: sha512-/kYRxGDLWzHOB7q+wtSUQlFrtcdUccpfy+X+9iMBpHK8QLLhx2wIPYuS5DYtR9Wa/YlZAbIovy7qVdB1Aq6Lyw==}
+
+  /@types/grecaptcha@3.0.7:
+    resolution: {integrity: sha512-ah5GDQfsiK3dnkaCbYcDFZXkZCG3o90VRu9hzXHnSe4kACrRB1KUI/ZyWHvYmqm1W5Tl8B5YxxT98uGTlkbf2Q==}
+    dev: false
 
   /@types/json-schema@7.0.15:
     resolution: {integrity: sha512-5+fP8P8MFNC+AyZCDxrB2pkZFPGzqQWUzpSeuuVLvm8VMcorNYavBqoFcxK8bQz4Qsbn4oUEEem4wDLfcysGHA==}

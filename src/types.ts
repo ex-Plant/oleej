@@ -13,7 +13,7 @@ export type PostResponse = {
   data: {
     post: PostType;
     posts: {
-      nodes:PostType[]
+      nodes: PostType[];
     };
     page: {
       featuredImage: {
@@ -38,44 +38,49 @@ export type PostType = {
 };
 
 export type CommentType = {
-    parentId: number;
-    id: number;
-    content: string;
-    author: {
-      node: {
-        name: string;
-      };
+  parentId: number;
+  id: number;
+  content: string;
+  author: {
+    node: {
+      name: string;
     };
+  };
 };
 export type BlogPost = {
   blogDesktopFotoId: {
     node: {
       altText: string;
       mediaItemUrl: string;
+      caption: string;
     };
   };
   blogRightSideFotoId: {
     node: {
       altText: string;
       mediaItemUrl: string;
+      caption: string;
     };
   };
   blogSecondFotoId: {
     node: {
       mediaItemUrl: string;
       altText: string;
+      caption: string;
     };
   };
   blogThirdFotoId: {
     node: {
       altText: string;
       mediaItemUrl: string;
+      caption: string;
     };
   };
   mobileFotoId: {
     node: {
       altText: string;
       mediaItemUrl: string;
+      caption: string;
     };
   };
   postContent: string;
@@ -103,3 +108,11 @@ export type ImageType = {
 };
 
 export type LoadingType = 'lazy' | 'eager';
+
+export declare global {
+  interface Window {
+    handleCaptchaCallback: (token: string) => Promise<void>;
+    resetCaptcha: () => void;
+    handleCaptchaError: () => void;
+  }
+}

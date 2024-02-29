@@ -303,6 +303,10 @@ body {
     line-height: 1.75rem;
   }
 }
+
+.emoticon {
+  font-family: 'Noto Sans Variable', sans-serif;
+}
 /*.grecaptcha-badge {*/
 /*  display: none;*/
 /*}*/
