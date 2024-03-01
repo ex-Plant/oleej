@@ -91,11 +91,10 @@
 
   <div class="w-full pt-12">
     <CldImage
-      class="hidden shadow-[inset_0_0_0_1px_black] md:block"
       sizes="(max-width: 1320px), 100vw"
       aspectRatio="{1320 / 327}"
       height="auto"
-      width="{1320}"
+      width="auto"
       alt="{blogDesktopFotoId.node.altText || 'zdjęcie do artykułu'}"
       src="{blogDesktopFotoId.node.mediaItemUrl}"
       quality="100"
@@ -121,11 +120,10 @@
           {#if blogSecondFotoId}
             <div class="w-full pb-12">
               <CldImage
-                class="hidden shadow-[inset_0_0_0_1px_black] md:block"
                 sizes="(max-width: 1320px), 100vw"
                 aspectRatio="{1320 / 327}"
                 height="auto"
-                width="{1320}"
+                width="auto"
                 alt="{blogSecondFotoId.node.altText || 'zdjęcie do artykułu'}"
                 src="{blogSecondFotoId.node.mediaItemUrl}"
                 quality="100"
@@ -148,7 +146,7 @@
               sizes="(max-width: 1320px), 100vw"
               aspectRatio="{1320 / 327}"
               height="auto"
-              width="{1320}"
+              width="auto"
               alt="{blogThirdFotoId.node.altText || 'zdjęcie do artykułu'}"
               src="{blogThirdFotoId.node.mediaItemUrl}"
               quality="100"
@@ -183,7 +181,7 @@
               sizes="(max-width: 204px), 16vw"
               aspectRatio="{204 / 311}"
               height="auto"
-              width="{204}"
+              width="auto"
               alt="{blogRightSideFotoId.node.altText || 'zdjęcie do artykułu'}"
               src="{blogRightSideFotoId.node.mediaItemUrl}"
             />
@@ -200,7 +198,7 @@
           class="object-top"
           sizes="(max-width: 200px), 16vw"
           height="auto"
-          width="{200}"
+          width='auto'
           aspectRatio="{200 / 160}"
           alt="{aboutMeImage.altText}"
           src="{aboutMeImage.mediaItemUrl}"

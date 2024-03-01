@@ -27,12 +27,10 @@
     </div>
     <div class="w-full pt-7">
       <CldImage
-        loading="{loading}"
         sizes="(max-width: 768px) 100vw"
-        width="768"
-        class="object-top shadow-[inset_0_0_0_1px_black] "
         aspectRatio="{316 / 260}"
         height="auto"
+        width="auto"
         alt="{mobileFotoId.node.altText || 'zdjęcie do artykułu'}"
         src="{mobileFotoId.node.mediaItemUrl}"
         quality='100'
@@ -48,12 +46,10 @@
   <article class="hidden py-12 md:grid 1280:hidden">
     <div class=" grid grid-cols-2 gap-x-12">
       <CldImage
-        loading="{loading}"
         sizes="(max-width: 560px) 50vw"
-        width="{560}"
-        class="object-top shadow-[inset_0_0_0_1px_black] "
         aspectRatio="{318 / 280}"
         height="auto"
+        width="auto"
         alt="{mobileFotoId.node.altText || 'zdjęcie do artykułu'}"
         src="{mobileFotoId.node.mediaItemUrl}"
         quality='100'
@@ -95,18 +91,15 @@
     </div>
 
     <div class="grid grid-cols-2 gap-x-16">
-      <CldImage
-        loading="{loading}"
-        sizes="(max-width: 320px) 20vw"
-        width="{269}"
-        aspectRatio="{269 / 323}"
-        class="object-top shadow-[inset_0_0_0_1px_black] "
-        alt="{mobileFotoId.node.altText || 'zdjęcie do artykułu'}"
-        src="{mobileFotoId.node.mediaItemUrl}"
-        height="auto"
-        quality='100'
-      />
-
+        <CldImage
+          sizes="(max-width: 269px) 20vw"
+          aspectRatio="{269 / 323}"
+          alt="{mobileFotoId.node.altText || 'zdjęcie do artykułu'}"
+          src="{mobileFotoId.node.mediaItemUrl}"
+          height="auto"
+          width="auto"
+          quality="100"
+        />
       <div>
         {#if excerpt}
           <p class="line-clamp-[10] w-full text-[1.25rem] leading-[140%]">

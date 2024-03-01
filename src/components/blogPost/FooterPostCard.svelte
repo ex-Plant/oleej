@@ -1,10 +1,7 @@
 <script lang="ts">
   import { CldImage } from 'svelte-cloudinary';
-  import type { ImageType, PostType } from '../../types';
-
+  import type { PostType } from '../../types';
   export let post: PostType;
-  console.log(post)
-
 
 </script>
 
@@ -20,7 +17,7 @@
       <div class="w-full pt-4">
         <CldImage
           sizes="(max-width: 768px) 100vw"
-          width="768"
+          width="auto"
           class="object-top"
           aspectRatio="{400 / 400}"
           height="auto"
