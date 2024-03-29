@@ -51,12 +51,10 @@
       <span> Chcesz coś dodać?  </span>
     </p>
     <p
-      class="whitespace-nowrap text-[1.125rem] font-bold  640:text-[2.25rem] flex items-center gap-x-1 640:gap-x-2">
-      <span> Proszę bardzo </span>
-      <span>
+      class="whitespace-nowrap text-[1.125rem] font-bold  640:text-[2.25rem] flex items-center ">
+      <span> Proszę bardzo</span>
 
-      </span>
-      <span class="emoticon pb-2   640:pb-4">👇</span>
+      <span class="emoticon pb-2  640:pb-4">👇</span>
     </p>
   </div>
   <form class="flex flex-col items-start gap-y-4" action="?/add_comment" method="POST" use:enhance="{handleSubmit}">
