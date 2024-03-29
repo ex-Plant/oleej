@@ -47,13 +47,16 @@
 {/if}
 <div class='mb-20'>
   <div class="mb-4 items-center 450:flex gap-x-2 640:flex-col 640:items-start 1280:flex-row 1280:items-center">
-    <p class="whitespace-nowrap text-[1.125rem] font-bold uppercase 640:text-[2.25rem] flex items-center">
+    <p class="whitespace-nowrap text-[1.125rem] font-bold  640:text-[2.25rem] flex items-center">
       <span> Chcesz coś dodać?  </span>
     </p>
     <p
-      class="whitespace-nowrap text-[1.125rem] font-bold uppercase 640:text-[2.25rem] flex items-center gap-x-1 640:gap-x-2">
+      class="whitespace-nowrap text-[1.125rem] font-bold  640:text-[2.25rem] flex items-center gap-x-1 640:gap-x-2">
       <span> Proszę bardzo </span>
-      <span class="emoticon pb-2   640:pb-4">✌</span>
+      <span>
+
+      </span>
+      <span class="emoticon pb-2   640:pb-4">👇</span>
     </p>
   </div>
   <form class="flex flex-col items-start gap-y-4" action="?/add_comment" method="POST" use:enhance="{handleSubmit}">
