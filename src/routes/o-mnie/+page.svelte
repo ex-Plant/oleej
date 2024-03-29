@@ -9,7 +9,7 @@
 
 <div in:fade="{{ duration: 500 }}">
   <!--mobile-->
-  <main class=" gap-y-6 px-[clamp(20px,6vw,60px)] py-6 pb-12 lg:hidden">
+  <main class=" gap-y-6 px-[clamp(20px,6vw,60px)] py-12 lg:hidden">
     <div class="text-xs postContent w-full pb-10">
       {@html customSanitization(data.main_text)}
     </div>
@@ -41,7 +41,7 @@
 
   <!--// desktop -->
   <main
-    class="mx-auto hidden max-w-[1440px] grid-cols-[auto_clamp(230px,32vw,460px)] gap-x-20 gap-y-12 py-6 pb-12 pl-[clamp(115px,16vw,230px)] lg:grid"
+    class="mx-auto hidden max-w-[1440px] grid-cols-[auto_clamp(230px,32vw,460px)] gap-x-20 gap-y-12 py-12 pl-[clamp(115px,16vw,230px)] lg:grid"
   >
     <div>
       <div class="text-xs postContent w-full">
