@@ -51,7 +51,7 @@
       <div class=" group hidden grid-cols-2 gap-x-16 lg:grid">
         <a href="/kontakt">
           <div class=" flex h-full flex-col justify-end py-8">
-            <div class=" mb-4 aspect-square w-[clamp(29px,4vw,57px)] duration-500 group-hover:scale-125">
+            <div class=" mb-8 aspect-square w-[clamp(29px,4vw,57px)] duration-500 group-hover:scale-125">
               <BigArrowDown />
             </div>
             <span class="w-[450px] text-[6.25rem] leading-[80%]"> NAPISZ DO MNIE </span>
