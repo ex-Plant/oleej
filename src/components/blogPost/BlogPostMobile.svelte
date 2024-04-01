@@ -89,7 +89,7 @@
         width="768"
         alt="{blogSecondFotoId.node.altText || 'zdjęcie do artykułu'}"
         src="{blogSecondFotoId.node.mediaItemUrl}"
-        quality="100"
+        quality="80"
       />
     {/if}
     {#if blogSecondFotoId?.node?.caption}
@@ -111,7 +111,7 @@
         width="768"
         alt="{blogThirdFotoId.node.altText || 'zdjęcie do artykułu'}"
         src="{blogThirdFotoId.node.mediaItemUrl}"
-        quality="100"
+        quality="80"
       />
     {/if}
     {#if blogThirdFotoId?.node?.caption}
@@ -151,7 +151,7 @@
         width="384"
         alt="{aboutMeImage.altText || 'zdjęcie autora'}"
         src="{aboutMeImage.mediaItemUrl}"
-        quality="100"
+        quality="80"
       />
     </div>
   {/if}

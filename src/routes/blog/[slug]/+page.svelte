@@ -12,7 +12,6 @@
   $: title = postData.title;
   $: date = postData.date;
 
-  console.log(data)
 
   //only for calculating reading time!!
   $: content = blogPost?.postContent + blogPost?.postContentSecond + blogPost?.postContentThird + '';

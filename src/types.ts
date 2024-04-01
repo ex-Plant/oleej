@@ -31,6 +31,7 @@ export type PostType = {
   title: string;
   slug: string;
   date: string;
+  modified: string;
   blogPost: BlogPost;
   comments: {
     nodes: CommentType[];
@@ -109,10 +110,10 @@ export type ImageType = {
 
 export type LoadingType = 'lazy' | 'eager';
 
-export declare global {
-  interface Window {
-    handleCaptchaCallback: (token: string) => Promise<void>;
-    resetCaptcha: () => void;
-    handleCaptchaError: () => void;
-  }
-}
+// export declare global {
+//   interface Window {
+//     handleCaptchaCallback: (token: string) => Promise<void>;
+//     resetCaptcha: () => void;
+//     handleCaptchaError: () => void;
+//   }
+// }
