@@ -97,7 +97,7 @@
       width="auto"
       alt="{blogDesktopFotoId.node.altText || 'zdjęcie do artykułu'}"
       src="{blogDesktopFotoId.node.mediaItemUrl}"
-      quality="100"
+      quality="80"
     />
     {#if blogDesktopFotoId?.node?.caption}
       <p class=" w-full pt-2.5 text-[0.75rem] md:text-12">
@@ -126,7 +126,7 @@
                 width="auto"
                 alt="{blogSecondFotoId.node.altText || 'zdjęcie do artykułu'}"
                 src="{blogSecondFotoId.node.mediaItemUrl}"
-                quality="100"
+                quality="80"
               />
               {#if blogSecondFotoId?.node?.caption}
                 <p class=" w-full pt-2.5 text-[0.75rem] md:text-12">
@@ -151,7 +151,7 @@
                 width="auto"
                 alt="{blogThirdFotoId.node.altText || 'zdjęcie do artykułu'}"
                 src="{blogThirdFotoId.node.mediaItemUrl}"
-                quality="100"
+                quality="80"
               />
               {#if blogThirdFotoId?.node?.caption}
                 <p class=" w-full pt-2.5 text-[0.75rem] md:text-12">

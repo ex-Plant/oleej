@@ -102,7 +102,7 @@
           src="{mobileFotoId.node.mediaItemUrl}"
           height="auto"
           width="auto"
-          quality="100"
+          quality="80"
         />
         <div>
           {#if excerpt}
