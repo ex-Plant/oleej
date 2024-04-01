@@ -192,6 +192,7 @@
   </section>
 
   <a href="/o-mnie" class="group mb-12 flex h-[160px] items-center">
+    {#if aboutMeImage}
     <div class="w-[clamp(115px,16vw,230px)] pr-8">
       <div class=" flex w-full flex-none">
         <CldImage
@@ -205,6 +206,7 @@
         />
       </div>
     </div>
+      {/if}
 
     <div class=" flex flex-col justify-center">
       <p class="h-6 text-desktop16">Autor</p>

@@ -15,6 +15,7 @@
       </div>
 
       <div class="w-full pt-4">
+        {#if post.blogPost.mobileFotoId}
         <CldImage
           sizes="(max-width: 768px) 100vw"
           width="auto"
@@ -25,6 +26,7 @@
           alt="{post.blogPost.mobileFotoId?.node.altText}"
           quality='100'
         />
+        {/if}
         <p class="line-clamp-4 h-[144px] pt-8 text-[1.25rem] leading-[140%]">
           {post.blogPost.excerpt}
         </p>

@@ -56,19 +56,21 @@
         {timeString}
       </span>
     </p>
-    <CldImage
-      class="object-top md:hidden"
-      sizes="(max-width: 768px) 100vw"
-      aspectRatio="{316 / 260}"
-      height="auto"
-      width="768"
-      alt="{mobileFotoId.node.altText || 'zdjęcie do artykułu'}"
-      src="{mobileFotoId.node.mediaItemUrl}"
-    />
-    {#if mobileFotoId?.node?.caption}
-      <p class="pb-2.5 pt-4 text-[0.75rem]">
-        {@html customSanitization(mobileFotoId.node.caption)}
-      </p>
+    {#if mobileFotoId}
+      <CldImage
+        class="object-top md:hidden"
+        sizes="(max-width: 768px) 100vw"
+        aspectRatio="{316 / 260}"
+        height="auto"
+        width="768"
+        alt="{mobileFotoId.node.altText || 'zdjęcie do artykułu'}"
+        src="{mobileFotoId.node.mediaItemUrl}"
+      />
+      {#if mobileFotoId?.node?.caption}
+        <p class="pb-2.5 pt-4 text-[0.75rem]">
+          {@html customSanitization(mobileFotoId.node.caption)}
+        </p>
+      {/if}
     {/if}
   </div>
   <p class="border-b-[2px] border-black py-7 text-[1.25rem] font-bold leading-[110%]">
@@ -87,7 +89,7 @@
         width="768"
         alt="{blogSecondFotoId.node.altText || 'zdjęcie do artykułu'}"
         src="{blogSecondFotoId.node.mediaItemUrl}"
-        quality='100'
+        quality="100"
       />
     {/if}
     {#if blogSecondFotoId?.node?.caption}
@@ -109,7 +111,7 @@
         width="768"
         alt="{blogThirdFotoId.node.altText || 'zdjęcie do artykułu'}"
         src="{blogThirdFotoId.node.mediaItemUrl}"
-        quality='100'
+        quality="100"
       />
     {/if}
     {#if blogThirdFotoId?.node?.caption}
@@ -140,18 +142,19 @@
 </section>
 
 <section class="grid grid-cols-2 gap-x-6 py-6">
-  <div class=" flex">
-    <CldImage
-      sizes="(max-width: 768px) 50vw"
-      aspectRatio="{150 / 120}"
-      height="auto"
-      width="384"
-      alt="{aboutMeImage.altText || 'zdjęcie autora'}"
-      src="{aboutMeImage.mediaItemUrl}"
-      quality='100'
-    />
-  </div>
-
+  {#if aboutMeImage}
+    <div class=" flex">
+      <CldImage
+        sizes="(max-width: 768px) 50vw"
+        aspectRatio="{150 / 120}"
+        height="auto"
+        width="384"
+        alt="{aboutMeImage.altText || 'zdjęcie autora'}"
+        src="{aboutMeImage.mediaItemUrl}"
+        quality="100"
+      />
+    </div>
+  {/if}
   <a href="/o-mnie" class=" flex flex-col justify-center">
     <p class="h-6 text-[0.875rem]">Autor</p>
     <p class=" pb-6 text-[1.125rem] font-bold">Piotr Olejnik</p>
