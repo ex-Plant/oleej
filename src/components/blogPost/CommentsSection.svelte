@@ -46,7 +46,7 @@
   <Spinner />
 {/if}
 <div class='mb-20'>
-  <div class="mb-4 items-center 450:flex gap-x-2 640:flex-col 640:items-start 1280:flex-row 1280:items-center">
+  <div class="mb-4 items-center 450:flex gap-x-2 640:flex-col 640:items-start ">
     <p class="whitespace-nowrap text-[1.125rem] font-bold  640:text-[2.25rem] flex items-center ">
       <span class='leading-[100%]'> Chcesz coś dodać?  </span>
     </p>
