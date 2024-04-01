@@ -38,7 +38,7 @@
           width="auto"
           alt="{mobileFotoId.node.altText || 'zdjęcie do artykułu'}"
           src="{mobileFotoId.node.mediaItemUrl}"
-          quality="100"
+          quality="80"
         />
         {#if excerpt}
           <p class="line-clamp-4 pt-5 leading-[137%]">{excerpt}</p>
@@ -56,7 +56,7 @@
           width="auto"
           alt="{mobileFotoId.node.altText || 'zdjęcie do artykułu'}"
           src="{mobileFotoId.node.mediaItemUrl}"
-          quality="100"
+          quality="80"
         />
         <div>
           <h2 class=" line-clamp-4 h-[140px] text-[2rem] font-[700] uppercase leading-[108%]">
