@@ -59,7 +59,7 @@
           quality="80"
         />
         <div>
-          <h2 class=" line-clamp-4 h-[140px] text-[2rem] font-[700] uppercase leading-[108%]">
+          <h2 class=" line-clamp-4  text-[2rem] font-[700] uppercase leading-[108%] ">
             {title}
             <span class="inline-block duration-500 group-hover:scale-125">
               <BigArrowUp />
