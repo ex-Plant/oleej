@@ -94,7 +94,7 @@
     {/if}
     {#if blogSecondFotoId?.node?.caption}
       <p class="pb-2.5 pt-4 text-[0.75rem]">
-        {@html customSanitization(mobileFotoId.node.caption)}
+        {@html customSanitization(blogSecondFotoId.node.caption)}
       </p>
     {/if}
     {#if blogPost?.postContentSecond}
@@ -116,7 +116,7 @@
     {/if}
     {#if blogThirdFotoId?.node?.caption}
       <p class="pb-2.5 pt-4 text-[0.75rem]">
-        {@html customSanitization(mobileFotoId.node.caption)}
+        {@html customSanitization(blogThirdFotoId.node.caption)}
       </p>
     {/if}
     {#if blogPost?.postContentThird}
