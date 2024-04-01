@@ -128,35 +128,41 @@
                 src="{blogSecondFotoId.node.mediaItemUrl}"
                 quality="100"
               />
+              {#if blogSecondFotoId?.node?.caption}
+                <p class=" w-full pt-2.5 text-[0.75rem] md:text-12">
+                  {@html customSanitization(blogSecondFotoId.node.caption)}
+                </p>
+              {/if}
             </div>
           {/if}
-          {#if blogSecondFotoId?.node?.caption}
-            <p class=" w-full pt-2.5 text-[0.75rem] md:text-12">
-              {@html customSanitization(blogSecondFotoId.node.caption)}
-            </p>
-          {/if}
+
           {#if blogPost.postContentSecond}
             <div class="blog-post-container postContent pb-12">
               {@html customSanitization(blogPost.postContentSecond)}
             </div>
           {/if}
           {#if blogThirdFotoId}
-            <CldImage
-              class="mb-12 hidden shadow-[inset_0_0_0_1px_black] md:block"
-              sizes="(max-width: 1320px), 100vw"
-              aspectRatio="{1320 / 327}"
-              height="auto"
-              width="auto"
-              alt="{blogThirdFotoId.node.altText || 'zdjęcie do artykułu'}"
-              src="{blogThirdFotoId.node.mediaItemUrl}"
-              quality="100"
-            />
+            <div class="w-full pb-12">
+              <CldImage
+                class=" hidden shadow-[inset_0_0_0_1px_black] md:block"
+                sizes="(max-width: 1320px), 100vw"
+                aspectRatio="{1320 / 327}"
+                height="auto"
+                width="auto"
+                alt="{blogThirdFotoId.node.altText || 'zdjęcie do artykułu'}"
+                src="{blogThirdFotoId.node.mediaItemUrl}"
+                quality="100"
+              />
+              {#if blogThirdFotoId?.node?.caption}
+                <p class=" w-full pt-2.5 text-[0.75rem] md:text-12">
+                  {@html customSanitization(blogThirdFotoId.node.caption)}
+                </p>
+              {/if}
+            </div>
+
+
           {/if}
-          {#if blogThirdFotoId?.node?.caption}
-            <p class=" w-full pt-2.5 text-[0.75rem] md:text-12">
-              {@html customSanitization(blogThirdFotoId.node.caption)}
-            </p>
-          {/if}
+
           {#if blogPost.postContentThird}
             <div class="blog-post-container postContent pb-12">
               {@html customSanitization(blogPost.postContentThird)}
@@ -193,20 +199,20 @@
 
   <a href="/o-mnie" class="group mb-12 flex h-[160px] items-center">
     {#if aboutMeImage}
-    <div class="w-[clamp(115px,16vw,230px)] pr-8">
-      <div class=" flex w-full flex-none">
-        <CldImage
-          class="object-top"
-          sizes="(max-width: 200px), 16vw"
-          height="auto"
-          width='auto'
-          aspectRatio="{200 / 160}"
-          alt="{aboutMeImage.altText}"
-          src="{aboutMeImage.mediaItemUrl}"
-        />
+      <div class="w-[clamp(115px,16vw,230px)] pr-8">
+        <div class=" flex w-full flex-none">
+          <CldImage
+            class="object-top"
+            sizes="(max-width: 200px), 16vw"
+            height="auto"
+            width="auto"
+            aspectRatio="{200 / 160}"
+            alt="{aboutMeImage.altText}"
+            src="{aboutMeImage.mediaItemUrl}"
+          />
+        </div>
       </div>
-    </div>
-      {/if}
+    {/if}
 
     <div class=" flex flex-col justify-center">
       <p class="h-6 text-desktop16">Autor</p>
