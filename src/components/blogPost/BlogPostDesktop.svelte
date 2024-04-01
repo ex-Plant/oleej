@@ -218,7 +218,7 @@
       <p class="h-6 text-desktop16">Autor</p>
       <p class="h-8 text-desktop24 font-bold">Piotr Olejnik</p>
     </div>
-    <div class="mt-6 h-12 duration-500 group-hover:scale-125">
+    <div class="mt-6 ml-3 h-12 duration-500 group-hover:scale-125">
       <BigArrowDown />
     </div>
   </a>
