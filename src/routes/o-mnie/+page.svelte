@@ -28,7 +28,7 @@
       {/if}
     </div>
   </main>
-  <a href="/kontakt">
+  <a href="/wiadomosc">
     <div
       class=" flex items-center justify-center space-x-6 border-t border-black px-[clamp(20px,6vw,60px)] py-8 lg:hidden"
     >
@@ -49,7 +49,7 @@
       </div>
 
       <div class=" group hidden grid-cols-2 gap-x-16 lg:grid">
-        <a href="/kontakt">
+        <a href="/wiadomosc">
           <div class=" flex h-full flex-col justify-end py-8">
             <div class=" mb-8 aspect-square w-[clamp(29px,4vw,57px)] duration-500 group-hover:scale-125">
               <BigArrowDown />
