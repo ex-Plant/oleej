@@ -92,7 +92,7 @@ export const getPostDataQuery = (slug: string) => {
 };
 export const allPostsQuery = `
   {
-    posts(where: {orderby: {field: DATE, order: DESC}}) {
+    posts(first: 100, where: {orderby: {field: DATE, order: DESC}}) {
       nodes {
         title
         slug
