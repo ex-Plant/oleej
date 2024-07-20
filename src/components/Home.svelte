@@ -6,7 +6,7 @@
   const allPosts = $page?.data?.allPosts;
   let postsFilteredByCategory: PostType[] = [];
 
-  const posts = allPosts.data.posts.nodes
+  const posts = allPosts?.data?.posts?.nodes
 
   $: if ($activePostCat === '') {
     postsFilteredByCategory = posts;
@@ -17,7 +17,7 @@
 </script>
 
 <section class="px-primary mb-16 grid max-w-[1440px] xl:mx-auto">
-  {#if postsFilteredByCategory.length > 0}
+  {#if postsFilteredByCategory?.length > 0}
     {#each postsFilteredByCategory as post, index (post.id)}
       <BlogPostCard post="{post}" index="{index}" />
     {/each}

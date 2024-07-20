@@ -33,6 +33,13 @@ export type PostType = {
   date: string;
   modified: string;
   blogPost: BlogPost;
+  acf: ACFPostType;
+  featuredImage: {
+    node: {
+      altText: string;
+      mediaItemUrl: string;
+    };
+  };
   comments: {
     nodes: CommentType[];
   };

@@ -3,7 +3,7 @@
   import { activePostCat } from '../store/global';
   import { page } from '$app/stores';
 
-  const postCategories = $page.data.postCategories;
+  const postCategories = $page?.data?.postCategories ?? [];
 </script>
 
 <div class="{twMerge(' mx-auto max-w-[1440px] bg-[#F7F4F0]')}">
