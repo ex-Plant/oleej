@@ -35,7 +35,7 @@
           sizes="(max-width: 768px) 100vw"
           aspectRatio="{316 / 260}"
           height="auto"
-          width="auto"
+          width="260"
           alt="{mobileFotoId.node.altText || 'zdjęcie do artykułu'}"
           src="{mobileFotoId.node.mediaItemUrl}"
           quality="80"
@@ -53,7 +53,7 @@
           sizes="(max-width: 560px) 50vw"
           aspectRatio="{318 / 280}"
           height="auto"
-          width="auto"
+          width="280"
           alt="{mobileFotoId.node.altText || 'zdjęcie do artykułu'}"
           src="{mobileFotoId.node.mediaItemUrl}"
           quality="80"
@@ -101,7 +101,7 @@
           alt="{mobileFotoId.node.altText || 'zdjęcie do artykułu'}"
           src="{mobileFotoId.node.mediaItemUrl}"
           height="auto"
-          width="auto"
+          width="323"
           quality="80"
         />
         <div>
