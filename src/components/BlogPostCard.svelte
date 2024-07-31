@@ -33,9 +33,9 @@
       <div class="w-full pt-7">
         <CldImage
           sizes="(max-width: 768px) 100vw"
-          aspectRatio="{316 / 260}"
+          aspectRatio="{316 / 379}"
           height="auto"
-          width="260"
+          width="auto"
           alt="{mobileFotoId.node.altText || 'zdjęcie do artykułu'}"
           src="{mobileFotoId.node.mediaItemUrl}"
           quality="80"
@@ -51,7 +51,7 @@
       <div class=" grid grid-cols-2 gap-x-12">
         <CldImage
           sizes="(max-width: 560px) 50vw"
-          aspectRatio="{318 / 280}"
+          aspectRatio="{318 / 379}"
           height="auto"
           width="280"
           alt="{mobileFotoId.node.altText || 'zdjęcie do artykułu'}"

@@ -60,7 +60,7 @@
       <CldImage
         class="object-top md:hidden"
         sizes="(max-width: 768px) 100vw"
-        aspectRatio="{316 / 260}"
+        aspectRatio="{316 / 379}"
         height="auto"
         width="768"
         alt="{mobileFotoId.node.altText || 'zdjęcie do artykułu'}"
